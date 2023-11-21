@@ -101,7 +101,7 @@
                 </div>
 
                 <div class="products col py-2 rounded-3 bg-white row row-gap-4 ">
-                    <a href="" class="card col-3 border-0" >
+                    <a href="index.php?controller=product&action=show&id=1" class="card col-3 border-0" >
                         <img src="views/asset/img/product/bc1.jpg" class="card-img-top" alt="Product Image">
                         <div class="card-body">
                             <p class="card-text fs-4 fw-bold mb-2" style="color: #B4975A">159.000 ₫</p>
@@ -109,7 +109,7 @@
                             <h5 class="card-title text-body " style="font-size: 1rem;">Sữa rửa mặt nhập khẩu trực tiếp từ pháp</h5>
                         </div>
                     </a>
-                    <a href="" class="card col-3 border-0" >
+                    <a href="index.php?controller=product&action=show&id=1" class="card col-3 border-0" >
                         <img src="views/asset/img/product/bc1.jpg" class="card-img-top" alt="Product Image">
                         <div class="card-body">
                             <p class="card-text fs-4 fw-bold mb-2" style="color: #B4975A">159.000 ₫</p>
@@ -117,7 +117,7 @@
                             <h5 class="card-title text-body " style="font-size: 1rem;">Sữa rửa mặt nhập khẩu trực tiếp từ pháp</h5>
                         </div>
                     </a>
-                    <a href="" class="card col-3 border-0" >
+                    <a href="index.php?controller=product&action=show&id=1" class="card col-3 border-0" >
                         <img src="views/asset/img/product/bc1.jpg" class="card-img-top" alt="Product Image">
                         <div class="card-body">
                             <p class="card-text fs-4 fw-bold mb-2" style="color: #B4975A">159.000 ₫</p>
@@ -125,7 +125,7 @@
                             <h5 class="card-title text-body " style="font-size: 1rem;">Sữa rửa mặt nhập khẩu trực tiếp từ pháp</h5>
                         </div>
                     </a>
-                    <a href="" class="card col-3 border-0" >
+                    <a href="index.php?controller=product&action=show&id=1" class="card col-3 border-0" >
                         <img src="views/asset/img/product/bc1.jpg" class="card-img-top" alt="Product Image">
                         <div class="card-body">
                             <p class="card-text fs-4 fw-bold mb-2" style="color: #B4975A">159.000 ₫</p>
@@ -133,7 +133,7 @@
                             <h5 class="card-title text-body " style="font-size: 1rem;">Sữa rửa mặt nhập khẩu trực tiếp từ pháp</h5>
                         </div>
                     </a>
-                    <a href="" class="card col-3 border-0" >
+                    <a href="index.php?controller=product&action=show&id=1" class="card col-3 border-0" >
                         <img src="views/asset/img/product/bc1.jpg" class="card-img-top" alt="Product Image">
                         <div class="card-body">
                             <p class="card-text fs-4 fw-bold mb-2" style="color: #B4975A">159.000 ₫</p>
@@ -141,7 +141,7 @@
                             <h5 class="card-title text-body " style="font-size: 1rem;">Sữa rửa mặt nhập khẩu trực tiếp từ pháp</h5>
                         </div>
                     </a>
-                    <a href="" class="card col-3 border-0" >
+                    <a href="index.php?controller=product&action=show&id=1" class="card col-3 border-0" >
                         <img src="views/asset/img/product/bc1.jpg" class="card-img-top" alt="Product Image">
                         <div class="card-body">
                             <p class="card-text fs-4 fw-bold mb-2" style="color: #B4975A">159.000 ₫</p>
@@ -149,7 +149,7 @@
                             <h5 class="card-title text-body " style="font-size: 1rem;">Sữa rửa mặt nhập khẩu trực tiếp từ pháp</h5>
                         </div>
                     </a>
-                    <a href="" class="card col-3 border-0" >
+                    <a href="index.php?controller=product&action=show&id=1" class="card col-3 border-0" >
                         <img src="views/asset/img/product/bc1.jpg" class="card-img-top" alt="Product Image">
                         <div class="card-body">
                             <p class="card-text fs-4 fw-bold mb-2" style="color: #B4975A">159.000 ₫</p>
@@ -157,7 +157,7 @@
                             <h5 class="card-title text-body " style="font-size: 1rem;">Sữa rửa mặt nhập khẩu trực tiếp từ pháp</h5>
                         </div>
                     </a>
-                    <a href="" class="card col-3 border-0" >
+                    <a href="index.php?controller=product&action=show&id=1" class="card col-3 border-0" >
                         <img src="views/asset/img/product/bc1.jpg" class="card-img-top" alt="Product Image">
                         <div class="card-body">
                             <p class="card-text fs-4 fw-bold mb-2" style="color: #B4975A">159.000 ₫</p>
@@ -165,7 +165,7 @@
                             <h5 class="card-title text-body " style="font-size: 1rem;">Sữa rửa mặt nhập khẩu trực tiếp từ pháp</h5>
                         </div>
                     </a>
-                    <a href="" class="card col-3 border-0" >
+                    <a href="index.php?controller=product&action=show&id=1" class="card col-3 border-0" >
                         <img src="views/asset/img/product/bc1.jpg" class="card-img-top" alt="Product Image">
                         <div class="card-body">
                             <p class="card-text fs-4 fw-bold mb-2" style="color: #B4975A">159.000 ₫</p>
@@ -173,7 +173,7 @@
                             <h5 class="card-title text-body " style="font-size: 1rem;">Sữa rửa mặt nhập khẩu trực tiếp từ pháp</h5>
                         </div>
                     </a>
-                    <a href="" class="card col-3 border-0" >
+                    <a href="index.php?controller=product&action=show&id=1" class="card col-3 border-0" >
                         <img src="views/asset/img/product/bc1.jpg" class="card-img-top" alt="Product Image">
                         <div class="card-body">
                             <p class="card-text fs-4 fw-bold mb-2" style="color: #B4975A">159.000 ₫</p>
@@ -181,7 +181,7 @@
                             <h5 class="card-title text-body " style="font-size: 1rem;">Sữa rửa mặt nhập khẩu trực tiếp từ pháp</h5>
                         </div>
                     </a>
-                    <a href="" class="card col-3 border-0" >
+                    <a href="index.php?controller=product&action=show&id=1" class="card col-3 border-0" >
                         <img src="views/asset/img/product/bc1.jpg" class="card-img-top" alt="Product Image">
                         <div class="card-body">
                             <p class="card-text fs-4 fw-bold mb-2" style="color: #B4975A">159.000 ₫</p>
@@ -189,7 +189,7 @@
                             <h5 class="card-title text-body " style="font-size: 1rem;">Sữa rửa mặt nhập khẩu trực tiếp từ pháp</h5>
                         </div>
                     </a>
-                    <a href="" class="card col-3 border-0" >
+                    <a href="index.php?controller=product&action=show&id=1" class="card col-3 border-0" >
                         <img src="views/asset/img/product/bc1.jpg" class="card-img-top" alt="Product Image">
                         <div class="card-body">
                             <p class="card-text fs-4 fw-bold mb-2" style="color: #B4975A">159.000 ₫</p>
