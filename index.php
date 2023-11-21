@@ -18,6 +18,9 @@ if (isset($_GET['controller']) && isset($_GET['action'])) {
     $defaultController = "home";
     $defaultAction = "index";
     
-    header("location: /?controller=$defaultController&action=$defaultAction");
+    // header("location: index.php?controller=$defaultController&action=$defaultAction");
+    include_once "./controllers/homeController.php";
+    $controller = new homeController();
+    $controller -> index();
 }
 ?>
