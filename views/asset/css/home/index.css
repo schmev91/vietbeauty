@@ -1,0 +1,68 @@
+main {
+    background-color: #f5f5f5;
+}
+* {
+    box-sizing: border-box;
+}
+
+
+/* banchay */
+.banchay {
+    margin-top: 30px;
+    border: 1px solid #f5f5f5;
+    background-color: #fff;
+    border-radius: 10px;
+    height: 380px;
+}
+
+/* danhmuc */
+
+.row>.dm_m{
+    border: 1px solid #b9b9b9;
+    border-radius: 10px;
+    margin-left: 10px;
+   
+}
+
+.dm_m{
+    width: 200px;
+    height: 210px;
+    margin-left: 40px;
+}
+
+.dm_main {
+    border: 1px solid #f5f5f5;
+    background-color: #fff;
+    border-radius: 10px;
+    padding-top: 20px;
+    height: 280px;
+}
+
+/* Thương Hiệu */
+.thuonghieu_left img{
+    margin-bottom: 25px;
+    margin-right:10px ;
+}
+
+.thuonghieu {
+    border: 1px solid #f5f5f5;
+    background-color: #fff;
+    border-radius: 10px;
+    padding-top: 20px;
+}
+
+.thuonghieu img {
+    border-radius: 10px;
+}
+
+.thuonghieu img:hover {
+    transform: scale(1.1);
+}
+
+.sanphamgoiy>.container {
+    border: 1px solid #f5f5f5;
+    background-color: #fff;
+    border-radius: 10px;
+    margin-top: 30px;
+}
+
