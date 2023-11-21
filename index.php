@@ -17,7 +17,5 @@ if (isset($_GET['controller']) && isset($_GET['action'])) {
 
     // Hiển thị trang chỉ định
     include_once "./controllers/homeController.php";
-    // $controller = new homeController();
-    // $controller->index();
     homeController::show();
 }

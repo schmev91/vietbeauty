@@ -8,7 +8,7 @@
                     </div>
                     <div class="header_topright">
                         <ul class="header_right" style="display: flex; gap:20px">
-                            <li><i class="fa-solid fa-headset"></i> <a href="">Liên hệ</a></li>
+                            <li><i class="fa-solid fa-headset"></i> <a href="index.php?controller=home&action=contact">Liên hệ</a></li>
                             <li><a href="">Đăng Nhập</a></li>
                             <li>|</li>
                             <li><a href="">Đăng Ký</a></li>
@@ -24,7 +24,7 @@
                 <div class="row gap-5">
                     <div class="col-auto  p-0">
                         <div class="banner">
-                            <img src="views/asset/img/general/logo.png" alt="">
+                            <a href="index.php"><img src="views/asset/img/general/logo.png" alt=""></a>
                         </div>
                     </div>
 
