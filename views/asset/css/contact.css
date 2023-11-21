@@ -1,0 +1,36 @@
+.form{
+    border: 2px solid #BDBDBD; 
+    border-radius: 15px;
+}
+
+.forminf{
+    margin: 10px;
+}
+
+.address{
+    color: red;
+}
+
+.address > p{
+color: black;
+padding-left: 20px;
+}
+
+.phone{
+    color: red;
+}
+
+.phone > p{
+color: black;
+padding-left: 20px;
+}
+
+.email{
+    color: red;
+}
+
+.email > p{
+color: black;
+padding-left: 20px;
+}
+
