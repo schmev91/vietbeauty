@@ -1,18 +1,18 @@
 <?php
 class cartController
 {
-    public function showCart()
+    public function show()
     {
-        // include_once 'views/home/contact.php';
+        include_once 'views/pages/cart.php';
     }
 
     public function cartAdd()
     {
-        // include_once 'views/home/contact.php';
+        
     }
 
     public function cartDelete()
     {
-        // include_once 'views/home/contact.php';
+        
     }
 }
