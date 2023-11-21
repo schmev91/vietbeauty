@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+html {
+    font-family: 'Inter', sans-serif;
+    font-family: 'Roboto', sans-serif;
+}
+
+.container-fluid {
+    margin: 0;
+}
+
+.container {
+    max-width: 1300px;
+    margin: 0 auto;
+
+}
+
+
+
+/* HEADER - START*/
+header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.header_topbg {
+    background-color: #000000;
+}
+
+.header_mainbg {
+    background-color: #990D23;
+}
+
+.header_topleft span {
+    color: #fff;
+    font-size: 13px;
+}
+
+.header_topright a,
+i {
+    font-size: 15px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.header_topright li {
+    color: #fff;
+}
+.search form {
+    background-color: white;
+}
+.search form > * {
+    border: none;
+}
+.search input:focus {
+    box-shadow: none;
+}
+.searchBtn {
+    height: 50px;
+    border: 4px solid white !important;
+    background-color: #990D23;
+}
+.searchBtn i {
+    color: white;
+    font-size: 21px;
+}
+
+/* list danh mục */
+
+.listdm li,
+a {
+    font-size: 15px;
+    color: #fff;
+    text-decoration: none;
+}
+
+/* shop */
+.header-btns {
+    display: flex;
+}
+.header-btns > * {
+    width: fit-content;
+}
+
+.header-btns a {
+    font-size: 19px;
+    vertical-align: middle;
+}
+
+.header-btns i {
+    font-size: 25px;
+}
+
+.header-btns-divider {
+    width: 1.5px;
+    height: 20px;
+    background-color: #EFEFEF;
+    
+}
+.cart-button {
+    position: relative;
+}
+.cart-itemAmount {
+    font-weight: bold;
+    background-color: #B4975A;
+    padding: 2px 5px;
+    position: absolute;
+    top: -8px;
+    right: 13px;
+}
+
+
+
+/* HEADER - END */
+
+
+/* FOOTER - START */
+
+.bg_footer {
+    background-color: #990D23;
+    height: 200px;
+}
+
+.bg-ft-dark {
+    background-color: #000000;
+}
+
+/* FOOTER - END */
