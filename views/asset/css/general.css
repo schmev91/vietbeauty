@@ -149,6 +149,12 @@ html {
 
 
 /* HEADER - START*/
+header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
 .header_topbg {
     background-color: #000000;
 }
@@ -177,6 +183,9 @@ i {
 }
 .search form > * {
     border: none;
+}
+.search input:focus {
+    box-shadow: none;
 }
 .searchBtn {
     height: 50px;

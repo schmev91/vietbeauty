@@ -21,7 +21,7 @@
 
 
     <link rel="stylesheet" href="views/asset/css/general.css">
-    <link rel="stylesheet" href="views/asset/css/home/index.css">
+    <link rel="stylesheet" href="views/asset/css/home.css">
 </head>
 
 <body>

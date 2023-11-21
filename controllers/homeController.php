@@ -1,23 +1,12 @@
 <?php
 class homeController {
-    public function index() {
-        include_once 'views/home/index.php';
+    public static function show() {
+        include_once 'views/pages/home.php';
     }
 
     public function contact() {
-        include_once 'views/home/contact.php';
+        include_once 'views/pages/contact.php';
     }
 
-    public function shop() {
-        include_once 'views/home/shop.php';
-    }
-
-    public function shopSearch() {
-        // include_once 'views/home/shop.php';
-    }
-
-    public function shopFilter() {
-        // include_once 'views/home/shop.php';
-    }
 }
 ?>
