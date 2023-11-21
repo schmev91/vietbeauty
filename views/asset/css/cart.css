@@ -1,0 +1,10 @@
+.cart {
+    position: relative;
+}
+.cart-itemNumber {
+    position: absolute;
+}
+
+.shopBtn {
+    background-color: #B4975A;
+}

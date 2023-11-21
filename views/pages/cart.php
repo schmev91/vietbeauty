@@ -20,8 +20,23 @@
     <?php include_once "views/includes/header.php" ?>
 
     <main>
-       <div class="container">
-        
+       <div class="container cart py-3">
+            <div class="cart-itemNumber">Giỏ hàng - <span>0</span> sản phẩm</div>
+
+            <div class="row mt-5">
+                <div class="col d-flex align-items-center flex-column ">
+                    <img src="views/asset/img/general/cartNoItem.png" class="mb-4 me-3" alt="">
+                    <span class="">Bạn chưa chọn sản phẩm nào</span>
+                    <a class="shopBtn text-white fw-bold py-2 px-2 rounded-4 mt-3" href="index.php">Tiếp tục mua sắm</a>
+                </div>
+            </div>
+
+            <hr class="my-5">
+            
+            <div class="row my-5">
+                <img src="views/asset/img/general/cartPlaceholder.png" style="width: fit-content;" class="mx-auto" alt="">
+
+            </div>
        </div>
     </main>
 
