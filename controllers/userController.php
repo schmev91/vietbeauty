@@ -32,7 +32,7 @@ class UserController
             }
         } else {
             // Hiển thị form đăng ký
-            include_once 'views/user/register.php';
+            include_once 'views/pages/register.php';
         }
     }
 
@@ -54,7 +54,7 @@ class UserController
             }
         } else {
             // Hiển thị form đăng nhập
-            include_once 'views/user/login.php';
+            include_once 'views/pages/login.php';
         }
     }
 

@@ -8,10 +8,10 @@
                     </div>
                     <div class="header_topright">
                         <ul class="header_right" style="display: flex; gap:20px">
-                            <li><i class="fa-solid fa-headset"></i> <a href="">Liên hệ</a></li>
-                            <li><a href="">Đăng Nhập</a></li>
+                            <li><i class="fa-solid fa-headset"></i> <a href="index.php?controller=home&action=contact">Liên hệ</a></li>
+                        <li><a href="index.php?controller=user&action=login">Đăng Nhập</a></li>
                             <li>|</li>
-                            <li><a href="">Đăng Ký</a></li>
+                            <li><a href="index.php?controller=user&action=register">Đăng Ký</a></li>
                         </ul>
                     </div>
                 </div>
@@ -24,7 +24,7 @@
                 <div class="row gap-5">
                     <div class="col-auto  p-0">
                         <div class="banner">
-                            <img src="views/asset/img/general/logo.png" alt="">
+                            <a href="index.php"><img src="views/asset/img/general/logo.png" alt=""></a>
                         </div>
                     </div>
 
@@ -55,7 +55,7 @@
                         <a href="" class="d-flex align-items-center"><i class="fa-solid fa-circle-user me-1"></i> Tài khoản</a>
                         <p class="header-btns-divider border-right p-0"></p>
                         <span class="cart-button">
-                            <a href="" class="d-flex align-items-center"><i class="fa-solid fa-cart-shopping"></i></a>
+                            <a href="index.php?controller=cart&action=show" class="d-flex align-items-center"><i class="fa-solid fa-cart-shopping"></i></a>
                             <span class="cart-itemAmount rounded-5">3</span>
                         </span>
                     </div>
