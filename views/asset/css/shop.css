@@ -1,0 +1,24 @@
+main {
+    background-color: #f5f5f5;
+}
+
+footer {
+    margin-top: -8px;
+}
+
+.shop {
+    /* height: 30vh; */
+}
+
+.shop>.row {
+    height: 100%;
+}
+
+.filter-category .link-secondary {
+    font-size: 1rem;
+}
+.products > .card:hover {
+    transition: all 0.3s;
+    transform: translateY(-2%);
+    border: 1px #B4975A solid !important;
+}

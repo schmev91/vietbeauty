@@ -12,15 +12,10 @@ if (isset($_GET['controller']) && isset($_GET['action'])) {
 
     // Gọi phương thức tương ứng trong controller
     $controller->$action();
-
-} else {
-    // Hiển thị trang mặc định
-    $defaultController = "home";
-    $defaultAction = "index";
     
-    // header("location: index.php?controller=$defaultController&action=$defaultAction");
+} else {
+
+    // Hiển thị trang chỉ định
     include_once "./controllers/homeController.php";
-    $controller = new homeController();
-    $controller -> index();
+    homeController::show();
 }
-?>

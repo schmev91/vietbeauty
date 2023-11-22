@@ -1,0 +1,172 @@
+main {
+    background-color: #f5f5f5;
+}
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/*---------------------------------------- headerdetail--------------------------------------------------- */
+.detail {
+    background-color: #fff;
+    border-radius: 10px;
+    height: 380px;
+}
+.imgbig{
+    width: 80%;
+    margin-top: 16px;
+    font-size: 40px;
+    color: #fff;
+    text-align: right;
+    line-height: 310px;
+}
+.titledetail{
+    font-weight: bold;
+}
+.price{
+    color: red;
+}
+.buy{
+    font-weight: bold;
+    border-radius: 15px;
+    border: 2px solid white;
+    margin-top: 10px;
+    background-color: #ECF4D6;
+    width: 350px;
+    height: 60px;
+}
+.add{
+    font-weight: bold;
+    border-radius: 15px;
+    border: 2px solid white;
+    margin-top: 10px;
+    background-color: #FBECB2;
+    width: 350px;
+    height: 60px;
+}
+/*---------------------------------------------- info sản phẩm--------------------------------------------------------*/
+
+.row>.info_m{
+    border: 1px solid #b9b9b9;
+    border-radius: 10px;
+    margin-left: 10px;
+   
+}
+
+.info_m{
+    width: 200px;
+    height: 210px;
+    margin-left: 40px;
+}
+
+.info_main {
+    border: 1px solid #f5f5f5;
+    background-color: #fff;
+    border-radius: 10px;
+    padding-top: 20px;
+    height: auto;
+}
+.info{
+    font-weight: normal;
+    font-size: large;
+}
+.infoimg{
+    margin-left: 450px;
+    margin-bottom: 20px;
+}
+
+/*------------------------------------------------------- Đánh giá--------------------------------------------- */
+.danhgia {
+    border: 1px solid #f5f5f5;
+    background-color: #fff;
+    border-radius: 10px;
+    padding-top: 20px;
+}
+.diemdanhgia{
+    border-right: 2px solid #000000;
+}
+.rating{
+    border-right: 2px solid #000000;
+}
+.ratingscore{
+    margin-bottom: 10px;
+}
+.diemtb{
+    text-align: center;
+    font-size: 1000%;
+    font-weight: bolder;
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+.titletb{
+    text-align: center;
+    font-weight: bold;
+}
+.sodanhgia{
+    text-align: center;
+    font-size: large;
+}
+.starttb{
+    margin-left: 70px;
+}
+.rating2{
+    margin-top: 70px;
+    margin-left: 50px;
+    margin-bottom: 0;
+}
+.xinsao{
+    text-align: center;
+    margin-top: 150px;
+    font-size: x-large;
+}
+.ratingstar{
+    margin-top: 70px;
+    margin-left: 70px;
+    text-align: center;
+    font-size: xx-large;
+}
+/****** Style Star Rating Widget *****/
+.ratingstar{border:none;float:left;}
+.ratingstar>input{display:none;}/*ẩn input radio - vì ta đã có label là GUI*/
+.ratingstar>label:before{margin:5px;font-size:1.25em;font-family:FontAwesome;display:inline-block;content:"\f005";}/*1 ngôi sao*/
+.ratingstar>.half:before{content:"\f089";position:absolute;}/*0.5 ngôi sao*/
+.ratingstar>label{color:#ddd;float:right;}/*float:right để lật ngược các ngôi sao lại đúng theo thứ tự trong thực tế*/
+/*thêm màu cho sao đã chọn và các ngôi sao phía trước*/
+.ratingstar>input:checked~label,
+.ratingstar:not(:checked)>label:hover, 
+.ratingstar:not(:checked)>label:hover~label{color:#FFD700;}
+/* Hover vào các sao phía trước ngôi sao đã chọn*/
+.ratingstar>input:checked+label:hover,
+.ratingstar>input:checked~label:hover,
+.ratingstar>label:hover~input:checked~label,
+.ratingstar>input:checked~label:hover~label{color:#FFED85;}
+.lsrating{
+    background-color: aqua;
+}
+/*-------------------------------------Bình luận----------------------------*/
+.comment {
+    border: 1px solid #f5f5f5;
+    background-color: #fff;
+    border-radius: 10px;
+    padding-top: 20px;
+    height: auto;
+}
+.comment2{
+    padding: 5px 5px 5px 5px ;
+    border-radius: 15px;
+}
+/*-------------------------------------------------------Sản phẩm cùng loại-----------------------------------------------*/
+.recomment>.container {
+    border: 1px solid #f5f5f5;
+    background-color: #fff;
+    border-radius: 10px;
+    margin-top: 30px;
+    height: auto;
+}
+.recomment-title{
+    text-align: center;
+}

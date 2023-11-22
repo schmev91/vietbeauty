@@ -1,0 +1,139 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    font-family: 'Roboto', sans-serif;
+}
+
+.form__section {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.form__section-container {
+    grid-column: span 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+}
+
+.form__section-container-content {
+    width: 600px;
+    padding: 50px 0px;
+}
+
+.form__section-title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+
+.form__container {
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.form-group {
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form__container label {
+    display: block;
+    padding-bottom: 5px;
+    font-size: 14px;
+}
+
+.form__container input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+
+.form__section-avatar {
+    grid-column: span 2;
+}
+
+
+.button-action {
+    font-size: 20px;
+    padding: 10px 0px;
+    width: 100%;
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    background-color: #b4975b;
+}
+
+.form__section-login {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.form__section-login-content {
+    font-size: 14px;
+    display: flex;
+    gap: 10px
+}
+
+.form__section-login-text {
+    font-weight: 400;
+}
+
+.form__section-login-link {
+    font-weight: 500;
+    color: black;
+}
+
+.form__section-avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form__section-avatar-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.form__section-avatar-content img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+input.upload-avatar {
+    display: none;
+}
+
+.form__section-avatar-content .label-upload-avatar {
+    display: block;
+    margin: 10px auto;
+    width: 150px;
+    padding: 10px;
+    background-color: #ccc;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.red-text {
+    color: red;
+}
