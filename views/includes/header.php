@@ -52,7 +52,7 @@
 
                     <div class="header-btns col-auto p-0 row gx-5 align-items-center justify-content-end ">
                         <a href="index.php?controller=shop&action=show" class="d-flex align-items-center"><i class="fa-solid fa-store me-1"></i> Cửa hàng</a>
-                        <a href="" class="d-flex align-items-center"><i class="fa-solid fa-circle-user me-1"></i> Tài khoản</a>
+                        <a href="index.php?controller=user&action=show" class="d-flex align-items-center"><i class="fa-solid fa-circle-user me-1"></i> Tài khoản</a>
                         <p class="header-btns-divider border-right p-0"></p>
                         <span class="cart-button">
                             <a href="index.php?controller=cart&action=show" class="d-flex align-items-center"><i class="fa-solid fa-cart-shopping"></i></a>
