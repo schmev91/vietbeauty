@@ -22,9 +22,14 @@
     <main>
       <div class="container">
         <div class="row">
-            <div class="col-md-3">
-                <span>Chào bạn</span>
-                <i class="fa-solid fa-circle-user"></i>
+            <div class="col-3 mt-3 user_3">
+                <span style="font-size: 20px; margin-left:40px">Chào bạn</span>
+              <ul class="list_user">
+                <li>  <i class="fa-solid fa-circle-user" style="color:#000000; font-size:30px;margin-left: 25px; margin-top:10px;margin-left:70px"></i></li>
+                <li><a href="" style="color:#000000; font-size:20px;gap:20px">Thông tin tài khoản</a></li>
+                <li><a href="" style="color:#000000;font-size:20px">Đơn hàng</a></li>
+                <li><a href="" style="color:#000000;font-size:20px;">Hỏi đáp</a></li>
+              </ul>
             </div>
         </div>
       </div>

@@ -1,0 +1,14 @@
+.list_user {
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+}
+
+.list_user a:hover {
+    background-color: rgba(180, 151, 90, 0.24);
+}
+
+.user_3 {
+    /* border: 1px solid #000000;
+    width: 200px; */
+}
