@@ -15,7 +15,7 @@ body {
     transition: all .3s ease;
     
 }
-.board {}
+/* .board {} */
 
 .avatarLabel {
     width: fit-content;

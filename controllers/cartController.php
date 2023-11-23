@@ -15,4 +15,8 @@ class cartController
     {
         
     }
+
+    public function payment(){
+        include_once "views/pages/payment.php";
+    }
 }
