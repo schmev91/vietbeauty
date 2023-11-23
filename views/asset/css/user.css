@@ -1,0 +1,32 @@
+body {
+    background-color: #f5f5f5;
+
+}
+
+.userInfo>.row {
+    /* height: 100vh; */
+}
+
+
+.navigator-avatar {
+    max-width: 56px;
+    max-height: 56px;
+    flex: 1;
+       
+}
+.navigator-button:hover {
+    color: #424242 !important;
+    background-color: #f5f5f5;
+    transition: all .3s ease;
+    
+}
+.board {}
+
+.avatarLabel {
+    width: fit-content;
+    background-color: #f5f5f5;
+    border: 1px #ccc solid;
+    padding: 0.25rem 0.4rem;
+    font-size: 0.75rem;
+    border-radius: 1rem;
+}
