@@ -1,0 +1,17 @@
+.bodyall{
+    margin-left: 70px; margin-right: 70px;
+}
+
+.headerbanner{
+    background-color: #F4F4F4;
+}
+
+.textbanner {
+    padding-left: 20px; 
+    color:#B4975A;
+}
+.textform{
+    border: 2px solid #F4F4F4; 
+    padding: 20px; 
+    background-color: #F4F4F4;
+}
