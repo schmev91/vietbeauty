@@ -3,11 +3,6 @@ body {
 
 }
 
-.userInfo>.row {
-    /* height: 100vh; */
-}
-
-
 .navigator-avatar {
     max-width: 56px;
     max-height: 56px;
@@ -20,7 +15,7 @@ body {
     transition: all .3s ease;
     
 }
-.board {}
+/* .board {} */
 
 .avatarLabel {
     width: fit-content;
