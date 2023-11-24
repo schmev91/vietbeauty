@@ -101,102 +101,22 @@
                 </div>
 
                 <div class="products col py-2 rounded-3 bg-white row row-gap-4 ">
-                    <a href="index.php?controller=product&action=show&id=1" class="card col-3 border-0" >
-                        <img src="views/asset/img/product/bc1.jpg" class="card-img-top" alt="Product Image">
-                        <div class="card-body">
-                            <p class="card-text fs-4 fw-bold mb-2" style="color: #B4975A">159.000 ₫</p>
-                            <p class="card-text mb-2" style="color:#990D23">Laroche Posay</p>
-                            <h5 class="card-title text-body " style="font-size: 1rem;">Sữa rửa mặt nhập khẩu trực tiếp từ pháp</h5>
-                        </div>
-                    </a>
-                    <a href="index.php?controller=product&action=show&id=1" class="card col-3 border-0" >
-                        <img src="views/asset/img/product/bc1.jpg" class="card-img-top" alt="Product Image">
-                        <div class="card-body">
-                            <p class="card-text fs-4 fw-bold mb-2" style="color: #B4975A">159.000 ₫</p>
-                            <p class="card-text mb-2" style="color:#990D23">Laroche Posay</p>
-                            <h5 class="card-title text-body " style="font-size: 1rem;">Sữa rửa mặt nhập khẩu trực tiếp từ pháp</h5>
-                        </div>
-                    </a>
-                    <a href="index.php?controller=product&action=show&id=1" class="card col-3 border-0" >
-                        <img src="views/asset/img/product/bc1.jpg" class="card-img-top" alt="Product Image">
-                        <div class="card-body">
-                            <p class="card-text fs-4 fw-bold mb-2" style="color: #B4975A">159.000 ₫</p>
-                            <p class="card-text mb-2" style="color:#990D23">Laroche Posay</p>
-                            <h5 class="card-title text-body " style="font-size: 1rem;">Sữa rửa mặt nhập khẩu trực tiếp từ pháp</h5>
-                        </div>
-                    </a>
-                    <a href="index.php?controller=product&action=show&id=1" class="card col-3 border-0" >
-                        <img src="views/asset/img/product/bc1.jpg" class="card-img-top" alt="Product Image">
-                        <div class="card-body">
-                            <p class="card-text fs-4 fw-bold mb-2" style="color: #B4975A">159.000 ₫</p>
-                            <p class="card-text mb-2" style="color:#990D23">Laroche Posay</p>
-                            <h5 class="card-title text-body " style="font-size: 1rem;">Sữa rửa mặt nhập khẩu trực tiếp từ pháp</h5>
-                        </div>
-                    </a>
-                    <a href="index.php?controller=product&action=show&id=1" class="card col-3 border-0" >
-                        <img src="views/asset/img/product/bc1.jpg" class="card-img-top" alt="Product Image">
-                        <div class="card-body">
-                            <p class="card-text fs-4 fw-bold mb-2" style="color: #B4975A">159.000 ₫</p>
-                            <p class="card-text mb-2" style="color:#990D23">Laroche Posay</p>
-                            <h5 class="card-title text-body " style="font-size: 1rem;">Sữa rửa mặt nhập khẩu trực tiếp từ pháp</h5>
-                        </div>
-                    </a>
-                    <a href="index.php?controller=product&action=show&id=1" class="card col-3 border-0" >
-                        <img src="views/asset/img/product/bc1.jpg" class="card-img-top" alt="Product Image">
-                        <div class="card-body">
-                            <p class="card-text fs-4 fw-bold mb-2" style="color: #B4975A">159.000 ₫</p>
-                            <p class="card-text mb-2" style="color:#990D23">Laroche Posay</p>
-                            <h5 class="card-title text-body " style="font-size: 1rem;">Sữa rửa mặt nhập khẩu trực tiếp từ pháp</h5>
-                        </div>
-                    </a>
-                    <a href="index.php?controller=product&action=show&id=1" class="card col-3 border-0" >
-                        <img src="views/asset/img/product/bc1.jpg" class="card-img-top" alt="Product Image">
-                        <div class="card-body">
-                            <p class="card-text fs-4 fw-bold mb-2" style="color: #B4975A">159.000 ₫</p>
-                            <p class="card-text mb-2" style="color:#990D23">Laroche Posay</p>
-                            <h5 class="card-title text-body " style="font-size: 1rem;">Sữa rửa mặt nhập khẩu trực tiếp từ pháp</h5>
-                        </div>
-                    </a>
-                    <a href="index.php?controller=product&action=show&id=1" class="card col-3 border-0" >
-                        <img src="views/asset/img/product/bc1.jpg" class="card-img-top" alt="Product Image">
-                        <div class="card-body">
-                            <p class="card-text fs-4 fw-bold mb-2" style="color: #B4975A">159.000 ₫</p>
-                            <p class="card-text mb-2" style="color:#990D23">Laroche Posay</p>
-                            <h5 class="card-title text-body " style="font-size: 1rem;">Sữa rửa mặt nhập khẩu trực tiếp từ pháp</h5>
-                        </div>
-                    </a>
-                    <a href="index.php?controller=product&action=show&id=1" class="card col-3 border-0" >
-                        <img src="views/asset/img/product/bc1.jpg" class="card-img-top" alt="Product Image">
-                        <div class="card-body">
-                            <p class="card-text fs-4 fw-bold mb-2" style="color: #B4975A">159.000 ₫</p>
-                            <p class="card-text mb-2" style="color:#990D23">Laroche Posay</p>
-                            <h5 class="card-title text-body " style="font-size: 1rem;">Sữa rửa mặt nhập khẩu trực tiếp từ pháp</h5>
-                        </div>
-                    </a>
-                    <a href="index.php?controller=product&action=show&id=1" class="card col-3 border-0" >
-                        <img src="views/asset/img/product/bc1.jpg" class="card-img-top" alt="Product Image">
-                        <div class="card-body">
-                            <p class="card-text fs-4 fw-bold mb-2" style="color: #B4975A">159.000 ₫</p>
-                            <p class="card-text mb-2" style="color:#990D23">Laroche Posay</p>
-                            <h5 class="card-title text-body " style="font-size: 1rem;">Sữa rửa mặt nhập khẩu trực tiếp từ pháp</h5>
-                        </div>
-                    </a>
-                    <a href="index.php?controller=product&action=show&id=1" class="card col-3 border-0" >
-                        <img src="views/asset/img/product/bc1.jpg" class="card-img-top" alt="Product Image">
-                        <div class="card-body">
-                            <p class="card-text fs-4 fw-bold mb-2" style="color: #B4975A">159.000 ₫</p>
-                            <p class="card-text mb-2" style="color:#990D23">Laroche Posay</p>
-                            <h5 class="card-title text-body " style="font-size: 1rem;">Sữa rửa mặt nhập khẩu trực tiếp từ pháp</h5>
-                        </div>
-                    </a>
-                    <a href="index.php?controller=product&action=show&id=1" class="card col-3 border-0" >
-                        <img src="views/asset/img/product/bc1.jpg" class="card-img-top" alt="Product Image">
-                        <div class="card-body">
-                            <p class="card-text fs-4 fw-bold mb-2" style="color: #B4975A">159.000 ₫</p>
-                            <p class="card-text mb-2" style="color:#990D23">Laroche Posay</p>
-                            <h5 class="card-title text-body " style="font-size: 1rem;">Sữa rửa mặt nhập khẩu trực tiếp từ pháp</h5>
-                        </div>
-                    </a>
+
+                    <?php
+                    foreach ($dssp as $sp) {
+                        extract($sp);
+                    ?>
+                        <a href="index.php?controller=product&action=show&id=<?= $ma_sp?>" class="card col-3 border-0">
+                            <img src="<?= $anh?>" class="card-img-top" alt="Product Image">
+                            <div class="card-body">
+                                <p class="card-text fs-4 fw-bold mb-2" style="color: #B4975A"><?= $dongia?> ₫</p>
+                                <p class="card-text mb-2" style="color:#990D23"><?= $thuonghieu?></p>
+                                <h5 class="card-title text-body " style="font-size: 1rem;"><?= $ten_sp?></h5>
+                            </div>
+                        </a>
+
+
+                    <?php } ?>
 
                 </div>
             </div>

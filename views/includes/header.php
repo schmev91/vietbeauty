@@ -30,8 +30,8 @@
 
                     <div class="col p-0 justify-content-center ">
                         <div class="search">
-                            <form class="input-group mb-2 rounded-4">
-                                <input class="form-control rounded-start-4" type="text" name="seachContent" placeholder="Bạn muốn mua gì...">
+                            <form class="input-group mb-2 rounded-4" method="post" action="index.php?controller=shop&action=shopSearch">
+                                <input class="form-control rounded-start-4" type="text" name="searchKeyword" placeholder="Bạn muốn mua gì...">
                                 <button class="searchBtn rounded-4" type="submit"><i class="fa-solid fa-magnifying-glass px-3 rounded-4 "></i></button>
                             </form>
                         </div>

@@ -64,6 +64,20 @@ function getAllSanpham()
 }
 
 /**
+ * Lấy một số lượng sản phẩm từ bảng sanpham
+ *
+ * @param int $quantity Số lượng sản phẩm cần lấy
+ *
+ * @return array Mảng chứa thông tin các sản phẩm ngẫu nhiên
+ */
+function getAmountOfSanpham($quantity)
+{
+    $sql = "SELECT * FROM sanpham LIMIT $quantity";
+    return pdo_query($sql);
+}
+
+
+/**
  * Lấy ngẫu nhiên một số lượng sản phẩm từ bảng sanpham
  *
  * @param int $quantity Số lượng sản phẩm cần lấy
@@ -89,4 +103,15 @@ function getRandomSanphamByPriceRange($quantity, $minPrice, $maxPrice)
 {
     $sql = "SELECT * FROM sanpham WHERE dongia BETWEEN ? AND ? ORDER BY RAND() LIMIT ?";
     return pdo_query($sql, $minPrice, $maxPrice, $quantity);
+}
+
+
+/**
+ * Hàm dao để tìm kiếm tất cả sản phẩm theo từ khóa
+ * @param string $keyword Từ khóa tìm kiếm
+ * @return array Mảng chứa tất cả sản phẩm tìm được
+ */
+function searchProductsByKeyword($keyword) {
+    $sql = "SELECT * FROM sanpham WHERE ten_sp LIKE ? OR mota LIKE ?";
+    return pdo_query($sql, '%' . $keyword . '%', '%' . $keyword . '%');
 }

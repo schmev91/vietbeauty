@@ -17,6 +17,9 @@ footer {
 .filter-category .link-secondary {
     font-size: 1rem;
 }
+.products > .card {
+    height: fit-content;
+}
 .products > .card:hover {
     transition: all 0.3s;
     transform: translateY(-2%);

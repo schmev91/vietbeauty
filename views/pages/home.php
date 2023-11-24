@@ -57,117 +57,24 @@
                 </div>
             </div>
         </section>
-        <section class="hotbuy">
-            <div class="container pt-3 banchay">
-                <span style="font-size: 25px;font-weight:500; ">Bán chạy</span>
-                <ul class="list_banchay" style="margin-top: 20px; display: flex; gap:20px;overflow-x:hidden;">
+        <section class="container pt-3 py-3 my-5 bg-white rounded-3">
+            <span style="font-size: 25px;font-weight:500; ">Bán chạy</span>
+            <div class="list_banchay mt-3 overflow-x-scroll d-flex gap-2">
 
-                    <?php
-                    foreach ($spbanchay as $sp) {
-                        extract($sp);
-                    ?>
-                        <li>
-                            <div class="card" style="width: 250px; height: 370px;">
-                                <img class="card-img-top" src="<?php echo $anh; ?>" alt="Card image">
-                                <div class="card-body">
-                                    <span class="mb-3 " style="font-size: 20px; color:red;"><?php echo $dongia; ?> đ</span>
-                                    <h4 class="card-title fs-6 text-secondary " style="font-size: 15px; margin-top: 10px"><?php echo $thuonghieu; ?></h4>
-                                    <span class="fs-5"><?php echo $ten_sp; ?></span>
-                                </div>
-                            </div>
-                        </li>
-
-
-                    <?php } ?>
-
-                    <!-- <li>
-                        <div class="card" style="width:250px;height: 370px;">
-                            <img class="card-img-top" src="views/asset/img/product/bc1.jpg" alt="Card image">
-                            <div class="card-body">
-                                <span class="mb-3 " style="font-size: 20px; color:red;">200.000 đ</span> 
-                                <h4 class="card-title fs-6 text-secondary " style="font-size: 15px;margin-top:10px">La-Roche</h4>
-                                <span class="fs-5">Kem Chống Nắng La-Roche Posay</span>
-                            </div>
+                <?php
+                foreach ($spbanchay as $sp) {
+                    extract($sp);
+                ?>
+                    <a href="index.php?controller=product&action=show&id=<?= $ma_sp?>" class="card" style="min-width: 230px !important;max-width: 230px !important;">
+                        <img class="card-img-top" src="<?php echo $anh; ?>" alt="Card image">
+                        <div class="card-body">
+                            <span class="mb-3 " style="font-size: 20px; color:red;"><?php echo $dongia; ?> đ</span>
+                            <h4 class="card-title fs-6 text-secondary " style="font-size: 15px; margin-top: 10px"><?php echo $thuonghieu; ?></h4>
+                            <span class="fs-5"><?php echo $ten_sp; ?></span>
                         </div>
-                    </li>
+                    </a>
 
-                    <li>
-                        <div class="card" style="width:250px;height: 370px;">
-                            <img class="card-img-top" src="views/asset/img/product/bc1.jpg" alt="Card image">
-                            <div class="card-body">
-                                <span class="mb-3 " style="font-size: 20px; color:red;">200.000 đ</span> 
-                                <h4 class="card-title fs-6 text-secondary " style="font-size: 15px;margin-top:10px">La-Roche</h4>
-                                <span class="fs-5">Kem Chống Nắng La-Roche Posay</span>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="card" style="width:250px;height: 370px;">
-                            <img class="card-img-top" src="views/asset/img/product/bc1.jpg" alt="Card image">
-                            <div class="card-body">
-                                <span class="mb-3 " style="font-size: 20px; color:red;">200.000 đ</span> 
-                                <h4 class="card-title fs-6 text-secondary " style="font-size: 15px;margin-top:10px">La-Roche</h4>
-                                <span class="fs-5">Kem Chống Nắng La-Roche Posay</span>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="card" style="width:250px;height: 370px;">
-                            <img class="card-img-top" src="views/asset/img/product/bc1.jpg" alt="Card image">
-                            <div class="card-body">
-                                <span class="mb-3 " style="font-size: 20px; color:red;">200.000 đ</span> 
-                                <h4 class="card-title fs-6 text-secondary " style="font-size: 15px;margin-top:10px">La-Roche</h4>
-                                <span class="fs-5">Kem Chống Nắng La-Roche Posay</span>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="card" style="width:250px;height: 370px;">
-                            <img class="card-img-top" src="views/asset/img/product/bc1.jpg" alt="Card image">
-                            <div class="card-body">
-                                <span class="mb-3 " style="font-size: 20px; color:red;">200.000 đ</span> 
-                                <h4 class="card-title fs-6 text-secondary " style="font-size: 15px;margin-top:10px">La-Roche</h4>
-                                <span class="fs-5">Kem Chống Nắng La-Roche Posay</span>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="card" style="width:250px;height: 370px;">
-                            <img class="card-img-top" src="views/asset/img/product/bc1.jpg" alt="Card image">
-                            <div class="card-body">
-                                <span class="mb-3 " style="font-size: 20px; color:red;">200.000 đ</span> 
-                                <h4 class="card-title fs-6 text-secondary " style="font-size: 15px;margin-top:10px">La-Roche</h4>
-                                <span class="fs-5">Kem Chống Nắng La-Roche Posay</span>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="card" style="width:250px;height: 370px;">
-                            <img class="card-img-top" src="views/asset/img/product/bc1.jpg" alt="Card image">
-                            <div class="card-body">
-                                <span class="mb-3 " style="font-size: 20px; color:red;">200.000 đ</span> 
-                                <h4 class="card-title fs-6 text-secondary " style="font-size: 15px;margin-top:10px">La-Roche</h4>
-                                <span class="fs-5">Kem Chống Nắng La-Roche Posay</span>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="card" style="width:250px;height: 370px;">
-                            <img class="card-img-top" src="views/asset/img/product/bc1.jpg" alt="Card image">
-                            <div class="card-body">
-                                <span class="mb-3 " style="font-size: 20px; color:red;">200.000 đ</span> 
-                                <h4 class="card-title fs-6 text-secondary " style="font-size: 15px;margin-top:10px">La-Roche</h4>
-                                <span class="fs-5">Kem Chống Nắng La-Roche Posay</span>
-                            </div>
-                        </div>
-                    </li> -->
-                </ul>
+                <?php } ?>
             </div>
         </section>
         <div class="container dm_main mt-4">
@@ -204,7 +111,7 @@
                 <span style="font-size: 25px;font-weight:500;">Thương Hiệu</span>
                 <div class="row pt-3">
                     <div class="col-md-4">
-                        <img src="views/asset/img/banner/thuonghieu1.jpg" alt="">
+                        <img src="views/asset/img/banner/bannerBrand.jpg" alt="">
                     </div>
                     <div class="col-md-8 thuonghieu_left">
                         <img src="views/asset/img/brand/thuonghieu2.jpg" alt="">

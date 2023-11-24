@@ -5,22 +5,13 @@ class homeModel
 {
     public static function getSpBanChay()
     {
-        $products = getRandomSanpham(8);
+        $dssp = getRandomSanpham(8);
 
-        $spbanchay = [];
-        foreach ($products as $product) {
-            $anh = $product['anh'];
-            $dongia = $product['dongia'];
-            $thuonghieu = getThuongHieuById($product['ma_th'])['ten_th'];
-            $ten_sp = $product['ten_sp'];
-            $spbanchay[] = [
-                'anh' => $anh,
-                'dongia' => $dongia,
-                'thuonghieu' => $thuonghieu,
-                'ten_sp' => $ten_sp,
-            ];
+        foreach ($dssp as $index => $sp) {
+            $thuonghieu = getThuongHieuById($sp['ma_th'])['ten_th'];
+            $dssp[$index]['thuonghieu'] = $thuonghieu;
         }
-        return $spbanchay;
+        return $dssp;
 
 
     }
