@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="views/asset/css/payment.css">
 </head>
 
-<?php include_once "views/includes/header.php" ?>
+<?php include_once "views/includes/header.php"?>
 
 
 <main>
@@ -68,7 +68,7 @@
             <span style="margin-left: 370px;">Sửa</span>
             <div class="tensp">
                 <ul class="ttsp">
-                    <li><img src="views/img/thanhtoan_sonkemli.jpg" alt="" width="100px" height="100px" style="margin-top: 10px;"></li>
+                    <li><img src="views/asset/img/general/thanhtoan_sonkemli.jpg" alt="" width="100px" height="100px" style="margin-top: 10px;"></li>
                     <li style="margin-top: 10px;">Son Kem Lì Black Rouge A12 Dashed Brown Nâu Gạch 4.5g
                         Air Fit Velvet Ver 2 Mood Filter #A12 Dashed Brown</li> <br>
                 </ul>
