@@ -27,6 +27,8 @@ function pdo_execute($sql){
         $stmt->execute($sql_args);
     }
     catch(PDOException $e){
+        echo "Error executing query: " . $sql . "<br>";
+        echo "Error details: " . $e->getMessage();
         throw $e;
     }
     finally{
@@ -50,6 +52,9 @@ function pdo_query($sql){
         return $rows;
     }
     catch(PDOException $e){
+        echo "Error executing query: " . $sql . "<br>";
+        echo "Error's sql_args: " . implode(' ,', $sql_args) . "<br>";
+        echo "Error details: " . $e->getMessage();
         throw $e;
     }
     finally{
@@ -73,6 +78,8 @@ function pdo_query_one($sql){
         return $row;
     }
     catch(PDOException $e){
+        echo "Error executing query: " . $sql . "<br>";
+        echo "Error details: " . $e->getMessage();
         throw $e;
     }
     finally{
@@ -96,6 +103,8 @@ function pdo_query_value($sql){
         return array_values($row)[0];
     }
     catch(PDOException $e){
+        echo "Error executing query: " . $sql . "<br>";
+        echo "Error details: " . $e->getMessage();
         throw $e;
     }
     finally{

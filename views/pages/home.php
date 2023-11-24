@@ -3,6 +3,7 @@
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,7 +19,6 @@
 
 <body>
 
-    <?php include_once "views/includes/header.php" ?>
 
     <?php include_once "views/includes/header.php" ?>
 
@@ -37,7 +37,8 @@
                     <!-- The slideshow/carousel -->
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="views/asset/img/banner/banner5.jpg" alt="Los Angeles" class="d-block w-100">
+                            <img src="views/asset/img/banner/banner5.jpg" alt="Los Angeles" class="d-block w-10
+                            0">
                         </div>
                         <div class="carousel-item">
                             <img src="views/asset/img/banner/banner6.jpg" alt="Chicago" class="d-block w-100">
@@ -60,7 +61,25 @@
             <div class="container pt-3 banchay">
                 <span style="font-size: 25px;font-weight:500; ">Bán chạy</span>
                 <ul class="list_banchay" style="margin-top: 20px; display: flex; gap:20px;overflow-x:hidden;">
-                   
+
+                    <?php
+                    foreach ($spbanchay as $sp) {
+                        extract($sp);
+                    ?>
+                        <li>
+                            <div class="card" style="width: 250px; height: 370px;">
+                                <img class="card-img-top" src="<?php echo $anh; ?>" alt="Card image">
+                                <div class="card-body">
+                                    <span class="mb-3 " style="font-size: 20px; color:red;"><?php echo $dongia; ?> đ</span>
+                                    <h4 class="card-title fs-6 text-secondary " style="font-size: 15px; margin-top: 10px"><?php echo $thuonghieu; ?></h4>
+                                    <span class="fs-5"><?php echo $ten_sp; ?></span>
+                                </div>
+                            </div>
+                        </li>
+
+
+                    <?php } ?>
+
                     <!-- <li>
                         <div class="card" style="width:250px;height: 370px;">
                             <img class="card-img-top" src="views/asset/img/product/bc1.jpg" alt="Card image">

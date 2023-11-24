@@ -1,4 +1,6 @@
 <?php
+require_once 'pdo.php';
+
 /**
  * Thêm sản phẩm vào bảng sanpham
  * @param string $ten_sp Tên sản phẩm
@@ -8,7 +10,8 @@
  * @param int $ma_dm Mã danh mục
  * @param int $ma_th Mã thương hiệu
  */
-function insertSanpham($ten_sp, $dongia, $mota, $anh, $ma_dm, $ma_th) {
+function insertSanpham($ten_sp, $dongia, $mota, $anh, $ma_dm, $ma_th)
+{
     $sql = "INSERT INTO sanpham (ten_sp, dongia, mota, anh, ma_dm, ma_th) VALUES (?, ?, ?, ?, ?, ?)";
     pdo_execute($sql, $ten_sp, $dongia, $mota, $anh, $ma_dm, $ma_th);
 }
@@ -23,7 +26,8 @@ function insertSanpham($ten_sp, $dongia, $mota, $anh, $ma_dm, $ma_th) {
  * @param int $ma_dm Mã danh mục
  * @param int $ma_th Mã thương hiệu
  */
-function updateSanpham($ma_sp, $ten_sp, $dongia, $mota, $anh, $ma_dm, $ma_th) {
+function updateSanpham($ma_sp, $ten_sp, $dongia, $mota, $anh, $ma_dm, $ma_th)
+{
     $sql = "UPDATE sanpham SET ten_sp = ?, dongia = ?, mota = ?, anh = ?, ma_dm = ?, ma_th = ? WHERE ma_sp = ?";
     pdo_execute($sql, $ten_sp, $dongia, $mota, $anh, $ma_dm, $ma_th, $ma_sp);
 }
@@ -32,7 +36,8 @@ function updateSanpham($ma_sp, $ten_sp, $dongia, $mota, $anh, $ma_dm, $ma_th) {
  * Xóa sản phẩm từ bảng sanpham
  * @param int $ma_sp Mã sản phẩm cần xóa
  */
-function deleteSanpham($ma_sp) {
+function deleteSanpham($ma_sp)
+{
     $sql = "DELETE FROM sanpham WHERE ma_sp = ?";
     pdo_execute($sql, $ma_sp);
 }
@@ -42,7 +47,8 @@ function deleteSanpham($ma_sp) {
  * @param int $ma_sp Mã sản phẩm
  * @return array Mảng chứa thông tin sản phẩm
  */
-function getSanphamByID($ma_sp) {
+function getSanphamByID($ma_sp)
+{
     $sql = "SELECT * FROM sanpham WHERE ma_sp = ?";
     return pdo_query_one($sql, $ma_sp);
 }
@@ -51,7 +57,8 @@ function getSanphamByID($ma_sp) {
  * Lấy tất cả thông tin sản phẩm từ bảng sanpham
  * @return array Mảng chứa tất cả thông tin sản phẩm
  */
-function getAllSanpham() {
+function getAllSanpham()
+{
     $sql = "SELECT * FROM sanpham";
     return pdo_query($sql);
 }
@@ -63,9 +70,10 @@ function getAllSanpham() {
  *
  * @return array Mảng chứa thông tin các sản phẩm ngẫu nhiên
  */
-function getRandomSanpham($quantity) {
-    $sql = "SELECT * FROM sanpham ORDER BY RAND() LIMIT ?";
-    return pdo_query($sql, $quantity);
+function getRandomSanpham($quantity)
+{
+    $sql = "SELECT * FROM sanpham ORDER BY RAND() LIMIT $quantity";
+    return pdo_query($sql);
 }
 
 /**
@@ -77,8 +85,8 @@ function getRandomSanpham($quantity) {
  *
  * @return array Mảng chứa thông tin các sản phẩm ngẫu nhiên theo phạm vi giá
  */
-function getRandomSanphamByPriceRange($quantity, $minPrice, $maxPrice) {
+function getRandomSanphamByPriceRange($quantity, $minPrice, $maxPrice)
+{
     $sql = "SELECT * FROM sanpham WHERE dongia BETWEEN ? AND ? ORDER BY RAND() LIMIT ?";
     return pdo_query($sql, $minPrice, $maxPrice, $quantity);
 }
-
