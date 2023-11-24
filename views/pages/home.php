@@ -1,6 +1,8 @@
+<?php
+
+?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -58,70 +60,94 @@
             <div class="container pt-3 banchay">
                 <span style="font-size: 25px;font-weight:500; ">Bán chạy</span>
                 <ul class="list_banchay" style="margin-top: 20px; display: flex; gap:20px;overflow-x:hidden;">
-                    <li>
-                        <div class="card" style="width:250px;height: 300px;">
+                   
+                    <!-- <li>
+                        <div class="card" style="width:250px;height: 370px;">
                             <img class="card-img-top" src="views/asset/img/product/bc1.jpg" alt="Card image">
                             <div class="card-body">
-                                <h4 class="card-title" style="font-size: 20px; margin-left:50px;">Sữa Rửa Mặt</h4>
+                                <span class="mb-3 " style="font-size: 20px; color:red;">200.000 đ</span> 
+                                <h4 class="card-title fs-6 text-secondary " style="font-size: 15px;margin-top:10px">La-Roche</h4>
+                                <span class="fs-5">Kem Chống Nắng La-Roche Posay</span>
                             </div>
                         </div>
                     </li>
+
                     <li>
-                        <div class="card" style="width:250px;height: 300px;">
+                        <div class="card" style="width:250px;height: 370px;">
                             <img class="card-img-top" src="views/asset/img/product/bc1.jpg" alt="Card image">
                             <div class="card-body">
-                                <h4 class="card-title" style="font-size: 20px; margin-left:50px;">Sữa Rửa Mặt</h4>
+                                <span class="mb-3 " style="font-size: 20px; color:red;">200.000 đ</span> 
+                                <h4 class="card-title fs-6 text-secondary " style="font-size: 15px;margin-top:10px">La-Roche</h4>
+                                <span class="fs-5">Kem Chống Nắng La-Roche Posay</span>
                             </div>
                         </div>
                     </li>
+
                     <li>
-                        <div class="card" style="width:250px;height: 300px;">
+                        <div class="card" style="width:250px;height: 370px;">
                             <img class="card-img-top" src="views/asset/img/product/bc1.jpg" alt="Card image">
                             <div class="card-body">
-                                <h4 class="card-title" style="font-size: 20px; margin-left:50px;">Sữa Rửa Mặt</h4>
+                                <span class="mb-3 " style="font-size: 20px; color:red;">200.000 đ</span> 
+                                <h4 class="card-title fs-6 text-secondary " style="font-size: 15px;margin-top:10px">La-Roche</h4>
+                                <span class="fs-5">Kem Chống Nắng La-Roche Posay</span>
                             </div>
                         </div>
                     </li>
+
                     <li>
-                        <div class="card" style="width:250px;height: 300px;">
+                        <div class="card" style="width:250px;height: 370px;">
                             <img class="card-img-top" src="views/asset/img/product/bc1.jpg" alt="Card image">
                             <div class="card-body">
-                                <h4 class="card-title" style="font-size: 20px; margin-left:50px;">Sữa Rửa Mặt</h4>
+                                <span class="mb-3 " style="font-size: 20px; color:red;">200.000 đ</span> 
+                                <h4 class="card-title fs-6 text-secondary " style="font-size: 15px;margin-top:10px">La-Roche</h4>
+                                <span class="fs-5">Kem Chống Nắng La-Roche Posay</span>
                             </div>
                         </div>
                     </li>
+
                     <li>
-                        <div class="card" style="width:250px;height: 300px;">
+                        <div class="card" style="width:250px;height: 370px;">
                             <img class="card-img-top" src="views/asset/img/product/bc1.jpg" alt="Card image">
                             <div class="card-body">
-                                <h4 class="card-title" style="font-size: 20px; margin-left:50px;">Sữa Rửa Mặt</h4>
+                                <span class="mb-3 " style="font-size: 20px; color:red;">200.000 đ</span> 
+                                <h4 class="card-title fs-6 text-secondary " style="font-size: 15px;margin-top:10px">La-Roche</h4>
+                                <span class="fs-5">Kem Chống Nắng La-Roche Posay</span>
                             </div>
                         </div>
                     </li>
+
                     <li>
-                        <div class="card" style="width:250px;height: 300px;">
+                        <div class="card" style="width:250px;height: 370px;">
                             <img class="card-img-top" src="views/asset/img/product/bc1.jpg" alt="Card image">
                             <div class="card-body">
-                                <h4 class="card-title" style="font-size: 20px; margin-left:50px;">Sữa Rửa Mặt</h4>
+                                <span class="mb-3 " style="font-size: 20px; color:red;">200.000 đ</span> 
+                                <h4 class="card-title fs-6 text-secondary " style="font-size: 15px;margin-top:10px">La-Roche</h4>
+                                <span class="fs-5">Kem Chống Nắng La-Roche Posay</span>
                             </div>
                         </div>
                     </li>
+
                     <li>
-                        <div class="card" style="width:250px;height: 300px;">
+                        <div class="card" style="width:250px;height: 370px;">
                             <img class="card-img-top" src="views/asset/img/product/bc1.jpg" alt="Card image">
                             <div class="card-body">
-                                <h4 class="card-title" style="font-size: 20px; margin-left:50px;">Sữa Rửa Mặt</h4>
+                                <span class="mb-3 " style="font-size: 20px; color:red;">200.000 đ</span> 
+                                <h4 class="card-title fs-6 text-secondary " style="font-size: 15px;margin-top:10px">La-Roche</h4>
+                                <span class="fs-5">Kem Chống Nắng La-Roche Posay</span>
                             </div>
                         </div>
                     </li>
+
                     <li>
-                        <div class="card" style="width:250px;height: 300px;">
+                        <div class="card" style="width:250px;height: 370px;">
                             <img class="card-img-top" src="views/asset/img/product/bc1.jpg" alt="Card image">
                             <div class="card-body">
-                                <h4 class="card-title" style="font-size: 20px; margin-left:50px;">Sữa Rửa Mặt</h4>
+                                <span class="mb-3 " style="font-size: 20px; color:red;">200.000 đ</span> 
+                                <h4 class="card-title fs-6 text-secondary " style="font-size: 15px;margin-top:10px">La-Roche</h4>
+                                <span class="fs-5">Kem Chống Nắng La-Roche Posay</span>
                             </div>
                         </div>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </section>
@@ -159,7 +185,7 @@
                 <span style="font-size: 25px;font-weight:500;">Thương Hiệu</span>
                 <div class="row pt-3">
                     <div class="col-md-4">
-                        <img src="views/asset/img/brand/thuonghieu1.jpg" alt="">
+                        <img src="views/asset/img/banner/thuonghieu1.jpg" alt="">
                     </div>
                     <div class="col-md-8 thuonghieu_left">
                         <img src="views/asset/img/brand/thuonghieu2.jpg" alt="">
