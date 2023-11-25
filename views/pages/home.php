@@ -57,16 +57,16 @@
                 </div>
             </div>
         </section>
-        <section class="container pt-3 py-3 my-5 bg-white rounded-3">
+        <section class="container banchay-container pt-3 py-3 my-5 bg-white rounded-3">
             <span style="font-size: 25px;font-weight:500; ">Bán chạy</span>
-            <div class="list_banchay mt-3 overflow-x-scroll d-flex gap-2">
+            <div class="banchay mt-3 overflow-x-hidden d-flex gap-2" style="transition: transform 0.3s ease;">
 
                 <?php
                 foreach ($spbanchay as $sp) {
                     extract($sp);
                 ?>
-                    <a href="index.php?controller=product&action=show&id=<?= $ma_sp?>" class="card" style="min-width: 230px !important;max-width: 230px !important;">
-                        <img class="card-img-top" src="<?php echo $anh; ?>" alt="Card image">
+                    <a href="index.php?controller=product&action=show&id=<?= $ma_sp ?>" draggable="false" class="card" style="min-width: 230px !important;max-width: 230px !important;">
+                        <img class="card-img-top" draggable="false" src="<?php echo $anh; ?>" alt="Card image">
                         <div class="card-body">
                             <span class="mb-3 " style="font-size: 20px; color:red;"><?php echo $dongia; ?> đ</span>
                             <h4 class="card-title fs-6 text-secondary " style="font-size: 15px; margin-top: 10px"><?php echo $thuonghieu; ?></h4>
@@ -77,6 +77,32 @@
                 <?php } ?>
             </div>
         </section>
+
+        <script>
+            const productContainer = document.querySelector('.banchay-container');
+            const productList = document.querySelector('.banchay');
+            let isMouseDown = false;
+            let startX;
+            let scrollLeft;
+
+            productContainer.addEventListener('mousedown', (e) => {
+                isMouseDown = true;
+                startX = e.pageX - productList.offsetLeft;
+                scrollLeft = productList.scrollLeft;
+            });
+
+            productContainer.addEventListener('mouseup', () => {
+                isMouseDown = false;
+            });
+
+            productContainer.addEventListener('mousemove', (e) => {
+                if (!isMouseDown) return;
+                const x = e.pageX - productList.offsetLeft;
+                const walk = (x - startX) * 1.3; // Tốc độ kéo dải sản phẩm
+                productList.scrollLeft = scrollLeft - walk;
+            });
+        </script>
+
         <div class="container dm_main mt-4">
             <span style="font-size: 25px;font-weight:500;">Danh Mục</span>
             <div class="row">
