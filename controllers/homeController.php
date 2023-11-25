@@ -2,8 +2,10 @@
 include_once "models/homeModel.php";
 class homeController {
     public static function show() {
-        $spbanchay = homeModel::getSpBanChay();
-
+        $spbanchay = homeModel::getSpRandom8();
+        $dsdm = homeModel::getHomeDm();
+        $dsgy = homeModel::getSpRandom8();
+        
         include_once 'views/pages/home.php';
         
     }

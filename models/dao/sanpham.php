@@ -112,6 +112,67 @@ function getRandomSanphamByPriceRange($quantity, $minPrice, $maxPrice)
  * @return array Mảng chứa tất cả sản phẩm tìm được
  */
 function searchProductsByKeyword($keyword) {
-    $sql = "SELECT * FROM sanpham WHERE ten_sp LIKE ? OR mota LIKE ?";
-    return pdo_query($sql, '%' . $keyword . '%', '%' . $keyword . '%');
+    // Convert the keyword to lowercase
+    $lowercaseKeyword = strtolower($keyword);
+
+    $sql = "SELECT * FROM sanpham WHERE LOWER(ten_sp) LIKE ? OR LOWER(mota) LIKE ?";
+    
+    // Convert the keyword placeholder to lowercase
+    return pdo_query($sql, '%' . $lowercaseKeyword . '%', '%' . $lowercaseKeyword . '%');
 }
+
+
+
+/**
+ * Lọc sản phẩm dựa trên các điều kiện nhất định.
+ *
+ * @param array $params Mảng chứa các tham số lọc sản phẩm.
+ *                      Các khóa có thể bao gồm:
+ *                      - 'maDanhmuc': Mã danh mục.
+ *                      - 'maThuonghieu': Mảng chứa mã thương hiệu.
+ *                      - 'minPrice': Giá thấp nhất.
+ *                      - 'maxPrice': Giá cao nhất.
+ *
+ * @return array Mảng chứa thông tin của các sản phẩm thỏa mãn điều kiện lọc.
+ */
+function filterProducts($params) {
+    $sql = "SELECT * FROM sanpham WHERE ";
+    $conditions = array();
+    $sql_args = array();
+
+    if (!empty($params['ma_dm'])) {
+        $conditions[] = "ma_dm = ?";
+        $sql_args[] = $params['ma_dm'];
+    }
+
+    if (!empty($params['arr_ma_th'])) {
+        $placeholders = str_repeat('?,', count($params['arr_ma_th']) - 1) . '?';
+        $conditions[] = "ma_th IN ($placeholders)";
+        $sql_args = array_merge($sql_args, $params['arr_ma_th']);
+    }
+
+    if (!empty($params['minPrice'])) {
+        $conditions[] = "dongia >= ?";
+        $sql_args[] = $params['minPrice'];
+    }
+
+    if (!empty($params['maxPrice'])) {
+        $conditions[] = "dongia <= ?";
+        $sql_args[] = $params['maxPrice'];
+    }
+
+    // Check if there are conditions
+    if (empty($conditions)) {
+        // No conditions specified, return an empty result
+        return array();
+    }
+
+    // Xây dựng câu truy vấn
+    $sql .= implode(" AND ", $conditions);
+
+    // Thực hiện truy vấn
+    $result = pdo_query($sql, ...$sql_args);
+
+    return $result;
+}
+

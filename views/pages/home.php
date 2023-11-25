@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
     <link rel="stylesheet" href="views/asset/css/general.css">
-    <link rel="stylesheet" href="views/asset/css/home.css">
+    <link rel="stylesheet" href="views/asset/css/home.css?v=1">
 </head>
 
 <body>
@@ -103,35 +103,23 @@
             });
         </script>
 
-        <div class="container dm_main mt-4">
+        <div class="container my-5 bg-white py-4 rounded-3">
             <span style="font-size: 25px;font-weight:500;">Danh Mục</span>
-            <div class="row">
-                <div class="col-md-2 pt-3 mt-3 dm_m">
-                    <img src="views/asset/img/category/dm_sonmoi.jpg" alt="" width="150px" height="150px">
-                    <h3 style="font-size: 20px; font-weight: 50px0; padding-left:50px;padding-top: 10px;">Son môi</h3>
-                </div>
-                <div class="col-md-2 pt-3 mt-3 dm_m">
-                    <img src="views/asset/img/category/dm_sonmoi.jpg" alt="" width="150px" height="150px">
-                    <h3 style="font-size: 20px; font-weight: 50px0; padding-left:50px;padding-top: 10px;">Son môi</h3>
-                </div>
-                <div class="col-md-2 pt-3 mt-3 dm_m">
-                    <img src="views/asset/img/category/dm_sonmoi.jpg" alt="" width="150px" height="150px">
-                    <h3 style="font-size: 20px; font-weight: 50px0; padding-left:50px;padding-top: 10px;">Son môi</h3>
-                </div>
-                <div class="col-md-2 pt-3 mt-3 dm_m">
-                    <img src="views/asset/img/category/dm_sonmoi.jpg" alt="" width="150px" height="150px">
-                    <h3 style="font-size: 20px; font-weight: 50px0; padding-left:50px;padding-top: 10px;">Son môi</h3>
-                </div>
-                <div class="col-md-2 pt-3 mt-3 dm_m">
-                    <img src="views/asset/img/category/dm_sonmoi.jpg" alt="" width="150px" height="150px">
-                    <h3 style="font-size: 20px; font-weight: 50px0; padding-left:50px;padding-top: 10px;">Son môi</h3>
-                </div>
-                <div class="col-md-2 pt-3 mt-3 dm_m">
-                    <img src="views/asset/img/category/dm_sonmoi.jpg" alt="" width="150px" height="150px">
-                    <h3 style="font-size: 20px; font-weight: 50px0; padding-left:50px;padding-top: 10px;">Son môi</h3>
-                </div>
+            <div class="row column-gap-2 p-3">
+                <?php
+                foreach ($dsdm as $dm) {
+
+                ?>
+                    <a href="index.php?controller=shop&action=filter&ma_dm=<?= $dm['ma_dm'] ?>" class="col dm-item border border-1 border-dark-subtle rounded-3 p-0">
+                        <img src="<?= $dm['hinh_dm'] ?>" alt="">
+                        <div class="text-dark fs-5 py-2 fw-medium"><?= $dm['ten_dm'] ?></div>
+
+                    </a>
+                <?php } ?>
+
             </div>
         </div>
+
         <section class="brand mt-4">
             <div class="container thuonghieu">
                 <span style="font-size: 25px;font-weight:500;">Thương Hiệu</span>
@@ -156,88 +144,22 @@
             <div class="container pt-4">
                 <span style="font-size: 25px;font-weight:500;margin-top: 30px;">Gợi ý cho bạn</span>
                 <div class="row">
-                    <div class="col-md-3 mt-3">
-                        <div class="card" style="width:300px;height: 400px;">
-                            <img class="card-img-top" src="views/asset/img/product/goiy_sonmoi.jpg" alt="Card image">
-                            <div class="card-body">
-                                <h3 class="card-title" style="font-weight: 50px0;">Black Rouge</h3>
-                                <h4 class="card-title" style="font-size: 15px; ">Son Kem Lì Black Rouge A12 Dashed</h4>
-                                <span style="font-size: 25px; font-weight: 500; color:red;margin-left:70px;">164.000 đ</span>
-                            </div>
-                        </div>
-                    </div>
+                    <?php
+                    foreach ($dsgy as $sp) {
 
-                    <div class="col-md-3 mt-3">
-                        <div class="card" style="width:300px;height: 400px;">
-                            <img class="card-img-top" src="views/asset/img/product/goiy_sonmoi.jpg" alt="Card image">
-                            <div class="card-body">
-                                <h3 class="card-title" style="font-weight: 50px0;">Black Rouge</h3>
-                                <h4 class="card-title" style="font-size: 15px; ">Son Kem Lì Black Rouge A12 Dashed</h4>
-                                <span style="font-size: 25px; font-weight: 500; color:red;margin-left:70px;">164.000 đ</span>
+                    ?>
+                        <a href="index.php?controller=product&action=show&ma_sp=<?=$sp['ma_sp']?>" class="col-md-3 mt-3">
+                            <div class="card" style="width:300px;height: 400px;">
+                                <img class="card-img-top" src="<?= $sp['anh'] ?>" alt="Card image">
+                                <div class="card-body">
+                                    <h3 class="card-title" style="font-weight: 50px0;"><?= $sp['thuonghieu'] ?></h3>
+                                    <h4 class="card-title" style="font-size: 15px; "><?= $sp['ten_sp'] ?></h4>
+                                    <span style="font-size: 25px; font-weight: 500; color:red;margin-left:70px;"><?= $sp['dongia'] ?> đ</span>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mt-3">
-                        <div class="card" style="width:300px;height: 400px;">
-                            <img class="card-img-top" src="views/asset/img/product/goiy_sonmoi.jpg" alt="Card image">
-                            <div class="card-body">
-                                <h3 class="card-title" style="font-weight: 50px0;">Black Rouge</h3>
-                                <h4 class="card-title" style="font-size: 15px; ">Son Kem Lì Black Rouge A12 Dashed</h4>
-                                <span style="font-size: 25px; font-weight: 500; color:red;margin-left:70px;">164.000 đ</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mt-3">
-                        <div class="card" style="width:300px;height: 400px;">
-                            <img class="card-img-top" src="views/asset/img/product/goiy_sonmoi.jpg" alt="Card image">
-                            <div class="card-body">
-                                <h3 class="card-title" style="font-weight: 50px0;">Black Rouge</h3>
-                                <h4 class="card-title" style="font-size: 15px; ">Son Kem Lì Black Rouge A12 Dashed</h4>
-                                <span style="font-size: 25px; font-weight: 500; color:red;margin-left:70px;">164.000 đ</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mt-3">
-                        <div class="card" style="width:300px;height: 400px;">
-                            <img class="card-img-top" src="views/asset/img/product/goiy_sonmoi.jpg" alt="Card image">
-                            <div class="card-body">
-                                <h3 class="card-title" style="font-weight: 50px0;">Black Rouge</h3>
-                                <h4 class="card-title" style="font-size: 15px; ">Son Kem Lì Black Rouge A12 Dashed</h4>
-                                <span style="font-size: 25px; font-weight: 500; color:red;margin-left:70px;">164.000 đ</span>
-                            </div>
-                        </div>
-                    </div>
+                        </a>
+                    <?php } ?>
 
-                    <div class="col-md-3 mt-3">
-                        <div class="card" style="width:300px;height: 400px;">
-                            <img class="card-img-top" src="views/asset/img/product/goiy_sonmoi.jpg" alt="Card image">
-                            <div class="card-body">
-                                <h3 class="card-title" style="font-weight: 50px0;">Black Rouge</h3>
-                                <h4 class="card-title" style="font-size: 15px; ">Son Kem Lì Black Rouge A12 Dashed</h4>
-                                <span style="font-size: 25px; font-weight: 500; color:red;margin-left:70px;">164.000 đ</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mt-3">
-                        <div class="card" style="width:300px;height: 400px;">
-                            <img class="card-img-top" src="views/asset/img/product/goiy_sonmoi.jpg" alt="Card image">
-                            <div class="card-body">
-                                <h3 class="card-title" style="font-weight: 50px0;">Black Rouge</h3>
-                                <h4 class="card-title" style="font-size: 15px; ">Son Kem Lì Black Rouge A12 Dashed</h4>
-                                <span style="font-size: 25px; font-weight: 500; color:red;margin-left:70px;">164.000 đ</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mt-3">
-                        <div class="card" style="width:300px;height: 400px;">
-                            <img class="card-img-top" src="views/asset/img/product/goiy_sonmoi.jpg" alt="Card image">
-                            <div class="card-body">
-                                <h3 class="card-title" style="font-weight: 50px0;">Black Rouge</h3>
-                                <h4 class="card-title" style="font-size: 15px; ">Son Kem Lì Black Rouge A12 Dashed</h4>
-                                <span style="font-size: 25px; font-weight: 500; color:red;margin-left:70px;">164.000 đ</span>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>

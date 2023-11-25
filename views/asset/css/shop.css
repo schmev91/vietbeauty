@@ -16,6 +16,11 @@ footer {
 }
 .products > .card {
     height: fit-content;
+    min-height: 354px;
+}
+.products > .card img {
+    height: 100% !important;
+    /* min-height: 243px !important; */
 }
 .products > .card:hover {
     transition: all 0.3s;
