@@ -36,10 +36,6 @@ function getNguoidungById($ma_nd)
  */
 function insertNguoidung($nguoidung)
 {
-    // Nếu không có avatar, sử dụng default_avatar.png
-    if (!isset($nguoidung['avatar'])) {
-        $nguoidung['avatar'] = 'views/asset/img/general/default_avatar.png';
-    }
 
     $sql = "INSERT INTO nguoidung (isAdmin, isBanned, ten_dangnhap, ten_nd, matkhau, email, sdt, diachi, avatar) 
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -55,7 +51,11 @@ function insertNguoidung($nguoidung)
         $nguoidung['diachi'],
         $nguoidung['avatar']
     );
-    return pdo_query_value("SELECT LAST_INSERT_ID()");
+    // return pdo_query_value("SELECT LAST_INSERT_ID()");
+}
+
+function getUsernameById($ma_nd){
+    return pdo_query_value("SELECT ten_nd FROM nguoidung WHERE ma_nd =".$ma_nd);
 }
 
 /**
@@ -100,7 +100,7 @@ function deleteNguoidung($ma_nd)
 function nguoidungExists($ten_dangnhap)
 {
     $sql = "SELECT COUNT(*) FROM nguoidung WHERE ten_dangnhap = ?";
-    $count = pdo_query_value($sql, $ten_dangnhap);
+    $count = pdo_execute($sql, $ten_dangnhap);
     return $count > 0;
 }
 
@@ -252,6 +252,31 @@ function giangChucAdmin($ma_nd)
  *
  * @throws PDOException Lỗi thực thi câu lệnh
  */
-function usernameInlaiding(&$arr){
+function usernameInlaiding(&$arr)
+{
     $arr['ma_nd'] = getThuonghieuById($arr['ma_th']);
+}
+
+
+/**
+ * thêm ảnh vào hệ thống và trả về đường dẫn
+ *
+ * @param file $_FILE['uploadedImg'] file ảnh cần thêm
+ * @return imgPath đường dẫn đến ảnh
+ * 
+ * @throws PDOException Lỗi thực thi câu lệnh
+ */
+function uploadAvatar($file)
+{
+    $imgDirectory ='views/asset/img/avatar/';
+
+    // Tạo tên mới cho tệp ảnh
+    $newFileName = uniqid() . '_' . $file['name'];
+
+    // Di chuyển tệp vào thư mục img với tên mới
+    move_uploaded_file($file['tmp_name'], $imgDirectory . $newFileName);
+
+    // Địa chỉ URL của ảnh mới
+    $imagePath = $imgDirectory . $newFileName;
+    return $imagePath;
 }

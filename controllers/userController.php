@@ -14,32 +14,37 @@ class UserController
         $this->userModel = new UserModel();
     }
 
-    public function register()
+    public function showRegisterForm($errors = null){
+        if(!empty($errors)) extract($errors);
+
+        include_once 'views/pages/register.php';
+    }
+
+    public function registerRequest()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             //code kiểm tra thông tin người dùng nhập vào có hợp lệ hay không
 
             //xử lý thông tin người dùng và cho vào data sau khi thông tin người dùng nhập hợp lệ
-            $data = [];
-
-            // Gọi phương thức đăng ký từ UserModel
-            //Trả về false nếu tên đăng nhập đã tồn tại
-            $registrationResult = $this->userModel->registerUser($data);
-
-            if ($registrationResult) {
-                // Đăng ký thành công, có thể chuyển hướng hoặc hiển thị thông báo
-                echo "Registration successful!";
-            } else {
-                // Đăng ký không thành công, có thể chuyển hướng hoặc hiển thị thông báo
-                echo "Registration failed.";
+            $errors = $this->userModel->validateRegisterData($_POST);
+            if(!empty($errors)){
+                $this->showRegisterForm($errors);
             }
-        } else {
-            // Hiển thị form đăng ký
-            include_once 'views/pages/register.php';
-        }
+            //Thực hiện thêm người dùng vào csdl nếu không có lỗi
+            $isRegistered = $this->userModel->registerUser($_POST, $_FILES);
+            
+            if($isRegistered) $this->showLoginForm();
+            else $this->showRegisterForm(['username'=>'Tên đăng nhập đã tồn tại']);
+
+        } else header("location: ".$_SERVER['HTTP_REFERER']);
     }
 
-    public function login() {
+    public function showLoginForm() {
+            // Hiển thị form đăng nhập
+            include_once 'views/pages/login.php';
+    }
+
+    public function loginRequest(){
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Lấy thông tin từ form
             $username = $_POST['username'];
@@ -55,9 +60,6 @@ class UserController
                 // Đăng nhập không thành công, hiển thị thông báo đăng nhập không thành công
                 echo "Login failed. Invalid username or password.";
             }
-        } else {
-            // Hiển thị form đăng nhập
-            include_once 'views/pages/login.php';
         }
     }
 

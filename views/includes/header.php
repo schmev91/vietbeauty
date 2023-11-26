@@ -9,9 +9,9 @@
                     <div class="header_topright">
                         <ul class="header_right" style="display: flex; gap:20px">
                             <li><i class="fa-solid fa-headset"></i> <a href="index.php?controller=home&action=contact">Liên hệ</a></li>
-                        <li><a href="index.php?controller=user&action=login">Đăng Nhập</a></li>
+                        <li><a href="index.php?controller=user&action=showLoginForm">Đăng Nhập</a></li>
                             <li>|</li>
-                            <li><a href="index.php?controller=user&action=register">Đăng Ký</a></li>
+                            <li><a href="index.php?controller=user&action=showRegisterForm">Đăng Ký</a></li>
                         </ul>
                     </div>
                 </div>
