@@ -110,7 +110,7 @@
                     foreach ($dssp as $sp) {
                         extract($sp);
                     ?>
-                        <a href="index.php?controller=product&action=show&id=<?= $ma_sp ?>" class="card col-3 border-0">
+                        <a href="index.php?controller=product&action=show&ma_sp=<?= $ma_sp ?>" class="card col-3 border-0">
                             <img src="<?= $anh ?>" class="card-img-top" alt="Product Image">
                             <div class="card-body">
                                 <p class="card-text fs-4 fw-bold mb-2" style="color: #B4975A"><?= $dongia ?> ₫</p>

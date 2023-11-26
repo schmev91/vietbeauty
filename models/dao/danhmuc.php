@@ -59,3 +59,15 @@ function deleteDanhmuc($ma_dm) {
     $sql = "DELETE FROM danhmuc WHERE ma_dm = ?";
     pdo_execute($sql, $ma_dm);
 }
+
+
+/**
+ * thêm biến ten_dm cho sản phẩm
+ *
+ * @param array $product mảng chứa thông tin sản phẩm
+ *
+ * @throws PDOException Lỗi thực thi câu lệnh
+ */
+function categoryInlaiding(&$product){
+    $product['ten_dm'] = getDanhmucById($product['ma_dm']);
+}

@@ -59,3 +59,14 @@ function deleteThuonghieu($ma_th) {
     $sql = "DELETE FROM thuonghieu WHERE ma_th = ?";
     pdo_execute($sql, $ma_th);
 }
+
+/**
+ * thêm biến thuonghieu cho sản phẩm
+ *
+ * @param array $product mảng chứa thông tin sản phẩm
+ *
+ * @throws PDOException Lỗi thực thi câu lệnh
+ */
+function brandInlaiding(&$product){
+    $product['ten_th'] = getThuonghieuById($product['ma_th']);
+}
