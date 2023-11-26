@@ -243,3 +243,15 @@ function giangChucAdmin($ma_nd)
     $sql = "UPDATE nguoidung SET isAdmin = 0 WHERE ma_nd = ?";
     pdo_execute($sql, $ma_nd);
 }
+
+
+/**
+ * thêm giá trị ten_nd cho biến truyền vào
+ *
+ * @param array $arr mảng chứa thông tin cần truyền giá trị tên nd
+ *
+ * @throws PDOException Lỗi thực thi câu lệnh
+ */
+function usernameInlaiding(&$arr){
+    $arr['ma_nd'] = getThuonghieuById($arr['ma_th']);
+}

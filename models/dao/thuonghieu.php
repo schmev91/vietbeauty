@@ -68,5 +68,5 @@ function deleteThuonghieu($ma_th) {
  * @throws PDOException Lỗi thực thi câu lệnh
  */
 function brandInlaiding(&$product){
-    $product['ten_th'] = getThuonghieuById($product['ma_th']);
+    $product['ten_th'] = getThuonghieuById($product['ma_th'])['ten_th'];
 }

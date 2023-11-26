@@ -65,7 +65,7 @@
                 foreach ($spbanchay as $sp) {
                     extract($sp);
                 ?>
-                    <a href="index.php?controller=product&action=show&id=<?= $ma_sp ?>" draggable="false" class="card" style="min-width: 230px !important;max-width: 230px !important;">
+                    <a href="index.php?controller=product&action=show&ma_sp=<?= $ma_sp ?>" draggable="false" class="card" style="min-width: 230px !important;max-width: 230px !important;">
                         <img class="card-img-top" draggable="false" src="<?php echo $anh; ?>" alt="Card image">
                         <div class="card-body">
                             <span class="mb-3 " style="font-size: 20px; color:red;"><?php echo $dongia; ?> đ</span>

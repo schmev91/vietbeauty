@@ -1,14 +1,11 @@
 main {
-    background: white;
+    background: #f9f9f9;
 }
 
-.wrapper {
-    padding: 40px 55px;
-}
-
-.wrapper img {
-    width: 500px;
-    max-height: 500px;
+.product-img img {
+    /* width: 500px;
+    max-height: 500px; */
+    width: 100%;
     border-radius: 12px;
 }
 
@@ -16,39 +13,12 @@ main {
     display: flex;
 }
 
-.img-option {
-    display: flex;
-    margin-top: 12px;
+.info > * {
+    width: fit-content;
 }
-
-.img-option img {
-    width: 100px;
-    height: 100px;
-    opacity: 0.4;
-    margin-bottom: -10px;
-    transition: all .6s,opacity .6s;
-}
-
-.img-option img:hover {
-    border-color: rgba(0, 0, 0, .3);
-    opacity: 1;
-    scale: 1.1;
-}
-
-.img-option-item {
-    cursor: pointer;
-    margin-right: 12px;
-    border-radius: 12px;
-    overflow: hidden;
-}
-.img-option-displaying img{
-    opacity: 1;
-    margin: 0;
-}
-
-.product .info {
-    padding: 10px 15px;
-    max-width: 50%;
+.info {
+    justify-content: end;
+    align-items: end;
 }
 
 .product .info h1 {
@@ -76,6 +46,7 @@ main {
     display: flex;
     margin-bottom: 21px;
 }
+
 .cart-option form * {
     cursor: pointer;
 }
@@ -83,7 +54,7 @@ main {
 .cart-option .quantity {
     display: flex;
     margin-right: 16px;
-    
+
 }
 
 .cart-option .quantity input {
@@ -114,41 +85,32 @@ main {
 .cart-option .btn {
     border: none;
     line-height: 40px;
-    background-color: #007784;
-    padding: 0 19.2px;
     text-transform: uppercase;
     color: white;
     font-weight: bold;
     font-size: 16px;
 }
 
-.disclaimer {
-    color: #ff0000 !important;
+/* === RATING START === */
+.rating-score i {
+    font-size: 0.7rem;
+}
+.rating-content,
+.rating-user {
+    font-size: .85rem;
+}
+.rating {
+    max-width: 517px;
 }
 
-.product .info .cat * {
-    font-size: 12.8px;
-    color: #777;
-
-}   
-
-.product .info .cat a:hover {
-    color: #1e73be;
-}
-
-.product .info .cat span {
-    display: block;
-    padding: 5px 0;
-    border-top: 1px dotted #ddd;
-    margin: 15px 0;
-}
+/* === RATING END === */
 
 .des>div {
     padding: 10px 15px;
 }
 
 .des>div:nth-child(1) {
-    border-top: 2px solid #11519B;
+    border-top: 2px solid #B4975A;
     border-left: 1px solid #ddd;
     border-right: 1px solid #ddd;
     width: fit-content;
@@ -173,64 +135,74 @@ main {
 }
 
 /* COMMENT */
-#cmt-container {
+#hoidap-container {
     margin-top: 1rem;
 }
-#cmt-container hr {
+
+#hoidap-container hr {
     opacity: .3;
     margin: 1rem 0;
 }
-.cmt-list {
+
+.hoidap-list {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
-.cmt {
+
+.hoidap {
     display: flex;
     gap: 0.5rem;
 }
-.cmt-content {
+
+.hoidap-content {
     display: flex;
     flex-direction: column;
 }
-.cmt-username {
+
+.hoidap-username {
     margin-bottom: 0.5rem;
     font-weight: bold;
 }
-.cmt-avatar img{
+
+.hoidap-avatar img {
     height: 3rem;
     width: 3rem;
 }
 
-.cmtInteraction-noAccount {
+.hoidapInteraction-noAccount {
     margin: 1.75rem 0;
     font-size: 1.1rem;
     color: #727272;
 }
-.cmtInteraction-noAccount a {
+
+.hoidapInteraction-noAccount a {
     border-radius: 0.25rem;
     background-color: #008CBA;
     color: white;
     padding: 0.25rem 0.5rem;
 }
 
-.cmtInteraction-loggedIn {
+.hoidapInteraction-loggedIn {
     margin: 1.75rem 0;
     font-size: 1.15rem;
 }
-.cmtInteraction-loggedIn input {
+
+.hoidapInteraction-loggedIn input {
     outline: none;
     border: 1px #ccc solid;
     min-height: 3.5rem;
     width: 100%;
     padding: 0.5rem;
 }
-.cmtInteraction-loggedIn input::placeholder {
+
+.hoidapInteraction-loggedIn input::placeholder {
     font-size: 1rem;
     font-style: italic;
-    
+
 }
-.cmtInteraction-loggedIn button {
+
+.hoidapInteraction-loggedIn button {
     border-radius: 0.25rem;
     padding: 0.5rem 0.75rem;
     background-color: #008CBA;
@@ -240,7 +212,7 @@ main {
     cursor: pointer;
 }
 
-.cmt-action {
+.hoidap-action {
     opacity: .7;
     font-size: 1rem;
     margin: 0.25rem 0;

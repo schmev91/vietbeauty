@@ -6,12 +6,17 @@ class cartController
         include_once 'views/pages/cart.php';
     }
 
-    public function cartAdd()
+    public function addItem()
     {
         
     }
 
-    public function cartDelete()
+    public function instantBuying()
+    {
+        
+    }
+
+    public function deleteItem()
     {
         
     }

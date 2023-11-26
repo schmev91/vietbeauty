@@ -69,5 +69,5 @@ function deleteDanhmuc($ma_dm) {
  * @throws PDOException Lỗi thực thi câu lệnh
  */
 function categoryInlaiding(&$product){
-    $product['ten_dm'] = getDanhmucById($product['ma_dm']);
+    $product['ten_dm'] = getDanhmucById($product['ma_dm'])['ten_dm'];
 }
