@@ -97,10 +97,10 @@ function deleteNguoidung($ma_nd)
  *
  * @return bool True nếu người dùng tồn tại, False nếu không tồn tại
  */
-function nguoidungExists($ten_dangnhap)
+function nguoidungExists($ten_dangnhap, $email)
 {
-    $sql = "SELECT COUNT(*) FROM nguoidung WHERE ten_dangnhap = ?";
-    $count = pdo_execute($sql, $ten_dangnhap);
+    $sql = "SELECT COUNT(*) FROM nguoidung WHERE ten_dangnhap = ? || email = ?";
+    $count = pdo_execute($sql, $ten_dangnhap, $email);
     return $count > 0;
 }
 

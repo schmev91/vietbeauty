@@ -9,7 +9,7 @@ class UserModel
         // Trả về true nếu đăng ký thành công, false nếu thất bại
 
         //code kiểm tra tên đăng nhập của người dùng có trong cơ sở dữ liệu không và gán vào biến $isUserExist
-        $isUserExist = nguoidungExists($username);
+        $isUserExist = nguoidungExists($username, $email);
 
         if ($isUserExist) return false; // Trả về false nếu người dùng tồn tại và không thêm vào csdl
 
@@ -21,14 +21,14 @@ class UserModel
         $insertData['matkhau'] = $data['password'];
         $insertData['email'] = $data['email'];
         $insertData['sdt'] = $data['phone'];
-        
+
         //Nếu có địa chỉ thì gán, không thì để trống
         $insertData['diachi'] = isset($data['diachi']) ? $data['diachi'] : '';
 
         // Nếu không có avatar, sử dụng default_avatar.png, nếu có thêm vào hệ thống và sử dụng
-        $insertData['avatar'] = 
-        isset($files['upload-avatar']) ? uploadAvatar($files['upload-avatar']) : 'views/asset/img/general/default_avatar.png';
-        
+        $insertData['avatar'] =
+            isset($files['upload-avatar']) ? uploadAvatar($files['upload-avatar']) : 'views/asset/img/general/default_avatar.png';
+
         insertNguoidung($insertData);
 
         //trả về true do đăng ký thành công người dùng vào cơ sở dữ liệu
@@ -43,7 +43,7 @@ class UserModel
         $fullName = trim($data['firstName'] . ' ' . $data['lastName']);
         if (!preg_match("/[a-zA-ZÀ-ỹ]+/", $fullName)) {
             $errors['fullName'] = 'Họ và tên không được chứa số hoặc kí tự đặc biệt.';
-        } else if(strlen($fullName) >= 256){
+        } else if (strlen($fullName) >= 256) {
             $errors['fullName'] = 'Họ và tên không được dài hơn 256 kí tự.';
         }
 
@@ -81,22 +81,52 @@ class UserModel
         return $errors;
     }
 
-    public function loginUser($username, $password)
+    public function loginUser($loginKey, $password)
     {
         // Thực hiện logic để kiểm tra thông tin đăng nhập và trả về kết quả
 
         //code kiểm tra
         //người dùng có tồn tại hay không, gán vào $isUserExist
         //nếu có thì mật khẩu có đúng hay không, gán vào $isPasswordValid
-        $isUserExist = true;
-        $isPasswordValid = true;
+        $user = pdo_query_one("SELECT * FROM nguoidung
+        WHERE ten_dangnhap = '$loginKey'
+           OR email = '$loginKey';");
+
+        $isUserExist = !empty($user);
+        $isPasswordValid = $isUserExist ? ($user['matkhau'] == $password ? true : false) : false;
 
         //nếu người dùng tồn tại và đúng mật khẩu thì đăng nhập thành công
-        if ($isUserExist && $isPasswordValid) {
+        if ($isPasswordValid) {
+            $_SESSION['user'] = $user;
             return true; // Đăng nhập thành công
         }
 
         return false; // Đăng nhập không thành công
+    }
+
+    public function validateLoginData($data)
+    {
+        $errors = array();
+
+
+        // Kiểm tra tên đăng nhập
+        if (!preg_match("/^[a-zA-Z@]+$/", $data['loginKey'])) {
+            $errors['loginKey'] = 'Tên đăng nhập không hợp lệ.';
+        }
+
+        if (strstr($data['loginKey'], '@')) {
+            // Kiểm tra email
+            if (!filter_var($data['loginKey'], FILTER_VALIDATE_EMAIL)) {
+                $errors['loginKey'] = 'Email không hợp lệ.';
+            }
+        }
+
+        // Kiểm tra độ dài mật khẩu
+        if (strlen($data['password']) >= 30) {
+            $errors['password'] = 'Mật khẩu quá dài.';
+        }
+
+        return $errors;
     }
 
     // Các phương thức khác liên quan đến người dùng

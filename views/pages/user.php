@@ -11,7 +11,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
-  <link rel="stylesheet" href="views/asset/css/general.css">
+  <link rel="stylesheet" href="views/asset/css/general.css?v=1.0">
   <link rel="stylesheet" href="views/asset/css/user.css?v=1">
 </head>
 
@@ -25,8 +25,8 @@
         <div class="col-3 navigator border border-secondary-subtle rounded-2 bg-white pt-4 px-0">
 
           <div class="navigator-head d-flex gap-2 px-2">
-            <img class="navigator-avatar rounded-5 border border-2 border-dark-subtle" src="views/asset/img/general/default_avatar.png" alt="">
-            <span class="fs-3 fw-bold text-dark-emphasis ">Chào Tuyết</span>
+            <img class="navigator-avatar rounded-5 border border-2 border-dark-subtle" src="<?=$avatar?>" alt="">
+            <span class="fs-3 fw-bold text-dark-emphasis ">Chào <?=$ten_nd?></span>
           </div>
           <div class="navigator-bottom mt-3 d-flex flex-column ">
             <!-- gắn php vào attribute mỗi item, nếu GET đúng trang của item thì thêm style bên dưới, nếu không thì không đúng trang thì thôi-->
@@ -45,7 +45,7 @@
 
             <div class="row mt-4">
               <div class="col-auto mt-2">
-                <img class="rounded-circle border border-1 border-secondary-subtle " src="views/asset/img/general/default_avatar.png" style="max-width: 100px;" alt="">
+                <img class="rounded-circle border border-1 border-secondary-subtle " src="<?=$avatar?>" style="max-width: 100px;" alt="">
 
                 <form method="post" action="">
                   <div class="d-flex flex-column gap-2 align-items-center ">
@@ -60,13 +60,13 @@
             NẾU NGƯỜI DÙNG NHẤN NÚT CẬP NHẬT THÌ DÙNG JAVASCRIPT THAY COL GIỮA VÀ COL CUỐI THÀNH INPUT VÀ SUMIT BUTTON -->
               <form class="col d-flex flex-column gap-2 pe-4">
                 <div class="input-group">
-                  <input type="text" class="form-control" placeholder="suprisemtfk@gmail.com">
+                  <input type="text" class="form-control" placeholder="<?=$email?>" disabled >
                   <span class="input-group-text">
                     <i class="fa-solid fa-envelope text-black-50 "></i>
                   </span>
                 </div>
                 <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Trần Con Trời">
+                  <input type="text" class="form-control" placeholder="<?=$ten_nd?>">
                   <span class="input-group-text">
                     <i class="fa-solid fa-user text-black-50 "></i>
                   </span>
@@ -84,7 +84,7 @@
                 <i class="fa-solid fa-phone col-auto fs-4 text-secondary" style="height: fit-content;"></i>
                 <div class="d-flex flex-column col">
                   <div class="text-body-secondary mb-1">
-                    Số điện thoại
+                  <?=$sdt?>
                   </div>
                   <div class="text-body-tertiary  ">
                     Cập nhật số điện thoại
@@ -96,7 +96,7 @@
                 <i class="fa-solid fa-envelope col-auto fs-4 text-secondary" style="height: fit-content;"></i>
                 <div class="d-flex flex-column col">
                   <div class="text-body-secondary mb-1">
-                    Email
+                  <?=$email?>
                   </div>
                   <div class="text-body-tertiary  ">
                     Cập nhật Email

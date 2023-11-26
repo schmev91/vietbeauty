@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 if (isset($_GET['controller']) && isset($_GET['action'])) {
     //Lấy tên controller và nối đuôi 'Controller' để sử dụng sau

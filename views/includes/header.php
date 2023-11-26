@@ -9,9 +9,16 @@
                     <div class="header_topright">
                         <ul class="header_right" style="display: flex; gap:20px">
                             <li><i class="fa-solid fa-headset"></i> <a href="index.php?controller=home&action=contact">Liên hệ</a></li>
-                        <li><a href="index.php?controller=user&action=showLoginForm">Đăng Nhập</a></li>
-                            <li>|</li>
-                            <li><a href="index.php?controller=user&action=showRegisterForm">Đăng Ký</a></li>
+                            <li>
+                                <?php
+                                if (!isset($_SESSION['user'])) {
+                                    echo '<a href="index.php?controller=user&action=showLoginForm">Đăng Nhập</a>
+                                    </li>
+                                    <li>|</li>
+                                    <li><a href="index.php?controller=user&action=showRegisterForm">Đăng Ký</a></li>';
+                         } else { 
+                           echo '<li><a href="index.php?controller=user&action=showRegisterForm"><i class="fa-solid fa-right-from-bracket me-2"></i> Đăng xuất</a></li>'; 
+                        } ?>
                         </ul>
                     </div>
                 </div>
@@ -50,9 +57,21 @@
                         </div>
                     </div>
 
-                    <div class="header-btns col-auto p-0 row gx-5 align-items-center justify-content-end ">
+                    <div class="header-btns col-auto p-0 row gx-4 align-items-center justify-content-end ">
                         <a href="index.php?controller=shop&action=show" class="d-flex align-items-center"><i class="fa-solid fa-store me-1"></i> Cửa hàng</a>
-                        <a href="index.php?controller=user&action=show" class="d-flex align-items-center"><i class="fa-solid fa-circle-user me-1"></i> Tài khoản</a>
+                        <a href="index.php?controller=user&action=show" class="d-flex align-items-center">
+                            <!-- <i class="fa-solid fa-circle-user me-1"></i>  -->
+                            <div class="header-avatar me-1">
+                                <img src="<?= $_SESSION['user']['avatar'] ?>" alt="">
+                            </div>
+                            <?php
+                            if (isset($_SESSION['user'])) {
+                                $ten_nd = $_SESSION['user']['ten_nd'];
+                                if (strlen($ten_nd) > 12) $ten_nd = substr($ten_nd, 0, 12) . '...';
+                                echo $ten_nd;
+                            } else echo 'Tài khoản';
+                            ?>
+                        </a>
                         <p class="header-btns-divider border-right p-0"></p>
                         <span class="cart-button">
                             <a href="index.php?controller=cart&action=show" class="d-flex align-items-center"><i class="fa-solid fa-cart-shopping"></i></a>
