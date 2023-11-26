@@ -83,7 +83,7 @@
 
 
                                 <div class="form__container">
-                                    <label for="passwordcomfirm">Xác nhận mật khẩu <span class="red-text">*</span>
+                                    <label for="passwordconfirm">Xác nhận mật khẩu <span class="red-text">*</span>
                                         <?= isset($passwordconfirm) ? '<span style="font-size: .7rem;color:red;" class="ms-1">' . $passwordconfirm . '</span>' : '' ?>
                                     </label>
                                     <input type="password" id="passwordconfirm" class="passwordconfirm" name="passwordconfirm" placeholder="Xác nhận mật khẩu" required>

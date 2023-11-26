@@ -48,7 +48,7 @@ class UserModel
         }
 
         // Kiểm tra tên đăng nhập
-        if (!preg_match("/^[a-zA-Z]+$/", $data['username'])) {
+        if (!preg_match("/^[a-zA-Z\d]+$/", $data['username'])) {
             $errors['username'] = 'Tên đăng nhập không hợp lệ.';
         }
 

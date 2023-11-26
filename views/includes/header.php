@@ -1,3 +1,8 @@
+<?php
+global $DEFAULT_AVATAR;
+
+?>
+
 <header>
     <section class="header_T">
         <div class="container-fluid header_topbg p-2">
@@ -17,7 +22,7 @@
                                     <li>|</li>
                                     <li><a href="index.php?controller=user&action=showRegisterForm">Đăng Ký</a></li>';
                          } else { 
-                           echo '<li><a href="index.php?controller=user&action=showRegisterForm"><i class="fa-solid fa-right-from-bracket me-2"></i> Đăng xuất</a></li>'; 
+                           echo '<li><a href="index.php?controller=user&action=logout"><i class="fa-solid fa-right-from-bracket me-2"></i> Đăng xuất</a></li>'; 
                         } ?>
                         </ul>
                     </div>
@@ -62,7 +67,7 @@
                         <a href="index.php?controller=user&action=show" class="d-flex align-items-center">
                             <!-- <i class="fa-solid fa-circle-user me-1"></i>  -->
                             <div class="header-avatar me-1">
-                                <img src="<?= $_SESSION['user']['avatar'] ?>" alt="">
+                                <img src="<?= isset($_SESSION['user']) ? $_SESSION['user']['avatar'] : $DEFAULT_AVATAR ?>" alt="">
                             </div>
                             <?php
                             if (isset($_SESSION['user'])) {

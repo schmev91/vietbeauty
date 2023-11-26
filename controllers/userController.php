@@ -80,7 +80,9 @@ class UserController
     {
         // Xử lý đăng xuất, ví dụ: hủy phiên làm việc
         // Chuyển hướng đến trang chủ hoặc trang mặc định
-
+        if (isset($_SESSION['user'])) {
+            unset($_SESSION['user']);
+        }
         header('Location: index.php');
     }
 }

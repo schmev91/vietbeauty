@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+$DEFAULT_AVATAR = 'views/asset/img/general/default_avatar.png';
 if (isset($_GET['controller']) && isset($_GET['action'])) {
     //Lấy tên controller và nối đuôi 'Controller' để sử dụng sau
     $controllerName = $_GET['controller'] . 'Controller';
