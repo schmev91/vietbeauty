@@ -21,9 +21,9 @@ global $DEFAULT_AVATAR;
                                     </li>
                                     <li>|</li>
                                     <li><a href="index.php?controller=user&action=showRegisterForm">Đăng Ký</a></li>';
-                         } else { 
-                           echo '<li><a href="index.php?controller=user&action=logout"><i class="fa-solid fa-right-from-bracket me-2"></i> Đăng xuất</a></li>'; 
-                        } ?>
+                                } else {
+                                    echo '<li><a href="index.php?controller=user&action=logout"><i class="fa-solid fa-right-from-bracket me-2"></i> Đăng xuất</a></li>';
+                                } ?>
                         </ul>
                     </div>
                 </div>
@@ -49,15 +49,17 @@ global $DEFAULT_AVATAR;
                         </div>
                         <div class="loaidanhmuc">
                             <ul class="listdm" style="display: flex; gap:10px">
-                                <li><a href="">Son Môi</a></li>
+                                <li><a href="index.php?controller=shop&action=filter&ma_dm=1">Son Môi</a></li>
                                 <li>|</li>
-                                <li><a href="">Sữa dưỡng da</a></li>
+                                <li><a href="index.php?controller=shop&action=filter&ma_dm=2">Nước hoa</a></li>
                                 <li>|</li>
-                                <li><a href="">Dầu gội</a></li>
+                                <li><a href="index.php?controller=shop&action=filter&ma_dm=3">Kem chống nắng</a></li>
                                 <li>|</li>
-                                <li><a href="">Bảng kẻ mắt</a></li>
+                                <li><a href="index.php?controller=shop&action=filter&ma_dm=4">Tẩy da mặt</a></li>
                                 <li>|</li>
-                                <li><a href="">Kem chống nắng</a></li>
+                                <li><a href="index.php?controller=shop&action=filter&ma_dm=5">Dầu gội & Dầu xả</a></li>
+                                <li>|</li>
+                                <li><a href="index.php?controller=shop&action=filter&ma_dm=6">Bảng phấn mắt</a></li>
                             </ul>
                         </div>
                     </div>
@@ -79,8 +81,17 @@ global $DEFAULT_AVATAR;
                         </a>
                         <p class="header-btns-divider border-right p-0"></p>
                         <span class="cart-button">
-                            <a href="index.php?controller=cart&action=show" class="d-flex align-items-center"><i class="fa-solid fa-cart-shopping"></i></a>
-                            <span class="cart-itemAmount rounded-5">3</span>
+                            <a href="index.php?controller=cart&action=show" class="d-flex align-items-center">
+                                <i class="fa-solid fa-cart-shopping"></i></a>
+
+                            <?php
+                            include_once 'models/cartModel.php';
+                            if (isset($_SESSION['user'])) {
+                                $cartQuantity = cartModel::getCartQuantity($_SESSION['user']['ma_nd']);
+                                $cartQuantity = $cartQuantity ? $cartQuantity : 0;
+                                echo '<span class="cart-itemAmount rounded-5">' .  $cartQuantity . '</span>';
+                            }
+                            ?>
                         </span>
                     </div>
                 </div>

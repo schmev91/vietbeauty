@@ -10,17 +10,35 @@ require_once 'pdo.php';
  */
 function getGiohangByNguoidung($ma_nd) {
     $sql = "SELECT * FROM giohang WHERE ma_nd = ?";
-    return pdo_query($sql, $ma_nd);
+    return pdo_query_one($sql, $ma_nd);
+}
+
+function getTotalQuantityInCart($ma_nd) {
+    $sql = "SELECT SUM(spgiohang.soluong) AS totalQuantity
+            FROM giohang
+            INNER JOIN spgiohang ON giohang.ma_gh = spgiohang.ma_gh
+            WHERE giohang.ma_nd = ?";
+    
+    $result = pdo_query_one($sql, $ma_nd);
+
+    // Kiểm tra nếu có kết quả
+    if ($result) {
+        return $result['totalQuantity'];
+    } else {
+        // Nếu không có kết quả, trả về 0 hoặc giá trị mặc định khác
+        return 0;
+    }
 }
 
 /**
- * Thêm giỏ hàng mới cho người dùng
+ * kiểm tra người dùng có giỏ hàng hay không, nếu có thì 
  *
  * @param int $ma_nd Mã người dùng
  *
  * @return void
  */
 function addGiohang($ma_nd) {
+
     $sql = "INSERT INTO giohang (lastactive, ma_nd) VALUES (CURRENT_TIMESTAMP, ?)";
     pdo_execute($sql, $ma_nd);
 }
@@ -75,6 +93,12 @@ function addSpgiohang($ma_gh, $ma_sp, $soluong) {
     pdo_execute($sql, $ma_gh, $ma_sp, $soluong);
 }
 
+function isSpgiohangExists($ma_gh, $ma_sp) {
+    $sql = "SELECT COUNT(*) FROM spgiohang WHERE ma_gh = ? AND ma_sp = ?";
+    $count = pdo_query_value($sql, $ma_gh, $ma_sp);
+    return $count > 0;
+}
+
 /**
  * Cập nhật số lượng sản phẩm trong giỏ hàng
  *
@@ -88,6 +112,12 @@ function updateSoluongSpgiohang($ma_gh, $ma_sp, $soluong) {
     $sql = "UPDATE spgiohang SET soluong = ? WHERE ma_gh = ? AND ma_sp = ?";
     pdo_execute($sql, $soluong, $ma_gh, $ma_sp);
 }
+
+function increaseSoluongSpgiohang($ma_gh, $ma_sp, $soluongThem) {
+    $sql = "UPDATE spgiohang SET soluong = soluong + ? WHERE ma_gh = ? AND ma_sp = ?";
+    pdo_execute($sql, $soluongThem, $ma_gh, $ma_sp);
+}
+
 
 /**
  * Xóa sản phẩm khỏi giỏ hàng

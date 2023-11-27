@@ -58,7 +58,7 @@
                             <input type="text" name="ma_sp" hidden value="<?= $ma_sp ?>">
                             <div class="quantity">
                                 <input value="-" step="1" type="button" onclick="quantityEditor(this)">
-                                <input name="quantity" value="1" class="soluong" inputmode="numeric" min="1" step="1" autocomplete="off" type="number">
+                                <input name="soluong" value="1" class="soluong" inputmode="numeric" min="1" step="1" autocomplete="off" type="number">
                                 <input value="+" step="1" type="button" onclick="quantityEditor(this)">
                             </div>
                             <div class="d-flex gap-3">

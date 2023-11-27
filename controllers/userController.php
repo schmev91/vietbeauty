@@ -68,8 +68,8 @@ class UserController
             $loginResult = $this->userModel->loginUser($loginKey, $password);
 
             if ($loginResult) {
-                // Đăng nhập thành công, chuyển hướng đến trang chủ
-                if (isset($_SESSION['org_page'])) header('location: ' . $_SESSION['org_page']);
+                // Đăng nhập thành công, chuyển hướng đến trang chủ hoặc thread
+                if (isset($_SESSION['thread'])) header('location: ' . $_SESSION['thread']);
                 else if ($_GET['return=true']) {
                     header("location: " . $_SERVER['HTTP_REFERER']);
                 } else header("location: index.php");
@@ -88,6 +88,7 @@ class UserController
         if (isset($_SESSION['user'])) {
             unset($_SESSION['user']);
         }
+        session_destroy();
         header('Location: index.php');
     }
 }

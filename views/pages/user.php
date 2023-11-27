@@ -26,7 +26,7 @@
 
           <div class="navigator-head d-flex gap-2 px-2">
             <img class="navigator-avatar rounded-5 border border-2 border-dark-subtle" src="<?=$avatar?>" alt="">
-            <span class="fs-3 fw-bold text-dark-emphasis ">Chào <?=$ten_nd?></span>
+            <span class="fs-3 fw-bold text-dark-emphasis ">Chào <?=$_SESSION['user']['ten_nd']?></span>
           </div>
           <div class="navigator-bottom mt-3 d-flex flex-column ">
             <!-- gắn php vào attribute mỗi item, nếu GET đúng trang của item thì thêm style bên dưới, nếu không thì không đúng trang thì thôi-->
@@ -66,7 +66,7 @@
                   </span>
                 </div>
                 <div class="input-group">
-                  <input type="text" class="form-control" placeholder="<?=$ten_nd?>">
+                  <input type="text" class="form-control" placeholder="<?=$_SESSION['user']['ten_nd']?>">
                   <span class="input-group-text">
                     <i class="fa-solid fa-user text-black-50 "></i>
                   </span>
