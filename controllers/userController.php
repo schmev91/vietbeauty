@@ -34,20 +34,22 @@ class UserController
             //xử lý thông tin người dùng và cho vào data sau khi thông tin người dùng nhập hợp lệ
             $errors = $this->userModel->validateRegisterData($_POST);
             if (!empty($errors)) {
-                $this->showRegisterForm($errors);
+                return $this->showRegisterForm($errors);
             }
             //Thực hiện thêm người dùng vào csdl nếu không có lỗi
             $isRegistered = $this->userModel->registerUser($_POST, $_FILES);
 
             if ($isRegistered) $this->showLoginForm();
             else $this->showRegisterForm(['username' => 'Tên đăng nhập đã tồn tại']);
-        } else header("location: " . $_SERVER['HTTP_REFERER']);
+        } else if ($_GET['return=true']) {
+            header("location: " . $_SERVER['HTTP_REFERER']);
+        } else header("location: index.php");
     }
 
     public function showLoginForm($errors = null)
     {
         // Hiển thị form đăng nhập
-        if(!empty($errors)) extract($errors);
+        if (!empty($errors)) extract($errors);
         include_once 'views/pages/login.php';
     }
 
@@ -57,7 +59,7 @@ class UserController
 
             // Gọi phương thức đăng nhập từ UserModel, return true nếu đăng nhập thành công, false nếu không thành công
             $errors = $this->userModel->validateLoginData($_POST);
-            if (!empty($errors)) $this->showLoginForm($errors);
+            if (!empty($errors)) return $this->showLoginForm($errors);
 
             // Lấy thông tin từ form
             $loginKey = $_POST['loginKey'];
@@ -68,7 +70,10 @@ class UserController
             if ($loginResult) {
                 // Đăng nhập thành công, chuyển hướng đến trang chủ
                 if (isset($_SESSION['org_page'])) header('location: ' . $_SESSION['org_page']);
-                else header('location: index.php');
+                else if ($_GET['return=true']) {
+                    header("location: " . $_SERVER['HTTP_REFERER']);
+                } else header("location: index.php");
+
             } else {
                 // Đăng nhập không thành công, hiển thị thông báo đăng nhập không thành công
                 $this->showLoginForm(['loginKey' => 'Tên đăng nhập hoặc mật khẩu không tồn tại.']);

@@ -36,7 +36,7 @@
 
                         <div class="form__container">
                             <label for="password">Mật khẩu <?= isset($password) ? '<span style="font-size: .8rem;color:red;" class="ms-1">' . $password . '</span>' : '' ?></label>
-                            <input type="text" id="password" class="password" name="password">
+                            <input type="password" id="password" class="password" name="password">
                         </div>
 
                         <button class="button-action btn-login">

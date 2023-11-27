@@ -14,9 +14,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
 
-    <link rel="stylesheet" href="views/asset/css/general.css">
+    <link rel="stylesheet" href="views/asset/css/general.css?v=1.0">
 
-    <link rel="stylesheet" href="views/asset/css/contact.css">
+    <link rel="stylesheet" href="views/asset/css/contact.css?v=1.0">
 </head>
 
 <body>
