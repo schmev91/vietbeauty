@@ -24,6 +24,21 @@ class u
     {
         return cartModel::getCartQuantity($ma_nd);
     }
+
+    public static function setThread(){
+        $_SESSION['thread'] = $_SERVER['HTTP_REFERER'];
+    }
+
+    public static function toThread(){
+        if (isset($_SESSION['thread'])) {
+            $thread = $_SESSION['thread'];
+            unset($_SESSION['thread']);
+            header('location: ' . $thread);
+        }
+    }
+    public static function isThreading(){
+        return isset($_SESSION['thread']);
+    }
 }
 
 function nf($number){

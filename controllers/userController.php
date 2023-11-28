@@ -69,7 +69,8 @@ class UserController
 
             if ($loginResult) {
                 // Đăng nhập thành công, chuyển hướng đến trang chủ hoặc thread
-                if (isset($_SESSION['thread'])) header('location: ' . $_SESSION['thread']);
+                if (u::isThreading()) u::toThread();
+                
                 else if ($_GET['return=true']) {
                     header("location: " . $_SERVER['HTTP_REFERER']);
                 } else header("location: index.php");

@@ -5,34 +5,22 @@ include_once "models/dao/thuonghieu.php";
 include_once "models/dao/giohang.php";
 class cartModel
 {
-    public static function getCartQuantity($ma_nd){
+    private $cartInfo;
+    public function __construct($ma_nd)
+    {
+        
+        $this->cartInfo = getGiohangByNguoidung($ma_nd);
+    }
+
+    public static function getCartQuantity($ma_nd)
+    {
         return getTotalQuantityInCart($ma_nd);
     }
-    public function add($ma_nd, $ma_sp, $soluong)
-    {
-        $cart = getGiohangByNguoidung($ma_nd);
-        if(empty($cart)){
-            addGiohang($ma_nd);
-            $cart = getGiohangByNguoidung($ma_nd);
-        }
-        extract($cart);
 
-        if(isSpgiohangExists($ma_gh, $ma_sp)){
-            //Nếu sản phẩm đã tồn tại mà vẫn thêm từ trang sản phẩm thì tăng số lượng
-            increaseSoluongSpgiohang($ma_gh, $ma_sp, $soluong);
-        } else {
-            //Không tồn tại sẵn thì tiến hành thêm
-            addSpgiohang($ma_gh, $ma_sp, $soluong);
-        };
-
-        updateLastActive($ma_gh);
-
-        
-    }
     public function getCartData($ma_nd)
     {
         $data = getGiohangByNguoidung($ma_nd);
-        if(empty($data)) return [];
+        if (empty($data)) return [];
 
         $data = getSpgiohang($data['ma_gh']);
         foreach ($data as $index => $row) {
@@ -42,5 +30,33 @@ class cartModel
         }
         return $data;
     }
-    
+
+    public function add($ma_nd, $ma_sp, $soluong)
+    {
+        
+        if (empty($this->cartInfo)) {
+            addGiohang($ma_nd);
+            $this->cartInfo = getGiohangByNguoidung($ma_nd);
+        }
+        extract($this->cartInfo);
+
+        if (isSpgiohangExists($ma_gh, $ma_sp)) {
+            //Nếu sản phẩm đã tồn tại mà vẫn thêm từ trang sản phẩm thì tăng số lượng
+            increaseSoluongSpgiohang($ma_gh, $ma_sp, $soluong);
+        } else {
+            //Không tồn tại sẵn thì tiến hành thêm
+            addSpgiohang($ma_gh, $ma_sp, $soluong);
+        };
+
+        updateLastActive($ma_gh);
+    }
+
+    public function delete($ma_sp)
+    {
+        if(empty($this->cartInfo)) return false;
+        else {
+            deleteSpgiohang($this->cartInfo['ma_gh'], $ma_sp);
+            return true;
+        }
+    }
 }
