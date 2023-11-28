@@ -110,16 +110,16 @@ class UserModel
 
 
         // Kiểm tra tên đăng nhập
-        if (!preg_match("/^[\da-zA-Z@]+$/", $data['loginKey'])) {
+        if (!preg_match("/^[\da-zA-Z@.]+$/", $data['loginKey'])) {
             $errors['loginKey'] = 'Tên đăng nhập không hợp lệ.';
         }
 
-        if (strstr($data['loginKey'], '@')) {
-            // Kiểm tra email
-            if (!filter_var($data['loginKey'], FILTER_VALIDATE_EMAIL)) {
-                $errors['loginKey'] = 'Email không hợp lệ.';
-            }
-        }
+        // if (strstr($data['loginKey'], '@')) {
+        //     // Kiểm tra email
+        //     if (!filter_var($data['loginKey'], FILTER_VALIDATE_EMAIL)) {
+        //         $errors['loginKey'] = 'Email không hợp lệ.';
+        //     }
+        // }
 
         // Kiểm tra độ dài mật khẩu
         if (strlen($data['password']) >= 30) {
