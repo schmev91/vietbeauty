@@ -110,7 +110,7 @@ class UserModel
 
 
         // Kiểm tra tên đăng nhập
-        if (!preg_match("/^[a-zA-Z@]+$/", $data['loginKey'])) {
+        if (!preg_match("/^[\da-zA-Z@]+$/", $data['loginKey'])) {
             $errors['loginKey'] = 'Tên đăng nhập không hợp lệ.';
         }
 
