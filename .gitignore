@@ -1,0 +1,7 @@
+# Ignore files that end with .log
+*.log
+
+# Ignore the "build" directory
+views/asset/img/avatar
+
+# Ignore all

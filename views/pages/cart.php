@@ -69,7 +69,7 @@
                                                         </h5>
                                                         <a href="<?= u::link('product', 'show', ['ma_sp' => $ma_sp]) ?>" class="card-text fs-5 text-dark-emphasis "><?= $ten_sp ?></a>
                                                         <p class="card-text mt-1 mb-2"><small class="text-body-secondary"><?= $ten_dm ?></small></p>
-                                                        <a href="" class="text-body-tertiary p-0 fw-bold" style="font-size: .9rem"> <i class="fa-solid fa-trash-can text-body-tertiary"></i> xóa</a>
+                                                        <a href="<?=u::link('cart','deleteItem',['ma_sp'=>$ma_sp])?>" class="text-body-tertiary p-0 fw-bold" style="font-size: .9rem"> <i class="fa-solid fa-trash-can text-body-tertiary"></i> xóa</a>
                                                     </div>
                                                 </div>
                                             </div>

@@ -6,7 +6,7 @@ class cartController
 
     public function __construct()
     {
-        $this->cartModel = new cartModel();
+        $this->cartModel = new cartModel(s('user')['ma_nd']);
     }
     
     public function show()
@@ -35,7 +35,8 @@ class cartController
         //add to cart then redirect to previous page
 
         //Sau khi đăng nhập thành công, nếu biến thread có tồn tại sẽ ngay lập tức chuyển hướng đến thread
-        $_SESSION['thread'] = $_SERVER['HTTP_REFERER'];
+        // $_SESSION['thread'] = $_SERVER['HTTP_REFERER'];
+        u::setThread();
 
         if (!isset($_SESSION['user'])) {
             //Nếu người dùng chưa đăng nhập thì chuyển hướng đến đăng nhập và thoát
@@ -49,7 +50,8 @@ class cartController
         $this->cartModel->add($ma_nd, $ma_sp, $soluong);
 
         //quay lại trang sản phẩm
-        header("location:".$_SESSION['thread']);
+        // header("location:".$_SESSION['thread']);
+        u::toThread();
 
 
     }
@@ -61,6 +63,12 @@ class cartController
 
     public function deleteItem()
     {
+        u::setThread($_SERVER['HTTP_REFERER']);
+        if(isset($_GET['ma_sp']))
+        $deleteResult = $this->cartModel->delete($_GET['ma_sp']);
+
+        u::toThread();
+        
     }
 
     public function payment()
