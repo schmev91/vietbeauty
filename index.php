@@ -1,5 +1,13 @@
 <?php
 session_start();
+include_once 'models/u.php';
+
+$s = &$_SESSION;
+function vd($var){
+    var_dump($var);
+}
+
+
 $DEFAULT_AVATAR = 'views/asset/img/general/default_avatar.png';
 if (isset($_GET['controller']) && isset($_GET['action'])) {
     //Lấy tên controller và nối đuôi 'Controller' để sử dụng sau

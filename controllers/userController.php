@@ -76,7 +76,7 @@ class UserController
 
             } else {
                 // Đăng nhập không thành công, hiển thị thông báo đăng nhập không thành công
-                $this->showLoginForm(['loginKey' => 'Tên đăng nhập hoặc mật khẩu không tồn tại.']);
+                $this->showLoginForm(['loginKey' => 'Tên đăng nhập hoặc mật khẩu không chính xác.']);
             }
         }
     }

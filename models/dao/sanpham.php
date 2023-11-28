@@ -176,3 +176,11 @@ function filterProducts($params) {
     return $result;
 }
 
+function inlaidProductInfo(&$row){
+    $product = getSanphamByID($row['ma_sp']);
+    //thêm từng cột trong sản phẩm vào $row
+    foreach($product as $key => $value){
+        $row[$key] = $value;
+    }
+
+}

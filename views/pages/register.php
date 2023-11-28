@@ -106,7 +106,7 @@
                                 <div class="form__section-login-text">
                                     Bạn đã có tài khoản?
                                 </div>
-                                <a href="login.html" class="form__section-login-link">
+                                <a href="index.php?controller=user&action=showLoginForm" class="form__section-login-link">
                                     Đăng nhập
                                 </a>
                             </div>

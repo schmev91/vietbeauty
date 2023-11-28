@@ -29,9 +29,18 @@ class cartModel
 
         
     }
-    public function createCart($ma_nd)
+    public function getCartData($ma_nd)
     {
-        
+        $data = getGiohangByNguoidung($ma_nd);
+        if(empty($data)) return [];
+
+        $data = getSpgiohang($data['ma_gh']);
+        foreach ($data as $index => $row) {
+            inlaidProductInfo($data[$index]);
+            categoryInlaiding($data[$index]);
+            brandInlaiding($data[$index]);
+        }
+        return $data;
     }
     
 }

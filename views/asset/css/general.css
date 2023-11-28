@@ -86,7 +86,7 @@ video {
     border: 0;
     font-size: 100%;
     font: inherit;
-    vertical-align: baseline;
+    /* vertical-align: baseline; */
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -146,6 +146,9 @@ html {
 
 }
 
+.fit-content {
+    width: fit-content !important;
+}
 
 
 /* HEADER - START*/
@@ -270,6 +273,7 @@ a {
     position: absolute;
     top: -30%;
     right: 2%;
+    font-size: .9rem;
 }
 
 

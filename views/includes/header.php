@@ -80,19 +80,17 @@ global $DEFAULT_AVATAR;
                             ?>
                         </a>
                         <p class="header-btns-divider border-right p-0"></p>
-                        <span class="cart-button">
-                            <a href="index.php?controller=cart&action=show" class="d-flex align-items-center">
-                                <i class="fa-solid fa-cart-shopping"></i></a>
+                        <a href="<?= s('user') ? u::link('cart', 'show') : u::link('user', 'showLoginForm'); ?>" class="cart-button d-flex align-items-center">
+                                <i class="fa-solid fa-cart-shopping"></i>
 
                             <?php
-                            include_once 'models/cartModel.php';
-                            if (isset($_SESSION['user'])) {
-                                $cartQuantity = cartModel::getCartQuantity($_SESSION['user']['ma_nd']);
+                            if (s('user')) {
+                                $cartQuantity = u::getCartQuantity(s('user')['ma_nd']);
                                 $cartQuantity = $cartQuantity ? $cartQuantity : 0;
                                 echo '<span class="cart-itemAmount rounded-5">' .  $cartQuantity . '</span>';
                             }
                             ?>
-                        </span>
+                        </a>
                     </div>
                 </div>
             </div>

@@ -49,7 +49,7 @@
                             <div class="form__section-register-text">
                                 Bạn chưa có tài khoản?
                             </div>
-                            <a href="register.html" class="form__section-register-link">
+                            <a href="index.php?controller=user&action=showRegisterForm" class="form__section-register-link">
                                 Đăng ký
                             </a>
                         </div>

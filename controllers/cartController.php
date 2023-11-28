@@ -11,6 +11,13 @@ class cartController
     
     public function show()
     {
+        if(!isset($_SESSION['user'])){
+            header('location: index.php');
+            exit;
+        }
+        extract($_SESSION['user']);
+        $cartData = $this->cartModel->getCartData($ma_nd);
+        
         include_once 'views/pages/cart.php';
     }
 
