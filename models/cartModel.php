@@ -59,4 +59,8 @@ class cartModel
             return true;
         }
     }
+
+    public function updateQuantity($ma_sp, $soluong){
+        updateSoluongSpgiohang($this->cartInfo['ma_gh'], $ma_sp, $soluong);
+    }
 }
