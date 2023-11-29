@@ -54,22 +54,26 @@
                                 extract($data);
 
                             ?>
-                                <tr class="align-middle">
+                                <tr class="tableRow align-middle">
                                     <td>
                                         <div class="card mb-3 border-0">
                                             <div class="row g-0">
-                                                <input class="form-check-input m-0 my-auto me-2 border-2 border-dark-subtle  itemCheckbox" type="checkbox" value="" id="flexCheckDefault">
+                                                <input class="form-check-input m-0 my-auto me-2 border-2 border-dark-subtle  itemCheckbox" type="checkbox" value="" class="itemCheckbox">
+
                                                 <a href="<?= u::link('product', 'show', ['ma_sp' => $ma_sp]) ?>" class="col-auto">
                                                     <img src="<?= $anh ?>" style="max-height: 124px;" class="img-fluid rounded-start" alt="...">
                                                 </a>
+
                                                 <div class="col">
                                                     <div class="card-body">
                                                         <h5 class="card-title fw-medium ">
                                                             <a href="<?= u::link('shop', 'filter', ['arr_ma_th[]' => $ma_th]) ?>" style="color: #990D23;"><?= $ten_th ?></a>
                                                         </h5>
+
                                                         <a href="<?= u::link('product', 'show', ['ma_sp' => $ma_sp]) ?>" class="card-text fs-5 text-dark-emphasis "><?= $ten_sp ?></a>
                                                         <p class="card-text mt-1 mb-2"><small class="text-body-secondary"><?= $ten_dm ?></small></p>
-                                                        <a href="<?=u::link('cart','deleteItem',['ma_sp'=>$ma_sp])?>" class="text-body-tertiary p-0 fw-bold" style="font-size: .9rem"> <i class="fa-solid fa-trash-can text-body-tertiary"></i> xóa</a>
+
+                                                        <a href="<?= u::link('cart', 'deleteItem', ['ma_sp' => $ma_sp]) ?>" class="text-body-tertiary p-0 fw-bold" style="font-size: .9rem"> <i class="fa-solid fa-trash-can text-body-tertiary"></i> xóa</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -77,11 +81,17 @@
                                         </div>
                                     </td>
 
-                                    <td class="fs-5 text-secondary-emphasis fw-medium"><?= nf($dongia) ?> ₫</td>
+                                    <td class="fs-5 text-secondary-emphasis fw-medium"><span><?= nf($dongia) ?></span> ₫</td>
 
-                                    <td><input class="quantity border-secondary-subtle bg-body-tertiary  border p-1 p-0 border-0 rounded-1 " min='1' max='50' type="number" value="<?= $soluong ?>"></td>
+                                    <!-- INPUT SO LUONG -->
+                                    <td>
+                                        <form action="<?=u::link('cart','changeQuantity')?>" method="post">
+                                        <input type="text" hidden name="ma_sp" value="<?=$ma_sp?>">
+                                            <input name="soluong" class="quantity border-secondary-subtle bg-body-tertiary  border p-1 p-0 border-0 rounded-1 " min='1' max='50' type="number" value="<?= $soluong ?>">
+                                        </form>
+                                    </td>
 
-                                    <td class="fs-5 text-secondary-emphasis fw-medium"><?= nf($dongia * $soluong) ?> ₫</td>
+                                    <td class="fs-5 text-secondary-emphasis fw-medium"><span id="spthanhtien"><?= nf($dongia * $soluong) ?></span> ₫</td>
                                 </tr>
 
                             <?php } ?>
@@ -90,13 +100,15 @@
                         </tbody>
                     </table>
 
-                    <div class="col-3 invoice">
+                    <div class="col-3 invoice" id="invoice">
                         <div class="invoice-heading py-2 my-1 fw-bold fs-5">Hóa đơn của bạn</div>
                         <hr class="my-2 text-secondary ">
-                        <div class="invoice-body py-3 mt-2 d-flex flex-column gap-3" >
+                        <div class="invoice-body py-3 mt-2 d-flex flex-column gap-3">
                             <div class="d-flex justify-content-between ">
                                 <div class="fit-content fw-light" style="font-size: 0.9rem;">Tạm tính:</div>
-                                <div class="fit-content fw-bold text-dark-emphasis "><?= nf(414000) ?> ₫</div>
+                                <div class="fit-content fw-bold text-dark-emphasis "><span id="tamtinh">
+
+                                </span> ₫</div>
                             </div>
                             <div class="d-flex justify-content-between ">
                                 <div class="fit-content fw-light" style="font-size: 0.9rem;">Giảm giá:</div>
@@ -106,11 +118,11 @@
                         <hr class="m-0 mb-3 text-secondary">
                         <div class="d-flex justify-content-between ">
                             <div class="fit-content fw-light" style="font-size: 0.9rem;">Tổng cộng:</div>
-                            <div class="fit-content fw-bold text-golden"><?= nf(414000) ?> ₫</div>
+                            <div class="fit-content fw-bold text-golden"><span id='tongcong'></span> ₫</div>
                         </div>
                         <div class="text-body-tertiary fw-medium my-2" style="font-size: .8rem;">( Đã bao gồm thuế VAT )</div>
 
-                        <a href="" class="bg-golden mt-4 d-block text-center fw-bold fs-6 p-3 rounded-1" >Tiến hành đặt hàng</a>
+                        <a href="" class="bg-golden mt-4 d-block text-center fw-bold fs-6 p-3 rounded-1">Tiến hành đặt hàng</a>
                     </div>
 
                 <?php } ?>
@@ -131,7 +143,7 @@
 
     <?php include_once "views/includes/footer.php" ?>
 
-    <script src="views/asset/javascript/cart.js"></script>
+    <script src="views/asset/javascript/cart.js?v=1"></script>
 </body>
 
 </html>

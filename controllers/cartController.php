@@ -56,10 +56,6 @@ class cartController
 
     }
 
-    public function instantBuying()
-    {
-        echo "nyanyanyaaaa";
-    }
 
     public function deleteItem()
     {
@@ -70,6 +66,24 @@ class cartController
         u::toThread();
         
     }
+
+    public function changeQuantity(){
+        
+        u::setThread();
+        extract($_POST);
+        
+        if(isset($soluong) && $soluong > 0){
+            $this->cartModel->updateQuantity($ma_sp, $soluong);
+        }
+
+        u::toThread();
+    }
+
+    public function instantBuying()
+    {
+        echo "nyanyanyaaaa";
+    }
+
 
     public function payment()
     {
