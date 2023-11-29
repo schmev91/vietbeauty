@@ -56,7 +56,6 @@ class cartController
 
     }
 
-
     public function deleteItem()
     {
         u::setThread($_SERVER['HTTP_REFERER']);
@@ -79,14 +78,5 @@ class cartController
         u::toThread();
     }
 
-    public function instantBuying()
-    {
-        echo "nyanyanyaaaa";
-    }
-
-
-    public function payment()
-    {
-        include_once "views/pages/payment.php";
-    }
+   
 }

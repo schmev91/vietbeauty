@@ -43,7 +43,7 @@
                         </div>
                         <div class="d-flex gap-3">
                             <!-- <button class="btn" type="button" onclick="addToCart()">Thêm vào giỏ</button> -->
-                            <button class="btn py-0 px-4 rounded-1 bg-golden" type="button" onclick="customSubmit('index.php?controller=cart&action=instantBuying')">
+                            <button class="btn py-0 px-4 rounded-1 bg-golden" type="button" onclick="customSubmit(<?=u::link('payment','instantBuying')?>)">
                                 <i class="fa-solid fa-money-bill-1-wave"></i> Mua ngay</button>
 
                             <button class="btn py-0 px-2 rounded-1 bg-secondary" type="button" onclick="customSubmit('index.php?controller=cart&action=addItem')">
