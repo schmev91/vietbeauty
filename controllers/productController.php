@@ -9,9 +9,12 @@ class productController {
         
         if(isset($_GET['ma_sp'])){
             $ma_sp = $_GET['ma_sp'];
-            $product = productModel::getProduct($ma_sp);
-            $hoidapData = productModel::getProductHoidap($ma_sp);
-            extract($product);
+            
+
+            $product = new productModel($ma_sp);
+            // $hoidapData = productModel::getProductHoidap($ma_sp);
+            
+            extract($product->getData());
             include_once 'views/pages/productDetail.php';
 
         } else header('location: index.php');

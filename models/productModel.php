@@ -5,13 +5,17 @@ include_once "models/dao/thuonghieu.php";
 include_once "models/dao/hoidap.php";
 class productModel
 {
-    public static function getProduct($ma_sp)
+    private $product;
+    public function __construct($ma_sp)
     {
-        $product = getSanphamByID($ma_sp);
-        brandInlaiding($product);
-        categoryInlaiding($product);
+        $this->product = getSanphamByID($ma_sp);
+        brandInlaiding($this->product);
+        categoryInlaiding($this->product);
 
-        return $product;
+    }
+    public function getData()
+    {
+        return $this->product;
     }
     public static function getProductHoidap($ma_sp){
         $hoidapData = getHoidapBySanpham($ma_sp);

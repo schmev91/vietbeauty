@@ -6,12 +6,9 @@ include_once "models/dao/giohang.php";
 class paymentModel
 {
     private $paymentInfo;
-    public function __construct($ma_nd)
+
+    public function __construct($userData)
     {
-        
-        // $this->paymentInfo = getGiohangByNguoidung($ma_nd);
+        $this->paymentInfo = array_merge($userData, getGiohangByNguoidung($userData['ma_nd']));
     }
-
-    
-
 }

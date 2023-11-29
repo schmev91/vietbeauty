@@ -28,7 +28,8 @@ class u
 
     public static function setThread()
     {
-        $_SESSION['thread'] = $_SERVER['HTTP_REFERER'];
+        if (u::isThreadAble())
+            $_SESSION['thread'] = $_SERVER['HTTP_REFERER'];
     }
 
     public static function toThread()
@@ -42,6 +43,14 @@ class u
     public static function isThreading()
     {
         return isset($_SESSION['thread']);
+    }
+    public static function isThreadAble()
+    {
+        return isset($_SERVER['HTTP_REFERER']);
+    }
+    public static function isLoggedin()
+    {
+        return isset($_SESSION['user']);
     }
 }
 
@@ -66,7 +75,8 @@ function s($key = null, $value = null)
     }
 }
 
-function vd($var){
+function vd($var)
+{
     var_dump($var);
 }
 
