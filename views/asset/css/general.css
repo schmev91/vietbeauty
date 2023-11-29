@@ -150,6 +150,10 @@ html {
     width: fit-content !important;
 }
 
+.hover-solid:hover {
+    opacity: 100 !important;
+}
+
 
 /* HEADER - START*/
 header {

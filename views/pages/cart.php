@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
 
-    <link rel="stylesheet" href="views/asset/css/general.css?v=1">
+    <link rel="stylesheet" href="views/asset/css/general.css?v=1.0">
 
     <link rel="stylesheet" href="views/asset/css/cart.css?v=1">
 </head>
@@ -73,7 +73,8 @@
                                                         <a href="<?= u::link('product', 'show', ['ma_sp' => $ma_sp]) ?>" class="card-text fs-5 text-dark-emphasis "><?= $ten_sp ?></a>
                                                         <p class="card-text mt-1 mb-2"><small class="text-body-secondary"><?= $ten_dm ?></small></p>
 
-                                                        <a href="<?= u::link('cart', 'deleteItem', ['ma_sp' => $ma_sp]) ?>" class="text-body-tertiary p-0 fw-bold" style="font-size: .9rem"> <i class="fa-solid fa-trash-can text-body-tertiary"></i> xóa</a>
+                                                        <a href="<?= u::link('cart', 'deleteItem', ['ma_sp' => $ma_sp]) ?>" class="text-danger p-0 fw-bold opacity-75 hover-solid" style="font-size: .9rem">
+                                                            <i class="fa-solid fa-trash-can text-danger "></i> xóa</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -85,8 +86,8 @@
 
                                     <!-- INPUT SO LUONG -->
                                     <td>
-                                        <form action="<?=u::link('cart','changeQuantity')?>" method="post">
-                                        <input type="text" hidden name="ma_sp" value="<?=$ma_sp?>">
+                                        <form action="<?= u::link('cart', 'changeQuantity') ?>" method="post">
+                                            <input type="text" hidden name="ma_sp" value="<?= $ma_sp ?>">
                                             <input name="soluong" class="quantity border-secondary-subtle bg-body-tertiary  border p-1 p-0 border-0 rounded-1 " min='1' max='50' type="number" value="<?= $soluong ?>">
                                         </form>
                                     </td>
@@ -108,7 +109,7 @@
                                 <div class="fit-content fw-light" style="font-size: 0.9rem;">Tạm tính:</div>
                                 <div class="fit-content fw-bold text-dark-emphasis "><span id="tamtinh">
 
-                                </span> ₫</div>
+                                    </span> ₫</div>
                             </div>
                             <div class="d-flex justify-content-between ">
                                 <div class="fit-content fw-light" style="font-size: 0.9rem;">Giảm giá:</div>
