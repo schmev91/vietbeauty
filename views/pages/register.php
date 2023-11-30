@@ -110,4 +110,5 @@
     </div>
 
 </main>
+<script src="views/asset/javascript/registerForm.js"></script>
 <?php initFooter() ?>

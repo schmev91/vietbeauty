@@ -10,7 +10,11 @@ class paymentModel
 
     public function __construct($userData)
     {
-        $this->paymentInfo = array_merge($userData, getGiohangByNguoidung($userData['ma_nd']));
+
+        $giohang = getGiohangByNguoidung($userData['ma_nd']);
+        if(!empty($giohang)){
+            $this->paymentInfo = array_merge($userData, $giohang);
+        } else $this->paymentInfo = $userData;
     }
 
     public function getPaymentInfo(){
