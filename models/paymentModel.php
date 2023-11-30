@@ -20,6 +20,9 @@ class paymentModel
     public function getPaymentInfo(){
         return $this->paymentInfo;
     }
+    public function updateUser($userData){
+        $this->paymentInfo = array_replace($userData ,$this->paymentInfo);
+    }
 
     public function addOrder($orderData){
         // ma_dh ,ngaydat, tongtien, diachi, vanchuyen, thanhtoan, ma_gh, ma_nd

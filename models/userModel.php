@@ -17,6 +17,10 @@ class UserModel
         return $dataDonhang;
     }
 
+    public function reload(){
+        $this->user = getNguoidungById($this->getId());
+    }
+
     // Các phương thức khác liên quan đến người dùng
     public function getData()
     {
@@ -30,6 +34,7 @@ class UserModel
     public function updateDiachi($diachi)
     {
         doiDiaChi($this->getId(), $diachi);
+        $this->user['diachi'] = $diachi;
     }
 
     //Các phương thức liên quan đến đăng nhập đăng ký
@@ -54,7 +59,7 @@ class UserModel
         $insertData['sdt'] = $data['phone'];
 
         //Nếu có địa chỉ thì gán, không thì để trống
-        $insertData['diachi'] = isset($data['diachi']) ? $data['diachi'] : '';
+        $insertData['diachi'] = isset($data['address']) ? $data['address'] : '';
 
         // Nếu không có avatar, sử dụng default_avatar.png, nếu có thêm vào hệ thống và sử dụng
         $insertData['avatar'] =
@@ -145,12 +150,6 @@ class UserModel
             $errors['loginKey'] = 'Tên đăng nhập không hợp lệ.';
         }
 
-        // if (strstr($data['loginKey'], '@')) {
-        //     // Kiểm tra email
-        //     if (!filter_var($data['loginKey'], FILTER_VALIDATE_EMAIL)) {
-        //         $errors['loginKey'] = 'Email không hợp lệ.';
-        //     }
-        // }
 
         // Kiểm tra độ dài mật khẩu
         if (strlen($data['password']) >= 30) {

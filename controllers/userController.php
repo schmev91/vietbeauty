@@ -58,8 +58,6 @@ class UserController
 
             if ($isRegistered) $this->showLoginForm();
             else $this->showRegisterForm(['username' => 'Tên đăng nhập đã tồn tại']);
-        } else if ($_GET['return=true']) {
-            header("location: " . $_SERVER['HTTP_REFERER']);
         } else header("location: index.php");
     }
 
