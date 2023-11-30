@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 30, 2023 at 08:45 AM
+-- Generation Time: Nov 30, 2023 at 01:14 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -97,7 +97,8 @@ CREATE TABLE `donhang` (
   `diachi` mediumtext NOT NULL,
   `vanchuyen` varchar(100) NOT NULL,
   `thanhtoan` varchar(100) NOT NULL,
-  `ma_gh` int(11) NOT NULL,
+  `trangthai` varchar(50) NOT NULL,
+  `ma_gh` int(11) DEFAULT NULL,
   `ma_nd` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -239,6 +240,20 @@ CREATE TABLE `spgiohang` (
   `ma_sp` int(11) NOT NULL,
   `soluong` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `spgiohang`
+--
+
+INSERT INTO `spgiohang` (`ma_gh`, `ma_sp`, `soluong`) VALUES
+(1, 97, 2),
+(1, 106, 2),
+(1, 142, 1),
+(2, 91, 2),
+(2, 92, 1),
+(3, 103, 3),
+(3, 110, 1),
+(4, 105, 1);
 
 -- --------------------------------------------------------
 
