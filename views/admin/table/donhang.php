@@ -1,3 +1,4 @@
+<tr>
 <!-- ma_dh, ngaydat, tongtien, diachi, vanchuyen, thanhtoan, trangthai
  -->
 <td><?= $ma_dh ?></td>
@@ -41,3 +42,4 @@ $listTrangthai = [
         }
     </script>
 </td>
+</tr>

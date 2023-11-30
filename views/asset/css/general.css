@@ -144,6 +144,9 @@ html {
 .container-fluid {
     margin: 0;
 }
+.bg-none {
+    background: none !important;
+}
 
 .container {
     max-width: 1300px;
@@ -239,6 +242,9 @@ a {
 
 .text-golden {
     color: #B4975A !important;
+}
+.border-golden {
+    border-color: #B4975A !important;
 }
 
 .bg-golden {

@@ -17,8 +17,21 @@ switch ($tableName) {
     case 'nguoidung': {
 
             switch ($action) {
-                case 'value':
-                    # code...
+                case 'update':
+                    extract($_POST);
+                    u::setThread();
+                    updateIsAdmin($ma_nd, $isAdmin);
+                    updateIsBanned($ma_nd, $isBanned);
+                    doiTenNguoiDung($ma_nd, $ten_nd);
+                    doiEmail($ma_nd, $email);
+                    doiSoDienThoai($ma_nd, $sdt);
+                    doiDiaChi($ma_nd, $diachi);
+                    u::toThread();
+                    break;
+                case 'delete':
+                    u::setThread();
+                    deleteNguoidung($_GET['ma_nd']);
+                    u::toThread();
                     break;
             }
             break;

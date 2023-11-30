@@ -94,6 +94,9 @@ if ($s['user']['isAdmin']) {
     header('location: index.php');
 }
 
+function navigator($tableName, $action){
+    return "admin.php?table=$tableName&action=$action";
+}
 function setNavigator($tableName, $action){
     return "<input type='text' hidden name='table' value='$tableName'>
     <input type='text' hidden name='action' value='$action'>";

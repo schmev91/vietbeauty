@@ -69,20 +69,45 @@ function getUsernameById($ma_nd){
  *
  * @param array $nguoidung Mảng chứa thông tin người dùng
  */
+// function updateNguoidung($nguoidung)
+// {
+//     $sql = "UPDATE nguoidung SET ten_nd = ?, matkhau = ?, email = ?, sdt = ?, diachi = ?, avatar = ? WHERE ma_nd = ?";
+//     pdo_execute(
+//         $sql,
+//         $nguoidung['ten_nd'],
+//         $nguoidung['matkhau'],
+//         $nguoidung['email'],
+//         $nguoidung['sdt'],
+//         $nguoidung['diachi'],
+//         $nguoidung['avatar'],
+//         $nguoidung['ma_nd']
+//     );
+// }
 function updateNguoidung($nguoidung)
 {
-    $sql = "UPDATE nguoidung SET ten_nd = ?, matkhau = ?, email = ?, sdt = ?, diachi = ?, avatar = ? WHERE ma_nd = ?";
-    pdo_execute(
-        $sql,
-        $nguoidung['ten_nd'],
-        $nguoidung['matkhau'],
-        $nguoidung['email'],
-        $nguoidung['sdt'],
-        $nguoidung['diachi'],
-        $nguoidung['avatar'],
-        $nguoidung['ma_nd']
-    );
+    // Extract the 'ma_nd' value from the array
+    $ma_nd = $nguoidung['ma_nd'];
+    unset($nguoidung['ma_nd']);
+
+    $columns = array_keys($nguoidung);
+    $setClauses = implode(', ', array_map(function ($column) {
+        return $column . ' = :' . $column;
+    }, $columns));
+
+    // Include 'ma_nd' in the WHERE clause
+    $sql = "UPDATE nguoidung SET $setClauses WHERE ma_nd = :ma_nd";
+
+    // Combine parameters for SET and WHERE clauses
+    $params = array_merge($nguoidung, ['ma_nd' => $ma_nd]);
+
+    pdo_execute($sql, $params);
+
+    return $sql; // For testing purposes, remove this line in production
 }
+
+
+
+
 
 /**
  * Xóa một người dùng
@@ -216,6 +241,12 @@ function banNguoiDung($ma_nd)
     pdo_execute($sql, $ma_nd);
 }
 
+function updateIsBanned($ma_nd, $isBanned)
+{
+    $sql = "UPDATE nguoidung SET isBanned = ? WHERE ma_nd = ?";
+    pdo_execute($sql, $isBanned,$ma_nd);
+}
+
 /**
  * Mở khóa người dùng
  *
@@ -238,6 +269,11 @@ function themAdmin($ma_nd)
     pdo_execute($sql, $ma_nd);
 }
 
+function updateIsAdmin($ma_nd, $isAdmin)
+{
+    $sql = "UPDATE nguoidung SET isAdmin = ? WHERE ma_nd = ?";
+    pdo_execute($sql, $isAdmin,$ma_nd);
+}
 
 /**
  * Giáng chức quản trị viên

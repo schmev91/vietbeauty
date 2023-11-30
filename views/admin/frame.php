@@ -12,7 +12,7 @@
 
     <link rel="icon" href="views/asset/img/general/logo.ico" type="image/x-icon">
 
-    <link rel="stylesheet" href="views/asset/css/general.css?v=1">
+    <link rel="stylesheet" href="views/asset/css/general.css?v=2">
 
     <link rel="stylesheet" href="views/asset/css/admin.css?v=1">
 </head>
@@ -96,11 +96,8 @@
                             <!-- HTML -->
 
                             <!-- TABLE TD PLACEHOLDERS -->
-                            <tr>
                                 <?php include "views/admin/table/$tableName.php" ?>
 
-                                
-                            </tr>
                         <?php } ?>
 
                     </tbody>
@@ -122,6 +119,7 @@
 
     </main>
 
+    <script src="views/asset/javascript/admin.js"></script>
 </body>
 
 </html>
