@@ -1,6 +1,7 @@
 <?php
 include_once 'models/paymentModel.php';
 include_once 'models/productModel.php';
+include_once 'models/userModel.php';
 class paymentController
 {
     private $payment;
@@ -14,13 +15,13 @@ class paymentController
         }
     }
 
-    public function show($productData = null){
-        if($productData) extract($productData);
+    public function show($data = null){
+        if($data) extract($data);
         if(isset($this->payment)){
             extract($this->payment->getPaymentInfo());
             if(isset($diachi) && empty($diachi)) $diachi = null;
         }
-        include_once "views/pages/ordering.php";
+        include_once "views/pages/instantbuy.php";
     }
     
     public function instantBuying()
@@ -35,7 +36,7 @@ class paymentController
         if(u::isLoggedin()  & isset($_POST['ma_sp'])){
             $product = new productModel($ma_sp);
 
-            $this->show(array_merge($product->getData(), $_POST));
+            $this->show(array_merge($product->getData(), $_POST, $this->payment->getPaymentInfo()));
             
         } else {
             header("location: index.php");
@@ -47,8 +48,17 @@ class paymentController
     }
 
     public function orderRequest(){
+        //update địa chỉ cho user
+        //Nếu post có diachi thì người dùng đã nhập địa chỉ mới 
+        if(isset($_POST['diachi'])){
+            $user = new UserModel(s('user')['ma_nd']);
+            $user->updateDiachi($_POST['diachi']);
+        }
+
         extract($this->payment->getPaymentInfo());
         extract($_POST);
+
+
 
         // ma_dh ,ngaydat, tongtien, diachi, vanchuyen, thanhtoan, ma_gh, ma_nd
         //tính tổng tiền và thành tiền từng sản phẩm ở controller trước
@@ -58,17 +68,20 @@ class paymentController
 
             $item = new orderItem(new productModel($ma_sp), $soluong);
 
+            $ORDER_STATEMENT = 'Đang chờ xác nhận';
+
             $orderData['tongtien']= $item->getThanhtien();
             $orderData['diachi']= $diachi;
             $orderData['vanchuyen']= $vanchuyen;
             $orderData['thanhtoan']= $thanhtoan;
+            $orderData['trangthai']= $ORDER_STATEMENT;
             $orderData['ma_gh']= null;
             $orderData['ma_nd']= $ma_nd;
 
             $ma_dh = $this->payment->addOrder($orderData);
             $item->insertCTDonhang($ma_dh);
             header('location: index.php');
-
+            exit;
 
         } else {
 

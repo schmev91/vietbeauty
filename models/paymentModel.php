@@ -22,12 +22,28 @@ class paymentModel
         extract($orderData);
 
         $ma_dh = uniqid();
+
         $ngaydat = new DateTime('now', new DateTimeZone('Asia/Ho_Chi_Minh'));
+        $ngaydat = $ngaydat->format('Y-m-d H:i:s');
+        
         $order = ['ma_dh'=>$ma_dh, 'ngaydat'=>$ngaydat, ...$orderData];
         
         insertDonhang($order);
         return $ma_dh;
 
+    }
+}
+class order
+{
+    private $orderInfo;
+
+    public function __construct($ma_dh)
+    {
+        $this->orderInfo = getDonhangById($ma_dh);
+    }
+
+    public function getInfo() : array{
+        return $this->orderInfo;
     }
 }
 

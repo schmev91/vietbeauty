@@ -44,6 +44,10 @@ class u
     {
         return isset($_SESSION['thread']);
     }
+    public static function killThread()
+    {
+        unset($_SESSION['thread']);
+    }
     public static function isThreadAble()
     {
         return isset($_SERVER['HTTP_REFERER']);

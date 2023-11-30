@@ -56,7 +56,8 @@
                                     <?= isset($diachi) ? '<button id="changingAddress-btn" type="button" class="btn text-scarlet">Thay đổi</button>' : null ?>
                                 </span>
                                 <!-- Nếu không có sẵn địa chỉ thì hiện input bình thường, ngược lại hiện input bị disable chứa địa chỉ -->
-                                <input type="text" name="diachi" required class="form-control bg-light <?= isset($diachi) ? 'border-0 border-3 border-start rounded-0" disabled  value="' . $diachi . '"' : null ?>>
+                                <input type="text" name="diachi" required class="form-control bg-light 
+                                <?= isset($diachi) ? 'border-0 border-3 border-start rounded-0" disabled value="' . $diachi . '"' : null ?>>
                             </div>
 
                             <div class=" col-12">

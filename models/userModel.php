@@ -1,8 +1,39 @@
 <?php
 include_once 'models/dao/nguoidung.php';
+include_once 'models/dao/donhang.php';
 class UserModel
 {
-    public function registerUser($data, $files)
+    private $user;
+    public function __construct($ma_nd = null)
+    {
+        if (isset($ma_nd))
+            $this->user = getNguoidungById($ma_nd);
+    }
+
+    public function getDonhang(){
+        $dataDonhang = array();
+        $dataDonhang = getDonhangByNguoidung($this->getId());
+        
+        return $dataDonhang;
+    }
+
+    // Các phương thức khác liên quan đến người dùng
+    public function getData()
+    {
+        return $this->user;
+    }
+
+    public function getId(){
+        return $this->user['ma_nd'];
+    }
+    
+    public function updateDiachi($diachi)
+    {
+        doiDiaChi($this->getId(), $diachi);
+    }
+
+    //Các phương thức liên quan đến đăng nhập đăng ký
+    public static function registerUser($data, $files)
     {
         extract($data);
         // Thực hiện logic để thêm thông tin người dùng vào cơ sở dữ liệu
@@ -35,7 +66,7 @@ class UserModel
         return true;
     }
 
-    public function validateRegisterData($data)
+    public static function validateRegisterData($data)
     {
         $errors = array();
 
@@ -81,7 +112,7 @@ class UserModel
         return $errors;
     }
 
-    public function loginUser($loginKey, $password)
+    public static function loginUser($loginKey, $password)
     {
         // Thực hiện logic để kiểm tra thông tin đăng nhập và trả về kết quả
 
@@ -104,7 +135,7 @@ class UserModel
         return false; // Đăng nhập không thành công
     }
 
-    public function validateLoginData($data)
+    public static function validateLoginData($data)
     {
         $errors = array();
 
@@ -129,5 +160,5 @@ class UserModel
         return $errors;
     }
 
-    // Các phương thức khác liên quan đến người dùng
+    
 }

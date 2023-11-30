@@ -25,6 +25,12 @@ function getCTDonhangById($ma_dh) {
     return pdo_query($sql, $ma_dh);
 }
 
+function getDonhangByNguoidung($ma_nd) {
+    $sql = "SELECT * FROM donhang WHERE ma_nd = ?";
+    return pdo_query($sql, $ma_nd);
+} 
+
+
 /**
  * Thêm mới một đơn hàng
  *
@@ -33,8 +39,8 @@ function getCTDonhangById($ma_dh) {
  * @return int Mã đơn hàng vừa thêm mới
  */
 function insertDonhang($donhang) {
-    $sql = "INSERT INTO donhang (ma_dh ,ngaydat, tongtien, diachi, vanchuyen, thanhtoan, ma_gh, ma_nd) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-    pdo_execute($sql, $donhang['ma_dh'],$donhang['ngaydat'], $donhang['tongtien'], $donhang['diachi'], $donhang['vanchuyen'], $donhang['thanhtoan'], $donhang['ma_gh'], $donhang['ma_nd']);
+    $sql = "INSERT INTO donhang (ma_dh ,ngaydat, tongtien, diachi, vanchuyen, thanhtoan, trangthai, ma_gh, ma_nd) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    pdo_execute($sql, $donhang['ma_dh'],$donhang['ngaydat'], $donhang['tongtien'], $donhang['diachi'], $donhang['vanchuyen'], $donhang['thanhtoan'], $donhang['trangthai'], $donhang['ma_gh'], $donhang['ma_nd']);
     return pdo_query_value("SELECT LAST_INSERT_ID()");
 }
 
@@ -77,3 +83,4 @@ function deleteCTDonhang($ma_dh) {
     $sql = "DELETE FROM ctdonhang WHERE ma_dh = ?";
     pdo_execute($sql, $ma_dh);
 }
+
