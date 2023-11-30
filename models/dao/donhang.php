@@ -33,8 +33,8 @@ function getCTDonhangById($ma_dh) {
  * @return int Mã đơn hàng vừa thêm mới
  */
 function insertDonhang($donhang) {
-    $sql = "INSERT INTO donhang (ngaydat, tongtien, diachi, vanchuyen, thanhtoan, ma_gh) VALUES (?, ?, ?, ?, ?, ?)";
-    pdo_execute($sql, $donhang['ngaydat'], $donhang['tongtien'], $donhang['diachi'], $donhang['vanchuyen'], $donhang['thanhtoan'], $donhang['ma_gh']);
+    $sql = "INSERT INTO donhang (ma_dh ,ngaydat, tongtien, diachi, vanchuyen, thanhtoan, ma_gh, ma_nd) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    pdo_execute($sql, $donhang['ma_dh'],$donhang['ngaydat'], $donhang['tongtien'], $donhang['diachi'], $donhang['vanchuyen'], $donhang['thanhtoan'], $donhang['ma_gh'], $donhang['ma_nd']);
     return pdo_query_value("SELECT LAST_INSERT_ID()");
 }
 
