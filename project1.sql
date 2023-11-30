@@ -245,15 +245,6 @@ CREATE TABLE `spgiohang` (
 -- Dumping data for table `spgiohang`
 --
 
-INSERT INTO `spgiohang` (`ma_gh`, `ma_sp`, `soluong`) VALUES
-(1, 97, 2),
-(1, 106, 2),
-(1, 142, 1),
-(2, 91, 2),
-(2, 92, 1),
-(3, 103, 3),
-(3, 110, 1),
-(4, 105, 1);
 
 -- --------------------------------------------------------
 
