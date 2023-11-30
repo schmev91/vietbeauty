@@ -39,7 +39,7 @@ class paymentController
             $this->show(array_merge($product->getData(), $_POST, $this->payment->getPaymentInfo()));
             
         } else {
-            header("location: index.php");
+            header("location: ".u::link('user','showLoginForm'));
         }
     }
 

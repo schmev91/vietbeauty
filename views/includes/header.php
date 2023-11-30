@@ -16,14 +16,17 @@ global $DEFAULT_AVATAR;
                             <li><i class="fa-solid fa-headset"></i> <a href="index.php?controller=home&action=contact">Liên hệ</a></li>
                             <li>
                                 <?php
-                                if (!isset($_SESSION['user'])) {
-                                    echo '<a href="index.php?controller=user&action=showLoginForm">Đăng Nhập</a>
-                                    </li>
-                                    <li>|</li>
-                                    <li><a href="index.php?controller=user&action=showRegisterForm">Đăng Ký</a></li>';
-                                } else {
-                                    echo '<li><a href="index.php?controller=user&action=logout"><i class="fa-solid fa-right-from-bracket me-2"></i> Đăng xuất</a></li>';
-                                } ?>
+                                if (!isset($_SESSION['user'])) { ?>
+
+                            <a href="index.php?controller=user&action=showLoginForm">Đăng Nhập</a>
+                            </li>
+                            <li>|</li>
+                            <li><a href="index.php?controller=user&action=showRegisterForm">Đăng Ký</a></li>
+
+                        <?php  } else { ?>
+                            <li><a href="index.php?controller=user&action=logout"><i class="fa-solid fa-right-from-bracket me-2"></i> Đăng xuất</a>
+                            <li>
+                            <?php } ?>
                         </ul>
                     </div>
                 </div>
@@ -81,7 +84,7 @@ global $DEFAULT_AVATAR;
                         </a>
                         <p class="header-btns-divider border-right p-0"></p>
                         <a href="<?= s('user') ? u::link('cart', 'show') : u::link('user', 'showLoginForm'); ?>" class="cart-button d-flex align-items-center">
-                                <i class="fa-solid fa-cart-shopping"></i>
+                            <i class="fa-solid fa-cart-shopping"></i>
 
                             <?php
                             if (s('user')) {
