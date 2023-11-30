@@ -38,35 +38,44 @@
 
               <div class="orders-container d-flex flex-column py-2 px-4 gap-2 ">
 
-                <div class="order border border-1 rounded-3 p-3  d-flex gap-3">
-                  <div class="orderIcon flex-grow-0">
-                    <i class="fa-solid fa-receipt text-secondary fs-1"></i>
-                  </div>
+                <?php
+                // code
+                foreach ($ordersList as $order) {
+                  extract($order);
 
-                  <div class="orderDetail d-flex flex-grow-1">
-                    <div class="left flex-grow-1">
-                      <div class="text-dark-emphasis fw-bold fs-5">
-                        Mã đơn hàng <span>#109190</span>
-                      </div>
-                      <div class="text-dark-emphasis fw-normal mt-2" style="font-size: .8rem">
-                        19 tháng 9 năm 2023 14:22
-                      </div>
-
-                      <div class="text-dark-emphasis fw-normal mt-3" style="font-size: .9rem">
-                        Địa chỉ nhận hàng: <span class="text-dark-emphasis fw-medium fs-6">hogwarts second dorm no. 3</span>
-                      </div>
+                ?>
+                  <!-- HTML -->
+                  <div class="order border border-1 rounded-3 p-3  d-flex gap-3">
+                    <div class="orderIcon flex-grow-0">
+                      <i class="fa-solid fa-receipt text-secondary fs-1"></i>
                     </div>
 
-                    <div class="right flex-grow-1 d-flex align-items-end flex-column justify-content-between ">
-                      <div class="text-dark-emphasis fw-medium fs-6">
-                        Tổng tiền: <span class="text-secondary-emphasis fw-bold fs-5">109.190 ₫</span>
+                    <div class="orderDetail d-flex flex-grow-1">
+                      <div class="left flex-grow-1">
+                        <div class="text-dark-emphasis fw-bold fs-5">
+                          Mã đơn hàng #<span><?= $ma_dh ?></span>
+                        </div>
+                        <div class="text-dark-emphasis fw-normal mt-2" style="font-size: .8rem">
+                          <?= $ngaydat ?>
+                        </div>
+
+                        <div class="text-dark-emphasis fw-normal mt-3" style="font-size: .9rem">
+                          Địa chỉ nhận hàng: <span class="text-dark-emphasis fw-medium fs-6"><?=$diachi?></span>
+                        </div>
                       </div>
-                      <div class="text-dark  fw-medium mt-3">
-                        Trạng thái: <span class="text-info">Đang chuẩn bị</span>
+
+                      <div class="right flex-grow-1 d-flex align-items-end flex-column justify-content-between ">
+                        <div class="text-dark-emphasis fw-medium fs-6">
+                          Tổng tiền: <span class="text-secondary-emphasis fw-bold fs-5"><?=nf($tongtien)?></span> ₫
+                        </div>
+                        <div class="text-dark  fw-medium mt-3">
+                          Trạng thái: <span class="text-info"><?=$trangthai?></span>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+
+                <?php } ?>
 
               </div>
 
@@ -75,12 +84,13 @@
             } else {
 
             ?>
-            <!-- HTML -->
-            <div class="fs-4 text-secondary-emphasis p-4">Bạn chưa đặt đơn hàng nào!</div>
+              <!-- HTML -->
+              <div class="fs-4 text-secondary-emphasis p-4">Bạn chưa đặt đơn hàng nào!</div>
 
-            <?php 
+          <?php
 
-           }}
+            }
+          }
         } else {
           //TRANG THÔNG TIN TÀI KHOẢN
           ?>

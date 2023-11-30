@@ -80,7 +80,7 @@ class paymentController
 
             $ma_dh = $this->payment->addOrder($orderData);
             $item->insertCTDonhang($ma_dh);
-            header('location: index.php');
+            header('location: '.u::link('user','show',['userTab'=>'orders']));
             exit;
 
         } else {
