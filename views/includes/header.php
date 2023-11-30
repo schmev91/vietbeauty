@@ -18,15 +18,20 @@ global $DEFAULT_AVATAR;
                                 <?php
                                 if (!isset($_SESSION['user'])) { ?>
 
-                            <a href="index.php?controller=user&action=showLoginForm">Đăng Nhập</a>
+                                    <a href="index.php?controller=user&action=showLoginForm">Đăng Nhập</a>
                             </li>
                             <li>|</li>
                             <li><a href="index.php?controller=user&action=showRegisterForm">Đăng Ký</a></li>
 
-                        <?php  } else { ?>
+                        <?php  } else { 
+                            if($_SESSION['user']['isAdmin']){
+                                echo '<li><a href="admin.php"><i class="fa-solid fa-wrench"></i> Quản trị</a>
+                                </li>';
+                            }
+                            ?>
                             <li><a href="index.php?controller=user&action=logout"><i class="fa-solid fa-right-from-bracket me-2"></i> Đăng xuất</a>
-                            <li>
-                            <?php } ?>
+                            </li>
+                        <?php } ?>
                         </ul>
                     </div>
                 </div>

@@ -43,7 +43,7 @@
                         </div>
                         <div class="d-flex gap-3">
                             <!-- <button class="btn" type="button" onclick="addToCart()">Thêm vào giỏ</button> -->
-                            <button class="btn py-0 px-4 rounded-1 bg-golden" type="button" onclick="customSubmit('<?=u::link('payment','instantBuying')?>')">
+                            <button class="btn py-0 px-4 rounded-1 bg-golden" type="button" onclick="customSubmit('<?= u::link('payment', 'instantBuying') ?>')">
                                 <i class="fa-solid fa-money-bill-1-wave"></i> Mua ngay</button>
 
                             <button class="btn py-0 px-2 rounded-1 bg-secondary" type="button" onclick="customSubmit('index.php?controller=cart&action=addItem')">
@@ -160,30 +160,32 @@
 
             <?php
             $hoidapListHtml = "";
-            foreach ($hoidapData as $data) {
-                extract($data);
-                $hoidapListHtml .=
-                    "<div class='hoidap'>
-                        <div class='hoidap-avatar'>
-                            <img src='views/asset/img/general/default_avatar.png' alt=''>
-                        </div>
-                        <div class='hoidap-content'>
-                            <p class='hoidap-username'>
-                                {$hoirad}
-                            </p>
-                            <p class='hoidap-text'>
-                                {$content}
-                            </p>";
-
-                if (isset($_SESSION['role']) && $_SESSION['ma_nd'] == $ma_nd) {
+            if (isset($hoidapData)) {
+                foreach ($hoidapData as $data) {
+                    extract($data);
                     $hoidapListHtml .=
-                        "<div class='hoidap-action'>
-                                <a href='index.php?require=hoidapDelete&id={$id}&product_id={$product_id}'>xóa</a>
-                                </div>";
-                }
+                        "<div class='hoidap'>
+                            <div class='hoidap-avatar'>
+                                <img src='views/asset/img/general/default_avatar.png' alt=''>
+                            </div>
+                            <div class='hoidap-content'>
+                                <p class='hoidap-username'>
+                                    {$hoirad}
+                                </p>
+                                <p class='hoidap-text'>
+                                    {$content}
+                                </p>";
 
-                $hoidapListHtml .= "</div>
-                        </div>";;
+                    if (isset($_SESSION['role']) && $_SESSION['ma_nd'] == $ma_nd) {
+                        $hoidapListHtml .=
+                            "<div class='hoidap-action'>
+                                    <a href='index.php?require=hoidapDelete&id={$id}&product_id={$product_id}'>xóa</a>
+                                    </div>";
+                    }
+
+                    $hoidapListHtml .= "</div>
+                            </div>";;
+                }
             }
 
             if (isset($_SESSION['role'])) {

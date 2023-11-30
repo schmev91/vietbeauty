@@ -79,6 +79,15 @@ function s($key = null, $value = null)
     }
 }
 
+function path($route, $way){
+    switch ($route){
+        case 'img': 
+            $folder = 'views/asset/img/';
+            break;
+    }
+    return $folder.$way;
+}
+
 function vd($var)
 {
     var_dump($var);

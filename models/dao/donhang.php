@@ -30,6 +30,11 @@ function getDonhangByNguoidung($ma_nd) {
     return pdo_query($sql, $ma_nd);
 } 
 
+function getAllDonhang() {
+    $sql = "SELECT * FROM donhang";
+    return pdo_query($sql);
+} 
+
 
 /**
  * Thêm mới một đơn hàng
@@ -63,6 +68,12 @@ function updateDonhang($donhang) {
     $sql = "UPDATE donhang SET ngaydat = ?, tongtien = ?, diachi = ?, vanchuyen = ?, thanhtoan = ?, ma_gh = ? WHERE ma_dh = ?";
     pdo_execute($sql, $donhang['ngaydat'], $donhang['tongtien'], $donhang['diachi'], $donhang['vanchuyen'], $donhang['thanhtoan'], $donhang['ma_gh'], $donhang['ma_dh']);
 }
+
+function updateDonhangStatus($ma_dh, $trangthai) {
+    $sql = "UPDATE donhang SET trangthai = ? WHERE ma_dh = ?";
+    pdo_execute($sql, $trangthai, $ma_dh);
+}
+
 
 /**
  * Xóa một đơn hàng

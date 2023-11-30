@@ -14,6 +14,12 @@ function getNguoidungByTenDangnhap($ten_dangnhap)
     return pdo_query_one($sql, $ten_dangnhap);
 }
 
+function getAllNguoidung()
+{
+    $sql = "SELECT * FROM nguoidung ";
+    return pdo_query($sql);
+}
+
 /**
  * Lấy thông tin người dùng theo mã người dùng
  *
@@ -279,4 +285,8 @@ function uploadAvatar($file)
     // Địa chỉ URL của ảnh mới
     $imagePath = $imgDirectory . $newFileName;
     return $imagePath;
+}
+
+function userInlaiding(&$arr){
+    $arr = array_merge($arr, getNguoidungById($arr['ma_nd']));
 }
