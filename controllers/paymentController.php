@@ -1,39 +1,98 @@
 <?php
 include_once 'models/paymentModel.php';
 include_once 'models/productModel.php';
+include_once 'models/userModel.php';
 class paymentController
 {
     private $payment;
-    private $product;
 
     public function __construct()
     {
         
-        if(u::isLoggedin() & isset($_POST['ma_sp'])){
+        if(u::isLoggedin()){
             $this->payment = new paymentModel(s('user'));
 
-            if(isset($_POST['ma_sp']))
-                $this->product = new productModel($_POST['ma_sp']);
         }
     }
 
-    public function show($productData = null){
-        if($productData) extract($productData);
+    public function show($data = null){
+        if($data) extract($data);
+        if(isset($this->payment)){
+            extract($this->payment->getPaymentInfo());
+            if(isset($diachi) && empty($diachi)) $diachi = null;
+        }
         include_once "views/pages/instantbuy.php";
     }
     
     public function instantBuying()
     {
-        u::setThread();
+        if(u::isThreading())
+            u::toThread();
+        else u::setThread();
 
+        extract($_POST);
+
+        
         if(u::isLoggedin()  & isset($_POST['ma_sp'])){
-            $this->show(array_merge($this->product->getData(), $_POST));
+            $product = new productModel($ma_sp);
+
+            $this->show(array_merge($product->getData(), $_POST, $this->payment->getPaymentInfo()));
             
         } else {
             header("location: index.php");
         }
     }
 
+    public function abort(){
+        u::toThread();
+    }
+
+    public function orderRequest(){
+        //update địa chỉ cho user
+        //Nếu post có diachi thì người dùng đã nhập địa chỉ mới 
+        if(isset($_POST['diachi'])){
+            $user = new UserModel(s('user')['ma_nd']);
+            $user->updateDiachi($_POST['diachi']);
+        }
+
+        extract($this->payment->getPaymentInfo());
+        extract($_POST);
+
+
+
+        // ma_dh ,ngaydat, tongtien, diachi, vanchuyen, thanhtoan, ma_gh, ma_nd
+        //tính tổng tiền và thành tiền từng sản phẩm ở controller trước
+        // var_dump($_POST);
+        if($type == 'instant'){
+            $orderData = array();
+
+            $item = new orderItem(new productModel($ma_sp), $soluong);
+
+            $ORDER_STATEMENT = 'Đang chờ xác nhận';
+
+            $orderData['tongtien']= $item->getThanhtien();
+            $orderData['diachi']= $diachi;
+            $orderData['vanchuyen']= $vanchuyen;
+            $orderData['thanhtoan']= $thanhtoan;
+            $orderData['trangthai']= $ORDER_STATEMENT;
+            $orderData['ma_gh']= null;
+            $orderData['ma_nd']= $ma_nd;
+
+            $ma_dh = $this->payment->addOrder($orderData);
+            $item->insertCTDonhang($ma_dh);
+            header('location: '.u::link('user','show',['userTab'=>'orders']));
+            exit;
+
+        } else {
+
+        }
+
+
+    }
+
+    public function statement(){
+
+    }
 
     public function cartOrdering()
     {

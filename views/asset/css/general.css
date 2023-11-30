@@ -217,6 +217,12 @@ a {
     color: #fff;
     text-decoration: none;
 }
+.text-scarlet {
+    color: #990D23 !important;
+}
+.bg-scarlet {
+    background-color: #990D23 !important;
+}
 
 .text-orange {
     color: #FF6600 !important;

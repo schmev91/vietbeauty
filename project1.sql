@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 24, 2023 at 07:54 AM
+-- Generation Time: Nov 30, 2023 at 08:45 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -40,7 +40,7 @@ CREATE TABLE `anhsp` (
 --
 
 CREATE TABLE `ctdonhang` (
-  `ma_dh` int(11) NOT NULL,
+  `ma_dh` varchar(50) NOT NULL,
   `ma_sp` int(11) NOT NULL,
   `soluong` int(11) NOT NULL,
   `dongia` float NOT NULL,
@@ -80,7 +80,7 @@ INSERT INTO `danhmuc` (`ma_dm`, `ten_dm`, `hinh_dm`) VALUES
 (1, 'son môi', 'views/asset/img/category/dm_sonmoi.jpg'),
 (2, 'nước hoa', 'views/asset/img/category/dm_nuochoa.jpg'),
 (3, 'kem chống nắng', 'views/asset/img/category/dm_kemchongnang.jpg'),
-(4, 'tẩy da mặt', 'views/asset/img/category/dm_taydamat.jpg'),
+(4, 'tẩy da mặt', 'views/asset/img/category/dm_taydamat.png'),
 (5, 'dầu gội dầu xả', 'views/asset/img/category/dm_daugoi.jpg'),
 (6, 'bảng phấn mắt', 'views/asset/img/category/dm_bangphanmat.jpg');
 
@@ -91,13 +91,14 @@ INSERT INTO `danhmuc` (`ma_dm`, `ten_dm`, `hinh_dm`) VALUES
 --
 
 CREATE TABLE `donhang` (
-  `ma_dh` int(11) NOT NULL,
+  `ma_dh` varchar(50) NOT NULL,
   `ngaydat` datetime NOT NULL,
   `tongtien` float NOT NULL,
   `diachi` mediumtext NOT NULL,
   `vanchuyen` varchar(100) NOT NULL,
   `thanhtoan` varchar(100) NOT NULL,
-  `ma_gh` int(11) NOT NULL
+  `ma_gh` int(11) NOT NULL,
+  `ma_nd` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -144,17 +145,6 @@ CREATE TABLE `nguoidung` (
   `diachi` mediumtext NOT NULL,
   `avatar` mediumtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `nguoidung`
---
-
-INSERT INTO `nguoidung` (`ma_nd`, `isAdmin`, `isBanned`, `ten_dangnhap`, `ten_nd`, `matkhau`, `email`, `sdt`, `diachi`, `avatar`) VALUES
-(1, 0, 0, 'nguyenvana', 'Nguyễn Văn A', 'password1', 'nguyenvana@example.com', '0123456789', 'Hà Nội', 'viewsassetimggeneraldefault_avatar.png'),
-(2, 0, 0, 'tranthib', 'Trần Thị B', 'password2', 'tranthib@example.com', '0987654321', 'TP.Hồ Chí Minh', 'viewsassetimggeneraldefault_avatar.png'),
-(3, 0, 0, 'lethuc', 'Lê Thục', 'password3', 'lethuc@example.com', '0123456780', 'Đà Nẵng', 'viewsassetimggeneraldefault_avatar.png'),
-(4, 0, 0, 'phamd', 'Phạm D', 'password4', 'phamd@example.com', '0987654322', 'Huế', 'viewsassetimggeneraldefault_avatar.png'),
-(5, 0, 0, 'nguyenxuand', 'Nguyễn Xuân D', 'password5', 'nguyenxuand@example.com', '0123456781', 'Hải Phòng', 'viewsassetimggeneraldefault_avatar.png');
 
 -- --------------------------------------------------------
 
@@ -312,7 +302,8 @@ ALTER TABLE `danhmuc`
 --
 ALTER TABLE `donhang`
   ADD PRIMARY KEY (`ma_dh`),
-  ADD KEY `donhang-ma_gh-fk` (`ma_gh`);
+  ADD KEY `donhang-ma_gh-fk` (`ma_gh`),
+  ADD KEY `donhang-ma_nd-fk` (`ma_nd`);
 
 --
 -- Indexes for table `giohang`
@@ -372,12 +363,6 @@ ALTER TABLE `danhmuc`
   MODIFY `ma_dm` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `donhang`
---
-ALTER TABLE `donhang`
-  MODIFY `ma_dh` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `giohang`
 --
 ALTER TABLE `giohang`
@@ -393,7 +378,7 @@ ALTER TABLE `hoidap`
 -- AUTO_INCREMENT for table `nguoidung`
 --
 ALTER TABLE `nguoidung`
-  MODIFY `ma_nd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ma_nd` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `sanpham`
@@ -435,7 +420,8 @@ ALTER TABLE `danhgia`
 -- Constraints for table `donhang`
 --
 ALTER TABLE `donhang`
-  ADD CONSTRAINT `donhang-ma_gh-fk` FOREIGN KEY (`ma_gh`) REFERENCES `giohang` (`ma_gh`);
+  ADD CONSTRAINT `donhang-ma_gh-fk` FOREIGN KEY (`ma_gh`) REFERENCES `giohang` (`ma_gh`),
+  ADD CONSTRAINT `donhang-ma_nd-fk` FOREIGN KEY (`ma_nd`) REFERENCES `nguoidung` (`ma_nd`);
 
 --
 -- Constraints for table `giohang`

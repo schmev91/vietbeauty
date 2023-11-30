@@ -34,15 +34,19 @@ class u
 
     public static function toThread()
     {
-        if (isset($_SESSION['thread'])) {
+        if (u::isThreading()) {
             $thread = $_SESSION['thread'];
             unset($_SESSION['thread']);
             header('location: ' . $thread);
-        }
+        } else header('location: index.php');
     }
     public static function isThreading()
     {
         return isset($_SESSION['thread']);
+    }
+    public static function killThread()
+    {
+        unset($_SESSION['thread']);
     }
     public static function isThreadAble()
     {

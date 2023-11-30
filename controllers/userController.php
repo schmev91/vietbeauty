@@ -4,17 +4,34 @@ include_once 'models/UserModel.php';
 class UserController
 {
 
-    private $userModel;
+    private $user;
 
-    public function __construct()
+    public function __construct($ma_nd = null)
     {
-        $this->userModel = new UserModel();
+        if(isset($ma_nd) || !empty(s('user'))){
+            $ma_nd = $ma_nd ? $ma_nd : s('user')['ma_nd'];
+            $this->user = new UserModel($ma_nd);
+        }
     }
 
     public function show()
     {
         if (isset($_SESSION['user'])) {
             extract($_SESSION['user']);
+
+            if(isset($_GET['userTab'])){
+                switch ($_GET['userTab']) {
+                    case 'orders':
+                        $ordersList = $this->user->getDonhang();
+                        break;
+                    
+                    case 'questions':
+                        # code...
+                        break;
+                    
+                }
+            }
+            
             include_once "views/pages/user.php";
         } else $this->showLoginForm();
     }
@@ -32,12 +49,12 @@ class UserController
             //code kiểm tra thông tin người dùng nhập vào có hợp lệ hay không
 
             //xử lý thông tin người dùng và cho vào data sau khi thông tin người dùng nhập hợp lệ
-            $errors = $this->userModel->validateRegisterData($_POST);
+            $errors = UserModel::validateRegisterData($_POST);
             if (!empty($errors)) {
                 return $this->showRegisterForm($errors);
             }
             //Thực hiện thêm người dùng vào csdl nếu không có lỗi
-            $isRegistered = $this->userModel->registerUser($_POST, $_FILES);
+            $isRegistered = UserModel::registerUser($_POST, $_FILES);
 
             if ($isRegistered) $this->showLoginForm();
             else $this->showRegisterForm(['username' => 'Tên đăng nhập đã tồn tại']);
@@ -57,15 +74,15 @@ class UserController
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-            // Gọi phương thức đăng nhập từ UserModel, return true nếu đăng nhập thành công, false nếu không thành công
-            $errors = $this->userModel->validateLoginData($_POST);
+            // Gọi phương thức đăng nhập từ User, return true nếu đăng nhập thành công, false nếu không thành công
+            $errors = UserModel::validateLoginData($_POST);
             if (!empty($errors)) return $this->showLoginForm($errors);
 
             // Lấy thông tin từ form
             $loginKey = $_POST['loginKey'];
             $password = $_POST['password'];
 
-            $loginResult = $this->userModel->loginUser($loginKey, $password);
+            $loginResult = UserModel::loginUser($loginKey, $password);
 
             if ($loginResult) {
                 // Đăng nhập thành công, chuyển hướng đến trang chủ hoặc thread

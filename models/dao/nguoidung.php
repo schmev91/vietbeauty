@@ -183,7 +183,7 @@ function doiDiaChi($ma_nd, $diachi)
 {
     $sql = "UPDATE nguoidung SET diachi = ? WHERE ma_nd = ?";
     pdo_execute($sql, $diachi, $ma_nd);
-}
+}   
 
 
 /**
