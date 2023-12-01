@@ -32,6 +32,43 @@ function updateSanpham($ma_sp, $ten_sp, $dongia, $mota, $anh, $ma_dm, $ma_th)
     pdo_execute($sql, $ten_sp, $dongia, $mota, $anh, $ma_dm, $ma_th, $ma_sp);
 }
 
+function updateTenSp($ma_sp, $ten_sp)
+{
+    $sql = "UPDATE sanpham SET ten_sp = ? WHERE ma_sp = ?";
+    pdo_execute($sql, $ten_sp, $ma_sp);
+}
+
+function updateDongia($ma_sp, $dongia)
+{
+    $sql = "UPDATE sanpham SET dongia = ? WHERE ma_sp = ?";
+    pdo_execute($sql, $dongia, $ma_sp);
+}
+
+function updateMota($ma_sp, $mota)
+{
+    $sql = "UPDATE sanpham SET mota = ? WHERE ma_sp = ?";
+    pdo_execute($sql, $mota, $ma_sp);
+}
+
+function updateAnh($ma_sp, $anh)
+{
+    $sql = "UPDATE sanpham SET anh = ? WHERE ma_sp = ?";
+    pdo_execute($sql, $anh, $ma_sp);
+}
+
+function updateMaDanhmuc($ma_sp, $ma_dm)
+{
+    $sql = "UPDATE sanpham SET ma_dm = ? WHERE ma_sp = ?";
+    pdo_execute($sql, $ma_dm, $ma_sp);
+}
+
+function updateMaThuonghieu($ma_sp, $ma_th)
+{
+    $sql = "UPDATE sanpham SET ma_th = ? WHERE ma_sp = ?";
+    pdo_execute($sql, $ma_th, $ma_sp);
+}
+
+
 /**
  * Xóa sản phẩm từ bảng sanpham
  * @param int $ma_sp Mã sản phẩm cần xóa

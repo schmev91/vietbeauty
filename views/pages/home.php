@@ -15,8 +15,7 @@
                     <!-- The slideshow/carousel -->
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="views/asset/img/banner/banner5.jpg" alt="Los Angeles" class="d-block w-10
-                            0">
+                            <img src="views/asset/img/banner/banner5.jpg" alt="Los Angeles" class="d-block w-100">
                         </div>
                         <div class="carousel-item">
                             <img src="views/asset/img/banner/banner6.jpg" alt="Chicago" class="d-block w-100">

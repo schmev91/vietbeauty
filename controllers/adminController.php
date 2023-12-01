@@ -39,9 +39,15 @@ switch ($tableName) {
 
     case 'sanpham': {
 
-            switch ($action) {
-                case 'value':
-                    # code...
+            switch ($action) { 
+                case 'update':
+                    extract($_POST);
+                    u::setThread();
+                    updateTenSp($ma_sp, $ten_sp);
+                    updateDongia($ma_sp, $dongia);
+                    updateMaDanhmuc($ma_sp, $ma_dm);
+                    updateMaThuonghieu($ma_sp, $ma_th);
+                    u::toThread();
                     break;
             }
             break;
@@ -66,8 +72,11 @@ switch ($tableName) {
     case 'danhmuc': {
 
             switch ($action) {
-                case 'value':
-                    # code...
+                case 'update':
+                    U::setThread();
+                    extract($_POST);
+                    updateDanhmuc($ma_dm, $ten_dm);
+                    U::toThread();
                     break;
             }
             break;
@@ -76,8 +85,11 @@ switch ($tableName) {
     case 'thuonghieu': {
 
             switch ($action) {
-                case 'value':
-                    # code...
+                case 'update':
+                    U::setThread();
+                    extract($_POST);
+                    updateThuonghieu($ma_th, $ten_th);
+                    U::toThread();
                     break;
             }
             break;

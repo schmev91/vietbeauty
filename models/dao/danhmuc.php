@@ -46,7 +46,7 @@ function insertDanhmuc($ten_dm) {
 function updateDanhmuc($ma_dm, $ten_dm) {
     $sql = "UPDATE danhmuc SET ten_dm = ? WHERE ma_dm = ?";
     pdo_execute($sql, $ten_dm, $ma_dm);
-}
+} 
 
 /**
  * Xóa một danh mục
