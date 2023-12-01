@@ -1,4 +1,4 @@
-# MY CODE CAN INSULTS YOU, PLEASE DON'T GIVE ANY FUCK TO IT
+# MY CODE MAY INSULT YOU, SORRY IN ADVANCED
  
  # duan1-vietbeauty
 Nhóm 4 thuộc môn 'Dự án 1'
