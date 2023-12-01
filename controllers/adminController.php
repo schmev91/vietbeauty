@@ -56,7 +56,7 @@ switch ($tableName) {
     case 'donhang': {
 
             switch ($action) {
-                case 'updateTrangthai':
+                case 'update':
                     u::setThread();
                     extract($_GET);
                     updateDonhangStatus($ma_dh, $trangthai);

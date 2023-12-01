@@ -35,3 +35,17 @@ function toggleUpdate(e) {
     inputArr.forEach(toggleInput)
     selectArr.forEach(toggleInput)
 }
+
+//ĐƠN HÀNG
+let selectArr = document.getElementsByName('trangthai')
+
+if(selectArr.length) {
+    for (const select of selectArr) {
+        select.onchange = submitOnSelect;
+    }
+}
+
+function submitOnSelect(e){
+    e.target.parentElement.submit()
+
+}
