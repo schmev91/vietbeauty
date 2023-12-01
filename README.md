@@ -1,9 +1,9 @@
-﻿# duan1-vietbeauty
+# MY CODE CAN INSULTS YOU, PLEASE DON'T GIVE ANY FUCK TO IT
+ 
+ # duan1-vietbeauty
 Nhóm 4 thuộc môn 'Dự án 1'
 Tên dự án: Viet Beauty
 Chủ đề: Trang web bán mỹ phẩm
-
-MY CODE CAN INSULTS YOU, PLEASE DON'T GIVE ANY FUCK TO IT
 
 Danh sách thành viên:
 Trần Gia Bảo
