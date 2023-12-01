@@ -21,6 +21,9 @@ if ($s['user']['isAdmin']) {
                 include_once 'models/dao/thuonghieu.php';
 
                 $list = getAllSanpham();
+                $listDanhmuc = getAllDanhmuc();
+                $listThuonghieu = getAllThuonghieu();
+
                 foreach ($list as $index => $row) {
                     brandInlaiding($list[$index]);
                     categoryInlaiding($list[$index]);

@@ -170,7 +170,7 @@
                             </div>
                             <div class='hoidap-content'>
                                 <p class='hoidap-username'>
-                                    {$hoirad}
+                                    {$hoidap}
                                 </p>
                                 <p class='hoidap-text'>
                                     {$content}

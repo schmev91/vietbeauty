@@ -10,7 +10,7 @@ header {
 }
 
 .nav-container {
-    height: 93vh;
+    min-height: 93vh;
 }
 nav > a {
     font-weight: bold;

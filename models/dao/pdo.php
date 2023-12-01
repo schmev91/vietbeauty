@@ -46,8 +46,8 @@ function pdo_execute($sql)
         $stmt->execute($sql_args);
 
         // Output SQL query and parameters for debugging
-        echo "SQL Query: $sql<br>";
-        echo "Parameters: " . implode(', ', $sql_args) . "<br>";
+        // echo "SQL Query: $sql<br>";
+        // echo "Parameters: " . implode(', ', $sql_args) . "<br>";
     } catch (PDOException $e) {
         echo "Error executing query: " . $sql . "<br>";
         echo "Error details: " . $e->getMessage();

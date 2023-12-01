@@ -37,10 +37,10 @@ class paymentController
             $product = new productModel($ma_sp);
 
             $this->show(array_merge($product->getData(), $_POST, $this->payment->getPaymentInfo()));
-        } else if (u::isThreading()) {
-            u::toThread();
-        } else {
+        } else if (u::isThreading() && !u::isLoggedin()) {
             header("location: " . u::link('user', 'showLoginForm'));
+        } else {
+            u::toThread();
         }
     }
 
