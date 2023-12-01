@@ -3,6 +3,9 @@ include_once 'models/UserModel.php';
 
 class UserController
 {
+    public static function show() {
+        include_once "views/pages/user.php";
+    }
 
     private $user;
 
