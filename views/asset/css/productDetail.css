@@ -1,0 +1,219 @@
+main {
+    background: #f9f9f9;
+}
+
+.product-img img {
+    /* width: 500px;
+    max-height: 500px; */
+    width: 100%;
+    border-radius: 12px;
+}
+
+.product {
+    display: flex;
+}
+
+.info > * {
+    width: fit-content;
+}
+.info {
+    justify-content: end;
+    align-items: end;
+}
+
+.product .info h1 {
+    font-size: 27.2px;
+    color: #555;
+    margin-bottom: 14px;
+}
+
+.divider {
+    background-color: rgba(0, 0, 0, 0.1);
+    height: 3px;
+    max-width: 30px;
+}
+
+.product .info h2 {
+    margin: 12px 0;
+}
+
+.product .info p {
+    color: #777;
+    margin-bottom: 21px;
+}
+
+.cart-option form {
+    display: flex;
+    margin-bottom: 21px;
+}
+
+.cart-option form * {
+    cursor: pointer;
+}
+
+.cart-option .quantity {
+    display: flex;
+    margin-right: 16px;
+
+}
+
+.cart-option .quantity input {
+    outline: none;
+    border: 1px #ddd solid;
+    text-align: center;
+}
+
+.cart-option .quantity input[type="button"] {
+    width: 25px;
+    background-color: #f9f9f9;
+    transition: 0.3s;
+}
+
+.cart-option .quantity input[type="button"]:hover {
+    box-shadow: inset 0 0 0 100px rgb(0 0 0 / 20%);
+}
+
+.cart-option .quantity input[type="number"] {
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+    width: 40px;
+}
+
+.cart-option .quantity input[type="number"]::-webkit-inner-spin-button {
+    display: none;
+}
+
+.cart-option .btn {
+    border: none;
+    line-height: 40px;
+    text-transform: uppercase;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* === RATING START === */
+.rating-score i {
+    font-size: 0.7rem;
+}
+.rating-content,
+.rating-user {
+    font-size: .85rem;
+}
+.rating {
+    max-width: 517px;
+}
+
+/* === RATING END === */
+
+.des>div {
+    padding: 10px 15px;
+}
+
+.des>div:nth-child(1) {
+    border-top: 2px solid #B4975A;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    width: fit-content;
+    color: hsla(0, 0%, 7%, .85);
+}
+
+.des>div:nth-child(2) {
+    border: 1px solid #ddd;
+    color: #777;
+
+}
+
+.des table {
+    text-align: left;
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+}
+
+.des table * {
+    border: 1px solid #ccc;
+    padding: 0 3px;
+}
+
+/* COMMENT */
+#hoidap-container {
+    margin-top: 1rem;
+}
+
+#hoidap-container hr {
+    opacity: .3;
+    margin: 1rem 0;
+}
+
+.hoidap-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.hoidap {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.hoidap-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.hoidap-username {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.hoidap-avatar img {
+    height: 3rem;
+    width: 3rem;
+}
+
+.hoidapInteraction-noAccount {
+    margin: 1.75rem 0;
+    font-size: 1.1rem;
+    color: #727272;
+}
+
+.hoidapInteraction-noAccount a {
+    border-radius: 0.25rem;
+    background-color: #008CBA;
+    color: white;
+    padding: 0.25rem 0.5rem;
+}
+
+.hoidapInteraction-loggedIn {
+    margin: 1.75rem 0;
+    font-size: 1.15rem;
+}
+
+.hoidapInteraction-loggedIn input {
+    outline: none;
+    border: 1px #ccc solid;
+    min-height: 3.5rem;
+    width: 100%;
+    padding: 0.5rem;
+}
+
+.hoidapInteraction-loggedIn input::placeholder {
+    font-size: 1rem;
+    font-style: italic;
+
+}
+
+.hoidapInteraction-loggedIn button {
+    border-radius: 0.25rem;
+    padding: 0.5rem 0.75rem;
+    background-color: #008CBA;
+    color: white;
+    margin-top: 0.5rem;
+    border: none;
+    cursor: pointer;
+}
+
+.hoidap-action {
+    opacity: .7;
+    font-size: 1rem;
+    margin: 0.25rem 0;
+}

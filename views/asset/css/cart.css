@@ -1,3 +1,6 @@
+/* body {
+    background-color: #f1f1f1;
+} */
 .cart {
     position: relative;
 }
@@ -8,3 +11,32 @@
 .shopBtn {
     background-color: #B4975A;
 }
+
+.quantity {
+    max-width: 2.8rem;
+}
+/* Ẩn mũi tên điều chỉnh */
+.quantity::-webkit-inner-spin-button,
+.quantity::-webkit-outer-spin-button {
+    opacity: .7;
+    transform: scale(1.3);
+}
+.quantity:focus {
+    outline: none; /* Loại bỏ đường viền khi focus */
+    border: 2px solid #0066cc; /* Màu sắc của viền khi focus */
+}
+
+
+.itemCheckbox {
+    transform: scale(1.19);
+}
+
+thead th {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+
+.invoice {
+    border-top: 3px solid #990D23;
+}
+

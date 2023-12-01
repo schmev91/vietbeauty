@@ -6,9 +6,6 @@ footer {
     margin-top: -8px;
 }
 
-.shop {
-    /* height: 30vh; */
-}
 
 .shop>.row {
     height: 100%;
@@ -16,6 +13,14 @@ footer {
 
 .filter-category .link-secondary {
     font-size: 1rem;
+}
+.products > .card {
+    height: fit-content;
+    min-height: 354px;
+}
+.products > .card img {
+    height: 100% !important;
+    /* min-height: 243px !important; */
 }
 .products > .card:hover {
     transition: all 0.3s;

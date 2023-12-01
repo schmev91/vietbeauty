@@ -1,0 +1,61 @@
+.list_tientrinh {
+    display: flex;
+    gap:20px;
+    justify-content: center;
+}
+
+.thongtin {
+    display: flex;
+    gap:20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.thongtinnhanhang {
+    border: 1px solid none;
+    background-color: #fff;
+    width: 600px;
+    padding-left: 20px;
+    padding-top:20px;
+    margin-left:50px
+}
+
+.ttsp {
+    display: flex;
+    gap:10px;
+}
+
+.btn-button {
+    background-color: #990D23;
+    margin-top: 10px;
+    height: 40px;
+    width: 150px;
+    margin-left: 200px;
+    color:#fff;
+    font-weight: 500;
+}
+
+.col-5 {
+    border: 1px solid none;
+    background-color: #fff;
+    padding-top:20px;
+}
+
+.htvc {
+    border: 1px solid none;
+    background-color: #fff;
+    width: 600px;
+    padding-left: 20px;
+    padding-top:20px;
+    margin-left:50px
+}
+
+.pttt {
+    border: 1px solid none;
+    background-color: #fff;
+    width: 600px;
+    padding-left: 20px;
+    padding-top:20px;
+    margin-left:50px;
+    margin-bottom: 20px;
+}

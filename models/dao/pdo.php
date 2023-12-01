@@ -1,9 +1,11 @@
 <?php
+
 /**
  * Mở kết nối đến CSDL sử dụng PDO
  */
 
-function pdo_get_connection(){
+function pdo_get_connection()
+{
     $databaseName = "project1";
     $username = 'root';
     $password = '';
@@ -19,20 +21,42 @@ function pdo_get_connection(){
  * @param array $args mảng giá trị cung cấp cho các tham số của $sql
  * @throws PDOException lỗi thực thi câu lệnh
  */
-function pdo_execute($sql){
+// function pdo_execute($sql){
+//     $sql_args = array_slice(func_get_args(), 1);
+//     try{
+//         $conn = pdo_get_connection();
+//         $stmt = $conn->prepare($sql);
+//         $stmt->execute($sql_args);
+//     }
+//     catch(PDOException $e){
+//         echo "Error executing query: " . $sql . "<br>";
+//         echo "Error details: " . $e->getMessage();
+//         throw $e;
+//     }
+//     finally{
+//         unset($conn);
+//     }
+// }
+function pdo_execute($sql)
+{
     $sql_args = array_slice(func_get_args(), 1);
-    try{
+    try {
         $conn = pdo_get_connection();
         $stmt = $conn->prepare($sql);
         $stmt->execute($sql_args);
-    }
-    catch(PDOException $e){
+
+        // Output SQL query and parameters for debugging
+        // echo "SQL Query: $sql<br>";
+        // echo "Parameters: " . implode(', ', $sql_args) . "<br>";
+    } catch (PDOException $e) {
+        echo "Error executing query: " . $sql . "<br>";
+        echo "Error details: " . $e->getMessage();
         throw $e;
-    }
-    finally{
+    } finally {
         unset($conn);
     }
 }
+
 /**
  * Thực thi câu lệnh sql truy vấn dữ liệu (SELECT)
  * @param string $sql câu lệnh sql
@@ -40,19 +64,21 @@ function pdo_execute($sql){
  * @return array mảng các bản ghi
  * @throws PDOException lỗi thực thi câu lệnh
  */
-function pdo_query($sql){
+function pdo_query($sql)
+{
     $sql_args = array_slice(func_get_args(), 1);
-    try{
+    try {
         $conn = pdo_get_connection();
         $stmt = $conn->prepare($sql);
         $stmt->execute($sql_args);
         $rows = $stmt->fetchAll();
         return $rows;
-    }
-    catch(PDOException $e){
+    } catch (PDOException $e) {
+        echo "Error executing query: " . $sql . "<br>";
+        echo "Error's sql_args: " . implode(' ,', $sql_args) . "<br>";
+        echo "Error details: " . $e->getMessage();
         throw $e;
-    }
-    finally{
+    } finally {
         unset($conn);
     }
 }
@@ -63,19 +89,20 @@ function pdo_query($sql){
  * @return array mảng chứa bản ghi
  * @throws PDOException lỗi thực thi câu lệnh
  */
-function pdo_query_one($sql){
+function pdo_query_one($sql)
+{
     $sql_args = array_slice(func_get_args(), 1);
-    try{
+    try {
         $conn = pdo_get_connection();
         $stmt = $conn->prepare($sql);
         $stmt->execute($sql_args);
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         return $row;
-    }
-    catch(PDOException $e){
+    } catch (PDOException $e) {
+        echo "Error executing query: " . $sql . "<br>";
+        echo "Error details: " . $e->getMessage();
         throw $e;
-    }
-    finally{
+    } finally {
         unset($conn);
     }
 }
@@ -86,19 +113,20 @@ function pdo_query_one($sql){
  * @return giá trị
  * @throws PDOException lỗi thực thi câu lệnh
  */
-function pdo_query_value($sql){
+function pdo_query_value($sql)
+{
     $sql_args = array_slice(func_get_args(), 1);
-    try{
+    try {
         $conn = pdo_get_connection();
         $stmt = $conn->prepare($sql);
         $stmt->execute($sql_args);
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         return array_values($row)[0];
-    }
-    catch(PDOException $e){
+    } catch (PDOException $e) {
+        echo "Error executing query: " . $sql . "<br>";
+        echo "Error details: " . $e->getMessage();
         throw $e;
-    }
-    finally{
+    } finally {
         unset($conn);
     }
 }

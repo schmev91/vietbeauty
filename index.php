@@ -1,5 +1,12 @@
 <?php
+session_start();
+include_once 'models/u.php';
 
+$s = &$_SESSION;
+
+
+
+$DEFAULT_AVATAR = 'views/asset/img/general/default_avatar.png';
 if (isset($_GET['controller']) && isset($_GET['action'])) {
     //Lấy tên controller và nối đuôi 'Controller' để sử dụng sau
     $controllerName = $_GET['controller'] . 'Controller';
@@ -14,8 +21,7 @@ if (isset($_GET['controller']) && isset($_GET['action'])) {
     $controller->$action();
     
 } else {
-
     // Hiển thị trang chỉ định
     include_once "./controllers/homeController.php";
-    homeController::show();
+    homeController::show();  
 }
