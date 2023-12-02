@@ -7,14 +7,17 @@
 function pdo_get_connection()
 {
     $databaseName = "project1";
-    $username = 'root';
-    $password = '';
-    $dburl = "mysql:host=localhost;dbname={$databaseName};charset=utf8";
+    $username = getenv('DB_USERNAME') ?: 'root';
+    $password = getenv('DB_PASSWORD') ?: '';
+    $host = getenv('DB_HOST') ?: 'localhost';
+    $dburl = "mysql:host={$host};dbname={$databaseName};charset=utf8";
 
     $conn = new PDO($dburl, $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     return $conn;
 }
+
+
 /**
  * Thực thi câu lệnh sql thao tác dữ liệu (INSERT, UPDATE, DELETE)
  * @param string $sql câu lệnh sql
