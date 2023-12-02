@@ -1,5 +1,5 @@
 <?php
-include_once "models/shopModel.php";
+include_once "./models/shopModel.php";
 class shopController
 {
     public static function show($dssp = null)
@@ -13,13 +13,13 @@ class shopController
         $dsth = shopModel::getThShop();
 
 
-        include_once 'views/pages/shop.php';
+        include_once './views/pages/shop.php';
     }
     
     public static function shopSearch()
     {
         $dssp = shopModel::getSpTheoTuKhoa($_POST['searchKeyword']);
-        // include_once 'views/pages/shop.php';
+        // include_once './views/pages/shop.php';
         shopController::show($dssp);
     }
 

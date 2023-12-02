@@ -1,17 +1,17 @@
 <?php
-include_once "models/homeModel.php";
+include_once "./models/homeModel.php";
 class homeController {
     public static function show() {
         $spbanchay = homeModel::getSpRandom8();
         $dsdm = homeModel::getHomeDm();
         $dsgy = homeModel::getSpRandom8();
         
-        include_once 'views/pages/home.php';
+        include_once './views/pages/home.php';
         
     }
 
     public function contact() {
-        include_once 'views/pages/contact.php';
+        include_once './views/pages/contact.php';
     }
 
 

@@ -1,8 +1,8 @@
 <?php
-include_once "models/dao/sanpham.php";
-include_once "models/dao/danhmuc.php";
-include_once "models/dao/thuonghieu.php";
-include_once 'models/cartModel.php';
+include_once "./models/dao/sanpham.php";
+include_once "./models/dao/danhmuc.php";
+include_once "./models/dao/thuonghieu.php";
+include_once './models/cartModel.php';
 
 //utils
 class u
@@ -123,12 +123,12 @@ function initHeader($title, $cssName)
 
 
     <?php
-    include_once "views/includes/header.php";
+    include_once "./views/includes/header.php";
 }
 
 function initFooter()
 {
-    include_once "views/includes/footer.php"
+    include_once "./views/includes/footer.php"
     ?>
         <!-- html code -->
     </body>

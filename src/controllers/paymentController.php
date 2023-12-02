@@ -1,7 +1,7 @@
 <?php
-include_once 'models/paymentModel.php';
-include_once 'models/productModel.php';
-include_once 'models/userModel.php';
+include_once './models/paymentModel.php';
+include_once './models/productModel.php';
+include_once './models/userModel.php';
 class paymentController
 {
     private $payment;
@@ -21,7 +21,7 @@ class paymentController
             extract($this->payment->getPaymentInfo());
             if (isset($diachi) && empty($diachi)) $diachi = null;
         }
-        include_once "views/pages/instantbuy.php";
+        include_once "./views/pages/instantbuy.php";
     }
 
     public function instantBuying()

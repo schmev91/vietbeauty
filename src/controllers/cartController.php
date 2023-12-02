@@ -1,5 +1,5 @@
 <?php
-include_once 'models/cartModel.php';
+include_once './models/cartModel.php';
 class cartController
 {
     private $cartModel;
@@ -18,7 +18,7 @@ class cartController
         extract($_SESSION['user']);
         $cartData = $this->cartModel->getCartData($ma_nd);
         
-        include_once 'views/pages/cart.php';
+        include_once './views/pages/cart.php';
     }
 
     public function addItem()

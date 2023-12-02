@@ -2,7 +2,7 @@
 
 $action = $_GET['action'];
 
-$folderPath = 'models/dao/';
+$folderPath = './models/dao/';
 
 // Get all PHP files in the folder
 $phpFiles = glob($folderPath . '*.php');

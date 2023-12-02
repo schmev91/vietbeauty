@@ -1,5 +1,5 @@
 <?php
-include_once "models/productModel.php";
+include_once "./models/productModel.php";
 
 class productController {
     public static function show() {
@@ -16,7 +16,7 @@ class productController {
             // $hoidapData = productModel::getProductHoidap($ma_sp);
             
             extract($product->getData());
-            include_once 'views/pages/productDetail.php';
+            include_once './views/pages/productDetail.php';
 
         } else header('location: index.php');
     }

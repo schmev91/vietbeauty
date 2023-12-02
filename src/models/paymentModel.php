@@ -1,9 +1,9 @@
 <?php
-include_once "models/dao/sanpham.php";
-include_once "models/dao/danhmuc.php";
-include_once "models/dao/thuonghieu.php";
-include_once "models/dao/giohang.php";
-include_once "models/dao/donhang.php";
+include_once "./models/dao/sanpham.php";
+include_once "./models/dao/danhmuc.php";
+include_once "./models/dao/thuonghieu.php";
+include_once "./models/dao/giohang.php";
+include_once "./models/dao/donhang.php";
 class paymentModel
 {
     private $paymentInfo;

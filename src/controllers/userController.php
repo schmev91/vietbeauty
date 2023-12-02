@@ -1,5 +1,5 @@
 <?php
-include_once 'models/UserModel.php';
+include_once './models/UserModel.php';
 
 class UserController
 {
@@ -31,7 +31,7 @@ class UserController
                 }
             }
             
-            include_once "views/pages/user.php";
+            include_once "./views/pages/user.php";
         } else $this->showLoginForm();
     }
 
@@ -39,7 +39,7 @@ class UserController
     {
         if (!empty($errors)) extract($errors);
 
-        include_once 'views/pages/register.php';
+        include_once './views/pages/register.php';
     }
 
     public function registerRequest()
@@ -64,7 +64,7 @@ class UserController
     {
         // Hiển thị form đăng nhập
         if (!empty($errors)) extract($errors);
-        include_once 'views/pages/login.php';
+        include_once './views/pages/login.php';
     }
 
     public function loginRequest()
