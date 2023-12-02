@@ -1,7 +1,4 @@
 <?php
-include_once './models/paymentModel.php';
-include_once './models/productModel.php';
-include_once './models/userModel.php';
 class paymentController
 {
     private $payment;

@@ -1,5 +1,4 @@
 <?php
-include_once "./models/shopModel.php";
 class shopController
 {
     public static function show($dssp = null)

@@ -1,6 +1,4 @@
 <?php
-include_once './models/dao/nguoidung.php';
-include_once './models/dao/donhang.php';
 class UserModel
 {
     private $user;

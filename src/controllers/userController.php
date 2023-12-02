@@ -1,5 +1,4 @@
 <?php
-include_once './models/UserModel.php';
 
 class UserController
 {
@@ -104,6 +103,6 @@ class UserController
             unset($_SESSION['user']);
         }
         session_destroy();
-        header('Location: index.php');
+        header('location: index.php');
     }
 }

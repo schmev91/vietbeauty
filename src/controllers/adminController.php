@@ -1,18 +1,5 @@
 <?php
 
-$action = $_GET['action'];
-
-$folderPath = './models/dao/';
-
-// Get all PHP files in the folder
-$phpFiles = glob($folderPath . '*.php');
-
-// Include each PHP file
-foreach ($phpFiles as $phpFile) {
-    include_once $phpFile;
-}
-
-
 
 switch ($tableName) {
     case 'nguoidung': {

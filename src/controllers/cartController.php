@@ -1,5 +1,4 @@
 <?php
-include_once './models/cartModel.php';
 class cartController
 {
     private $cartModel;

@@ -1,5 +1,4 @@
 <?php
-include_once "./models/productModel.php";
 
 class productController {
     public static function show() {
