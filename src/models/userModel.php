@@ -65,7 +65,8 @@ class UserModel
         $insertData['avatar'] =
             isset($files['upload-avatar']) ? uploadAvatar($files['upload-avatar']) : 'views/asset/img/general/default_avatar.png';
 
-        insertNguoidung($insertData);
+            var_dump($insertData);
+        // insertNguoidung($insertData);
 
         //trả về true do đăng ký thành công người dùng vào cơ sở dữ liệu
         return true;
