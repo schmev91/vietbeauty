@@ -3,5 +3,6 @@
 
 # Ignore the "build" directory
 src/views/asset/img/avatar
+src/.env
 
 # Ignore all
