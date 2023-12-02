@@ -40,32 +40,32 @@ class UserModel
     //Các phương thức liên quan đến đăng nhập đăng ký
     public static function registerUser($data, $files)
     {
-        // extract($data);
-        // // Thực hiện logic để thêm thông tin người dùng vào cơ sở dữ liệu
-        // // Trả về true nếu đăng ký thành công, false nếu thất bại
+        extract($data);
+        // Thực hiện logic để thêm thông tin người dùng vào cơ sở dữ liệu
+        // Trả về true nếu đăng ký thành công, false nếu thất bại
 
-        // //code kiểm tra tên đăng nhập của người dùng có trong cơ sở dữ liệu không và gán vào biến $isUserExist
-        // $isUserExist = nguoidungExists($username, $email);
+        //code kiểm tra tên đăng nhập của người dùng có trong cơ sở dữ liệu không và gán vào biến $isUserExist
+        $isUserExist = nguoidungExists($username, $email);
 
-        // if ($isUserExist) return false; // Trả về false nếu người dùng tồn tại và không thêm vào csdl
+        if ($isUserExist) return false; // Trả về false nếu người dùng tồn tại và không thêm vào csdl
 
-        // //code thêm người dùng vào cơ sở dữ liệu
-        // $insertData = array();
+        //code thêm người dùng vào cơ sở dữ liệu
+        $insertData = array();
 
-        // $insertData['ten_dangnhap'] = $data['username'];
-        // $insertData['ten_nd'] = trim($data['firstName'] . ' ' . $data['lastName']);
-        // $insertData['matkhau'] = $data['password'];
-        // $insertData['email'] = $data['email'];
-        // $insertData['sdt'] = $data['phone'];
+        $insertData['ten_dangnhap'] = $data['username'];
+        $insertData['ten_nd'] = trim($data['firstName'] . ' ' . $data['lastName']);
+        $insertData['matkhau'] = $data['password'];
+        $insertData['email'] = $data['email'];
+        $insertData['sdt'] = $data['phone'];
 
-        // //Nếu có địa chỉ thì gán, không thì để trống
-        // $insertData['diachi'] = isset($data['address']) ? $data['address'] : '';
+        //Nếu có địa chỉ thì gán, không thì để trống
+        $insertData['diachi'] = isset($data['address']) ? $data['address'] : '';
 
-        // // Nếu không có avatar, sử dụng default_avatar.png, nếu có thêm vào hệ thống và sử dụng
-        // $insertData['avatar'] =
-        //     isset($files['upload-avatar']) ? uploadAvatar($files['upload-avatar']) : 'views/asset/img/general/default_avatar.png';
+        // Nếu không có avatar, sử dụng default_avatar.png, nếu có thêm vào hệ thống và sử dụng
+        $insertData['avatar'] =
+            isset($files['upload-avatar']) ? uploadAvatar($files['upload-avatar']) : 'views/asset/img/general/default_avatar.png';
 
-        // insertNguoidung($insertData);
+        insertNguoidung($insertData);
 
         //trả về true do đăng ký thành công người dùng vào cơ sở dữ liệu
         return true;
