@@ -30,7 +30,7 @@ if ($s['user']['isAdmin']) {
                 include_once './models/dao/danhmuc.php';
                 include_once './models/dao/thuonghieu.php';
 
-                $list = getAllSanpham();
+                $list = getAllSanphamDesc();
                 $listDanhmuc = getAllDanhmuc();
                 $listThuonghieu = getAllThuonghieu();
 
@@ -49,7 +49,7 @@ if ($s['user']['isAdmin']) {
                 break;
             case 'donhang':
                 include_once './models/dao/nguoidung.php';
-                $list = getAllDonhang();
+                $list = getAllDonhangDesc();
                 foreach ($list as $index => $row) {
                     userInlaiding($list[$index]);
                 }
@@ -66,7 +66,7 @@ if ($s['user']['isAdmin']) {
 
                 break;
             case 'danhmuc':
-                $list = getAllDanhmuc();
+                $list = getAllDanhmucDesc();
                 $columnList = [
                     'ID',
                     'Tên danh mục',
@@ -74,7 +74,7 @@ if ($s['user']['isAdmin']) {
                 ];
                 break;
             case 'thuonghieu':
-                $list = getAllThuonghieu();
+                $list = getAllThuonghieuDesc();
                 $columnList = [
                     'ID',
                     'Thương hiệu',
@@ -89,7 +89,7 @@ if ($s['user']['isAdmin']) {
                 break;
 
             default:
-                $list = getAllNguoidung();
+                $list = getAllNguoidungDesc();
                 $columnList = [
                     'ID',
                     'isAdmin',

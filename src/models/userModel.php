@@ -10,7 +10,7 @@ class UserModel
 
     public function getDonhang(){
         $dataDonhang = array();
-        $dataDonhang = getDonhangByNguoidung($this->getId());
+        $dataDonhang = getDonhangByNguoidungDesc($this->getId());
         
         return $dataDonhang;
     }

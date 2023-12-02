@@ -20,6 +20,12 @@ function getAllNguoidung()
     return pdo_query($sql);
 }
 
+function getAllNguoidungDesc()
+{
+    $sql = "SELECT * FROM nguoidung ORDER BY ma_nd DESC ";
+    return pdo_query($sql);
+}
+
 /**
  * Lấy thông tin người dùng theo mã người dùng
  *

@@ -100,6 +100,12 @@ function getAllSanpham()
     return pdo_query($sql);
 }
 
+function getAllSanphamDesc()
+{
+    $sql = "SELECT * FROM sanpham ORDER BY ma_sp DESC";
+    return pdo_query($sql);
+}
+
 /**
  * Lấy một số lượng sản phẩm từ bảng sanpham
  *

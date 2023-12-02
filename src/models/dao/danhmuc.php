@@ -11,6 +11,11 @@ function getAllDanhmuc() {
     return pdo_query($sql);
 }
 
+function getAllDanhmucDesc() {
+    $sql = "SELECT * FROM danhmuc ORDER BY ma_dm DESC";
+    return pdo_query($sql);
+}
+
 /**
  * Lấy thông tin một danh mục theo mã danh mục
  *

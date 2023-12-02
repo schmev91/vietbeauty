@@ -11,6 +11,11 @@ function getAllThuonghieu() {
     return pdo_query($sql);
 }
 
+function getAllThuonghieuDesc() {
+    $sql = "SELECT * FROM thuonghieu ORDER BY ma_th DESC";
+    return pdo_query($sql);
+}
+
 /**
  * Lấy thông tin một thương hiệu theo mã thương hiệu
  *

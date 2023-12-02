@@ -77,6 +77,7 @@
                 <table class="table table-striped table-dark   table-bordered" style="width:100%">
                     <thead>
                         <tr>
+                            <!-- COLUMN HEADING -->
                             <?php
                             foreach ($columnList as $column) {
                                 echo '<th class="py-3 fw-bold">' . $column . '</th>';
@@ -87,6 +88,7 @@
                     </thead>
                     <tbody>
 
+                    <!-- COLUMN ROW -->
                         <?php
                         // code
                         foreach ($list as $row) {
@@ -101,6 +103,7 @@
                         <?php } ?>
 
                     </tbody>
+                    <!-- COLUMN FOOTER -->
                     <tfoot>
                         <tr>
                             <?php

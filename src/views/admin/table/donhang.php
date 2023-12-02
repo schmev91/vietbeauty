@@ -4,7 +4,7 @@
 <td><?= $ma_dh ?></td>
 <td><?= $ten_nd ?></td>
 <td><?= $ngaydat ?></td>
-<td><?= nf($tongtien) ?> ₫</td>
+<td><?= nf($tongtien)."₫" ?></td>
 <td><?= $diachi ?></td>
 <td><?= $vanchuyen ?></td>
 <td><?= $thanhtoan ?></td>
