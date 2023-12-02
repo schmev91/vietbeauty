@@ -6,7 +6,7 @@ class UserController
 
     public function __construct($ma_nd = null)
     {
-        if(isset($ma_nd) || !empty(s('user'))){
+        if (isset($ma_nd) || !empty(s('user'))) {
             $ma_nd = $ma_nd ? $ma_nd : s('user')['ma_nd'];
             $this->user = new UserModel($ma_nd);
         }
@@ -17,19 +17,18 @@ class UserController
         if (isset($_SESSION['user'])) {
             extract($_SESSION['user']);
 
-            if(isset($_GET['userTab'])){
+            if (isset($_GET['userTab'])) {
                 switch ($_GET['userTab']) {
                     case 'orders':
                         $ordersList = $this->user->getDonhang();
                         break;
-                    
+
                     case 'questions':
                         # code...
                         break;
-                    
                 }
             }
-            
+
             include_once "./views/pages/user.php";
         } else $this->showLoginForm();
     }
@@ -83,11 +82,8 @@ class UserController
             if ($loginResult) {
                 // Đăng nhập thành công, chuyển hướng đến trang chủ hoặc thread
                 if (u::isThreading()) u::toThread();
-                
-                else if ($_GET['return=true']) {
-                    header("location: " . $_SERVER['HTTP_REFERER']);
-                } else header("location: index.php");
 
+                else header("location: index.php");
             } else {
                 // Đăng nhập không thành công, hiển thị thông báo đăng nhập không thành công
                 $this->showLoginForm(['loginKey' => 'Tên đăng nhập hoặc mật khẩu không chính xác.']);
