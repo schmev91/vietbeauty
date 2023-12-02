@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once 'models/u.php';
+include_once __DIR__.'/models/u.php';
 
 $s = &$_SESSION;
 
