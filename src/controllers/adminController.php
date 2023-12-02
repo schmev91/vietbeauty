@@ -1,5 +1,7 @@
 <?php
 
+$action = $_GET['action'];
+
 
 switch ($tableName) {
     case 'nguoidung': {
