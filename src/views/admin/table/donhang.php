@@ -20,8 +20,8 @@ $listTrangthai = [
 
 ?>
 <td>
-    <form action="admin.php" method="get">  
-        <?= setNavigator('donhang','updateTrangthai')?>
+    <form action="admin.php" method="get">
+        <?= setNavigator('donhang','update')?>
         <input type="text" hidden name='ma_dh' value="<?=$ma_dh?>">
         <select class="form-select py-1 px-2" name='trangthai'>
             <option selected>cập nhật</option>
@@ -33,13 +33,5 @@ $listTrangthai = [
             ?>
         </select>
     </form>
-    <script>
-        const select = document.getElementsByName('trangthai')[0]
-        , form = select.parentNode
-        select.onchange = submitOnSelect;
-        function submitOnSelect(){
-            form.submit()
-        }
-    </script>
 </td>
 </tr>
