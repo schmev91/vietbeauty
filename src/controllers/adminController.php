@@ -13,6 +13,7 @@ foreach ($phpFiles as $phpFile) {
 }
 
 
+
 switch ($tableName) {
     case 'nguoidung': {
 
