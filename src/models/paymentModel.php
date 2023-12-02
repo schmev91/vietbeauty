@@ -1,9 +1,4 @@
 <?php
-include_once "./models/dao/sanpham.php";
-include_once "./models/dao/danhmuc.php";
-include_once "./models/dao/thuonghieu.php";
-include_once "./models/dao/giohang.php";
-include_once "./models/dao/donhang.php";
 class paymentModel
 {
     private $paymentInfo;
@@ -33,7 +28,9 @@ class paymentModel
         $ngaydat = new DateTime('now', new DateTimeZone('Asia/Ho_Chi_Minh'));
         $ngaydat = $ngaydat->format('Y-m-d H:i:s');
         
-        $order = ['ma_dh'=>$ma_dh, 'ngaydat'=>$ngaydat, ...$orderData];
+        // $order = ['ma_dh'=>$ma_dh, 'ngaydat'=>$ngaydat, ...$orderData];
+        $indentification = ['ma_dh'=>$ma_dh, 'ngaydat'=>$ngaydat];
+        $order = array_merge($indentification, $orderData);
         
         insertDonhang($order);
         return $ma_dh;

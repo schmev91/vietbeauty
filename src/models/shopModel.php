@@ -1,7 +1,4 @@
 <?php
-include_once "./models/dao/sanpham.php";
-include_once "./models/dao/danhmuc.php";
-include_once "./models/dao/thuonghieu.php";
 class shopModel
 {
     public static function getSpShop()

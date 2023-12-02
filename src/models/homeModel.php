@@ -1,7 +1,4 @@
 <?php
-include_once ROOT."/models/dao/sanpham.php";
-include_once ROOT."/models/dao/danhmuc.php";
-include_once ROOT."/models/dao/thuonghieu.php";
 class homeModel
 {
     public static function getSpRandom8()

@@ -1,8 +1,4 @@
 <?php
-include_once ROOT."/models/dao/sanpham.php";
-include_once ROOT."/models/dao/danhmuc.php";
-include_once ROOT."/models/dao/thuonghieu.php";
-include_once ROOT."/models/dao/giohang.php";
 class cartModel
 {
     private $cartInfo;
