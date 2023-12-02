@@ -10,5 +10,5 @@ Trần Gia Bảo
 Trần Đại Hữu
 Trần Thái Vinh
 Bùi Anh Tài
-Trương Quyên 2k4
-Nguyễn Phan Trí Trung 123456
+Trương Quyên
+Nguyễn Phan Trí Trung
