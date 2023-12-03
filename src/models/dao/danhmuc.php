@@ -18,6 +18,21 @@ function getAllDanhmucDesc()
     return pdo_query($sql);
 }
 
+function uploadCategoryImg($file)
+{
+    $imgDirectory = 'views/asset/img/category/';
+
+    // Tạo tên mới cho tệp ảnh
+    $newFileName = uniqid() . '_' . $file['name'];
+
+    // Di chuyển tệp vào thư mục img với tên mới
+    move_uploaded_file($file['tmp_name'], $imgDirectory . $newFileName);
+
+    // Địa chỉ URL của ảnh mới
+    $imagePath = $imgDirectory . $newFileName;
+    return $imagePath;
+}
+
 /**
  * Lấy thông tin một danh mục theo mã danh mục
  *
@@ -31,18 +46,12 @@ function getDanhmucById($ma_dm)
     return pdo_query_one($sql, $ma_dm);
 }
 
-/**
- * Thêm mới một danh mục
- *
- * @param string $ten_dm Tên danh mục
- *
- * @throws PDOException Lỗi thực thi câu lệnh
- */
-function insertDanhmuc($ten_dm)
+function insertDanhmuc($ten_dm, $hinh_dm)
 {
-    $sql = "INSERT INTO danhmuc (ten_dm) VALUES (?)";
-    pdo_execute($sql, $ten_dm);
+    $sql = "INSERT INTO danhmuc (ten_dm, hinh_dm) VALUES (?, ?)";
+    pdo_execute($sql, $ten_dm, $hinh_dm);
 }
+
 
 /**
  * Cập nhật thông tin một danh mục

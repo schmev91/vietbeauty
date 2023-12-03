@@ -28,8 +28,8 @@ class productModel
         $data['anh'] =
             isset($files['anh']) ? uploadProductImg($files['anh']) : './views/asset/img/general/default_product.png';
 
-        var_dump($data);
-        // insertNguoidung($insertData);
+
+        insertSanpham($data['ten_sp'], $data['dongia'], $data['mota'], $data['anh'], $data['ma_dm'], $data['ma_th']);
 
         //trả về true do đăng ký thành công người dùng vào cơ sở dữ liệu
         return true;

@@ -31,6 +31,22 @@ function getThuonghieuById($ma_th)
     return pdo_query_one($sql, $ma_th);
 }
 
+
+function uploadBrandImg($file)
+{
+    $imgDirectory = 'views/asset/img/brand/';
+
+    // Tạo tên mới cho tệp ảnh
+    $newFileName = uniqid() . '_' . $file['name'];
+
+    // Di chuyển tệp vào thư mục img với tên mới
+    move_uploaded_file($file['tmp_name'], $imgDirectory . $newFileName);
+
+    // Địa chỉ URL của ảnh mới
+    $imagePath = $imgDirectory . $newFileName;
+    return $imagePath;
+}
+
 /**
  * Thêm mới một thương hiệu
  *
@@ -38,10 +54,10 @@ function getThuonghieuById($ma_th)
  *
  * @throws PDOException Lỗi thực thi câu lệnh
  */
-function insertThuonghieu($ten_th)
+function insertThuonghieu($ten_th, $hinh_th)
 {
-    $sql = "INSERT INTO thuonghieu (ten_th) VALUES (?)";
-    pdo_execute($sql, $ten_th);
+    $sql = "INSERT INTO thuonghieu (ten_th, hinh_th) VALUES (?, ?)";
+    pdo_execute($sql, $ten_th, $hinh_th);
 }
 
 /**

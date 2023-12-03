@@ -49,7 +49,7 @@ if ($s['user']['isAdmin']) {
                 break;
             case 'danhmuc':
                 $listArr['list'] = getAllDanhmucDesc();
-                $columnList = $danhmucColumn;
+                $columnList = $danhmucColumns;
 
                 $createWhat = "Danh mục";
                 break;
