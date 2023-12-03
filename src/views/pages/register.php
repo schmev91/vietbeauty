@@ -16,18 +16,23 @@
                     </div>
 
                     <div class="form__section-form">
-                        <?= isset($fullName) ? '<span style="font-size: .7rem;color:red;" class="ms-1">' . $fullName . '</span>' : '' ?>
+
                         <div class="form-group">
 
                             <div class="form__container">
-                                <label for="firstName">Họ <span class="red-text">*</span>
+                                <label for="firstName">Họ <span class="red-text">*
+                                        <?= isset($firstName) ? '<span style="font-size: .6rem;color:red;" class="ms-1">' . $firstName . '</span>' : '' ?>
+                                    </span>
 
                                 </label>
                                 <input type="text" id="firstName" class="firstName" name="firstName" placeholder="Nguyễn" required>
                             </div>
 
                             <div class="form__container">
-                                <label for="lastName">Tên <span class="red-text">*</span></label>
+
+                                <label for="lastName">Tên <span class="red-text">*
+                                        <?= isset($lastName) ? '<span style="font-size: .6rem;color:red;" class="ms-1">' . $lastName . '</span>' : '' ?>
+                                    </span></label>
                                 <input type="text" id="lastName" class="lastName" name="lastName" placeholder="Văn A" required>
                             </div>
                         </div>

@@ -6,14 +6,31 @@ require_once 'pdo.php';
  *
  * @return array Mảng chứa tất cả danh mục
  */
-function getAllDanhmuc() {
+function getAllDanhmuc()
+{
     $sql = "SELECT * FROM danhmuc";
     return pdo_query($sql);
 }
 
-function getAllDanhmucDesc() {
+function getAllDanhmucDesc()
+{
     $sql = "SELECT * FROM danhmuc ORDER BY ma_dm DESC";
     return pdo_query($sql);
+}
+
+function uploadCategoryImg($file)
+{
+    $imgDirectory = 'views/asset/img/category/';
+
+    // Tạo tên mới cho tệp ảnh
+    $newFileName = uniqid() . '_' . $file['name'];
+
+    // Di chuyển tệp vào thư mục img với tên mới
+    move_uploaded_file($file['tmp_name'], $imgDirectory . $newFileName);
+
+    // Địa chỉ URL của ảnh mới
+    $imagePath = $imgDirectory . $newFileName;
+    return $imagePath;
 }
 
 /**
@@ -23,22 +40,18 @@ function getAllDanhmucDesc() {
  *
  * @return array Mảng chứa thông tin của danh mục
  */
-function getDanhmucById($ma_dm) {
+function getDanhmucById($ma_dm)
+{
     $sql = "SELECT * FROM danhmuc WHERE ma_dm = ?";
     return pdo_query_one($sql, $ma_dm);
 }
 
-/**
- * Thêm mới một danh mục
- *
- * @param string $ten_dm Tên danh mục
- *
- * @throws PDOException Lỗi thực thi câu lệnh
- */
-function insertDanhmuc($ten_dm) {
-    $sql = "INSERT INTO danhmuc (ten_dm) VALUES (?)";
-    pdo_execute($sql, $ten_dm);
+function insertDanhmuc($ten_dm, $hinh_dm)
+{
+    $sql = "INSERT INTO danhmuc (ten_dm, hinh_dm) VALUES (?, ?)";
+    pdo_execute($sql, $ten_dm, $hinh_dm);
 }
+
 
 /**
  * Cập nhật thông tin một danh mục
@@ -48,10 +61,11 @@ function insertDanhmuc($ten_dm) {
  *
  * @throws PDOException Lỗi thực thi câu lệnh
  */
-function updateDanhmuc($ma_dm, $ten_dm) {
+function updateDanhmuc($ma_dm, $ten_dm)
+{
     $sql = "UPDATE danhmuc SET ten_dm = ? WHERE ma_dm = ?";
     pdo_execute($sql, $ten_dm, $ma_dm);
-} 
+}
 
 /**
  * Xóa một danh mục
@@ -60,7 +74,8 @@ function updateDanhmuc($ma_dm, $ten_dm) {
  *
  * @throws PDOException Lỗi thực thi câu lệnh
  */
-function deleteDanhmuc($ma_dm) {
+function deleteDanhmuc($ma_dm)
+{
     $sql = "DELETE FROM danhmuc WHERE ma_dm = ?";
     pdo_execute($sql, $ma_dm);
 }
@@ -73,6 +88,7 @@ function deleteDanhmuc($ma_dm) {
  *
  * @throws PDOException Lỗi thực thi câu lệnh
  */
-function categoryInlaiding(&$product){
+function categoryInlaiding(&$product)
+{
     $product['ten_dm'] = getDanhmucById($product['ma_dm'])['ten_dm'];
 }

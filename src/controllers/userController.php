@@ -54,7 +54,7 @@ class UserController
             $isRegistered = UserModel::registerUser($_POST, $_FILES);
 
             if ($isRegistered) $this->showLoginForm();
-            else $this->showRegisterForm(['username' => 'Tên đăng nhập đã tồn tại']);
+            else $this->showRegisterForm(['username' => 'Tên đăng nhập hoặc Email đã tồn tại']);
         } else header("location: index.php");
     }
 

@@ -6,12 +6,14 @@ require_once 'pdo.php';
  *
  * @return array Mảng chứa thông tin của tất cả thương hiệu
  */
-function getAllThuonghieu() {
+function getAllThuonghieu()
+{
     $sql = "SELECT * FROM thuonghieu";
     return pdo_query($sql);
 }
 
-function getAllThuonghieuDesc() {
+function getAllThuonghieuDesc()
+{
     $sql = "SELECT * FROM thuonghieu ORDER BY ma_th DESC";
     return pdo_query($sql);
 }
@@ -23,9 +25,26 @@ function getAllThuonghieuDesc() {
  *
  * @return array Mảng chứa thông tin của thương hiệu
  */
-function getThuonghieuById($ma_th) {
+function getThuonghieuById($ma_th)
+{
     $sql = "SELECT * FROM thuonghieu WHERE ma_th = ?";
     return pdo_query_one($sql, $ma_th);
+}
+
+
+function uploadBrandImg($file)
+{
+    $imgDirectory = 'views/asset/img/brand/';
+
+    // Tạo tên mới cho tệp ảnh
+    $newFileName = uniqid() . '_' . $file['name'];
+
+    // Di chuyển tệp vào thư mục img với tên mới
+    move_uploaded_file($file['tmp_name'], $imgDirectory . $newFileName);
+
+    // Địa chỉ URL của ảnh mới
+    $imagePath = $imgDirectory . $newFileName;
+    return $imagePath;
 }
 
 /**
@@ -35,9 +54,10 @@ function getThuonghieuById($ma_th) {
  *
  * @throws PDOException Lỗi thực thi câu lệnh
  */
-function insertThuonghieu($ten_th) {
-    $sql = "INSERT INTO thuonghieu (ten_th) VALUES (?)";
-    pdo_execute($sql, $ten_th);
+function insertThuonghieu($ten_th, $hinh_th)
+{
+    $sql = "INSERT INTO thuonghieu (ten_th, hinh_th) VALUES (?, ?)";
+    pdo_execute($sql, $ten_th, $hinh_th);
 }
 
 /**
@@ -48,7 +68,8 @@ function insertThuonghieu($ten_th) {
  *
  * @throws PDOException Lỗi thực thi câu lệnh
  */
-function updateThuonghieu($ma_th, $ten_th) {
+function updateThuonghieu($ma_th, $ten_th)
+{
     $sql = "UPDATE thuonghieu SET ten_th = ? WHERE ma_th = ?";
     pdo_execute($sql, $ten_th, $ma_th);
 }
@@ -60,7 +81,8 @@ function updateThuonghieu($ma_th, $ten_th) {
  *
  * @throws PDOException Lỗi thực thi câu lệnh
  */
-function deleteThuonghieu($ma_th) {
+function deleteThuonghieu($ma_th)
+{
     $sql = "DELETE FROM thuonghieu WHERE ma_th = ?";
     pdo_execute($sql, $ma_th);
 }
@@ -72,6 +94,7 @@ function deleteThuonghieu($ma_th) {
  *
  * @throws PDOException Lỗi thực thi câu lệnh
  */
-function brandInlaiding(&$product){
+function brandInlaiding(&$product)
+{
     $product['ten_th'] = getThuonghieuById($product['ma_th'])['ten_th'];
 }

@@ -2,8 +2,8 @@
 session_start();
 require "config.php";
 
-$ModelsFolder = ROOT.'/models/';
-$DAOFolder = ROOT.'/models/dao/';
+$ModelsFolder = ROOT . '/models/';
+$DAOFolder = ROOT . '/models/dao/';
 
 // Get all PHP files in the folder
 $phpFiles = array_merge(glob($ModelsFolder . '*.php'), glob($DAOFolder . '*.php'));
@@ -31,9 +31,8 @@ if (isset($_GET['controller']) && isset($_GET['action'])) {
 
     // Gọi phương thức tương ứng trong controller
     $controller->$action();
-    
 } else {
     // Hiển thị trang chỉ định
     include_once "./controllers/homeController.php";
-    homeController::show();  
+    homeController::show();
 }

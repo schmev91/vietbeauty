@@ -75,13 +75,14 @@ function s($key = null, $value = null)
     }
 }
 
-function path($route, $way){
-    switch ($route){
-        case 'img': 
+function path($route, $way)
+{
+    switch ($route) {
+        case 'img':
             $folder = 'views/asset/img/';
             break;
     }
-    return $folder.$way;
+    return $folder . $way;
 }
 
 function vd($var)
@@ -119,12 +120,12 @@ function initHeader($title, $cssName)
 
 
     <?php
-    include_once ROOT."/views/includes/header.php";
+    include_once ROOT . "/views/includes/header.php";
 }
 
 function initFooter()
 {
-    include_once ROOT."/views/includes/footer.php"
+    include_once ROOT . "/views/includes/footer.php"
     ?>
         <!-- html code -->
     </body>
@@ -135,3 +136,51 @@ function initFooter()
 
 }
 
+$tableLabels = [
+    "nguoidung" => "Người dùng",
+    "sanpham" => "Sản phẩm",
+    "donhang" => "Đơn hàng",
+    "thuonghieu" => "Thương hiệu",
+    "danhmuc" => "Danh mục",
+    "danhgia" => "Đánh giá",
+    "hoidap" => "Hỏi đáp"
+];
+
+$nguoidungColumns = [
+    'ID',
+    'isAdmin',
+    'isBanned',
+    'Avatar',
+    'Tên',
+    'Email',
+    'Sdt',
+    'Địa chỉ'
+];
+$sanphamColumns = [
+    'ID',
+    'Ảnh',
+    'Tên',
+    'Giá',
+    'Danh mục',
+    'Thương hiệu'
+];
+$donhangColumns = [
+    'ID',
+    'Người đặt',
+    'Ngày đặt',
+    'Tổng tiền ',
+    'Địa chỉ',
+    'Vận chuyển',
+    'Thanh toán',
+    'Trạng thái'
+];
+$danhmucColumns = [
+    'ID',
+    'Tên danh mục',
+    'Ảnh'
+];
+$thuonghieuColumns = [
+    'ID',
+    'Thương hiệu',
+    'Ảnh'
+];

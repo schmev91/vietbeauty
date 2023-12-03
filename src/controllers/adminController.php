@@ -7,6 +7,20 @@ switch ($tableName) {
     case 'nguoidung': {
 
             switch ($action) {
+                case 'create':
+                    u::setThread();
+                    $errors = UserModel::validateRegisterData($_POST);
+
+                    if (!empty($errors)) {
+                        $listArr['list'] = getAllNguoidungDesc();
+                        initAdmin($listArr, $nguoidungColumns, $tableLabels['nguoidung'], $errors);
+                        exit;
+                    }
+                    $isRegistered = UserModel::registerUser($_POST, $_FILES);
+
+                    u::toThread();
+
+                    break;
                 case 'update':
                     extract($_POST);
                     u::setThread();
@@ -29,7 +43,15 @@ switch ($tableName) {
 
     case 'sanpham': {
 
-            switch ($action) { 
+            switch ($action) {
+
+                case 'create':
+                    u::setThread();
+                    productModel::addProduct($_POST, $_FILES);
+                    u::toThread();
+
+                    break;
+
                 case 'update':
                     extract($_POST);
                     u::setThread();
@@ -62,6 +84,14 @@ switch ($tableName) {
     case 'danhmuc': {
 
             switch ($action) {
+
+                case 'create':
+                    u::setThread();
+                    $hinh_dm = uploadCategoryImg($_FILES['hinh_dm']);
+                    insertDanhmuc($_POST['ten_dm'], $hinh_dm);
+                    u::toThread();
+
+                    break;
                 case 'update':
                     U::setThread();
                     extract($_POST);
@@ -75,6 +105,13 @@ switch ($tableName) {
     case 'thuonghieu': {
 
             switch ($action) {
+                case 'create':
+                    u::setThread();
+                    $hinh_th = uploadBrandImg($_FILES['hinh_th']);
+                    insertThuonghieu($_POST['ten_th'], $hinh_th);
+                    u::toThread();
+
+                    break;
                 case 'update':
                     U::setThread();
                     extract($_POST);
