@@ -150,6 +150,7 @@ $nguoidungColumns = [
     'ID',
     'isAdmin',
     'isBanned',
+    'Avatar',
     'Tên',
     'Email',
     'Sdt',

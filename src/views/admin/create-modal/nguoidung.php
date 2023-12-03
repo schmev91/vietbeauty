@@ -11,6 +11,7 @@ if (isset($errors)) {
         <!-- fields start -->
         <!-- TÊN ĐĂNG NHẬP -->
         <?php initInput(
+            "type",
             "username",
             "Tên đăng nhập",
             "fa-solid fa-right-to-bracket",
@@ -24,6 +25,7 @@ if (isset($errors)) {
         </div>
         <!-- EMAIL -->
         <?php initInput(
+            "type",
             "email",
             "maev@hogwarts.edu.us",
             "fa-solid fa-envelope",
@@ -32,6 +34,7 @@ if (isset($errors)) {
 
         <!-- SỐ ĐIỆN THOẠI -->
         <?php initInput(
+            "type",
             "phone",
             "Số điện thoại",
             "fa-solid fa-phone",
@@ -40,6 +43,7 @@ if (isset($errors)) {
 
         <!-- MẬT KHẨU -->
         <?php initInput(
+            "type",
             "password",
             "Mật khẩu",
             "fa-solid fa-lock",
@@ -48,6 +52,7 @@ if (isset($errors)) {
 
         <!-- ĐỊA CHỈ -->
         <?php initInput("address", "Địa chỉ", "fa-solid fa-location-dot"); ?>
+        "type",
 
         <!-- UPLOAD AVATAR INPUT -->
         <div class="mb-3">

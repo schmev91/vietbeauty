@@ -64,7 +64,7 @@ class UserModel
 
         // Nếu không có avatar, sử dụng default_avatar.png, nếu có thêm vào hệ thống và sử dụng
         $insertData['avatar'] =
-            isset($files['upload-avatar']) ? uploadAvatar($files['upload-avatar']) : 'views/asset/img/general/default_avatar.png';
+            isset($files['upload-avatar']) ? uploadAvatar($files['upload-avatar']) : './views/asset/img/general/default_avatar.png';
 
         insertNguoidung($insertData);
 

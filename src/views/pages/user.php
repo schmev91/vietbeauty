@@ -60,16 +60,16 @@
                         </div>
 
                         <div class="text-dark-emphasis fw-normal mt-3" style="font-size: .9rem">
-                          Địa chỉ nhận hàng: <span class="text-dark-emphasis fw-medium fs-6"><?=$diachi?></span>
+                          Địa chỉ nhận hàng: <span class="text-dark-emphasis fw-medium fs-6"><?= $diachi ?></span>
                         </div>
                       </div>
 
                       <div class="right flex-grow-1 d-flex align-items-end flex-column justify-content-between ">
                         <div class="text-dark-emphasis fw-medium fs-6">
-                          Tổng tiền: <span class="text-secondary-emphasis fw-bold fs-5"><?=nf($tongtien)?></span> ₫
+                          Tổng tiền: <span class="text-secondary-emphasis fw-bold fs-5"><?= nf($tongtien) ?></span> ₫
                         </div>
                         <div class="text-dark  fw-medium mt-3">
-                          Trạng thái: <span class="text-info"><?=$trangthai?></span>
+                          Trạng thái: <span class="text-info"><?= $trangthai ?></span>
                         </div>
                       </div>
                     </div>
@@ -102,12 +102,12 @@
 
             <div class="row mt-4">
               <div class="col-auto mt-2">
-                <img class="rounded-circle border border-1 border-secondary-subtle " src="<?= $avatar ?>" style="max-width: 100px;" alt="">
+                <img class="rounded-circle border border-1 border-secondary-subtle " src="<?= $avatar ?>" style="width: 100px; height: 100px;" alt="">
 
                 <form method="post" action="">
                   <div class="d-flex flex-column gap-2 align-items-center ">
                     <label for="avatar" class="avatarLabel  mt-1">Đổi ảnh</label>
-                    <input type="file" name="avatar" style="visibility: hidden;max-width: 100px;" id="avatar" class="uploadAvatar border border-0 " accept="image/*">
+                    <input type="file" name="avatar" style="visibility: hidden;max-width: 100px; " id="avatar" class="uploadAvatar border border-0 " accept="image/*">
                   </div>
 
                 </form>

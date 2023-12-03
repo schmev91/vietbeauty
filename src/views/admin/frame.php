@@ -63,7 +63,7 @@
         <!-- HTML -->
         <!-- họ tên, tên đăng nhập, email, số điện thoại, mật khẩu, địa chỉ, avatar -->
         <!-- MODAL - START -->
-        <form action="<?= navigator("nguoidung", 'create'); ?>" enctype="multipart/form-data" method="post" class="modal fade " id="exampleModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <form action="<?= navigator("$tableName", 'create'); ?>" enctype="multipart/form-data" method="post" class="modal fade " id="exampleModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog ">
                 <div class="modal-content bg-dark text-light ">
 
@@ -73,7 +73,7 @@
                     </div>
                     <div class="modal-body">
 
-                        <?php include_once "views/admin/create-modal/nguoidung.php"; ?>
+                        <?php include_once "views/admin/create-modal/$tableName.php"; ?>
 
                     </div>
                     <div class="modal-footer">

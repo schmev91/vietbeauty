@@ -8,6 +8,7 @@ switch ($tableName) {
 
             switch ($action) {
                 case 'create':
+                    u::setThread();
                     $errors = UserModel::validateRegisterData($_POST);
 
                     if (!empty($errors)) {
@@ -17,8 +18,7 @@ switch ($tableName) {
                     }
                     $isRegistered = UserModel::registerUser($_POST, $_FILES);
 
-                    header('location: admin.php');
-
+                    u::toThread();
 
                     break;
                 case 'update':
@@ -44,6 +44,12 @@ switch ($tableName) {
     case 'sanpham': {
 
             switch ($action) {
+
+                case 'create':
+                    productModel::addProduct($_POST, $_FILES);
+
+                    break;
+
                 case 'update':
                     extract($_POST);
                     u::setThread();

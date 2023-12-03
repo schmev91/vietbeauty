@@ -16,6 +16,21 @@ function insertSanpham($ten_sp, $dongia, $mota, $anh, $ma_dm, $ma_th)
     pdo_execute($sql, $ten_sp, $dongia, $mota, $anh, $ma_dm, $ma_th);
 }
 
+function uploadProductImg($file)
+{
+    $imgDirectory = 'views/asset/img/product/';
+
+    // Tạo tên mới cho tệp ảnh
+    $newFileName = uniqid() . '_' . $file['name'];
+
+    // Di chuyển tệp vào thư mục img với tên mới
+    move_uploaded_file($file['tmp_name'], $imgDirectory . $newFileName);
+
+    // Địa chỉ URL của ảnh mới
+    $imagePath = $imgDirectory . $newFileName;
+    return $imagePath;
+}
+
 /**
  * Cập nhật thông tin sản phẩm trong bảng sanpham
  * @param int $ma_sp Mã sản phẩm cần cập nhật
@@ -154,12 +169,13 @@ function getRandomSanphamByPriceRange($quantity, $minPrice, $maxPrice)
  * @param string $keyword Từ khóa tìm kiếm
  * @return array Mảng chứa tất cả sản phẩm tìm được
  */
-function searchProductsByKeyword($keyword) {
+function searchProductsByKeyword($keyword)
+{
     // Convert the keyword to lowercase
     $lowercaseKeyword = strtolower($keyword);
 
     $sql = "SELECT * FROM sanpham WHERE LOWER(ten_sp) LIKE ? OR LOWER(mota) LIKE ?";
-    
+
     // Convert the keyword placeholder to lowercase
     return pdo_query($sql, '%' . $lowercaseKeyword . '%', '%' . $lowercaseKeyword . '%');
 }
@@ -178,7 +194,8 @@ function searchProductsByKeyword($keyword) {
  *
  * @return array Mảng chứa thông tin của các sản phẩm thỏa mãn điều kiện lọc.
  */
-function filterProducts($params) {
+function filterProducts($params)
+{
     $sql = "SELECT * FROM sanpham WHERE ";
     $conditions = array();
     $sql_args = array();
@@ -219,11 +236,11 @@ function filterProducts($params) {
     return $result;
 }
 
-function inlaidProductInfo(&$row){
+function inlaidProductInfo(&$row)
+{
     $product = getSanphamByID($row['ma_sp']);
     //thêm từng cột trong sản phẩm vào $row
-    foreach($product as $key => $value){
+    foreach ($product as $key => $value) {
         $row[$key] = $value;
     }
-
 }

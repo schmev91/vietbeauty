@@ -96,7 +96,7 @@ function setNavigator($tableName, $action)
     <input type='text' hidden name='action' value='$action'>";
 }
 
-function initInput($name, $placeholder, $icon = null, $error = null)
+function initInput($type, $name, $placeholder, $icon = null, $error = null)
 {
     if (isset($error)) {
         $placeholder = $error;
@@ -108,7 +108,7 @@ function initInput($name, $placeholder, $icon = null, $error = null)
         $html .= '<span class="input-group-text"><i class="text-secondary fs-5 ' . $icon . '"></i></span>';
     }
 
-    $html .= '<input required name="' . $name . '" type="text" class="form-control ';
+    $html .= '<input required name="' . $name . '" type="' . $type . '" class="form-control ';
     $html .= isset($error) ? "is-invalid" : '';
     $html .= '" placeholder="' . $placeholder . '" aria-describedby="inputGroup-sizing-sm">
     </div>';
