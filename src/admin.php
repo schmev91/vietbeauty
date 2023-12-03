@@ -46,6 +46,8 @@ if ($s['user']['isAdmin']) {
                     'Danh mục',
                     'Thương hiệu'
                 ];
+                
+                $createWhat = "Sản phẩm";
                 break;
             case 'donhang':
                 include_once './models/dao/nguoidung.php';
@@ -72,6 +74,8 @@ if ($s['user']['isAdmin']) {
                     'Tên danh mục',
                     'Ảnh'
                 ];
+                
+                $createWhat = "Danh mục";
                 break;
             case 'thuonghieu':
                 $list = getAllThuonghieuDesc();
@@ -80,6 +84,7 @@ if ($s['user']['isAdmin']) {
                     'Thương hiệu',
                     'Ảnh'
                 ];
+                $createWhat = "Thương hiệu";
                 break;
             case 'danhgia':
 
@@ -99,6 +104,8 @@ if ($s['user']['isAdmin']) {
                     'Sdt',
                     'Địa chỉ'
                 ];
+                $createWhat = "Người dùng";
+                
         }
         include_once "./views/admin/frame.php";
     }

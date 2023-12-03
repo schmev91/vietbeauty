@@ -3,6 +3,9 @@
 
 # Ignore the "build" directory
 src/views/asset/img/avatar
+src/views/asset/img/product
+src/views/asset/img/category
+src/views/asset/img/brand
 src/.env
 
 # Ignore all

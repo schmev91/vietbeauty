@@ -29,3 +29,8 @@ nav > a:hover,
     border-color: var(--scarlet) !important;
     
 }
+
+/* MODAL */
+.add-btn:hover > i {
+    color: white !important;
+}

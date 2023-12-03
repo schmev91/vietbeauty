@@ -12,7 +12,7 @@
 
     <link rel="icon" href="views/asset/img/general/logo.ico" type="image/x-icon">
 
-    <link rel="stylesheet" href="views/asset/css/general.css?v=2">
+    <link rel="stylesheet" href="views/asset/css/general.css?v=1">
 
     <link rel="stylesheet" href="views/asset/css/admin.css?v=1">
 </head>
@@ -31,7 +31,7 @@
 
                 <div class="fw-bold ms-3 text-light d-flex flex-column gap-1">
                     <span class="">administrator</span>
-                    <div  class="d-flex align-items-center gap-2">
+                    <div class="d-flex align-items-center gap-2">
                         <!-- <i class="fa-solid fa-circle-user me-1"></i>  -->
                         <div class="header-avatar me-1">
                             <img src="<?= isset($_SESSION['user']) ? $_SESSION['user']['avatar'] : $DEFAULT_AVATAR ?>" alt="" style="width: 3rem;height: 3rem;">
@@ -55,12 +55,57 @@
 
     </header>
 
+
+    <?php
+    // code
+    if (isset($createWhat)) {
+    ?>
+        <!-- HTML -->
+        <!-- họ tên, tên đăng nhập, email, số điện thoại, mật khẩu, địa chỉ, avatar -->
+        <!-- MODAL - START -->
+        <form class="modal fade" id="exampleModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content bg-dark text-light   ">
+
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Thêm <?= $createWhat ?></h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <?php include_once "views/admin/create-modal/nguoidung.php"; ?>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary px-1" data-bs-dismiss="modal">Abort</button>
+                        <button type="button" class="btn btn-primary px-4">Add</button>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+
+    <?php } ?>
+
+    <!-- MODAL - END -->
+
     <main class="container-fluid">
         <div class="row">
 
-
             <div class="col-auto bg-dark py-5 nav-container p-0  border-2 border-0 border-end" style="border-color: #B4975A !important;">
                 <nav class="d-flex flex-column gap-2 ">
+                    <!-- Button trigger modal -->
+                    <?php
+                    // code
+                    if (isset($createWhat)) {
+                    ?>
+                        <!-- HTML -->
+                        <button type="button" class="add-btn btn btn-light btn-outline-secondary  fit-content py-2 mb-4 ms-auto rounded-end-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <i class="fa-solid fa-plus text-secondary fw-bold"></i> <?=$createWhat?>
+                        </button>
+
+                    <?php } ?>
+
                     <a href="admin.php" class="px-5 py-3 border border-start border-5 border-0 <?= isset($_GET['table']) ? null : 'active' ?>">Người dùng</a>
                     <a href="admin.php?table=sanpham" class="px-5 py-3 border border-start border-5 border-0 <?= isset($_GET['table']) && $_GET['table'] == 'sanpham' ? 'active' : null ?>">Sản phẩm</a>
                     <a href="admin.php?table=donhang" class="px-5 py-3 border border-start border-5 border-0 <?= isset($_GET['table']) && $_GET['table'] == 'donhang' ? 'active' : null ?>">Đơn hàng</a>
@@ -88,7 +133,7 @@
                     </thead>
                     <tbody>
 
-                    <!-- COLUMN ROW -->
+                        <!-- COLUMN ROW -->
                         <?php
                         // code
                         foreach ($list as $row) {
@@ -98,7 +143,7 @@
                             <!-- HTML -->
 
                             <!-- TABLE TD PLACEHOLDERS -->
-                                <?php include "views/admin/table/$tableName.php" ?>
+                            <?php include "views/admin/table/$tableName.php" ?>
 
                         <?php } ?>
 
