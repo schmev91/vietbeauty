@@ -49,6 +49,7 @@ switch ($tableName) {
                     productModel::addProduct($_POST, $_FILES);
 
 
+
                     break;
 
                 case 'update':
