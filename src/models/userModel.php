@@ -8,14 +8,16 @@ class UserModel
             $this->user = getNguoidungById($ma_nd);
     }
 
-    public function getDonhang(){
+    public function getDonhang()
+    {
         $dataDonhang = array();
         $dataDonhang = getDonhangByNguoidungDesc($this->getId());
-        
+
         return $dataDonhang;
     }
 
-    public function reload(){
+    public function reload()
+    {
         $this->user = getNguoidungById($this->getId());
     }
 
@@ -25,10 +27,11 @@ class UserModel
         return $this->user;
     }
 
-    public function getId(){
+    public function getId()
+    {
         return $this->user['ma_nd'];
     }
-    
+
     public function updateDiachi($diachi)
     {
         doiDiaChi($this->getId(), $diachi);
@@ -74,11 +77,21 @@ class UserModel
         $errors = array();
 
         // Kiểm tra họ và tên
-        $fullName = trim($data['firstName'] . ' ' . $data['lastName']);
-        if (!preg_match("/[a-zA-ZÀ-ỹ]+/", $fullName)) {
-            $errors['fullName'] = 'Họ và tên không được chứa số hoặc kí tự đặc biệt.';
-        } else if (strlen($fullName) >= 256) {
-            $errors['fullName'] = 'Họ và tên không được dài hơn 256 kí tự.';
+        $firstName = trim($data['firstName']);
+        $lastName = trim($data['lastName']);
+
+        // Kiểm tra `firstName`
+        if (!preg_match("/^[a-zA-ZÀ-ỹ]+$/", $firstName)) {
+            $errors['firstName'] = 'Họ không được chứa số hoặc kí tự đặc biệt.';
+        } else if (strlen($firstName) >= 128) {
+            $errors['firstName'] = 'Họ không được dài hơn 128 kí tự.';
+        }
+
+        // Kiểm tra `lastName`
+        if (!preg_match("/^[a-zA-ZÀ-ỹ]+$/", $lastName)) {
+            $errors['lastName'] = 'Tên không được chứa số hoặc kí tự đặc biệt.';
+        } else if (strlen($lastName) >= 128) {
+            $errors['lastName'] = 'Tên không được dài hơn 128 kí tự.';
         }
 
         // Kiểm tra tên đăng nhập
@@ -97,7 +110,7 @@ class UserModel
         }
 
         // Kiểm tra xác nhận mật khẩu
-        if ($data['password'] !== $data['passwordconfirm']) {
+        if (isset($data['passwordconfirm']) && $data['password'] !== $data['passwordconfirm']) {
             $errors['passwordconfirm'] = 'Mật khẩu không trùng khớp.';
         }
 
@@ -156,6 +169,4 @@ class UserModel
 
         return $errors;
     }
-
-    
 }

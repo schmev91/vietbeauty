@@ -12,7 +12,7 @@
 
     <link rel="icon" href="views/asset/img/general/logo.ico" type="image/x-icon">
 
-    <link rel="stylesheet" href="views/asset/css/general.css?v=1">
+    <link rel="stylesheet" href="views/asset/css/general.css?v=2">
 
     <link rel="stylesheet" href="views/asset/css/admin.css?v=1">
 </head>
@@ -63,9 +63,9 @@
         <!-- HTML -->
         <!-- họ tên, tên đăng nhập, email, số điện thoại, mật khẩu, địa chỉ, avatar -->
         <!-- MODAL - START -->
-        <form class="modal fade" id="exampleModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content bg-dark text-light   ">
+        <form action="<?= navigator("nguoidung", 'create'); ?>" enctype="multipart/form-data" method="post" class="modal fade " id="exampleModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog ">
+                <div class="modal-content bg-dark text-light ">
 
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="exampleModalLabel">Thêm <?= $createWhat ?></h1>
@@ -78,12 +78,14 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary px-1" data-bs-dismiss="modal">Abort</button>
-                        <button type="button" class="btn btn-primary px-4">Add</button>
+                        <button type="submit" class="btn btn-primary px-4">Add</button>
                     </div>
 
                 </div>
             </div>
         </form>
+
+
 
     <?php } ?>
 
@@ -97,22 +99,51 @@
                     <!-- Button trigger modal -->
                     <?php
                     // code
+
                     if (isset($createWhat)) {
                     ?>
                         <!-- HTML -->
                         <button type="button" class="add-btn btn btn-light btn-outline-secondary  fit-content py-2 mb-4 ms-auto rounded-end-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            <i class="fa-solid fa-plus text-secondary fw-bold"></i> <?=$createWhat?>
+                            <i class="fa-solid fa-plus text-secondary fw-bold"></i> <?= $createWhat ?>
                         </button>
 
-                    <?php } ?>
+                        <?php
+                        // code
+                        if (isset($errors)) {
+                        ?>
+                            <script>
+                                const addBtn = document.querySelector('.add-btn')
+                                addBtn.click();
+                            </script>
+                        <?php } ?>
 
-                    <a href="admin.php" class="px-5 py-3 border border-start border-5 border-0 <?= isset($_GET['table']) ? null : 'active' ?>">Người dùng</a>
-                    <a href="admin.php?table=sanpham" class="px-5 py-3 border border-start border-5 border-0 <?= isset($_GET['table']) && $_GET['table'] == 'sanpham' ? 'active' : null ?>">Sản phẩm</a>
-                    <a href="admin.php?table=donhang" class="px-5 py-3 border border-start border-5 border-0 <?= isset($_GET['table']) && $_GET['table'] == 'donhang' ? 'active' : null ?>">Đơn hàng</a>
-                    <a href="admin.php?table=danhmuc" class="px-5 py-3 border border-start border-5 border-0 <?= isset($_GET['table']) && $_GET['table'] == 'danhmuc' ? 'active' : null ?>">Danh mục</a>
-                    <a href="admin.php?table=thuonghieu" class="px-5 py-3 border border-start border-5 border-0 <?= isset($_GET['table']) && $_GET['table'] == 'thuonghieu' ? 'active' : null ?>">Thuong hiệu</a>
-                    <a href="admin.php?table=danhgia" class="px-5 py-3 border border-start border-5 border-0 <?= isset($_GET['table']) && $_GET['table'] == 'danhgia' ? 'active' : null ?>">Đánh giá</a>
-                    <a href="admin.php?table=hoidap" class="px-5 py-3 border border-start border-5 border-0 <?= isset($_GET['table']) && $_GET['table'] == 'hoidap' ? 'active' : null ?>">Hỏi đáp</a>
+                    <?php }
+
+                    $menuItems = [
+                        'Người dùng' => '',
+                        'Sản phẩm' => 'sanpham',
+                        'Đơn hàng' => 'donhang',
+                        'Danh mục' => 'danhmuc',
+                        'Thuong hiệu' => 'thuonghieu',
+                        'Đánh giá' => 'danhgia',
+                        'Hỏi đáp' => 'hoidap'
+                    ];
+
+                    foreach ($menuItems as $label => $table) {
+                        // Kiểm tra tab đang lặp qua có phải tab của table đang trỏ đến bằng GET hay không
+                        $isActive = (isset($_GET['table']) && $_GET['table'] == $table)
+                            || (empty($table) && !isset($_GET['table']));
+                        // Nếu đúng tab thì thêm class active
+                        $class = $isActive ? 'active' : '';
+                        //Table người dùng là table default nên không cần trỏ
+                        $href = "admin.php" . ($table ? "?table=$table" : '');
+
+                        echo "<a href=\"$href\" class=\"px-5 py-3 border border-start border-5 border-0 $class\">$label</a>";
+                    }
+
+                    ?>
+
+
 
                 </nav>
             </div>

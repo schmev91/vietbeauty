@@ -7,6 +7,20 @@ switch ($tableName) {
     case 'nguoidung': {
 
             switch ($action) {
+                case 'create':
+                    $errors = UserModel::validateRegisterData($_POST);
+
+                    if (!empty($errors)) {
+                        $listArr['list'] = getAllNguoidungDesc();
+                        initAdmin($listArr, $nguoidungColumns, $tableLabels['nguoidung'], $errors);
+                        exit;
+                    }
+                    $isRegistered = UserModel::registerUser($_POST, $_FILES);
+
+                    header('location: admin.php');
+
+
+                    break;
                 case 'update':
                     extract($_POST);
                     u::setThread();
@@ -29,7 +43,7 @@ switch ($tableName) {
 
     case 'sanpham': {
 
-            switch ($action) { 
+            switch ($action) {
                 case 'update':
                     extract($_POST);
                     u::setThread();
