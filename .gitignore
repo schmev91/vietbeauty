@@ -2,6 +2,7 @@
 *.log
 
 # Ignore the "build" directory
-views/asset/img/avatar
+src/views/asset/img/avatar
+src/.env
 
 # Ignore all
