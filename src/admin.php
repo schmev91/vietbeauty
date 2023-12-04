@@ -7,7 +7,7 @@ $DAOFolder = ROOT . '/models/dao/';
 
 // Get all PHP files in the folder
 $phpFiles = array_merge(glob($ModelsFolder . '*.php'), glob($DAOFolder . '*.php'));
-// var_dump($phpFiles);
+
 // Include each PHP file
 foreach ($phpFiles as $phpFile) {
     include_once $phpFile;
