@@ -52,7 +52,6 @@ if (isset($errors)) {
 
         <!-- ĐỊA CHỈ -->
         <?php initInput("address", "Địa chỉ", "fa-solid fa-location-dot"); ?>
-        "type",
 
         <!-- UPLOAD AVATAR INPUT -->
         <div class="mb-3">
