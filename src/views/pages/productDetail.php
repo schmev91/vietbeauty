@@ -301,46 +301,48 @@ $totalRatings = sizeof($danhgiaData);
             <?php
             $hoidapListHtml = "";
             if (isset($hoidapData)) {
-                foreach ($hoidapData as $data) {
-                    extract($data);
+                foreach ($hoidapData as $hoidap) {
+                    extract($hoidap);
                     $hoidapListHtml .=
-                        "<div class='hoidap'>
+                        "<div class='hoidap' >
                             <div class='hoidap-avatar'>
-                                <img src='views/asset/img/general/default_avatar.png' alt=''>
+                                <img src='$avatar' alt=''>
                             </div>
-                            <div class='hoidap-content'>
+                            <div class='hoidap-content' >
                                 <p class='hoidap-username'>
-                                    {$hoidap}
+                                    {$ten_nd} <span class= 'text-body-tertiary ms-3 fw-normal ' style='font-size: .8rem;'>$thoigian</span>
                                 </p>
-                                <p class='hoidap-text'>
-                                    {$content}
-                                </p>";
+                                <div class='hoidap-text text-wrap ' style='max-width: 33%;'>
+                                    {$noidung}
+                                </div>";
 
-                    if (isset($_SESSION['role']) && $_SESSION['ma_nd'] == $ma_nd) {
-                        $hoidapListHtml .=
-                            "<div class='hoidap-action'>
-                                    <a href='index.php?require=hoidapDelete&id={$id}&product_id={$product_id}'>xóa</a>
-                                    </div>";
-                    }
+                    // if (u::isLoggedin() && s('user')['ma_nd'] == $ma_nd) {
+                    //     $hoidapListHtml .=
+                    //         "<div class='hoidap-action'>
+                    //                 <a href='index.php?require=hoidapDelete&id={$ma_hd}&product_id={$product_id}'>xóa</a>
+                    //                 </div>";
+                    // }
 
                     $hoidapListHtml .= "</div>
                             </div>";;
                 }
             }
 
-            if (isset($_SESSION['role'])) {
+            if (u::isLoggedin()) {
+                $addQuestionLink = u::link('product', 'questioningRequest', ['ma_sp' => $_GET['ma_sp']]);
                 $hoidapInteractionHtml =
                     "<div class='hoidapInteraction-loggedIn'>
-                        <form action='model/hoidap-add.php' method='post'>
-                            <input type='text' name='product_id' hidden value='{$_GET['id']}'>
-                            <input type='text' name='content' required placeholder='Xin mời nhập nội dung đánh giá...'>
-                            <button type='submit'>Đăng</button>
+                        <form action='$addQuestionLink' method='post'>
+                            <input type='text' name='ma_sp' hidden value='{$_GET['ma_sp']}'>
+                            <input type='text' name='noidung' required placeholder='Xin mời nhập nội dung hỏi đáp...'>
+                            <button type='submit' class ='btn btn-primary'>Đăng</button>
                         </form>
                     </div>";
             } else {
+                $loginLink = u::link('user', 'showLoginForm');
                 $hoidapInteractionHtml =
                     "<div class='hoidapInteraction-noAccount'>
-                        Xin mời đăng nhập để đăng câu hỏi <a class='bg-primary ms-2' href='index.php?require=login'>Đăng nhập</a>
+                        Xin mời đăng nhập để đăng câu hỏi <a class='btn btn-primary  ms-2' href='$loginLink'>Đăng nhập</a>
                     </div>";
             }
 
