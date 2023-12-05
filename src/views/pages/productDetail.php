@@ -1,8 +1,8 @@
 <?php
 
-use function PHPSTORM_META\elementType;
-
-initHeader($ten_sp, 'productDetail') ?>
+initHeader($ten_sp, 'productDetail');
+$totalRatings = sizeof($danhgiaData);
+?>
 
 
 <main class="py-5">
@@ -91,7 +91,6 @@ initHeader($ten_sp, 'productDetail') ?>
     $counter = 5;
     $avg = 0;
 
-    $totalRatings = sizeof($danhgiaData);
 
     if ($totalRatings) {
 
@@ -212,6 +211,14 @@ initHeader($ten_sp, 'productDetail') ?>
                         for (var i = 0; i < rating; i++) {
                             stars[i].classList.add("active");
                         }
+                    }
+                });
+
+                ratingForm.addEventListener("submit", function(event) {
+                    if (selectedRating.value == 0) {
+                        event.preventDefault(); // Prevent the form from submitting
+                        alert("Please choose a rating before submitting.");
+                        // You can customize the alert or use a different method to notify the user.
                     }
                 });
             </script>
