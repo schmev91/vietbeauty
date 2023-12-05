@@ -87,18 +87,23 @@ initHeader($ten_sp, 'productDetail') ?>
 
     <?php
     $ratingTiers = ['Rất hài lòng', 'Khá hài lòng', 'Ổn', 'Không hài lòng', 'Rất không hài lòng'];
+    $tierCounts = array(1 => 0, 2 => 0, 3 => 0, 4 => 0, 5 => 0);
     $counter = 5;
-    $totalRatings = sizeof($danhgiaData);
     $avg = 0;
 
-    $tierCounts = array(1 => 0, 2 => 0, 3 => 0, 4 => 0, 5 => 0);
-    // Lặp qua mảng đánh giá và tăng số lượng cho từng tier
-    foreach ($danhgiaData as $danhgia) {
-        $score = $danhgia['diem'];
-        $tierCounts[$score]++;
-        $avg += $danhgia['diem'];
+    $totalRatings = sizeof($danhgiaData);
+
+    if ($totalRatings) {
+
+        // Lặp qua mảng đánh giá và tăng số lượng cho từng tier
+        foreach ($danhgiaData as $danhgia) {
+            $score = $danhgia['diem'];
+            $tierCounts[$score]++;
+            $avg += $danhgia['diem'];
+        }
+
+        $avg = round($avg / $totalRatings, 2);
     }
-    $avg = round($avg / $totalRatings, 2);
     ?>
 
     <div class="container my-3 bg-white rounded-3 py-3">
@@ -116,24 +121,26 @@ initHeader($ten_sp, 'productDetail') ?>
             <div class="col-auto mx-5 d-flex flex-column gap-2">
 
                 <?php
-                foreach ($ratingTiers as $index => $tier) {
+                foreach ($ratingTiers as $tier) {
 
-
-
+                    $tierPercent = $tierCounts[$counter] > 0 ? $tierCounts[$counter] / $totalRatings * 100 : 0;
                 ?>
+
 
                     <div class="d-flex" style="font-size: .8rem;">
                         <!-- số sao -->
                         <span class=" text-secondary px-1 "><?= $counter ?> sao</span>
                         <div class="progress flex-grow-1 rounded-0" style="height: 100%; max-width: 130px; width: 130px;">
-                            <div class="progress-bar bg-orange " style="width: <?= $tierCounts[$counter] / $totalRatings * 100 ?>%;" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar bg-orange " style="width: <?= $tierPercent ?>%;" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                         <!-- số lượng đánh giá -->
                         <span class=" text-body-tertiary ms-3" class=""><?= $tierCounts[$counter] ?></span>
                         <!-- mô tả cấp độ đánh giá -->
                         <span class=" text-body-tertiary px-2"><?= $tier ?></span>
                     </div>
-                <?php $counter--;
+
+                <?php
+                    $counter--;
                 } ?>
 
 
