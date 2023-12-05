@@ -85,38 +85,56 @@ initHeader($ten_sp, 'productDetail') ?>
         </div>
     </div>
 
+    <?php
+    $ratingTiers = ['Rất hài lòng', 'Khá hài lòng', 'Ổn', 'Không hài lòng', 'Rất không hài lòng'];
+    $counter = 5;
+    $totalRatings = sizeof($danhgiaData);
+    $avg = 0;
+
+    $tierCounts = array(1 => 0, 2 => 0, 3 => 0, 4 => 0, 5 => 0);
+    // Lặp qua mảng đánh giá và tăng số lượng cho từng tier
+    foreach ($danhgiaData as $danhgia) {
+        $score = $danhgia['diem'];
+        $tierCounts[$score]++;
+        $avg += $danhgia['diem'];
+    }
+    $avg = round($avg / $totalRatings, 2);
+    ?>
+
     <div class="container my-3 bg-white rounded-3 py-3">
         <h1 class="fs-4 fw-bold mb-3">Đánh giá</h1>
         <div class="row" style="white-space: no-wrap;">
             <!-- Total Score Column -->
             <div class="col-auto mx-5">
                 <div>Điểm đánh giá trung bình</div>
-                <p class="display-1 fw-bolder text-orange ms-5" id="totalScore">4.5</p>
+                <p class="display-1 fw-bolder text-orange ms-5" id="totalScore"><?= $avg ?></p>
             </div>
 
             <!-- Về số % của progress bar cho từng cấp độ đánh giá thì lấy:
                  số đánh giá từng cấp độ / tổng số đánh giá sản phẩm * 100 -->
             <!-- User Ratings Column -->
-            <div class="col-3 mx-5 d-flex flex-column gap-2">
+            <div class="col-auto mx-5 d-flex flex-column gap-2">
 
                 <?php
-                $arr = [5, 4, 3, 2, 1];
-                foreach ($arr as $e) {
-                    //looping code
+                foreach ($ratingTiers as $index => $tier) {
+
+
+
                 ?>
 
-                    <div class="d-flex gap-3" style="font-size: .8rem;">
+                    <div class="d-flex" style="font-size: .8rem;">
                         <!-- số sao -->
-                        <span class=" text-secondary px-1 "><?= $e ?> sao</span>
-                        <div class="progress flex-grow-1 rounded-0" style="height: 100%;">
-                            <div class="progress-bar bg-orange " style="width: <?= $e * 19 ?>%;" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                        <span class=" text-secondary px-1 "><?= $counter ?> sao</span>
+                        <div class="progress flex-grow-1 rounded-0" style="height: 100%; max-width: 130px; width: 130px;">
+                            <div class="progress-bar bg-orange " style="width: <?= $tierCounts[$counter] / $totalRatings * 100 ?>%;" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                         <!-- số lượng đánh giá -->
-                        <span class=" text-body-tertiary" class="">19</span>
+                        <span class=" text-body-tertiary ms-3" class=""><?= $tierCounts[$counter] ?></span>
                         <!-- mô tả cấp độ đánh giá -->
-                        <span class=" text-body-tertiary px-2">Rất hài lòng</span>
+                        <span class=" text-body-tertiary px-2"><?= $tier ?></span>
                     </div>
-                <?php } ?>
+                <?php $counter--;
+                } ?>
 
 
             </div>
@@ -198,7 +216,7 @@ initHeader($ten_sp, 'productDetail') ?>
             ?>
 
             <!-- RATING -->
-            <div id="rating" class="col-5 ms-3">
+            <div id="rating" class="col ms-3">
                 <div class="d-flex justify-content-between ">
                     <span class="fs-6 py-1 fw-semibold text-secondary ">Bình luận</span>
                     <button type="button" <?= $isRated ? 'hidden' : null ?> class="py-1 px-2 border-2 me-3 bor border-orange rounded-3 text-orange bg-white  fw-bold" data-bs-toggle="modal" data-bs-target="#ratingForm">
@@ -217,7 +235,7 @@ initHeader($ten_sp, 'productDetail') ?>
 
 
                             $htmlRatingScore = '';
-                            for ($i = 0; $i < 5; $i++) {
+                            for ($i = 1; $i < 6; $i++) {
                                 $isHightlight = $i <= $diem;
                                 $starColor = $isHightlight ? 'orange' : 'secondary';
                                 $htmlRatingScore .= "<i class='fas fa-star text-$starColor '></i>";
