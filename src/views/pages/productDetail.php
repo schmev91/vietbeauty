@@ -218,24 +218,23 @@ $totalRatings = sizeof($danhgiaData);
                     if (selectedRating.value == 0) {
                         event.preventDefault(); // Prevent the form from submitting
                         alert("Please choose a rating before submitting.");
-                        // You can customize the alert or use a different method to notify the user.
                     }
                 });
             </script>
 
 
             <?php
-            $isRated = isUserRated(s('user')['ma_nd'], $_GET['ma_sp']);
+            $isRated = u::isLoggedin() ? isUserRated(s('user')['ma_nd'], $_GET['ma_sp']) : null;
 
             ?>
 
             <!-- RATING -->
             <div id="rating" class="col ms-3">
                 <div class="d-flex justify-content-between ">
-                    <span class="fs-6 py-1 fw-semibold text-secondary ">Bình luận</span>
-                    <button type="button" <?= $isRated ? 'hidden' : null ?> class="py-1 px-2 border-2 me-3 bor border-orange rounded-3 text-orange bg-white  fw-bold" data-bs-toggle="modal" data-bs-target="#ratingForm">
+                    <span class="fs-6 py-1 fw-semibold text-secondary ">Đánh giá sản phẩm</span>
+                    <a href="<?= u::isLoggedin() ? null : u::link('user', 'showLoginForm') ?>" <?= $isRated ? 'hidden' : null ?> class="py-1 px-2 border  border-2 me-3 bor border-orange rounded-3 text-orange bg-white  fw-bold" data-bs-toggle="<?= u::isLoggedin() ? 'modal' : null ?>" data-bs-target="#ratingForm">
                         Viết đánh giá
-                    </button>
+                    </a>
                 </div>
 
                 <div class="rating-container mt-2 d-flex flex-column gap-2 overflow-y-auto">
@@ -257,7 +256,7 @@ $totalRatings = sizeof($danhgiaData);
                     ?>
                             <!-- HTML -->
                             <div class="rating d-flex gap-3">
-                                <div>
+                                <div style="min-width: 4rem;">
                                     <div class="rating-user fw-semibold">
                                         <?= $ten_nd ?>
                                     </div>
@@ -266,7 +265,7 @@ $totalRatings = sizeof($danhgiaData);
                                     </div>
                                 </div>
 
-                                <div class="rating-content mt-1" style="font-size: .9rem;" ;>
+                                <div class="rating-content mt-1 text-wrap " style="font-size: .9rem;" ;>
                                     <?= $noidung ?>
                                 </div>
                             </div>
@@ -334,7 +333,7 @@ $totalRatings = sizeof($danhgiaData);
                     "<div class='hoidapInteraction-loggedIn'>
                         <form action='model/hoidap-add.php' method='post'>
                             <input type='text' name='product_id' hidden value='{$_GET['id']}'>
-                            <input type='text' name='content' required placeholder='Xin mời nhập nội dung bình luận...'>
+                            <input type='text' name='content' required placeholder='Xin mời nhập nội dung đánh giá...'>
                             <button type='submit'>Đăng</button>
                         </form>
                     </div>";

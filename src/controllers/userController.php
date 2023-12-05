@@ -60,6 +60,9 @@ class UserController
 
     public function showLoginForm($errors = null)
     {
+        if (!u::isThreading()) {
+            u::setThread();
+        }
         // Hiển thị form đăng nhập
         if (!empty($errors)) extract($errors);
         include_once './views/pages/login.php';
@@ -83,7 +86,6 @@ class UserController
                 // Đăng nhập thành công, chuyển hướng đến trang chủ hoặc thread
                 if (u::isThreading()) u::toThread();
                 else header("location: index.php");
-                
             } else {
                 // Đăng nhập không thành công, hiển thị thông báo đăng nhập không thành công
                 $this->showLoginForm(['loginKey' => 'Tên đăng nhập hoặc mật khẩu không chính xác.']);
