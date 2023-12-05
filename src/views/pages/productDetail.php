@@ -1,4 +1,8 @@
-<?php initHeader($ten_sp, 'productDetail') ?>
+<?php
+
+use function PHPSTORM_META\elementType;
+
+initHeader($ten_sp, 'productDetail') ?>
 
 
 <main class="py-5">
@@ -118,7 +122,7 @@
             </div>
 
             <!-- Modal -->
-            <form class="modal fade" id="ratingForm" tabindex="-1" aria-hidden="true">
+            <form action="<?= u::link('product', 'ratingRequest', ['ma_sp' => $ma_sp]) ?>" method="post" class="modal fade" id="ratingForm" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -137,15 +141,15 @@
                             </div>
 
                             <div class="form-floating mt-3 border-orange">
-                                <textarea class="form-control" style="height: 100px"></textarea>
-                                <label for="floatingTextarea2">Nội dung đánh giá</label>
+                                <textarea id="noidung" name="noidung" class="form-control" namestyle="height: 100px"></textarea>
+                                <label for="noidung">Nội dung đánh giá</label>
                             </div>
                         </div>
 
 
                         <div class="modal-footer">
                             <button type="button" class="btn py-1 btn-secondary" data-bs-dismiss="modal">Hủy</button>
-                            <button type="button" class="btn py-1 btn-primary bg-orange border-orange px-4">Gửi</button>
+                            <button type="submit" class="btn py-1 btn-primary bg-orange border-orange px-4">Gửi</button>
                         </div>
                     </div>
                 </div>
@@ -188,134 +192,58 @@
             </script>
 
 
+            <?php
+            $isRated = isUserRated(s('user')['ma_nd'], $_GET['ma_sp']);
+
+            ?>
+
             <!-- RATING -->
             <div id="rating" class="col-5 ms-3">
                 <div class="d-flex justify-content-between ">
-                    <span class="fs-6 fw-semibold text-secondary ">Bình luận</span>
-                    <button type="button" class="py-1 px-2 border-2 me-3 bor border-orange rounded-3 text-orange bg-white  fw-bold" data-bs-toggle="modal" data-bs-target="#ratingForm">
+                    <span class="fs-6 py-1 fw-semibold text-secondary ">Bình luận</span>
+                    <button type="button" <?= $isRated ? 'hidden' : null ?> class="py-1 px-2 border-2 me-3 bor border-orange rounded-3 text-orange bg-white  fw-bold" data-bs-toggle="modal" data-bs-target="#ratingForm">
                         Viết đánh giá
                     </button>
                 </div>
 
                 <div class="rating-container mt-2 d-flex flex-column gap-2 overflow-y-auto">
 
-                    <div class="rating d-flex gap-3">
-                        <div>
-                            <div class="rating-user fw-semibold">
-                                Nguyễn Đại Bác
-                            </div>
-                            <div class="rating-score">
-                                <i class="fas fa-star  text-orange "></i>
-                                <i class="fas fa-star  text-orange "></i>
-                                <i class="fas fa-star  text-orange "></i>
-                                <i class="fas fa-star  text-orange "></i>
-                                <i class="fas fa-star  text-orange "></i>
-                            </div>
-                        </div>
 
-                        <div>
-                            <div class="rating-timestamp text-body-tertiary" style="font-size: .8rem">
-                                19-9-2023 20:00:00
-                            </div>
-                            <div class="rating-content mt-1">
-                                Sản phẩm khá vjp
-                            </div>
-                        </div>
-                    </div>
+                    <?php
+                    // code
+                    if (!empty($danhgiaData)) {
+                        foreach ($danhgiaData as $danhgia) {
+                            extract($danhgia);
 
-                    <div class="rating d-flex gap-3">
-                        <div>
-                            <div class="rating-user fw-semibold">
-                                Nguyễn Đại Bác
-                            </div>
-                            <div class="rating-score">
-                                <i class="fas fa-star  text-orange "></i>
-                                <i class="fas fa-star  text-orange "></i>
-                                <i class="fas fa-star  text-orange "></i>
-                                <i class="fas fa-star  text-orange "></i>
-                                <i class="fas fa-star  text-orange "></i>
-                            </div>
-                        </div>
 
-                        <div>
-                            <div class="rating-timestamp text-body-tertiary" style="font-size: .8rem">
-                                19-9-2023 20:00:00
-                            </div>
-                            <div class="rating-content mt-1">
-                                Sản phẩm khá vjp
-                            </div>
-                        </div>
-                    </div>
+                            $htmlRatingScore = '';
+                            for ($i = 0; $i < 5; $i++) {
+                                $isHightlight = $i <= $diem;
+                                $starColor = $isHightlight ? 'orange' : 'secondary';
+                                $htmlRatingScore .= "<i class='fas fa-star text-$starColor '></i>";
+                            }
+                    ?>
+                            <!-- HTML -->
+                            <div class="rating d-flex gap-3">
+                                <div>
+                                    <div class="rating-user fw-semibold">
+                                        <?= $ten_nd ?>
+                                    </div>
+                                    <div class="rating-score">
+                                        <?= $htmlRatingScore ?>
+                                    </div>
+                                </div>
 
-                    <div class="rating d-flex gap-3">
-                        <div>
-                            <div class="rating-user fw-semibold">
-                                Nguyễn Đại Bác
+                                <div class="rating-content mt-1" style="font-size: .9rem;" ;>
+                                    <?= $noidung ?>
+                                </div>
                             </div>
-                            <div class="rating-score">
-                                <i class="fas fa-star  text-orange "></i>
-                                <i class="fas fa-star  text-orange "></i>
-                                <i class="fas fa-star  text-orange "></i>
-                                <i class="fas fa-star  text-orange "></i>
-                                <i class="fas fa-star  text-orange "></i>
-                            </div>
-                        </div>
 
-                        <div>
-                            <div class="rating-timestamp text-body-tertiary" style="font-size: .8rem">
-                                19-9-2023 20:00:00
-                            </div>
-                            <div class="rating-content mt-1">
-                                Sản phẩm khá vjp
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rating d-flex gap-3">
-                        <div>
-                            <div class="rating-user fw-semibold">
-                                Nguyễn Đại Bác
-                            </div>
-                            <div class="rating-score">
-                                <i class="fas fa-star  text-orange "></i>
-                                <i class="fas fa-star  text-orange "></i>
-                                <i class="fas fa-star  text-orange "></i>
-                                <i class="fas fa-star  text-orange "></i>
-                                <i class="fas fa-star  text-orange "></i>
-                            </div>
-                        </div>
+                    <?php }
+                    } else
+                        echo '<div class="fs-5 text-center fw-semibold text-body-tertiary">Sản phẩm chưa có đánh giá nào</div>';
+                    ?>
 
-                        <div>
-                            <div class="rating-timestamp text-body-tertiary" style="font-size: .8rem">
-                                19-9-2023 20:00:00
-                            </div>
-                            <div class="rating-content mt-1">
-                                Sản phẩm khá vjp
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rating d-flex gap-3">
-                        <div>
-                            <div class="rating-user fw-semibold">
-                                Nguyễn Đại Bác
-                            </div>
-                            <div class="rating-score">
-                                <i class="fas fa-star  text-orange "></i>
-                                <i class="fas fa-star  text-orange "></i>
-                                <i class="fas fa-star  text-orange "></i>
-                                <i class="fas fa-star  text-orange "></i>
-                                <i class="fas fa-star  text-orange "></i>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="rating-timestamp text-body-tertiary" style="font-size: .8rem">
-                                19-9-2023 20:00:00
-                            </div>
-                            <div class="rating-content mt-1">
-                                Sản phẩm khá vjp
-                            </div>
-                        </div>
-                    </div>
 
                 </div>
             </div>

@@ -22,6 +22,11 @@ class u
         return cartModel::getCartQuantity($ma_nd);
     }
 
+    public static function toHome()
+    {
+        header('location: index.php');
+    }
+
     public static function setThread()
     {
         if (u::isThreadAble())

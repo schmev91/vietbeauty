@@ -66,8 +66,9 @@ function insertNguoidung($nguoidung)
     // return pdo_query_value("SELECT LAST_INSERT_ID()");
 }
 
-function getUsernameById($ma_nd){
-    return pdo_query_value("SELECT ten_nd FROM nguoidung WHERE ma_nd =".$ma_nd);
+function getUsernameById($ma_nd)
+{
+    return pdo_query_value("SELECT ten_nd FROM nguoidung WHERE ma_nd =" . $ma_nd);
 }
 
 /**
@@ -220,7 +221,7 @@ function doiDiaChi($ma_nd, $diachi)
 {
     $sql = "UPDATE nguoidung SET diachi = ? WHERE ma_nd = ?";
     pdo_execute($sql, $diachi, $ma_nd);
-}   
+}
 
 
 /**
@@ -250,7 +251,7 @@ function banNguoiDung($ma_nd)
 function updateIsBanned($ma_nd, $isBanned)
 {
     $sql = "UPDATE nguoidung SET isBanned = ? WHERE ma_nd = ?";
-    pdo_execute($sql, $isBanned,$ma_nd);
+    pdo_execute($sql, $isBanned, $ma_nd);
 }
 
 /**
@@ -278,7 +279,7 @@ function themAdmin($ma_nd)
 function updateIsAdmin($ma_nd, $isAdmin)
 {
     $sql = "UPDATE nguoidung SET isAdmin = ? WHERE ma_nd = ?";
-    pdo_execute($sql, $isAdmin,$ma_nd);
+    pdo_execute($sql, $isAdmin, $ma_nd);
 }
 
 /**
@@ -302,7 +303,7 @@ function giangChucAdmin($ma_nd)
  */
 function usernameInlaiding(&$arr)
 {
-    $arr['ma_nd'] = getThuonghieuById($arr['ma_th']);
+    $arr['ten_nd'] = getNguoidungById($arr['ma_nd'])['ten_nd'];
 }
 
 
@@ -316,7 +317,7 @@ function usernameInlaiding(&$arr)
  */
 function uploadAvatar($file)
 {
-    $imgDirectory ='views/asset/img/avatar/';
+    $imgDirectory = 'views/asset/img/avatar/';
 
     // Tạo tên mới cho tệp ảnh
     $newFileName = uniqid() . '_' . $file['name'];
@@ -329,6 +330,7 @@ function uploadAvatar($file)
     return $imagePath;
 }
 
-function userInlaiding(&$arr){
+function userInlaiding(&$arr)
+{
     $arr = array_merge($arr, getNguoidungById($arr['ma_nd']));
 }

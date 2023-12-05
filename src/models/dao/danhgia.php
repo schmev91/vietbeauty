@@ -11,7 +11,8 @@ require_once 'pdo.php';
  *
  * @return void
  */
-function addDanhgia($ma_nd, $ma_sp, $diem, $noidung) {
+function addDanhgia($ma_nd, $ma_sp, $diem, $noidung)
+{
     $sql = "INSERT INTO danhgia (ma_nd, ma_sp, diem, noidung) VALUES (?, ?, ?, ?)";
     pdo_execute($sql, $ma_nd, $ma_sp, $diem, $noidung);
 }
@@ -24,7 +25,8 @@ function addDanhgia($ma_nd, $ma_sp, $diem, $noidung) {
  *
  * @return array|false Mảng thông tin đánh giá hoặc false nếu không có đánh giá
  */
-function getDanhgiaByNguoidungAndSanpham($ma_nd, $ma_sp) {
+function getDanhgiaByNguoidungAndSanpham($ma_nd, $ma_sp)
+{
     $sql = "SELECT * FROM danhgia WHERE ma_nd = ? AND ma_sp = ?";
     return pdo_query_one($sql, $ma_nd, $ma_sp);
 }
@@ -36,7 +38,8 @@ function getDanhgiaByNguoidungAndSanpham($ma_nd, $ma_sp) {
  *
  * @return array Danh sách tất cả đánh giá của sản phẩm
  */
-function getAllDanhgiaBySanpham($ma_sp) {
+function getAllDanhgiaBySanpham($ma_sp)
+{
     $sql = "SELECT * FROM danhgia WHERE ma_sp = ?";
     return pdo_query($sql, $ma_sp);
 }
@@ -49,7 +52,8 @@ function getAllDanhgiaBySanpham($ma_sp) {
  *
  * @return float Số điểm trung bình của sản phẩm
  */
-function getAverageRatingBySanpham($ma_sp) {
+function getAverageRatingBySanpham($ma_sp)
+{
     $sql = "SELECT AVG(diem) as avg_rating FROM danhgia WHERE ma_sp = ?";
     return pdo_query_value($sql, $ma_sp);
 }
@@ -63,8 +67,26 @@ function getAverageRatingBySanpham($ma_sp) {
  *
  * @throws PDOException Lỗi thực thi câu lệnh
  */
-function deleteDanhgia($ma_nd, $ma_sp) {
+function deleteDanhgia($ma_nd, $ma_sp)
+{
     $sql = "DELETE FROM danhgia WHERE ma_nd = ? AND ma_sp = ?";
     pdo_execute($sql, $ma_nd, $ma_sp);
 }
 
+/**
+ * Kiểm tra xem người dùng đã đánh giá sản phẩm chưa
+ *
+ * @param int $ma_nd Mã người dùng
+ * @param int $ma_sp Mã sản phẩm
+ * 
+ * @return bool Trả về true nếu người dùng đã đánh giá sản phẩm, ngược lại trả về false
+ * @throws PDOException Lỗi thực thi câu lệnh
+ */
+function isUserRated($ma_nd, $ma_sp)
+{
+    $sql = "SELECT COUNT(*) FROM danhgia WHERE ma_nd = ? AND ma_sp = ?";
+    $count = pdo_query_value($sql, $ma_nd, $ma_sp);
+
+    // Nếu số lượng bản ghi là lớn hơn 0, người dùng đã đánh giá sản phẩm
+    return $count > 0;
+}

@@ -16,9 +16,17 @@ class productModel
     public static function getProductHoidap($ma_sp)
     {
         $hoidapData = getHoidapBySanpham($ma_sp);
-        foreach ($hoidapData as $hoidap) usernameInlaiding($hoidap);
+        foreach ($hoidapData as $index => $hoidap) usernameInlaiding($hoidapData[$index]);
 
         return $hoidapData;
+    }
+
+    public static function getProductDanhgia($ma_sp)
+    {
+        $danhgiaData = getAllDanhgiaBySanpham($ma_sp);
+        foreach ($danhgiaData as $index => $danhgia) usernameInlaiding($danhgiaData[$index]);
+
+        return $danhgiaData;
     }
 
     public static function addProduct($data, $files)
@@ -33,5 +41,9 @@ class productModel
 
         //trả về true do đăng ký thành công người dùng vào cơ sở dữ liệu
         return true;
+    }
+
+    public static function addRating($ratingData)
+    {
     }
 }
