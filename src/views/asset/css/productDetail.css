@@ -1,219 +1,261 @@
 main {
-    background: #f9f9f9;
+  background: #f9f9f9;
 }
 
 .product-img img {
-    /* width: 500px;
+  /* width: 500px;
     max-height: 500px; */
-    width: 100%;
-    border-radius: 12px;
+  width: 100%;
+  border-radius: 12px;
 }
 
 .product {
-    display: flex;
+  display: flex;
 }
 
 .info > * {
-    width: fit-content;
+  width: fit-content;
 }
 .info {
-    justify-content: end;
-    align-items: end;
+  justify-content: end;
+  align-items: end;
 }
 
 .product .info h1 {
-    font-size: 27.2px;
-    color: #555;
-    margin-bottom: 14px;
+  font-size: 27.2px;
+  color: #555;
+  margin-bottom: 14px;
 }
 
 .divider {
-    background-color: rgba(0, 0, 0, 0.1);
-    height: 3px;
-    max-width: 30px;
+  background-color: rgba(0, 0, 0, 0.1);
+  height: 3px;
+  max-width: 30px;
 }
 
 .product .info h2 {
-    margin: 12px 0;
+  margin: 12px 0;
 }
 
 .product .info p {
-    color: #777;
-    margin-bottom: 21px;
+  color: #777;
+  margin-bottom: 21px;
 }
 
 .cart-option form {
-    display: flex;
-    margin-bottom: 21px;
+  display: flex;
+  margin-bottom: 21px;
 }
 
 .cart-option form * {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .cart-option .quantity {
-    display: flex;
-    margin-right: 16px;
-
+  display: flex;
+  margin-right: 16px;
 }
 
 .cart-option .quantity input {
-    outline: none;
-    border: 1px #ddd solid;
-    text-align: center;
+  outline: none;
+  border: 1px #ddd solid;
+  text-align: center;
 }
 
 .cart-option .quantity input[type="button"] {
-    width: 25px;
-    background-color: #f9f9f9;
-    transition: 0.3s;
+  width: 25px;
+  background-color: #f9f9f9;
+  transition: 0.3s;
 }
 
 .cart-option .quantity input[type="button"]:hover {
-    box-shadow: inset 0 0 0 100px rgb(0 0 0 / 20%);
+  box-shadow: inset 0 0 0 100px rgb(0 0 0 / 20%);
 }
 
 .cart-option .quantity input[type="number"] {
-    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.05) inset;
-    width: 40px;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+  width: 40px;
 }
 
 .cart-option .quantity input[type="number"]::-webkit-inner-spin-button {
-    display: none;
+  display: none;
 }
 
 .cart-option .btn {
-    border: none;
-    line-height: 40px;
-    text-transform: uppercase;
-    color: white;
-    font-weight: bold;
-    font-size: 16px;
+  border: none;
+  line-height: 40px;
+  text-transform: uppercase;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
 }
 
 /* === RATING START === */
 .rating-score i {
-    font-size: 0.7rem;
+  font-size: 0.7rem;
 }
 .rating-content,
 .rating-user {
-    font-size: .85rem;
+  font-size: 0.85rem;
 }
 .rating {
-    max-width: 517px;
+  max-width: 517px;
 }
 
 /* === RATING END === */
 
-.des>div {
-    padding: 10px 15px;
+.des > div {
+  padding: 10px 15px;
 }
 
-.des>div:nth-child(1) {
-    border-top: 2px solid #B4975A;
-    border-left: 1px solid #ddd;
-    border-right: 1px solid #ddd;
-    width: fit-content;
-    color: hsla(0, 0%, 7%, .85);
+.des > div:nth-child(1) {
+  border-top: 2px solid #b4975a;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  width: fit-content;
+  color: hsla(0, 0%, 7%, 0.85);
 }
 
-.des>div:nth-child(2) {
-    border: 1px solid #ddd;
-    color: #777;
-
+.des > div:nth-child(2) {
+  border: 1px solid #ddd;
+  color: #777;
 }
 
 .des table {
-    text-align: left;
-    border: 1px solid #ccc;
-    border-collapse: collapse;
+  text-align: left;
+  border: 1px solid #ccc;
+  border-collapse: collapse;
 }
 
 .des table * {
-    border: 1px solid #ccc;
-    padding: 0 3px;
+  border: 1px solid #ccc;
+  padding: 0 3px;
 }
 
 /* COMMENT */
 #hoidap-container {
-    margin-top: 1rem;
+  margin-top: 1rem;
 }
 
 #hoidap-container hr {
-    opacity: .3;
-    margin: 1rem 0;
+  opacity: 0.3;
+  margin: 1rem 0;
 }
 
 .hoidap-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .hoidap {
-    display: flex;
-    gap: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
 }
 
 .hoidap-content {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .hoidap-username {
-    margin-bottom: 0.5rem;
-    font-weight: bold;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
 }
 
 .hoidap-avatar img {
-    height: 3rem;
-    width: 3rem;
+  height: 3rem;
+  width: 3rem;
 }
 
 .hoidapInteraction-noAccount {
-    margin: 1.75rem 0;
-    font-size: 1.1rem;
-    color: #727272;
+  margin: 1.75rem 0;
+  font-size: 1.1rem;
+  color: #727272;
 }
 
 .hoidapInteraction-noAccount a {
-    border-radius: 0.25rem;
-    background-color: #008CBA;
-    color: white;
-    padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  background-color: #008cba;
+  color: white;
+  padding: 0.25rem 0.5rem;
 }
 
 .hoidapInteraction-loggedIn {
-    margin: 1.75rem 0;
-    font-size: 1.15rem;
+  margin: 1.75rem 0;
+  font-size: 1.15rem;
 }
 
 .hoidapInteraction-loggedIn input {
-    outline: none;
-    border: 1px #ccc solid;
-    min-height: 3.5rem;
-    width: 100%;
-    padding: 0.5rem;
+  outline: none;
+  border: 1px #ccc solid;
+  min-height: 3.5rem;
+  width: 100%;
+  padding: 0.5rem;
 }
 
 .hoidapInteraction-loggedIn input::placeholder {
-    font-size: 1rem;
-    font-style: italic;
-
+  font-size: 1rem;
+  font-style: italic;
 }
 
 .hoidapInteraction-loggedIn button {
-    border-radius: 0.25rem;
-    padding: 0.5rem 0.75rem;
-    background-color: #008CBA;
-    color: white;
-    margin-top: 0.5rem;
-    border: none;
-    cursor: pointer;
+  border-radius: 0.25rem;
+  padding: 0.5rem 0.75rem;
+  background-color: #008cba;
+  color: white;
+  margin-top: 0.5rem;
+  border: none;
+  cursor: pointer;
 }
 
 .hoidap-action {
-    opacity: .7;
-    font-size: 1rem;
-    margin: 0.25rem 0;
+  opacity: 0.7;
+  font-size: 1rem;
+  margin: 0.25rem 0;
+}
+
+#rating {
+  height: 100%;
+}
+.rating-container {
+  height: 7rem;
+}
+
+/* For WebKit browsers (Chrome, Safari) */
+.rating-container::-webkit-scrollbar {
+  width: 0.75rem; /* Set the width of the scrollbar */
+}
+
+.rating-container::-webkit-scrollbar-thumb {
+  background-color: #ccc; /* Set the color of the scrollbar thumb */
+  border-radius: 0.375rem; /* Set the border radius for rounded ends */
+}
+
+.rating-container::-webkit-scrollbar-track {
+  background-color: whitesmoke; /* Set the color of the scrollbar track (background) */
+  border-radius: 0.375rem;
+}
+
+.rating-container::-webkit-scrollbar-button {
+  display: none; /* Hide the scrollbar buttons */
+}
+
+/* Add this to your styles */
+.ratingForm-content {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.star > i {
+  font-size: 2rem;
+  color: #ddd !important;
+  transition: color 0.3s;
+  margin: 0 5px;
+}
+
+.star:hover > i,
+.star.active > i {
+  color: #ffa500 !important; /* Change this to your desired highlight color */
 }

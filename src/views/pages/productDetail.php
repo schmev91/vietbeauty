@@ -117,25 +117,206 @@
 
             </div>
 
-            <!-- RATING -->
-            <div id="rating" class="col-5 ms-3">
-                <span class="fs-6 fw-semibold">Bình luận</span>
-                <div class="rating-container mt-2">
-                    <div class="rating d-flex gap-3">
-                        <div class="rating-score">
-                            <i class="fas fa-star  text-orange "></i>
-                            <i class="fas fa-star  text-orange "></i>
-                            <i class="fas fa-star  text-orange "></i>
-                            <i class="fas fa-star  text-orange "></i>
-                            <i class="fas fa-star  text-orange "></i>
+            <!-- Modal -->
+            <form class="modal fade" id="ratingForm" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5 fw-bold text-secondary">Xin mời bạn đánh giá</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="rating-user fw-semibold">
-                            Nguyễn Đại Bác
+
+                        <div class="modal-body">
+                            <div class="ratingForm-content">
+                                <span class="star" data-rating="1"><i class="fas fa-star"></i></span>
+                                <span class="star" data-rating="2"><i class="fas fa-star"></i></span>
+                                <span class="star" data-rating="3"><i class="fas fa-star"></i></span>
+                                <span class="star" data-rating="4"><i class="fas fa-star"></i></span>
+                                <span class="star" data-rating="5"><i class="fas fa-star"></i></span>
+                                <input type="hidden" name="diem" id="selectedRating" value="0">
+                            </div>
+
+                            <div class="form-floating mt-3 border-orange">
+                                <textarea class="form-control" style="height: 100px"></textarea>
+                                <label for="floatingTextarea2">Nội dung đánh giá</label>
+                            </div>
                         </div>
-                        <div class="rating-content">
-                            Sản phẩm khá vjp
+
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn py-1 btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                            <button type="button" class="btn py-1 btn-primary bg-orange border-orange px-4">Gửi</button>
                         </div>
                     </div>
+                </div>
+            </form>
+
+            <!-- Add this script to the end of your body or in a separate script file -->
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    var stars = document.querySelectorAll(".star");
+                    var selectedRating = document.getElementById("selectedRating");
+
+                    stars.forEach(function(star) {
+                        star.addEventListener("mouseover", function() {
+                            var rating = this.dataset.rating;
+                            highlightStars(rating);
+                        });
+
+                        star.addEventListener("mouseleave", function() {
+                            var rating = selectedRating.value;
+                            highlightStars(rating);
+                        });
+
+                        star.addEventListener("click", function() {
+                            var rating = this.dataset.rating;
+                            selectedRating.value = rating;
+                            highlightStars(rating);
+                        });
+                    });
+
+                    function highlightStars(rating) {
+                        stars.forEach(function(star) {
+                            star.classList.remove("active");
+                        });
+
+                        for (var i = 0; i < rating; i++) {
+                            stars[i].classList.add("active");
+                        }
+                    }
+                });
+            </script>
+
+
+            <!-- RATING -->
+            <div id="rating" class="col-5 ms-3">
+                <div class="d-flex justify-content-between ">
+                    <span class="fs-6 fw-semibold text-secondary ">Bình luận</span>
+                    <button type="button" class="py-1 px-2 border-2 me-3 bor border-orange rounded-3 text-orange bg-white  fw-bold" data-bs-toggle="modal" data-bs-target="#ratingForm">
+                        Viết đánh giá
+                    </button>
+                </div>
+
+                <div class="rating-container mt-2 d-flex flex-column gap-2 overflow-y-auto">
+
+                    <div class="rating d-flex gap-3">
+                        <div>
+                            <div class="rating-user fw-semibold">
+                                Nguyễn Đại Bác
+                            </div>
+                            <div class="rating-score">
+                                <i class="fas fa-star  text-orange "></i>
+                                <i class="fas fa-star  text-orange "></i>
+                                <i class="fas fa-star  text-orange "></i>
+                                <i class="fas fa-star  text-orange "></i>
+                                <i class="fas fa-star  text-orange "></i>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="rating-timestamp text-body-tertiary" style="font-size: .8rem">
+                                19-9-2023 20:00:00
+                            </div>
+                            <div class="rating-content mt-1">
+                                Sản phẩm khá vjp
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rating d-flex gap-3">
+                        <div>
+                            <div class="rating-user fw-semibold">
+                                Nguyễn Đại Bác
+                            </div>
+                            <div class="rating-score">
+                                <i class="fas fa-star  text-orange "></i>
+                                <i class="fas fa-star  text-orange "></i>
+                                <i class="fas fa-star  text-orange "></i>
+                                <i class="fas fa-star  text-orange "></i>
+                                <i class="fas fa-star  text-orange "></i>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="rating-timestamp text-body-tertiary" style="font-size: .8rem">
+                                19-9-2023 20:00:00
+                            </div>
+                            <div class="rating-content mt-1">
+                                Sản phẩm khá vjp
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rating d-flex gap-3">
+                        <div>
+                            <div class="rating-user fw-semibold">
+                                Nguyễn Đại Bác
+                            </div>
+                            <div class="rating-score">
+                                <i class="fas fa-star  text-orange "></i>
+                                <i class="fas fa-star  text-orange "></i>
+                                <i class="fas fa-star  text-orange "></i>
+                                <i class="fas fa-star  text-orange "></i>
+                                <i class="fas fa-star  text-orange "></i>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="rating-timestamp text-body-tertiary" style="font-size: .8rem">
+                                19-9-2023 20:00:00
+                            </div>
+                            <div class="rating-content mt-1">
+                                Sản phẩm khá vjp
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rating d-flex gap-3">
+                        <div>
+                            <div class="rating-user fw-semibold">
+                                Nguyễn Đại Bác
+                            </div>
+                            <div class="rating-score">
+                                <i class="fas fa-star  text-orange "></i>
+                                <i class="fas fa-star  text-orange "></i>
+                                <i class="fas fa-star  text-orange "></i>
+                                <i class="fas fa-star  text-orange "></i>
+                                <i class="fas fa-star  text-orange "></i>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="rating-timestamp text-body-tertiary" style="font-size: .8rem">
+                                19-9-2023 20:00:00
+                            </div>
+                            <div class="rating-content mt-1">
+                                Sản phẩm khá vjp
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rating d-flex gap-3">
+                        <div>
+                            <div class="rating-user fw-semibold">
+                                Nguyễn Đại Bác
+                            </div>
+                            <div class="rating-score">
+                                <i class="fas fa-star  text-orange "></i>
+                                <i class="fas fa-star  text-orange "></i>
+                                <i class="fas fa-star  text-orange "></i>
+                                <i class="fas fa-star  text-orange "></i>
+                                <i class="fas fa-star  text-orange "></i>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="rating-timestamp text-body-tertiary" style="font-size: .8rem">
+                                19-9-2023 20:00:00
+                            </div>
+                            <div class="rating-content mt-1">
+                                Sản phẩm khá vjp
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>

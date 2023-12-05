@@ -239,6 +239,9 @@ a {
 .text-orange {
   color: #ff6600 !important;
 }
+.border-orange {
+  border-color: #ff6600 !important;
+}
 
 .bg-orange {
   background-color: #ff6600 !important;
