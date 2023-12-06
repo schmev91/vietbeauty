@@ -44,6 +44,12 @@ function getAllDanhgiaBySanpham($ma_sp)
     return pdo_query($sql, $ma_sp);
 }
 
+function getAllDanhgia()
+{
+    $sql = "SELECT * FROM danhgia ";
+    return pdo_query($sql);
+}
+
 
 /**
  * Tổng hợp số điểm đánh giá của một sản phẩm

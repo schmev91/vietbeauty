@@ -145,8 +145,11 @@ switch ($tableName) {
     case 'danhgia': {
 
             switch ($action) {
-                case 'value':
-                    # code...
+                case 'delete':
+                    u::setThread();
+                    extract($_POST);
+                    deleteDanhgia($ma_nd, $ma_sp);
+                    u::toThread();
                     break;
             }
             break;

@@ -141,9 +141,10 @@ class UserModel
 
         $isUserExist = !empty($user);
         $isPasswordValid = $isUserExist ? ($user['matkhau'] == $password ? true : false) : false;
+        $isBanned = $isUserExist ? $user['isBanned'] : true;
 
         //nếu người dùng tồn tại và đúng mật khẩu thì đăng nhập thành công
-        if ($isPasswordValid) {
+        if ($isPasswordValid && !$isBanned) {
             $_SESSION['user'] = $user;
             return true; // Đăng nhập thành công
         }

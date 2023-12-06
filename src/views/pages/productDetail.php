@@ -237,7 +237,7 @@ $totalRatings = sizeof($danhgiaData);
                     </a>
                 </div>
 
-                <div class="rating-container mt-2 d-flex flex-column gap-2 overflow-y-auto">
+                <div class="rating-container mt-2 d-flex flex-column gap-3 overflow-y-auto">
 
 
                     <?php
@@ -260,14 +260,14 @@ $totalRatings = sizeof($danhgiaData);
                                     <div class="rating-user fw-semibold">
                                         <?= $ten_nd ?>
                                     </div>
-                                    <div class="rating-score">
+                                    <div class="rating-score d-flex ">
                                         <?= $htmlRatingScore ?>
+                                        <div class="rating-content ms-2 text-wrap " style="font-size: .9rem;" ;>
+                                            <?= $noidung ?>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div class="rating-content mt-1 text-wrap " style="font-size: .9rem;" ;>
-                                    <?= $noidung ?>
-                                </div>
                             </div>
 
                     <?php }

@@ -189,3 +189,9 @@ $thuonghieuColumns = [
     'Thương hiệu',
     'Ảnh'
 ];
+$danhgiaColumns = [
+    'Ảnh sản phẩm',
+    'Người dùng',
+    'Điểm',
+    'Nội dung'
+];

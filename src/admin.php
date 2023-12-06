@@ -60,6 +60,14 @@ if ($s['user']['isAdmin']) {
                 break;
             case 'danhgia':
 
+                $list = getAllDanhgia();
+                foreach ($list as $index => $danhgia) {
+                    userInlaiding($list[$index]);
+                    inlaidProductInfo($list[$index]);
+                }
+                $listArr['list'] = $list;
+                $columnList = $danhgiaColumns;
+
                 break;
             case 'hoidap':
 
