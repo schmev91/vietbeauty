@@ -25,7 +25,7 @@
 
         <!-- CỘT CHỨC NĂNG -->
         <td>
-            <button href="<?= navigator('danhgia', 'delete') ?>" class="px-1 p-0 btn btn-light">delete</button>
+            <button type="submit" class="px-1 p-0 btn btn-light">delete</button>
         </td>
     </form>
 </tr>

@@ -195,3 +195,9 @@ $danhgiaColumns = [
     'Điểm',
     'Nội dung'
 ];
+$hoidapColumns = [
+    'Ảnh sản phẩm',
+    'Người dùng',
+    'Thời gian',
+    'Nội dung'
+];

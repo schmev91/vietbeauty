@@ -8,9 +8,16 @@ require_once 'pdo.php';
  *
  * @return array Mảng chứa thông tin câu hỏi và trả lời
  */
-function getHoidapBySanpham($ma_sp) {
+function getHoidapBySanpham($ma_sp)
+{
     $sql = "SELECT * FROM hoidap WHERE ma_sp = ? ORDER BY thoigian DESC";
     return pdo_query($sql, $ma_sp);
+}
+
+function getAllHoidapDesc()
+{
+    $sql = "SELECT * FROM hoidap ORDER BY thoigian DESC";
+    return pdo_query($sql);
 }
 
 /**
@@ -22,7 +29,8 @@ function getHoidapBySanpham($ma_sp) {
  *
  * @return void
  */
-function addCauhoi($noidung, $ma_sp, $ma_nd) {
+function addCauhoi($noidung, $ma_sp, $ma_nd)
+{
     $sql = "INSERT INTO hoidap (noidung, thoigian, ma_sp, ma_nd) VALUES (?, NOW(), ?, ?)";
     pdo_execute($sql, $noidung, $ma_sp, $ma_nd);
 }
@@ -34,7 +42,8 @@ function addCauhoi($noidung, $ma_sp, $ma_nd) {
  *
  * @return void
  */
-function deleteHoidap($ma_hoidap) {
+function deleteHoidap($ma_hoidap)
+{
     $sql = "DELETE FROM hoidap WHERE ma_hoidap = ?";
     pdo_execute($sql, $ma_hoidap);
 }

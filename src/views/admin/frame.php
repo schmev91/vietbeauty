@@ -125,7 +125,7 @@
                         'Sản phẩm' => 'sanpham',
                         'Đơn hàng' => 'donhang',
                         'Danh mục' => 'danhmuc',
-                        'Thuong hiệu' => 'thuonghieu',
+                        'Thương hiệu' => 'thuonghieu',
                         'Đánh giá' => 'danhgia',
                         'Hỏi đáp' => 'hoidap'
                     ];

@@ -158,8 +158,11 @@ switch ($tableName) {
     case 'hoidap': {
 
             switch ($action) {
-                case 'value':
-                    # code...
+                case 'delete':
+                    u::setThread();
+                    extract($_POST);
+                    deleteHoidap($ma_hoidap);
+                    u::toThread();
                     break;
             }
             break;

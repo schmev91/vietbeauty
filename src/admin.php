@@ -70,6 +70,13 @@ if ($s['user']['isAdmin']) {
 
                 break;
             case 'hoidap':
+                $list = getAllHoidapDesc();
+                foreach ($list as $index => $hoidap) {
+                    userInlaiding($list[$index]);
+                    inlaidProductInfo($list[$index]);
+                }
+                $listArr['list'] = $list;
+                $columnList = $hoidapColumns;
 
                 break;
 
