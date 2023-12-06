@@ -81,14 +81,14 @@ class UserModel
         $lastName = trim($data['lastName']);
 
         // Kiểm tra `firstName`
-        if (!preg_match("/^[a-zA-ZÀ-ỹ]+$/", $firstName)) {
+        if (!preg_match("/^[a-zA-ZÀ-ỹ\s]+$/", $firstName)) {
             $errors['firstName'] = 'Họ không được chứa số hoặc kí tự đặc biệt.';
         } else if (strlen($firstName) >= 128) {
             $errors['firstName'] = 'Họ không được dài hơn 128 kí tự.';
         }
 
         // Kiểm tra `lastName`
-        if (!preg_match("/^[a-zA-ZÀ-ỹ]+$/", $lastName)) {
+        if (!preg_match("/^[a-zA-ZÀ-ỹ\s]+$/", $lastName)) {
             $errors['lastName'] = 'Tên không được chứa số hoặc kí tự đặc biệt.';
         } else if (strlen($lastName) >= 128) {
             $errors['lastName'] = 'Tên không được dài hơn 128 kí tự.';
