@@ -34,7 +34,8 @@ class productController
             if ($isRateAble) {
                 addDanhgia($ma_nd, $ma_sp, $diem, $noidung);
             }
-            productController::show();
+
+            header('location:' . u::link('product', 'show', ['ma_sp' => $ma_sp]));
         } else
             u::toHome();
     }
@@ -49,7 +50,7 @@ class productController
 
 
             addCauhoi($noidung, $ma_sp, $ma_nd);
-            productController::show();
+            header('location:' . u::link('product', 'show', ['ma_sp' => $ma_sp]));
         } else
             u::toHome();
     }

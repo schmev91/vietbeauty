@@ -312,7 +312,7 @@ $totalRatings = sizeof($danhgiaData);
                                 <p class='hoidap-username'>
                                     {$ten_nd} <span class= 'text-body-tertiary ms-3 fw-normal ' style='font-size: .8rem;'>$thoigian</span>
                                 </p>
-                                <div class='hoidap-text text-wrap ' style='max-width: 33%;'>
+                                <div class='hoidap-text text-wrap ' style='max-width: 48%;'>
                                     {$noidung}
                                 </div>";
 
