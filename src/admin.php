@@ -18,10 +18,10 @@ $s = &$_SESSION;
 
 if ($s['user']['isAdmin']) {
 
-    $tableName = isset($_GET['table']) ? $_GET['table'] : 'nguoidung';
+    $tableName = isset($_GET['table']) ? $_GET['table'] : null;
     if (isset($_GET['action'])) {
         include_once "./controllers/adminController.php";
-    } else {
+    } else if (isset($tableName)) {
         $listArr = array();
 
         switch ($tableName) {
@@ -80,7 +80,7 @@ if ($s['user']['isAdmin']) {
 
                 break;
 
-            default:
+            case 'nguoidung':
                 $listArr['list'] = getAllNguoidungDesc();
                 $columnList = $nguoidungColumns;
                 $createWhat = "Người dùng";
@@ -88,6 +88,8 @@ if ($s['user']['isAdmin']) {
         // include_once "./views/admin/frame.php";
         if (!isset($createWhat)) $createWhat = null;
         initAdmin($listArr, $columnList, $createWhat);
+    } else {
+        include_once ROOT . "/views/admin/frame.php";
     }
 } else {
     // Không phải admin thì quay về trang chủ
