@@ -316,12 +316,12 @@ $totalRatings = sizeof($danhgiaData);
                                     {$noidung}
                                 </div>";
 
-                    // if (u::isLoggedin() && s('user')['ma_nd'] == $ma_nd) {
-                    //     $hoidapListHtml .=
-                    //         "<div class='hoidap-action'>
-                    //                 <a href='index.php?require=hoidapDelete&id={$ma_hd}&product_id={$product_id}'>xóa</a>
-                    //                 </div>";
-                    // }
+                    if (u::isLoggedin() && s('user')['ma_nd'] == $ma_nd) {
+                        $hoidapListHtml .=
+                            "<div class='hoidap-action'>
+                                    <a class='text-secondary' href=''>xóa</a>
+                                    </div>";
+                    }
 
                     $hoidapListHtml .= "</div>
                             </div>";;
