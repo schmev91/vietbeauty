@@ -308,19 +308,21 @@ $totalRatings = sizeof($danhgiaData);
                             <div class='hoidap-avatar'>
                                 <img src='$avatar' alt=''>
                             </div>
-                            <div class='hoidap-content' >
+                            <div class='hoidap-content fit-content' >
                                 <p class='hoidap-username'>
                                     {$ten_nd} <span class= 'text-body-tertiary ms-3 fw-normal ' style='font-size: .8rem;'>$thoigian</span>
                                 </p>
-                                <div class='hoidap-text text-wrap ' style='max-width: 48%;'>
+                                <div class='hoidap-text text-wrap ' style='max-width: 45vw;'>
                                     {$noidung}
                                 </div>";
 
-                    if (u::isLoggedin() && s('user')['ma_nd'] == $ma_nd) {
+                    if (u::isLoggedin() && (s('user')['ma_nd'] == $ma_nd || s('user')['isAdmin'])) {
+                        $hoidapDelete = u::link('product', 'questionDelete');
                         $hoidapListHtml .=
-                            "<div class='hoidap-action'>
-                                    <a class='text-secondary' href=''>xóa</a>
-                                    </div>";
+                            "<form method='post' action='$hoidapDelete' class='hoidap-action'>
+                            <input type='text' name='ma_hoidap' value='$ma_hoidap' hidden>
+                                    <button type='submit' class='text-secondary bg-white border-0 '>xóa</button>
+                                    </form>";
                     }
 
                     $hoidapListHtml .= "</div>

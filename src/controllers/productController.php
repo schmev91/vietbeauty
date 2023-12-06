@@ -54,4 +54,14 @@ class productController
         } else
             u::toHome();
     }
+
+    public function questionDelete()
+    {
+        u::setThread();
+        extract($_POST);
+        if (isset($ma_hoidap)) {
+            deleteHoidap($ma_hoidap);
+        }
+        u::toThread();
+    }
 }
