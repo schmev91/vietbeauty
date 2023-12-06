@@ -61,6 +61,14 @@ switch ($tableName) {
                     updateMaThuonghieu($ma_sp, $ma_th);
                     u::toThread();
                     break;
+                case 'delete':
+                    u::setThread();
+                    extract($_GET);
+                    $product = new productModel($ma_sp);
+                    extract($product->getData());
+                    deleteSanpham($ma_sp);
+                    deleteSanphamImg($anh);
+                    u::toThread();
             }
             break;
         }

@@ -31,6 +31,11 @@ function uploadProductImg($file)
     return $imagePath;
 }
 
+function deleteSanphamImg($imagePath)
+{
+    unlink($imagePath);
+}
+
 /**
  * Cập nhật thông tin sản phẩm trong bảng sanpham
  * @param int $ma_sp Mã sản phẩm cần cập nhật
