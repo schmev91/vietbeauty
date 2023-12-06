@@ -98,6 +98,12 @@ switch ($tableName) {
                     updateDanhmuc($ma_dm, $ten_dm);
                     U::toThread();
                     break;
+                case 'delete':
+                    U::setThread();
+                    extract($_GET);
+                    deleteDanhmuc($ma_dm);
+                    U::toThread();
+                    break;
             }
             break;
         }
@@ -116,6 +122,12 @@ switch ($tableName) {
                     U::setThread();
                     extract($_POST);
                     updateThuonghieu($ma_th, $ten_th);
+                    U::toThread();
+                    break;
+                case 'delete':
+                    U::setThread();
+                    extract($_GET);
+                    deleteThuonghieu($ma_th);
                     U::toThread();
                     break;
             }
