@@ -16,6 +16,9 @@
     <link rel="stylesheet" href="views/asset/css/general.css?v=2">
 
     <link rel="stylesheet" href="views/asset/css/admin.css?v=1">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 
 <body class="bg-black ">

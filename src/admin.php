@@ -97,7 +97,9 @@ if ($s['user']['isAdmin']) {
         $currentMonth = date('n');
         $ordersAmount = getDonhangAmountThisMonth();
         $totalRevenue = getTotalRevenueInCurrentMonth();
-        var_dump(calculateRevenueByCategory());
+        $chartData = json_encode(calculateRevenueByCategory());
+        $topDoanhthuSp = getTopRevenueProducts(5);
+        $topBanchaySp = getTopSellerProducts(5);
 
         include_once ROOT . "/views/admin/frame.php";
     }
@@ -115,9 +117,11 @@ function initAdmin($listArr, $columnList, $createWhat = null, $errors = null)
     include_once ROOT . "/views/admin/frame.php";
 }
 
-function navigator($tableName, $action)
+function navigator($tableName, $action = null)
 {
-    return "admin.php?table=$tableName&action=$action";
+    $link = "admin.php?table=$tableName";
+    if (isset($action)) $link .= "&action=$action";
+    return $link;
 }
 function setNavigator($tableName, $action)
 {

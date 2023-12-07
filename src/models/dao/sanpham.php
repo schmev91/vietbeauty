@@ -249,3 +249,38 @@ function inlaidProductInfo(&$row)
         $row[$key] = $value;
     }
 }
+
+/**
+ * Lấy 5 ma_sp có tổng doanh thu cao nhất
+ * @param int $amount Số lượng sản phẩm cần lấy
+ * @return array Mảng chứa 5 ma_sp có tổng doanh thu cao nhất
+ */
+function getTopRevenueProducts($amount)
+{
+    $sql = "
+        SELECT sp.ma_sp, sp.ten_sp, sp.anh, SUM(ctdh.thanhtien) as doanhthu
+        FROM ctdonhang ctdh
+        LEFT JOIN sanpham sp ON ctdh.ma_sp = sp.ma_sp
+        GROUP BY sp.ma_sp
+        ORDER BY doanhthu DESC
+        LIMIT $amount;
+    ";
+
+    // Thực hiện truy vấn
+    return pdo_query($sql);
+}
+
+function getTopSellerProducts($amount)
+{
+    $sql = "
+        SELECT sp.ma_sp, sp.ten_sp, sp.anh, SUM(ctdh.soluong) as soluong
+        FROM ctdonhang ctdh
+        LEFT JOIN sanpham sp ON ctdh.ma_sp = sp.ma_sp
+        GROUP BY sp.ma_sp
+        ORDER BY soluong DESC
+        LIMIT $amount;
+    ";
+
+    // Thực hiện truy vấn
+    return pdo_query($sql);
+}
