@@ -19,7 +19,8 @@ $s = &$_SESSION;
 if ($s['user']['isAdmin']) {
 
     $tableName = isset($_GET['table']) ? $_GET['table'] : null;
-    if (isset($_GET['action'])) {
+
+    if (isset($tableName) && isset($_GET['action'])) {
         include_once "./controllers/adminController.php";
     } else if (isset($tableName)) {
         $listArr = array();
@@ -39,6 +40,7 @@ if ($s['user']['isAdmin']) {
 
                 $createWhat = "Sản phẩm";
                 break;
+
             case 'donhang':
                 $listArr['list'] = getAllDonhangDesc();
                 foreach ($listArr['list'] as $index => $row) {
@@ -47,17 +49,20 @@ if ($s['user']['isAdmin']) {
                 $columnList = $donhangColumns;
 
                 break;
+
             case 'danhmuc':
                 $listArr['list'] = getAllDanhmucDesc();
                 $columnList = $danhmucColumns;
 
                 $createWhat = "Danh mục";
                 break;
+
             case 'thuonghieu':
                 $listArr['list'] = getAllThuonghieuDesc();
                 $columnList = $thuonghieuColumns;
                 $createWhat = "Thương hiệu";
                 break;
+
             case 'danhgia':
 
                 $list = getAllDanhgia();
@@ -85,7 +90,6 @@ if ($s['user']['isAdmin']) {
                 $columnList = $nguoidungColumns;
                 $createWhat = "Người dùng";
         }
-        // include_once "./views/admin/frame.php";
         if (!isset($createWhat)) $createWhat = null;
         initAdmin($listArr, $columnList, $createWhat);
     } else {
@@ -95,6 +99,8 @@ if ($s['user']['isAdmin']) {
     // Không phải admin thì quay về trang chủ
     header('location: index.php');
 }
+
+
 
 function initAdmin($listArr, $columnList, $createWhat = null, $errors = null)
 {

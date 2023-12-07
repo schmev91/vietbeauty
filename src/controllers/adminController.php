@@ -34,8 +34,23 @@ switch ($tableName) {
                     break;
                 case 'delete':
                     u::setThread();
-                    deleteNguoidung($_GET['ma_nd']);
-                    u::toThread();
+
+                    try {
+                        deleteNguoidung($_GET['ma_nd']);
+                    } catch (\Throwable $th) {
+                        ob_clean();
+                        echo
+                        '<h1>Không thể xóa người dùng.</h1>';
+                        echo '<script>
+                            setTimeout(function() {
+                                window.location.href = "' . $_SERVER['HTTP_REFERER'] . '";
+                                }, 3000); // Wait for 3 seconds
+                            </script>';
+                        exit;
+                    } finally {
+                        u::toThread();
+                    }
+
                     break;
             }
             break;

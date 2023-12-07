@@ -183,7 +183,7 @@
                     <!-- HTML -->
                     <!-- họ tên, tên đăng nhập, email, số điện thoại, mật khẩu, địa chỉ, avatar -->
                     <!-- MODAL - START -->
-                    <form action="<?= navigator("$tableName", 'create'); ?>" enctype="multipart/form-data" method="post" class="modal fade " id="exampleModal" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
+                    <form autocomplete="off" action="<?= navigator("$tableName", 'create'); ?>" enctype="multipart/form-data" method="post" class="modal fade " id="exampleModal" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
                         <div class="modal-dialog ">
                             <div class="modal-content bg-dark text-light ">
 

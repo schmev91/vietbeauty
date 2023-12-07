@@ -21,7 +21,7 @@
 
                             <div class="form__container">
                                 <label for="firstName">Họ <span class="red-text">*
-                                        <?= isset($firstName) ? '<span style="font-size: .6rem;color:red;" class="ms-1">' . $firstName . '</span>' : '' ?>
+                                        <?= isset($firstNameErr) ? '<span style="font-size: .6rem;color:red;" class="ms-1">' . $firstName . '</span>' : '' ?>
                                     </span>
 
                                 </label>
@@ -31,7 +31,7 @@
                             <div class="form__container">
 
                                 <label for="lastName">Tên <span class="red-text">*
-                                        <?= isset($lastName) ? '<span style="font-size: .6rem;color:red;" class="ms-1">' . $lastName . '</span>' : '' ?>
+                                        <?= isset($lastNameErr) ? '<span style="font-size: .6rem;color:red;" class="ms-1">' . $lastName . '</span>' : '' ?>
                                     </span></label>
                                 <input type="text" id="lastName" class="lastName" name="lastName" placeholder="Văn A" required>
                             </div>
@@ -40,7 +40,7 @@
 
                         <div class="form__container">
                             <label for="username">Tên đăng nhập <span class="red-text">*</span>
-                                <?= isset($username) ? '<span style="font-size: .7rem;color:red;" class="ms-1">' . $username . '</span>' : '' ?>
+                                <?= isset($usernameErr) ? '<span style="font-size: .7rem;color:red;" class="ms-1">' . $username . '</span>' : '' ?>
                             </label>
                             <input type="text" id="username" class="username" name="username" placeholder="Tên đăng nhập" required>
                         </div>
@@ -48,7 +48,7 @@
 
                         <div class="form__container">
                             <label for="email">Email <span class="red-text">*</span>
-                                <?= isset($email) ? '<span style="font-size: .7rem;color:red;" class="ms-1">' . $email . '</span>' : '' ?>
+                                <?= isset($emailErr) ? '<span style="font-size: .7rem;color:red;" class="ms-1">' . $email . '</span>' : '' ?>
                             </label>
                             <input type="email" id="email" class="email" name="email" placeholder="Email" required>
                         </div>
@@ -56,7 +56,7 @@
 
                         <div class="form__container">
                             <label for="phone">Số điện thoại <span class="red-text">*</span>
-                                <?= isset($phone) ? '<span style="font-size: .7rem;color:red;" class="ms-1">' . $phone . '</span>' : '' ?>
+                                <?= isset($phoneErr) ? '<span style="font-size: .7rem;color:red;" class="ms-1">' . $phone . '</span>' : '' ?>
                             </label>
                             <input type="phone" id="phone" class="phone" name="phone" placeholder="Số điện thoại" required>
                         </div>
@@ -65,7 +65,7 @@
                         <div class="form-group">
                             <div class="form__container">
                                 <label for="password">Mật khẩu <span class="red-text">*</span>
-                                    <?= isset($password) ? '<span style="font-size: .7rem;color:red;" class="ms-1">' . $password . '</span>' : '' ?>
+                                    <?= isset($passwordErr) ? '<span style="font-size: .7rem;color:red;" class="ms-1">' . $password . '</span>' : '' ?>
                                 </label>
                                 <input type="password" id="password" class="password" name="password" placeholder="Mật khẩu" required>
                             </div>
@@ -73,7 +73,7 @@
 
                             <div class="form__container">
                                 <label for="passwordconfirm">Xác nhận mật khẩu <span class="red-text">*</span>
-                                    <?= isset($passwordconfirm) ? '<span style="font-size: .7rem;color:red;" class="ms-1">' . $passwordconfirm . '</span>' : '' ?>
+                                    <?= isset($passwordconfirmErr) ? '<span style="font-size: .7rem;color:red;" class="ms-1">' . $passwordconfirm . '</span>' : '' ?>
                                 </label>
                                 <input type="password" id="passwordconfirm" class="passwordconfirm" name="passwordconfirm" placeholder="Xác nhận mật khẩu" required>
                             </div>

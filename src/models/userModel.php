@@ -82,47 +82,47 @@ class UserModel
 
         // Kiểm tra `firstName`
         if (!preg_match("/^[a-zA-ZÀ-ỹ\s]+$/", $firstName)) {
-            $errors['firstName'] = 'Họ không được chứa số hoặc kí tự đặc biệt.';
+            $errors['firstNameErr'] = 'Họ không được chứa số hoặc kí tự đặc biệt.';
         } else if (strlen($firstName) >= 128) {
-            $errors['firstName'] = 'Họ không được dài hơn 128 kí tự.';
+            $errors['firstNameErr'] = 'Họ không được dài hơn 128 kí tự.';
         }
 
         // Kiểm tra `lastName`
         if (!preg_match("/^[a-zA-ZÀ-ỹ\s]+$/", $lastName)) {
-            $errors['lastName'] = 'Tên không được chứa số hoặc kí tự đặc biệt.';
+            $errors['lastNameErr'] = 'Tên không được chứa số hoặc kí tự đặc biệt.';
         } else if (strlen($lastName) >= 128) {
-            $errors['lastName'] = 'Tên không được dài hơn 128 kí tự.';
+            $errors['lastNameErr'] = 'Tên không được dài hơn 128 kí tự.';
         }
 
         // Kiểm tra tên đăng nhập
         if (!preg_match("/^[a-zA-Z\d]+$/", $data['username'])) {
-            $errors['username'] = 'Tên đăng nhập không hợp lệ.';
+            $errors['usernameErr'] = 'Tên đăng nhập không hợp lệ.';
         }
 
         // Kiểm tra email
         if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
-            $errors['email'] = 'Email không hợp lệ.';
+            $errors['emailErr'] = 'Email không hợp lệ.';
         }
 
         // Kiểm tra độ dài mật khẩu
         if (strlen($data['password']) >= 30) {
-            $errors['password'] = 'Mật khẩu quá dài.';
+            $errors['passwordErr'] = 'Mật khẩu quá dài.';
         }
 
         // Kiểm tra xác nhận mật khẩu
         if (isset($data['passwordconfirm']) && $data['password'] !== $data['passwordconfirm']) {
-            $errors['passwordconfirm'] = 'Mật khẩu không trùng khớp.';
+            $errors['passwordconfirmErr'] = 'Mật khẩu không trùng khớp.';
         }
 
         // Kiểm tra số điện thoại
         if (!preg_match("/^\d{10,11}$/", $data['phone'])) {
-            $errors['phone'] = 'Số điện thoại không hợp lệ.';
+            $errors['phoneErr'] = 'Số điện thoại không hợp lệ.';
         }
 
         // Kiểm tra địa chỉ (cho phép không nhập)
         // // Nếu nhập, kiểm tra độ dài
         // if (!empty($data['address']) && strlen($data['address']) >= 256) {
-        //     $errors['address'] = 'Địa chỉ quá dài.';
+        //     $errors['addressErr'] = 'Địa chỉ quá dài.';
         // }
 
         return $errors;
