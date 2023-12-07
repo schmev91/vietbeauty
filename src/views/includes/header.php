@@ -9,7 +9,7 @@ global $DEFAULT_AVATAR;
             <div class="container">
                 <div class="header_top" style="display: flex; justify-content: space-between;">
                     <div class="header_topleft">
-                        <span>Sáng tạo nét đẹp, tinh tế mỗi nụ cười</span>
+                        <span>Nâng tầm sắc đẹp Việt</span>
                     </div>
                     <div class="header_topright">
                         <ul class="header_right" style="display: flex; gap:20px">
