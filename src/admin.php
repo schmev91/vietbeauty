@@ -93,6 +93,12 @@ if ($s['user']['isAdmin']) {
         if (!isset($createWhat)) $createWhat = null;
         initAdmin($listArr, $columnList, $createWhat);
     } else {
+        //DASHBOARD
+        $currentMonth = date('n');
+        $ordersAmount = getDonhangAmountThisMonth();
+
+
+
         include_once ROOT . "/views/admin/frame.php";
     }
 } else {
