@@ -78,12 +78,26 @@ switch ($tableName) {
                     break;
                 case 'delete':
                     u::setThread();
-                    extract($_GET);
-                    $product = new productModel($ma_sp);
-                    extract($product->getData());
-                    deleteSanpham($ma_sp);
-                    deleteSanphamImg($anh);
-                    u::toThread();
+
+                    try {
+                        extract($_GET);
+                        $product = new productModel($ma_sp);
+                        extract($product->getData());
+                        deleteSanpham($ma_sp);
+                        deleteSanphamImg($anh);
+                    } catch (\Throwable $th) {
+                        ob_clean();
+                        echo
+                        '<h1>Không thể xóa sản phẩm.</h1>';
+                        echo '<script>
+                            setTimeout(function() {
+                                window.location.href = "' . $_SERVER['HTTP_REFERER'] . '";
+                                }, 3000); // Wait for 3 seconds
+                            </script>';
+                        exit;
+                    } finally {
+                        u::toThread();
+                    }
             }
             break;
         }
