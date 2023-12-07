@@ -52,6 +52,21 @@ function getAllDonhangDesc()
     return pdo_query($sql);
 }
 
+function getDonhangAmountThisMonth()
+{
+    $currentMonth = date('m'); // Get the current month with leading zeros
+
+    $sql = "SELECT COUNT(ma_dh) as order_count 
+            FROM donhang 
+            WHERE MONTH(ngaydat) = ?";
+
+
+    $result = pdo_query($sql, $currentMonth);
+
+    // Assuming pdo_query returns an array with the query result
+    // Adjust the retrieval of the count based on your actual database query function
+    return $result[0]['order_count'];
+}
 
 /**
  * Thêm mới một đơn hàng
