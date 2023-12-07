@@ -96,8 +96,8 @@ if ($s['user']['isAdmin']) {
         //DASHBOARD
         $currentMonth = date('n');
         $ordersAmount = getDonhangAmountThisMonth();
-
-
+        $totalRevenue = getTotalRevenueInCurrentMonth();
+        var_dump(calculateRevenueByCategory());
 
         include_once ROOT . "/views/admin/frame.php";
     }

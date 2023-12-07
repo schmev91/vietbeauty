@@ -68,6 +68,20 @@ function getDonhangAmountThisMonth()
     return $result[0]['order_count'];
 }
 
+function getTotalRevenueInCurrentMonth()
+{
+    $currentMonth = date('m'); // Lấy số tháng hiện tại với số 0 được thêm vào nếu tháng < 10
+
+    // Truy vấn để lấy tổng tiền từ tất cả đơn hàng trong tháng hiện tại
+    $sql = "SELECT SUM(tongtien) as total_revenue 
+            FROM donhang 
+            WHERE MONTH(ngaydat) = ?";
+
+    $result = pdo_query($sql, $currentMonth);
+
+    return $result[0]['total_revenue'];
+}
+
 /**
  * Thêm mới một đơn hàng
  *

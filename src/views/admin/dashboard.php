@@ -5,21 +5,23 @@
     <div class="d-flex gap-5">
 
         <div class="card bg-secondary text-white">
-            <h5 class="card-header fw-medium fs-3">Doanh thu tháng 12</h5>
+            <h5 class="card-header  fs-3">Doanh thu tháng <?= $currentMonth ?></h5>
             <div class="card-body">
                 <h2 class="card-title fs-6 fw-light " style="max-width: 20rem">Tổng số doanh thu bán hàng của trang web Viet Beauty trong tháng 12</h2>
                 <p class="card-text fs-2 fw-bold  mt-4">
-                    <span>9.900.999</span> ₫
+                    <!-- TỔNG DOANH THU CỦA THÁNG -->
+                    <span><?= nf($totalRevenue) ?></span> ₫
                 </p>
             </div>
         </div>
 
         <div class="card bg-secondary text-white">
-            <h5 class="card-header fw-medium fs-3">Số lượng đơn hàng trong tháng</h5>
+            <h5 class="card-header fs-3 ">Lượng đơn hàng tháng <?= $currentMonth ?></h5>
             <div class="card-body">
                 <h2 class="card-title fs-6 fw-light " style="max-width: 20rem"></h2>
-                <p class="card-text fs-2 fw-semibold   mt-3">
-                    <span>219</span> đơn hàng
+                <p class="card-text fs-2 fw-semibold   mt-2">
+                    <!-- SÔ LƯỢNG ĐƠN HÀNG -->
+                    <span><?= $ordersAmount ?></span> đơn hàng
                 </p>
                 <a href="#" class="btn btn-danger  mt-3">Quản lý đơn hàng</a>
             </div>
