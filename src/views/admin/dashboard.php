@@ -103,7 +103,7 @@
 
     <div class="rounded-3 overflow-hidden ">
         <table class="table table-dark caption-top m-0">
-            <caption class="text-light p-2 bg-dark fs-5 fw-semibold ">Thống kê sản phẩm theo doanh thu</caption>
+            <caption class="text-light p-2 bg-dark fs-5 fw-semibold ">Thống kê theo doanh thu</caption>
             <thead class="table-active ">
                 <tr>
                     <th scope="col" class="fw-bold">#</th>
@@ -136,7 +136,7 @@
 
     <div class="rounded-3 overflow-hidden ">
         <table class="table table-dark caption-top m-0">
-            <caption class="text-light p-2 bg-dark fs-5 fw-semibold ">Thống kê sản phẩm số lượng bán</caption>
+            <caption class="text-light p-2 bg-dark fs-5 fw-semibold ">Thống kê theo số lượng bán</caption>
             <thead class="table-active ">
                 <tr>
                     <th scope="col" class="fw-bold">#</th>

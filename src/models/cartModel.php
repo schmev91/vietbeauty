@@ -4,7 +4,7 @@ class cartModel
     private $cartInfo;
     public function __construct($ma_nd)
     {
-        
+
         $this->cartInfo = getGiohangByNguoidung($ma_nd);
     }
 
@@ -29,7 +29,7 @@ class cartModel
 
     public function add($ma_nd, $ma_sp, $soluong)
     {
-        
+
         if (empty($this->cartInfo)) {
             addGiohang($ma_nd);
             $this->cartInfo = getGiohangByNguoidung($ma_nd);
@@ -49,14 +49,15 @@ class cartModel
 
     public function delete($ma_sp)
     {
-        if(empty($this->cartInfo)) return false;
+        if (empty($this->cartInfo)) return false;
         else {
             deleteSpgiohang($this->cartInfo['ma_gh'], $ma_sp);
             return true;
         }
     }
 
-    public function updateQuantity($ma_sp, $soluong){
+    public function updateQuantity($ma_sp, $soluong)
+    {
         updateSoluongSpgiohang($this->cartInfo['ma_gh'], $ma_sp, $soluong);
     }
 }
