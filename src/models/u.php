@@ -95,6 +95,13 @@ function vd($var)
     var_dump($var);
 }
 
+function deleteImage($path)
+{
+    if (file_exists($path)) {
+        unlink($path);
+    }
+}
+
 function initHeader($title, $cssName)
 {
 

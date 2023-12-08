@@ -102,9 +102,12 @@
 
             <div class="row mt-4">
               <div class="col-auto mt-2">
-                <img class="rounded-circle border border-1 border-secondary-subtle " src="<?= $avatar ?>" style="width: 100px; height: 100px;" alt="">
+                <label for="avatar" class="">
+                  <img class="rounded-circle border border-1 border-secondary-subtle " src="<?= $avatar ?>" style="width: 100px; height: 100px;" alt="">
 
-                <form method="post" action="">
+                </label>
+
+                <form id="changeAvatar" method="post" action="<?= u::link('user', 'changeAvatar') ?>" enctype="multipart/form-data">
                   <div class="d-flex flex-column gap-2 align-items-center ">
                     <label for="avatar" class="avatarLabel  mt-1">Đổi ảnh</label>
                     <input type="file" name="avatar" style="visibility: hidden;max-width: 100px; " id="avatar" class="uploadAvatar border border-0 " accept="image/*">
@@ -178,6 +181,8 @@
               </div>
             </div>
           </div>
+
+          <script src="views/asset/javascript/user.js"></script>
 
         <?php } ?>
 

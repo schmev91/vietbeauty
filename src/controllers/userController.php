@@ -33,6 +33,24 @@ class UserController
         } else $this->showLoginForm();
     }
 
+    public function changeAvatar()
+    {
+        if (!u::isLoggedin()) {
+            u::toHome();
+        } else {
+            u::setThread();
+
+            extract(s('user'));
+            deleteImage($avatar);
+            $newAvatarPath = uploadAvatar($_FILES['avatar']);
+            updateAvatar($ma_nd, $newAvatarPath);
+
+            UserModel::reload($ma_nd);
+            u::toThread();
+        }
+    }
+
+
     public function showRegisterForm($errors = null)
     {
         if (!empty($errors)) extract($errors);

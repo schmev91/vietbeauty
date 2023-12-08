@@ -16,9 +16,9 @@ class UserModel
         return $dataDonhang;
     }
 
-    public function reload()
+    public static function reload($ma_nd)
     {
-        $this->user = getNguoidungById($this->getId());
+        $_SESSION['user'] = getNguoidungById($ma_nd);
     }
 
     // Các phương thức khác liên quan đến người dùng
