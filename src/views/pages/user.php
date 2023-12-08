@@ -118,21 +118,23 @@
 
               <!-- ĐỐI VỚI CHỨC NĂNG CẬP NHẬT THÌ CÓ THỂ GẮN LISTENER VÀO NÚT CẬP NHẬT,
             NẾU NGƯỜI DÙNG NHẤN NÚT CẬP NHẬT THÌ DÙNG JAVASCRIPT THAY COL GIỮA VÀ COL CUỐI THÀNH INPUT VÀ SUMIT BUTTON -->
-              <form class="col d-flex flex-column gap-2 pe-4">
+              <form action="<?= u::link('user', 'changeName') ?>" method="post" class="col d-flex flex-column gap-2 pe-4" autocomplete="off">
                 <div class="input-group">
-                  <input type="text" class="form-control" placeholder="<?= $email ?>" disabled>
+                  <input type="text" class="form-control" placeholder="<?= $ten_dangnhap ?>" disabled>
                   <span class="input-group-text">
-                    <i class="fa-solid fa-envelope text-black-50 "></i>
+                    <i class="fa-solid fa-key text-black-50 "></i>
                   </span>
                 </div>
+                <!-- TÊN NGƯỜI DÙNG -->
                 <div class="input-group">
-                  <input type="text" class="form-control" placeholder="<?= $_SESSION['user']['ten_nd'] ?>">
+                  <input type="text" name="ten_nd" class="form-control" placeholder="<?= $_SESSION['user']['ten_nd'] ?>">
                   <span class="input-group-text">
                     <i class="fa-solid fa-user text-black-50 "></i>
                   </span>
                 </div>
                 <button type="submit" class="border-0 py-2 px-3 rounded-5 text-white fw-bold mt-3" style=" background-color:#B4975A;">Cập nhật</button>
               </form>
+
             </div>
           </div>
           <div class="col">

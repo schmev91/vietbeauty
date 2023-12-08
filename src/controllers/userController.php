@@ -50,6 +50,24 @@ class UserController
         }
     }
 
+    public function changeName()
+    {
+        if (!u::isLoggedin()) {
+            u::toHome();
+        } else {
+            u::setThread();
+
+            extract(s('user'));
+            extract($_POST);
+
+            doiTenNguoiDung($ma_nd, $ten_nd);
+
+            UserModel::reload($ma_nd);
+            u::toThread();
+        }
+    }
+
+
 
     public function showRegisterForm($errors = null)
     {
