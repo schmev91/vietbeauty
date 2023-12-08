@@ -1,8 +1,8 @@
 <?php
 
-use function PHPSTORM_META\elementType;
-
-initHeader($ten_sp, 'productDetail') ?>
+initHeader($ten_sp, 'productDetail');
+$totalRatings = sizeof($danhgiaData);
+?>
 
 
 <main class="py-5">
@@ -91,7 +91,6 @@ initHeader($ten_sp, 'productDetail') ?>
     $counter = 5;
     $avg = 0;
 
-    $totalRatings = sizeof($danhgiaData);
 
     if ($totalRatings) {
 
@@ -214,24 +213,31 @@ initHeader($ten_sp, 'productDetail') ?>
                         }
                     }
                 });
+
+                ratingForm.addEventListener("submit", function(event) {
+                    if (selectedRating.value == 0) {
+                        event.preventDefault(); // Prevent the form from submitting
+                        alert("Please choose a rating before submitting.");
+                    }
+                });
             </script>
 
 
             <?php
-            $isRated = isUserRated(s('user')['ma_nd'], $_GET['ma_sp']);
+            $isRated = u::isLoggedin() ? isUserRated(s('user')['ma_nd'], $_GET['ma_sp']) : null;
 
             ?>
 
             <!-- RATING -->
             <div id="rating" class="col ms-3">
                 <div class="d-flex justify-content-between ">
-                    <span class="fs-6 py-1 fw-semibold text-secondary ">Bình luận</span>
-                    <button type="button" <?= $isRated ? 'hidden' : null ?> class="py-1 px-2 border-2 me-3 bor border-orange rounded-3 text-orange bg-white  fw-bold" data-bs-toggle="modal" data-bs-target="#ratingForm">
+                    <span class="fs-6 py-1 fw-semibold text-secondary ">Đánh giá sản phẩm</span>
+                    <a href="<?= u::isLoggedin() ? null : u::link('user', 'showLoginForm') ?>" <?= $isRated ? 'hidden' : null ?> class="py-1 px-2 border  border-2 me-3 bor border-orange rounded-3 text-orange bg-white  fw-bold" data-bs-toggle="<?= u::isLoggedin() ? 'modal' : null ?>" data-bs-target="#ratingForm">
                         Viết đánh giá
-                    </button>
+                    </a>
                 </div>
 
-                <div class="rating-container mt-2 d-flex flex-column gap-2 overflow-y-auto">
+                <div class="rating-container mt-2 d-flex flex-column gap-3 overflow-y-auto">
 
 
                     <?php
@@ -250,18 +256,18 @@ initHeader($ten_sp, 'productDetail') ?>
                     ?>
                             <!-- HTML -->
                             <div class="rating d-flex gap-3">
-                                <div>
+                                <div style="min-width: 4rem;">
                                     <div class="rating-user fw-semibold">
                                         <?= $ten_nd ?>
                                     </div>
-                                    <div class="rating-score">
+                                    <div class="rating-score d-flex ">
                                         <?= $htmlRatingScore ?>
+                                        <div class="rating-content ms-2 text-wrap " style="font-size: .9rem;" ;>
+                                            <?= $noidung ?>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div class="rating-content mt-1" style="font-size: .9rem;" ;>
-                                    <?= $noidung ?>
-                                </div>
                             </div>
 
                     <?php }
@@ -295,26 +301,28 @@ initHeader($ten_sp, 'productDetail') ?>
             <?php
             $hoidapListHtml = "";
             if (isset($hoidapData)) {
-                foreach ($hoidapData as $data) {
-                    extract($data);
+                foreach ($hoidapData as $hoidap) {
+                    extract($hoidap);
                     $hoidapListHtml .=
-                        "<div class='hoidap'>
+                        "<div class='hoidap' >
                             <div class='hoidap-avatar'>
-                                <img src='views/asset/img/general/default_avatar.png' alt=''>
+                                <img src='$avatar' alt=''>
                             </div>
-                            <div class='hoidap-content'>
+                            <div class='hoidap-content fit-content' >
                                 <p class='hoidap-username'>
-                                    {$hoidap}
+                                    {$ten_nd} <span class= 'text-body-tertiary ms-3 fw-normal ' style='font-size: .8rem;'>$thoigian</span>
                                 </p>
-                                <p class='hoidap-text'>
-                                    {$content}
-                                </p>";
+                                <div class='hoidap-text text-wrap ' style='max-width: 45vw;'>
+                                    {$noidung}
+                                </div>";
 
-                    if (isset($_SESSION['role']) && $_SESSION['ma_nd'] == $ma_nd) {
+                    if (u::isLoggedin() && (s('user')['ma_nd'] == $ma_nd || s('user')['isAdmin'])) {
+                        $hoidapDelete = u::link('product', 'questionDelete');
                         $hoidapListHtml .=
-                            "<div class='hoidap-action'>
-                                    <a href='index.php?require=hoidapDelete&id={$id}&product_id={$product_id}'>xóa</a>
-                                    </div>";
+                            "<form method='post' action='$hoidapDelete' class='hoidap-action'>
+                            <input type='text' name='ma_hoidap' value='$ma_hoidap' hidden>
+                                    <button type='submit' class='text-secondary bg-white border-0 '>xóa</button>
+                                    </form>";
                     }
 
                     $hoidapListHtml .= "</div>
@@ -322,19 +330,21 @@ initHeader($ten_sp, 'productDetail') ?>
                 }
             }
 
-            if (isset($_SESSION['role'])) {
+            if (u::isLoggedin()) {
+                $addQuestionLink = u::link('product', 'questioningRequest', ['ma_sp' => $_GET['ma_sp']]);
                 $hoidapInteractionHtml =
                     "<div class='hoidapInteraction-loggedIn'>
-                        <form action='model/hoidap-add.php' method='post'>
-                            <input type='text' name='product_id' hidden value='{$_GET['id']}'>
-                            <input type='text' name='content' required placeholder='Xin mời nhập nội dung bình luận...'>
-                            <button type='submit'>Đăng</button>
+                        <form action='$addQuestionLink' method='post'>
+                            <input type='text' name='ma_sp' hidden value='{$_GET['ma_sp']}'>
+                            <input type='text' name='noidung' required placeholder='Xin mời nhập nội dung hỏi đáp...'>
+                            <button type='submit' class ='btn btn-primary'>Đăng</button>
                         </form>
                     </div>";
             } else {
+                $loginLink = u::link('user', 'showLoginForm');
                 $hoidapInteractionHtml =
                     "<div class='hoidapInteraction-noAccount'>
-                        Xin mời đăng nhập để đăng câu hỏi <a class='bg-primary ms-2' href='index.php?require=login'>Đăng nhập</a>
+                        Xin mời đăng nhập để đăng câu hỏi <a class='btn btn-primary  ms-2' href='$loginLink'>Đăng nhập</a>
                     </div>";
             }
 

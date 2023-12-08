@@ -247,6 +247,9 @@ main {
   justify-content: center;
   cursor: pointer;
 }
+.rating-content {
+  max-width: 100%;
+}
 
 .star > i {
   font-size: 2rem;

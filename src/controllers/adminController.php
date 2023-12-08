@@ -34,8 +34,23 @@ switch ($tableName) {
                     break;
                 case 'delete':
                     u::setThread();
-                    deleteNguoidung($_GET['ma_nd']);
-                    u::toThread();
+
+                    try {
+                        deleteNguoidung($_GET['ma_nd']);
+                    } catch (\Throwable $th) {
+                        ob_clean();
+                        echo
+                        '<h1>Không thể xóa người dùng.</h1>';
+                        echo '<script>
+                            setTimeout(function() {
+                                window.location.href = "' . $_SERVER['HTTP_REFERER'] . '";
+                                }, 3000); // Wait for 3 seconds
+                            </script>';
+                        exit;
+                    } finally {
+                        u::toThread();
+                    }
+
                     break;
             }
             break;
@@ -61,6 +76,28 @@ switch ($tableName) {
                     updateMaThuonghieu($ma_sp, $ma_th);
                     u::toThread();
                     break;
+                case 'delete':
+                    u::setThread();
+
+                    try {
+                        extract($_GET);
+                        $product = new productModel($ma_sp);
+                        extract($product->getData());
+                        deleteSanpham($ma_sp);
+                        deleteSanphamImg($anh);
+                    } catch (\Throwable $th) {
+                        ob_clean();
+                        echo
+                        '<h1>Không thể xóa sản phẩm.</h1>';
+                        echo '<script>
+                            setTimeout(function() {
+                                window.location.href = "' . $_SERVER['HTTP_REFERER'] . '";
+                                }, 3000); // Wait for 3 seconds
+                            </script>';
+                        exit;
+                    } finally {
+                        u::toThread();
+                    }
             }
             break;
         }
@@ -98,6 +135,12 @@ switch ($tableName) {
                     updateDanhmuc($ma_dm, $ten_dm);
                     U::toThread();
                     break;
+                case 'delete':
+                    U::setThread();
+                    extract($_GET);
+                    deleteDanhmuc($ma_dm);
+                    U::toThread();
+                    break;
             }
             break;
         }
@@ -118,6 +161,12 @@ switch ($tableName) {
                     updateThuonghieu($ma_th, $ten_th);
                     U::toThread();
                     break;
+                case 'delete':
+                    U::setThread();
+                    extract($_GET);
+                    deleteThuonghieu($ma_th);
+                    U::toThread();
+                    break;
             }
             break;
         }
@@ -125,8 +174,11 @@ switch ($tableName) {
     case 'danhgia': {
 
             switch ($action) {
-                case 'value':
-                    # code...
+                case 'delete':
+                    u::setThread();
+                    extract($_POST);
+                    deleteDanhgia($ma_nd, $ma_sp);
+                    u::toThread();
                     break;
             }
             break;
@@ -135,8 +187,11 @@ switch ($tableName) {
     case 'hoidap': {
 
             switch ($action) {
-                case 'value':
-                    # code...
+                case 'delete':
+                    u::setThread();
+                    extract($_POST);
+                    deleteHoidap($ma_hoidap);
+                    u::toThread();
                     break;
             }
             break;

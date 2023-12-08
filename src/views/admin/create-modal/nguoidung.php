@@ -9,49 +9,57 @@ if (isset($errors)) {
 <div class="d-flex gap-3">
     <div class="fields flex-grow-1 ">
         <!-- fields start -->
+
         <!-- TÊN ĐĂNG NHẬP -->
         <?php initInput(
-            "type",
+            "text",
             "username",
             "Tên đăng nhập",
             "fa-solid fa-right-to-bracket",
-            isset($username) ? $username : null
+            isset($usernameErr) ? $usernameErr : null
         ); ?>
+
         <!-- HỌ VÀ TÊN -->
         <div class="input-group input-group mb-2">
-            <input required name="firstName" type="text" class="form-control  <?= isset($lastName) ? $lastName : null ?>" placeholder="<?= isset($lastName) ? $lastName : 'Họ' ?>" aria-describedby="inputGroup-sizing-sm">
+            <input required name="firstName" type="text" class="form-control  <?= isset($lastNameErr) ? $lastNameErr : null ?>" placeholder="<?= isset($lastNameErr) ? $lastNameErr : 'Họ' ?>" aria-describedby="inputGroup-sizing-sm">
 
-            <input required name="lastName" type="text" class="form-control  <?= isset($firstName) ? $firstName : null ?>" placeholder="<?= isset($lastName) ? $lastName : 'Tên' ?>" aria-describedby="inputGroup-sizing-sm">
+            <input required name="lastName" type="text" class="form-control  <?= isset($firstNameErr) ? $firstNameErr : null ?>" placeholder="<?= isset($firstNameErr) ? $firstNameErr : 'Tên' ?>" aria-describedby="inputGroup-sizing-sm">
         </div>
+
         <!-- EMAIL -->
         <?php initInput(
-            "type",
+            "text",
             "email",
             "maev@hogwarts.edu.us",
             "fa-solid fa-envelope",
-            isset($email) ? $email : null
+            isset($emailErr) ? $emailErr : null
         ); ?>
 
         <!-- SỐ ĐIỆN THOẠI -->
         <?php initInput(
-            "type",
+            "number",
             "phone",
             "Số điện thoại",
             "fa-solid fa-phone",
-            isset($phone) ? $phone : null
+            isset($phoneErr) ? $phoneErr : null
         ); ?>
 
         <!-- MẬT KHẨU -->
         <?php initInput(
-            "type",
+            "text",
             "password",
             "Mật khẩu",
             "fa-solid fa-lock",
-            isset($password) ? $password : null
+            isset($passwordErr) ? $passwordErr : null
         ); ?>
 
         <!-- ĐỊA CHỈ -->
-        <?php initInput("address", "Địa chỉ", "fa-solid fa-location-dot"); ?>
+        <?php initInput(
+            "text",
+            "address",
+            "Địa chỉ",
+            "fa-solid fa-location-dot"
+        ); ?>
 
         <!-- UPLOAD AVATAR INPUT -->
         <div class="mb-3">

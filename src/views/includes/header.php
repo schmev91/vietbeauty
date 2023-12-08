@@ -9,7 +9,7 @@ global $DEFAULT_AVATAR;
             <div class="container">
                 <div class="header_top" style="display: flex; justify-content: space-between;">
                     <div class="header_topleft">
-                        <span>Sáng tạo nét đẹp, tinh tế mỗi nụ cười</span>
+                        <span>Nâng tầm sắc đẹp Việt</span>
                     </div>
                     <div class="header_topright">
                         <ul class="header_right" style="display: flex; gap:20px">
@@ -23,12 +23,12 @@ global $DEFAULT_AVATAR;
                             <li>|</li>
                             <li><a href="index.php?controller=user&action=showRegisterForm">Đăng Ký</a></li>
 
-                        <?php  } else { 
-                            if($_SESSION['user']['isAdmin']){
-                                echo '<li><a href="admin.php"><i class="fa-solid fa-wrench"></i> Quản trị</a>
+                        <?php  } else {
+                                    if ($_SESSION['user']['isAdmin']) {
+                                        echo '<li><a href="admin.php"><i class="fa-solid fa-wrench"></i> Quản trị</a>
                                 </li>';
-                            }
-                            ?>
+                                    }
+                        ?>
                             <li><a href="index.php?controller=user&action=logout"><i class="fa-solid fa-right-from-bracket me-2"></i> Đăng xuất</a>
                             </li>
                         <?php } ?>

@@ -33,6 +33,76 @@ class UserController
         } else $this->showLoginForm();
     }
 
+    public function changeAvatar()
+    {
+        if (!u::isLoggedin()) {
+            u::toHome();
+        } else {
+            u::setThread();
+
+            extract(s('user'));
+            deleteImage($avatar);
+            $newAvatarPath = uploadAvatar($_FILES['avatar']);
+            updateAvatar($ma_nd, $newAvatarPath);
+
+            UserModel::reload($ma_nd);
+            u::toThread();
+        }
+    }
+
+    public function changeName()
+    {
+        if (!u::isLoggedin()) {
+            u::toHome();
+        } else {
+            u::setThread();
+
+            extract(s('user'));
+            extract($_POST);
+
+            doiTenNguoiDung($ma_nd, $ten_nd);
+
+            UserModel::reload($ma_nd);
+            u::toThread();
+        }
+    }
+
+    public function changePhone()
+    {
+        if (!u::isLoggedin()) {
+            u::toHome();
+        } else {
+            u::setThread();
+
+            extract(s('user'));
+            extract($_POST);
+
+            doiSoDienThoai($ma_nd, $sdt);
+
+            UserModel::reload($ma_nd);
+            u::toThread();
+        }
+    }
+
+    public function changeEmail()
+    {
+        if (!u::isLoggedin()) {
+            u::toHome();
+        } else {
+            u::setThread();
+
+            extract(s('user'));
+            extract($_POST);
+
+            doiEmail($ma_nd, $email);
+
+            UserModel::reload($ma_nd);
+            u::toThread();
+        }
+    }
+
+
+
     public function showRegisterForm($errors = null)
     {
         if (!empty($errors)) extract($errors);
@@ -60,6 +130,9 @@ class UserController
 
     public function showLoginForm($errors = null)
     {
+        if (!u::isThreading()) {
+            u::setThread();
+        }
         // Hiển thị form đăng nhập
         if (!empty($errors)) extract($errors);
         include_once './views/pages/login.php';
@@ -83,7 +156,6 @@ class UserController
                 // Đăng nhập thành công, chuyển hướng đến trang chủ hoặc thread
                 if (u::isThreading()) u::toThread();
                 else header("location: index.php");
-                
             } else {
                 // Đăng nhập không thành công, hiển thị thông báo đăng nhập không thành công
                 $this->showLoginForm(['loginKey' => 'Tên đăng nhập hoặc mật khẩu không chính xác.']);

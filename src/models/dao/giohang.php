@@ -8,17 +8,19 @@ require_once 'pdo.php';
  *
  * @return array Mảng chứa thông tin giỏ hàng
  */
-function getGiohangByNguoidung($ma_nd) {
+function getGiohangByNguoidung($ma_nd)
+{
     $sql = "SELECT * FROM giohang WHERE ma_nd = ?";
     return pdo_query_one($sql, $ma_nd);
 }
 
-function getTotalQuantityInCart($ma_nd) {
+function getTotalQuantityInCart($ma_nd)
+{
     $sql = "SELECT SUM(spgiohang.soluong) AS totalQuantity
             FROM giohang
             INNER JOIN spgiohang ON giohang.ma_gh = spgiohang.ma_gh
             WHERE giohang.ma_nd = ?";
-    
+
     $result = pdo_query_one($sql, $ma_nd);
 
     // Kiểm tra nếu có kết quả
@@ -37,7 +39,8 @@ function getTotalQuantityInCart($ma_nd) {
  *
  * @return void
  */
-function addGiohang($ma_nd) {
+function addGiohang($ma_nd)
+{
 
     $sql = "INSERT INTO giohang (lastactive, ma_nd) VALUES (CURRENT_TIMESTAMP, ?)";
     pdo_execute($sql, $ma_nd);
@@ -50,7 +53,8 @@ function addGiohang($ma_nd) {
  *
  * @return void
  */
-function updateLastActive($ma_gh) {
+function updateLastActive($ma_gh)
+{
     $sql = "UPDATE giohang SET lastactive = CURRENT_TIMESTAMP WHERE ma_gh = ?";
     pdo_execute($sql, $ma_gh);
 }
@@ -62,7 +66,8 @@ function updateLastActive($ma_gh) {
  *
  * @return void
  */
-function deleteGiohangByNguoidung($ma_nd) {
+function deleteGiohangByNguoidung($ma_nd)
+{
     $sql = "DELETE FROM giohang WHERE ma_nd = ?";
     pdo_execute($sql, $ma_nd);
 }
@@ -74,9 +79,16 @@ function deleteGiohangByNguoidung($ma_nd) {
  *
  * @return array Mảng chứa thông tin sản phẩm trong giỏ hàng
  */
-function getSpgiohang($ma_gh) {
+function getSpgiohang($ma_gh)
+{
     $sql = "SELECT * FROM spgiohang WHERE ma_gh = ?";
     return pdo_query($sql, $ma_gh);
+}
+
+function getSpgiohangByKeys($ma_gh, $ma_sp)
+{
+    $sql = "SELECT * FROM spgiohang WHERE ma_gh = ? AND ma_sp = ?";
+    return pdo_query($sql, $ma_gh, $ma_sp)[0];
 }
 
 /**
@@ -88,12 +100,14 @@ function getSpgiohang($ma_gh) {
  *
  * @return void
  */
-function addSpgiohang($ma_gh, $ma_sp, $soluong) {
+function addSpgiohang($ma_gh, $ma_sp, $soluong)
+{
     $sql = "INSERT INTO spgiohang (ma_gh, ma_sp, soluong) VALUES (?, ?, ?)";
     pdo_execute($sql, $ma_gh, $ma_sp, $soluong);
 }
 
-function isSpgiohangExists($ma_gh, $ma_sp) {
+function isSpgiohangExists($ma_gh, $ma_sp)
+{
     $sql = "SELECT COUNT(*) FROM spgiohang WHERE ma_gh = ? AND ma_sp = ?";
     $count = pdo_query_value($sql, $ma_gh, $ma_sp);
     return $count > 0;
@@ -108,12 +122,14 @@ function isSpgiohangExists($ma_gh, $ma_sp) {
  *
  * @return void
  */
-function updateSoluongSpgiohang($ma_gh, $ma_sp, $soluong) {
+function updateSoluongSpgiohang($ma_gh, $ma_sp, $soluong)
+{
     $sql = "UPDATE spgiohang SET soluong = ? WHERE ma_gh = ? AND ma_sp = ?";
     pdo_execute($sql, $soluong, $ma_gh, $ma_sp);
 }
 
-function increaseSoluongSpgiohang($ma_gh, $ma_sp, $soluongThem) {
+function increaseSoluongSpgiohang($ma_gh, $ma_sp, $soluongThem)
+{
     $sql = "UPDATE spgiohang SET soluong = soluong + ? WHERE ma_gh = ? AND ma_sp = ?";
     pdo_execute($sql, $soluongThem, $ma_gh, $ma_sp);
 }
@@ -127,9 +143,15 @@ function increaseSoluongSpgiohang($ma_gh, $ma_sp, $soluongThem) {
  *
  * @return void
  */
-function deleteSpgiohang($ma_gh, $ma_sp) {
+function deleteSpgiohang($ma_gh, $ma_sp)
+{
     $sql = "DELETE FROM spgiohang WHERE ma_gh = ? AND ma_sp = ?";
     pdo_execute($sql, $ma_gh, $ma_sp);
+}
+function deleteSpFromCart($ma_gh)
+{
+    $sql = "DELETE FROM spgiohang WHERE ma_gh = ?";
+    pdo_execute($sql, $ma_gh);
 }
 
 /**
@@ -139,7 +161,8 @@ function deleteSpgiohang($ma_gh, $ma_sp) {
  *
  * @return void
  */
-function deleteAllSpgiohangByNguoidung($ma_nd) {
+function deleteAllSpgiohangByNguoidung($ma_nd)
+{
     // Lấy mã giỏ hàng của người dùng
     $giohang = getGiohangByNguoidung($ma_nd);
 
@@ -148,4 +171,9 @@ function deleteAllSpgiohangByNguoidung($ma_nd) {
         $sql = "DELETE FROM spgiohang WHERE ma_gh = ?";
         pdo_execute($sql, $gh['ma_gh']);
     }
+}
+
+function cartDetailInlaiding(&$product, $ma_gh)
+{
+    $product = array_merge($product, getSpgiohangByKeys($ma_gh, $product['ma_sp']));
 }

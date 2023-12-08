@@ -18,10 +18,11 @@ $s = &$_SESSION;
 
 if ($s['user']['isAdmin']) {
 
-    $tableName = isset($_GET['table']) ? $_GET['table'] : 'nguoidung';
-    if (isset($_GET['action'])) {
+    $tableName = isset($_GET['table']) ? $_GET['table'] : null;
+
+    if (isset($tableName) && isset($_GET['action'])) {
         include_once "./controllers/adminController.php";
-    } else {
+    } else if (isset($tableName)) {
         $listArr = array();
 
         switch ($tableName) {
@@ -39,6 +40,7 @@ if ($s['user']['isAdmin']) {
 
                 $createWhat = "Sản phẩm";
                 break;
+
             case 'donhang':
                 $listArr['list'] = getAllDonhangDesc();
                 foreach ($listArr['list'] as $index => $row) {
@@ -47,37 +49,66 @@ if ($s['user']['isAdmin']) {
                 $columnList = $donhangColumns;
 
                 break;
+
             case 'danhmuc':
                 $listArr['list'] = getAllDanhmucDesc();
                 $columnList = $danhmucColumns;
 
                 $createWhat = "Danh mục";
                 break;
+
             case 'thuonghieu':
                 $listArr['list'] = getAllThuonghieuDesc();
                 $columnList = $thuonghieuColumns;
                 $createWhat = "Thương hiệu";
                 break;
+
             case 'danhgia':
+
+                $list = getAllDanhgia();
+                foreach ($list as $index => $danhgia) {
+                    userInlaiding($list[$index]);
+                    inlaidProductInfo($list[$index]);
+                }
+                $listArr['list'] = $list;
+                $columnList = $danhgiaColumns;
 
                 break;
             case 'hoidap':
+                $list = getAllHoidapDesc();
+                foreach ($list as $index => $hoidap) {
+                    userInlaiding($list[$index]);
+                    inlaidProductInfo($list[$index]);
+                }
+                $listArr['list'] = $list;
+                $columnList = $hoidapColumns;
 
                 break;
 
-            default:
+            case 'nguoidung':
                 $listArr['list'] = getAllNguoidungDesc();
                 $columnList = $nguoidungColumns;
                 $createWhat = "Người dùng";
         }
-        // include_once "./views/admin/frame.php";
         if (!isset($createWhat)) $createWhat = null;
         initAdmin($listArr, $columnList, $createWhat);
+    } else {
+        //DASHBOARD
+        $currentMonth = date('n');
+        $ordersAmount = getDonhangAmountThisMonth();
+        $totalRevenue = getTotalRevenueInCurrentMonth();
+        $chartData = json_encode(calculateRevenueByCategory());
+        $topDoanhthuSp = getTopRevenueProducts(5);
+        $topBanchaySp = getTopSellerProducts(5);
+
+        include_once ROOT . "/views/admin/frame.php";
     }
 } else {
     // Không phải admin thì quay về trang chủ
     header('location: index.php');
 }
+
+
 
 function initAdmin($listArr, $columnList, $createWhat = null, $errors = null)
 {
@@ -86,9 +117,11 @@ function initAdmin($listArr, $columnList, $createWhat = null, $errors = null)
     include_once ROOT . "/views/admin/frame.php";
 }
 
-function navigator($tableName, $action)
+function navigator($tableName, $action = null)
 {
-    return "admin.php?table=$tableName&action=$action";
+    $link = "admin.php?table=$tableName";
+    if (isset($action)) $link .= "&action=$action";
+    return $link;
 }
 function setNavigator($tableName, $action)
 {

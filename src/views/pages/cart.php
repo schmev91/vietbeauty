@@ -4,7 +4,7 @@
     <div class="container cart bg-white py-3 mt-3 rounded-3 ">
         <div class="cart-itemNumber">Giỏ hàng - <span><?= u::getCartQuantity(s('user')['ma_nd']) ?></span> sản phẩm</div>
 
-        <div class="row mt-5 column-gap-4 ">
+        <form action="<?= u::link('payment', 'cartOrdering') ?>" method="post" class="row mt-5 column-gap-4 ">
             <?php
             if (empty($cartData)) {
 
@@ -17,6 +17,7 @@
             <?php
             } else {
             ?>
+                <input type="text" hidden name="ma_gh" value="<?= $cartData[0]['ma_gh'] ?>">
 
                 <table class="table col">
                     <thead>
@@ -38,7 +39,7 @@
                                 <td>
                                     <div class="card mb-3 border-0">
                                         <div class="row g-0">
-                                            <input class="form-check-input m-0 my-auto me-2 border-2 border-dark-subtle  itemCheckbox" type="checkbox" value="" class="itemCheckbox">
+                                            <input class="form-check-input m-0 my-auto me-2 border-2 border-dark-subtle  itemCheckbox" type="checkbox" name="spgiohang[]" value="<?= $ma_sp ?>" class="itemCheckbox">
 
                                             <a href="<?= u::link('product', 'show', ['ma_sp' => $ma_sp]) ?>" class="col-auto">
                                                 <img src="<?= $anh ?>" style="max-height: 124px;" class="img-fluid rounded-start" alt="...">
@@ -66,10 +67,11 @@
 
                                 <!-- INPUT SO LUONG -->
                                 <td>
-                                    <form action="<?= u::link('cart', 'changeQuantity') ?>" method="post">
+                                    <!-- change from form to div to fix -->
+                                    <div action="<?= u::link('cart', 'changeQuantity') ?>" method="post" ma_sp="<?= $ma_sp ?>">
                                         <input type="text" hidden name="ma_sp" value="<?= $ma_sp ?>">
                                         <input name="soluong" class="quantity border-secondary-subtle bg-body-tertiary  border p-1 p-0 border-0 rounded-1 " min='1' max='50' type="number" value="<?= $soluong ?>">
-                                    </form>
+                                    </div>
                                 </td>
 
                                 <td class="fs-5 text-secondary-emphasis fw-medium"><span id="spthanhtien"><?= nf($dongia * $soluong) ?></span> ₫</td>
@@ -91,10 +93,10 @@
 
                                 </span> ₫</div>
                         </div>
-                        <div class="d-flex justify-content-between ">
+                        <!-- <div class="d-flex justify-content-between ">
                             <div class="fit-content fw-light" style="font-size: 0.9rem;">Giảm giá:</div>
                             <div class="fit-content fw-bold text-dark-emphasis ">-0 ₫</div>
-                        </div>
+                        </div> -->
                     </div>
                     <hr class="m-0 mb-3 text-secondary">
                     <div class="d-flex justify-content-between ">
@@ -103,12 +105,12 @@
                     </div>
                     <div class="text-body-tertiary fw-medium my-2" style="font-size: .8rem;">( Đã bao gồm thuế VAT )</div>
 
-                    <a href="" class="bg-golden mt-4 d-block text-center fw-bold fs-6 p-3 rounded-1">Tiến hành đặt hàng</a>
+                    <button type="submit" style="width: 100%;" class="bg-golden mt-4 d-block text-center fw-bold border-0 text-white fs-6 p-3 rounded-1">Tiến hành đặt hàng</button>
                 </div>
 
             <?php } ?>
 
-        </div>
+        </form>
 
 
 
@@ -122,6 +124,6 @@
 
 </main>
 
-<script src="views/asset/javascript/cart.js?v=1"></script>
+<script src="views/asset/javascript/cart.js?v=3"></script>
 
 <?php initFooter() ?>

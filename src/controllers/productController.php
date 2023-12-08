@@ -15,6 +15,7 @@ class productController
 
             $product = new productModel($ma_sp);
             $danhgiaData = productModel::getProductDanhgia($ma_sp);
+            $hoidapData = productModel::getProductHoidap($ma_sp);
 
             extract($product->getData());
             include_once './views/pages/productDetail.php';
@@ -33,8 +34,34 @@ class productController
             if ($isRateAble) {
                 addDanhgia($ma_nd, $ma_sp, $diem, $noidung);
             }
-            productController::show();
+
+            header('location:' . u::link('product', 'show', ['ma_sp' => $ma_sp]));
         } else
             u::toHome();
+    }
+
+    public function questioningRequest()
+    {
+        // noi dung, ma_sp, ma_nd
+        if (isset($_GET['ma_sp'])) {
+            $ma_nd = s('user')['ma_nd'];
+            $ma_sp = $_GET['ma_sp'];
+            extract($_POST);
+
+
+            addCauhoi($noidung, $ma_sp, $ma_nd);
+            header('location:' . u::link('product', 'show', ['ma_sp' => $ma_sp]));
+        } else
+            u::toHome();
+    }
+
+    public function questionDelete()
+    {
+        u::setThread();
+        extract($_POST);
+        if (isset($ma_hoidap)) {
+            deleteHoidap($ma_hoidap);
+        }
+        u::toThread();
     }
 }

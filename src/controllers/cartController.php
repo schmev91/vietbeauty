@@ -7,16 +7,16 @@ class cartController
     {
         $this->cartModel = new cartModel(s('user')['ma_nd']);
     }
-    
+
     public function show()
     {
-        if(!isset($_SESSION['user'])){
+        if (!isset($_SESSION['user'])) {
             header('location: index.php');
             exit;
         }
         extract($_SESSION['user']);
         $cartData = $this->cartModel->getCartData($ma_nd);
-        
+
         include_once './views/pages/cart.php';
     }
 
@@ -44,38 +44,36 @@ class cartController
         }
         extract($_SESSION['user']);
         extract($_POST);
-        
+
         //Thêm sản phẩm vào giỏ hàng
         $this->cartModel->add($ma_nd, $ma_sp, $soluong);
 
         //quay lại trang sản phẩm
         // header("location:".$_SESSION['thread']);
         u::toThread();
-
-
     }
 
     public function deleteItem()
     {
         u::setThread($_SERVER['HTTP_REFERER']);
-        if(isset($_GET['ma_sp']))
-        $deleteResult = $this->cartModel->delete($_GET['ma_sp']);
+        if (isset($_GET['ma_sp']))
+            $deleteResult = $this->cartModel->delete($_GET['ma_sp']);
 
         u::toThread();
-        
     }
 
-    public function changeQuantity(){
-        
+    public function changeQuantity()
+    {
+
         u::setThread();
-        extract($_POST);
-        
-        if(isset($soluong) && $soluong > 0){
-            $this->cartModel->updateQuantity($ma_sp, $soluong);
-        }
+        if (isset($_GET['ma_sp']) && isset($_GET['soluong'])) {
 
+            extract($_GET);
+
+            if (isset($soluong) && $soluong > 0) {
+                $this->cartModel->updateQuantity($ma_sp, $soluong);
+            }
+        }
         u::toThread();
     }
-
-   
 }

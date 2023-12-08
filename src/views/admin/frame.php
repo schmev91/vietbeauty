@@ -10,11 +10,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
+
     <link rel="icon" href="views/asset/img/general/logo.ico" type="image/x-icon">
 
     <link rel="stylesheet" href="views/asset/css/general.css?v=2">
 
     <link rel="stylesheet" href="views/asset/css/admin.css?v=1">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 
 <body class="bg-black ">
@@ -56,46 +60,20 @@
     </header>
 
 
-    <?php
-    // code
-    if (isset($createWhat)) {
-    ?>
-        <!-- HTML -->
-        <!-- họ tên, tên đăng nhập, email, số điện thoại, mật khẩu, địa chỉ, avatar -->
-        <!-- MODAL - START -->
-        <form action="<?= navigator("$tableName", 'create'); ?>" enctype="multipart/form-data" method="post" class="modal fade " id="exampleModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog ">
-                <div class="modal-content bg-dark text-light ">
-
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Thêm <?= $createWhat ?></h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-
-                        <?php include_once "views/admin/create-modal/$tableName.php"; ?>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary px-1" data-bs-dismiss="modal">Abort</button>
-                        <button type="submit" class="btn btn-primary px-4">Add</button>
-                    </div>
-
-                </div>
-            </div>
-        </form>
-
-
-
-    <?php } ?>
-
-    <!-- MODAL - END -->
-
+    <!-- HTML -->
     <main class="container-fluid">
+
         <div class="row">
 
             <div class="col-auto bg-dark py-5 nav-container p-0  border-2 border-0 border-end" style="border-color: #B4975A !important;">
                 <nav class="d-flex flex-column gap-2 ">
+
+                    <div class="mb-5">
+                        <a href="admin.php" class="bg-golden p-3 rounded-end-3  py-3 fw-bold fs-5">
+                            Tổng quan <i class="fa-solid fa-house bg-golden"></i>
+                        </a>
+                    </div>
+
                     <!-- Button trigger modal -->
                     <?php
                     // code
@@ -120,11 +98,11 @@
                     <?php }
 
                     $menuItems = [
-                        'Người dùng' => '',
+                        'Người dùng' => 'nguoidung',
                         'Sản phẩm' => 'sanpham',
                         'Đơn hàng' => 'donhang',
                         'Danh mục' => 'danhmuc',
-                        'Thuong hiệu' => 'thuonghieu',
+                        'Thương hiệu' => 'thuonghieu',
                         'Đánh giá' => 'danhgia',
                         'Hỏi đáp' => 'hoidap'
                     ];
@@ -143,62 +121,22 @@
 
                     ?>
 
-
-
                 </nav>
             </div>
 
-            <!-- DATA PLACEHOLDER -->
-            <div class="col p-0">
-                <table class="table table-striped table-dark   table-bordered" style="width:100%">
-                    <thead>
-                        <tr>
-                            <!-- COLUMN HEADING -->
-                            <?php
-                            foreach ($columnList as $column) {
-                                echo '<th class="py-3 fw-bold">' . $column . '</th>';
-                            }
-                            ?>
-                            <th class="py-3 fw-bold">Chức năng</th>
-                        </tr>
-                    </thead>
-                    <tbody>
 
-                        <!-- COLUMN ROW -->
-                        <?php
-                        // code
-                        foreach ($list as $row) {
-                            extract($row)
+            <?php
 
-                        ?>
-                            <!-- HTML -->
-
-                            <!-- TABLE TD PLACEHOLDERS -->
-                            <?php include "views/admin/table/$tableName.php" ?>
-
-                        <?php } ?>
-
-                    </tbody>
-                    <!-- COLUMN FOOTER -->
-                    <tfoot>
-                        <tr>
-                            <?php
-                            foreach ($columnList as $column) {
-                                echo '<th class="py-3 fw-bold">' . $column . '</th>';
-                            }
-                            ?>
-                            <th class="py-3 fw-bold">Chức năng</th>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
-
+            if (isset($tableName)) {
+                include_once "views/admin/table.php";
+            } else {
+                include_once "views/admin/dashboard.php";
+            } ?>
 
         </div>
 
     </main>
 
-    <script src="views/asset/javascript/admin.js"></script>
 </body>
 
 </html>

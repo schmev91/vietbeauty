@@ -102,9 +102,12 @@
 
             <div class="row mt-4">
               <div class="col-auto mt-2">
-                <img class="rounded-circle border border-1 border-secondary-subtle " src="<?= $avatar ?>" style="width: 100px; height: 100px;" alt="">
+                <label for="avatar" class="">
+                  <img class="rounded-circle border border-1 border-secondary-subtle " src="<?= $avatar ?>" style="width: 100px; height: 100px;" alt="">
 
-                <form method="post" action="">
+                </label>
+
+                <form id="changeAvatar" method="post" action="<?= u::link('user', 'changeAvatar') ?>" enctype="multipart/form-data">
                   <div class="d-flex flex-column gap-2 align-items-center ">
                     <label for="avatar" class="avatarLabel  mt-1">Đổi ảnh</label>
                     <input type="file" name="avatar" style="visibility: hidden;max-width: 100px; " id="avatar" class="uploadAvatar border border-0 " accept="image/*">
@@ -115,21 +118,23 @@
 
               <!-- ĐỐI VỚI CHỨC NĂNG CẬP NHẬT THÌ CÓ THỂ GẮN LISTENER VÀO NÚT CẬP NHẬT,
             NẾU NGƯỜI DÙNG NHẤN NÚT CẬP NHẬT THÌ DÙNG JAVASCRIPT THAY COL GIỮA VÀ COL CUỐI THÀNH INPUT VÀ SUMIT BUTTON -->
-              <form class="col d-flex flex-column gap-2 pe-4">
+              <form action="<?= u::link('user', 'changeName') ?>" method="post" class="col d-flex flex-column gap-2 pe-4" autocomplete="off">
                 <div class="input-group">
-                  <input type="text" class="form-control" placeholder="<?= $email ?>" disabled>
+                  <input type="text" class="form-control" placeholder="<?= $ten_dangnhap ?>" disabled>
                   <span class="input-group-text">
-                    <i class="fa-solid fa-envelope text-black-50 "></i>
+                    <i class="fa-solid fa-key text-black-50 "></i>
                   </span>
                 </div>
+                <!-- TÊN NGƯỜI DÙNG -->
                 <div class="input-group">
-                  <input type="text" class="form-control" placeholder="<?= $_SESSION['user']['ten_nd'] ?>">
+                  <input type="text" name="ten_nd" class="form-control" placeholder="<?= $_SESSION['user']['ten_nd'] ?>">
                   <span class="input-group-text">
                     <i class="fa-solid fa-user text-black-50 "></i>
                   </span>
                 </div>
                 <button type="submit" class="border-0 py-2 px-3 rounded-5 text-white fw-bold mt-3" style=" background-color:#B4975A;">Cập nhật</button>
               </form>
+
             </div>
           </div>
           <div class="col">
@@ -137,30 +142,28 @@
               Số điện thoại và Email
             </div>
             <div class="d-flex flex-column gap-4 px-3 mt-3">
-              <div class="row align-items-center">
+
+              <form action="<?= u::link('user', 'changePhone') ?>" method="post" class="row align-items-center">
                 <i class="fa-solid fa-phone col-auto fs-4 text-secondary" style="height: fit-content;"></i>
                 <div class="d-flex flex-column col">
-                  <div class="text-body-secondary mb-1">
-                    <?= $sdt ?>
-                  </div>
+                  <input type="text" name="sdt" class="form-control fit-content p-1 mb-2" value="<?= $sdt ?>">
                   <div class="text-body-tertiary  ">
                     Cập nhật số điện thoại
                   </div>
                 </div>
                 <button class="col-auto border-0 rounded-5 text-bg-light text-secondary fw-bold py-2">Cập nhật</button>
-              </div>
-              <div class="row align-items-center">
+              </form>
+
+              <form action="<?= u::link('user', 'changeEmail') ?>" method="post" class="row align-items-center">
                 <i class="fa-solid fa-envelope col-auto fs-4 text-secondary" style="height: fit-content;"></i>
                 <div class="d-flex flex-column col">
-                  <div class="text-body-secondary mb-1">
-                    <?= $email ?>
-                  </div>
+                  <input type="text" name="email" class="form-control fit-content p-1 mb-2" value="<?= $email ?>">
                   <div class="text-body-tertiary  ">
                     Cập nhật Email
                   </div>
                 </div>
                 <button class="col-auto border-0 rounded-5 text-bg-light text-secondary fw-bold py-2">Cập nhật</button>
-              </div>
+              </form>
             </div>
 
             <div class="fs-5 fw-bold mt-3">
@@ -178,6 +181,8 @@
               </div>
             </div>
           </div>
+
+          <script src="views/asset/javascript/user.js"></script>
 
         <?php } ?>
 

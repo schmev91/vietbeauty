@@ -330,6 +330,12 @@ function uploadAvatar($file)
     return $imagePath;
 }
 
+function updateAvatar($ma_nd, $newAvatarPath)
+{
+    $sql = "UPDATE nguoidung SET avatar = ? WHERE ma_nd = ?";
+    pdo_execute($sql, $newAvatarPath, $ma_nd);
+}
+
 function userInlaiding(&$arr)
 {
     $arr = array_merge($arr, getNguoidungById($arr['ma_nd']));

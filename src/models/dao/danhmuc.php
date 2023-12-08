@@ -92,3 +92,38 @@ function categoryInlaiding(&$product)
 {
     $product['ten_dm'] = getDanhmucById($product['ma_dm'])['ten_dm'];
 }
+
+
+/**
+ * Tính tổng doanh thu theo danh mục cho tháng hiện tại
+ * @return array Mảng chứa danh mục và tổng doanh thu
+ */
+function calculateRevenueByCategory()
+{
+    $sql = "
+        SELECT
+            dm.ten_dm AS TenDanhMuc,
+            SUM(ct.thanhtien) AS TongDoanhThu
+        FROM
+            danhmuc dm
+        JOIN
+            sanpham sp ON dm.ma_dm = sp.ma_dm
+        JOIN
+            ctdonhang ct ON ct.ma_sp = sp.ma_sp
+        JOIN
+            donhang dh ON ct.ma_dh = dh.ma_dh
+        WHERE
+            MONTH(dh.ngaydat) = MONTH(CURRENT_DATE())
+            AND YEAR(dh.ngaydat) = YEAR(CURRENT_DATE())
+        GROUP BY
+            dm.ten_dm;
+    ";
+
+    try {
+        $result = pdo_query($sql);
+        return $result;
+    } catch (PDOException $e) {
+        // Return an empty array or handle the error as needed
+        return array();
+    }
+}

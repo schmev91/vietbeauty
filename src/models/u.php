@@ -95,6 +95,13 @@ function vd($var)
     var_dump($var);
 }
 
+function deleteImage($path)
+{
+    if (file_exists($path)) {
+        unlink($path);
+    }
+}
+
 function initHeader($title, $cssName)
 {
 
@@ -188,4 +195,16 @@ $thuonghieuColumns = [
     'ID',
     'Thương hiệu',
     'Ảnh'
+];
+$danhgiaColumns = [
+    'Ảnh sản phẩm',
+    'Người dùng',
+    'Điểm',
+    'Nội dung'
+];
+$hoidapColumns = [
+    'Ảnh sản phẩm',
+    'Người dùng',
+    'Thời gian',
+    'Nội dung'
 ];

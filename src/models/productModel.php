@@ -16,7 +16,7 @@ class productModel
     public static function getProductHoidap($ma_sp)
     {
         $hoidapData = getHoidapBySanpham($ma_sp);
-        foreach ($hoidapData as $index => $hoidap) usernameInlaiding($hoidapData[$index]);
+        foreach ($hoidapData as $index => $hoidap) userInlaiding($hoidapData[$index]);
 
         return $hoidapData;
     }
