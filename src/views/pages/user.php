@@ -142,30 +142,28 @@
               Số điện thoại và Email
             </div>
             <div class="d-flex flex-column gap-4 px-3 mt-3">
-              <div class="row align-items-center">
+
+              <form action="<?= u::link('user', 'changePhone') ?>" method="post" class="row align-items-center">
                 <i class="fa-solid fa-phone col-auto fs-4 text-secondary" style="height: fit-content;"></i>
                 <div class="d-flex flex-column col">
-                  <div class="text-body-secondary mb-1">
-                    <?= $sdt ?>
-                  </div>
+                  <input type="text" name="sdt" class="form-control fit-content p-1 mb-2" value="<?= $sdt ?>">
                   <div class="text-body-tertiary  ">
                     Cập nhật số điện thoại
                   </div>
                 </div>
                 <button class="col-auto border-0 rounded-5 text-bg-light text-secondary fw-bold py-2">Cập nhật</button>
-              </div>
-              <div class="row align-items-center">
+              </form>
+
+              <form action="<?= u::link('user', 'changeEmail') ?>" method="post" class="row align-items-center">
                 <i class="fa-solid fa-envelope col-auto fs-4 text-secondary" style="height: fit-content;"></i>
                 <div class="d-flex flex-column col">
-                  <div class="text-body-secondary mb-1">
-                    <?= $email ?>
-                  </div>
+                  <input type="text" name="email" class="form-control fit-content p-1 mb-2" value="<?= $email ?>">
                   <div class="text-body-tertiary  ">
                     Cập nhật Email
                   </div>
                 </div>
                 <button class="col-auto border-0 rounded-5 text-bg-light text-secondary fw-bold py-2">Cập nhật</button>
-              </div>
+              </form>
             </div>
 
             <div class="fs-5 fw-bold mt-3">

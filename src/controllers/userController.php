@@ -67,6 +67,40 @@ class UserController
         }
     }
 
+    public function changePhone()
+    {
+        if (!u::isLoggedin()) {
+            u::toHome();
+        } else {
+            u::setThread();
+
+            extract(s('user'));
+            extract($_POST);
+
+            doiSoDienThoai($ma_nd, $sdt);
+
+            UserModel::reload($ma_nd);
+            u::toThread();
+        }
+    }
+
+    public function changeEmail()
+    {
+        if (!u::isLoggedin()) {
+            u::toHome();
+        } else {
+            u::setThread();
+
+            extract(s('user'));
+            extract($_POST);
+
+            doiEmail($ma_nd, $email);
+
+            UserModel::reload($ma_nd);
+            u::toThread();
+        }
+    }
+
 
 
     public function showRegisterForm($errors = null)
