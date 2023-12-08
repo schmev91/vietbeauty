@@ -1,16 +1,27 @@
-<?php initHeader('Đặt hàng', 'instantbuy');
+<?php
 
 if (isset($data)) {
     $paymentProducts = array();
+    $totalPayment = 0;
+    $buyingAmount = 0;
+
     foreach ($spgiohang as $index => $ma_sp) {
-        $paymentProducts[] = getSanphamByID($ma_sp);
+        $product = new productModel($ma_sp);
+        $paymentProducts[] = $product->getData();
         cartDetailInlaiding($paymentProducts[$index], $ma_gh);
         brandInlaiding($paymentProducts[$index]);
+
+        $buyAmount = $paymentProducts[$index]['soluong'];
+        $paymentItem = new orderItem($product, $buyAmount);
+
+        $totalPayment += $paymentItem->getThanhtien();
+        $buyingAmount += $buyAmount;
     }
 } else {
     u::toHome();
 }
 
+initHeader('Đặt hàng', 'instantbuy');
 ?>
 
 <main>
@@ -71,12 +82,12 @@ if (isset($data)) {
                         </div>
                         <div class="d-flex justify-content-between mb-3">
                             <p class=" fs-6 fw-light">Số lượng mặt hàng</p>
-                            <p class="fs-14 fw-bold"><?= nf($dongia) ?> ₫</p>
+                            <p class="fs-14 fw-bold"><?= $buyingAmount ?></p>
                         </div>
                         <div class="d-flex justify-content-between mb-3">
                             <p class=" fs-6 fw-light">Tổng tiền</p>
                             <div class="d-flex align-text-top ">
-                                <span class="h4"><?= nf($soluong * $dongia) ?> ₫</span>
+                                <span class="h4"><?= nf($totalPayment) ?> ₫</span>
                             </div>
                         </div>
                     </div>
