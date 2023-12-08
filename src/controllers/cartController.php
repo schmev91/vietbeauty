@@ -66,12 +66,14 @@ class cartController
     {
 
         u::setThread();
-        extract($_POST);
+        if (isset($_GET['ma_sp']) && isset($_GET['soluong'])) {
 
-        if (isset($soluong) && $soluong > 0) {
-            $this->cartModel->updateQuantity($ma_sp, $soluong);
+            extract($_GET);
+
+            if (isset($soluong) && $soluong > 0) {
+                $this->cartModel->updateQuantity($ma_sp, $soluong);
+            }
         }
-
         u::toThread();
     }
 }

@@ -67,10 +67,11 @@
 
                                 <!-- INPUT SO LUONG -->
                                 <td>
-                                    <form action="<?= u::link('cart', 'changeQuantity') ?>" method="post">
+                                    <!-- change from form to div to fix -->
+                                    <div action="<?= u::link('cart', 'changeQuantity') ?>" method="post" ma_sp="<?= $ma_sp ?>">
                                         <input type="text" hidden name="ma_sp" value="<?= $ma_sp ?>">
                                         <input name="soluong" class="quantity border-secondary-subtle bg-body-tertiary  border p-1 p-0 border-0 rounded-1 " min='1' max='50' type="number" value="<?= $soluong ?>">
-                                    </form>
+                                    </div>
                                 </td>
 
                                 <td class="fs-5 text-secondary-emphasis fw-medium"><span id="spthanhtien"><?= nf($dongia * $soluong) ?></span> ₫</td>
@@ -123,6 +124,6 @@
 
 </main>
 
-<script src="views/asset/javascript/cart.js?v=1"></script>
+<script src="views/asset/javascript/cart.js?v=3"></script>
 
 <?php initFooter() ?>

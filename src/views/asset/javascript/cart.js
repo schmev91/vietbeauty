@@ -1,76 +1,87 @@
-const invoice = document.getElementById('invoice')
+const invoice = document.getElementById("invoice");
 
-const quantityBtnArr = document.getElementsByClassName('quantity');
-
+const quantityBtnArr = document.getElementsByClassName("quantity");
 
 for (const quantityBtn of quantityBtnArr) {
-    changeQuantityHandler(quantityBtn)
+  changeQuantityHandler(quantityBtn);
 }
 
 function changeQuantityHandler(quantityBtn) {
-    quantityBtn.addEventListener('change', function () {
-        // Access the current value of the input
-        const parentForm = quantityBtn.parentNode
-        let currentValue = quantityBtn.value;
+  quantityBtn.addEventListener("change", function () {
+    // Access the current value of the input
+    const parentForm = quantityBtn.parentNode,
+      currentValue = quantityBtn.value;
 
-        parentForm.submit()
-    });
+    // ma_sp, soluong
+
+    let newQuantity = parentForm.querySelector(".quantity").value,
+      maSp = parentForm.getAttribute("ma_sp");
+
+    let origin = window.location.href.substring(
+        0,
+        window.location.href.indexOf("index.php")
+      ),
+      request = parentForm.getAttribute("action");
+
+    const submitUrl =
+      origin + request + `&ma_sp=${maSp}&soluong=${newQuantity}`;
+    window.location.href = submitUrl;
+  });
 }
 
-const checkBtnArr = document.getElementsByClassName('itemCheckbox')
+//=====INVOICE=====
+
+const checkBtnArr = document.getElementsByClassName("itemCheckbox");
 
 for (const checkBtn of checkBtnArr) {
-    checkBtnHandler(checkBtn)
+  checkBtnHandler(checkBtn);
 }
 
 function checkBtnHandler(checkBtn) {
-    checkBtn.addEventListener("change", function () {
-            reloadInvoice();
-    });
+  checkBtn.addEventListener("change", function () {
+    reloadInvoice();
+  });
 }
 
-
 function reloadInvoice() {
-    const tableRows = document.getElementsByClassName('tableRow');
-    let checkedRows = [];
+  const tableRows = document.getElementsByClassName("tableRow");
+  let checkedRows = [];
 
-    //kiểm tra row nào được check
-    for (const row of tableRows) {
-        const checkbox = row.querySelector('.itemCheckbox');
-        if (checkbox.checked) {
-            checkedRows.push(row);
-        }
+  //kiểm tra row nào được check
+  for (const row of tableRows) {
+    const checkbox = row.querySelector(".itemCheckbox");
+    if (checkbox.checked) {
+      checkedRows.push(row);
     }
+  }
 
+  let provisional = 0,
+    total = 0;
 
-    let provisional = 0
-        , total = 0
+  for (const row of checkedRows) {
+    provisional += toNumber(row.querySelector("#spthanhtien").textContent);
 
-    for (const row of checkedRows) {
-        provisional += toNumber(row.querySelector('#spthanhtien').textContent)
+    total += toNumber(row.querySelector("#spthanhtien").textContent);
+  }
 
-        total += toNumber(row.querySelector('#spthanhtien').textContent)
+  const provisionalField = document.getElementById("tamtinh");
+  const totalField = document.getElementById("tongcong");
 
-    }
-
-    const provisionalField = document.getElementById('tamtinh')
-    const totalField = document.getElementById('tongcong')
-
-    provisionalField.textContent = addThousandSeparator(provisional)
-    totalField.textContent = addThousandSeparator(total)
+  provisionalField.textContent = addThousandSeparator(provisional);
+  totalField.textContent = addThousandSeparator(total);
 }
 
 function toNumber(string) {
-    // Remove dots from the string
-    var stringWithoutDots = string.replace(/\./g, '');
+  // Remove dots from the string
+  var stringWithoutDots = string.replace(/\./g, "");
 
-    // Convert the string to a number
-    var resultNumber = parseFloat(stringWithoutDots);
+  // Convert the string to a number
+  var resultNumber = parseFloat(stringWithoutDots);
 
-    return resultNumber;
+  return resultNumber;
 }
 
 function addThousandSeparator(number) {
-    // Use a regular expression to add commas as thousand separators
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  // Use a regular expression to add commas as thousand separators
+  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
