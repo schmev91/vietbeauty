@@ -122,9 +122,9 @@ class paymentController
 
     public function cartOrdering()
     {
-        // if (u::isThreading())
-        //     u::toThread();
-        // else u::setThread();
+        if (u::isThreading())
+            u::toThread();
+        else u::setThread();
 
         extract($_POST);
 
@@ -134,7 +134,7 @@ class paymentController
         } else if (u::isThreading() && !u::isLoggedin()) {
             header("location: " . u::link('user', 'showLoginForm'));
         } else {
-            // u::toThread();
+            u::toThread();
         }
     }
 }
