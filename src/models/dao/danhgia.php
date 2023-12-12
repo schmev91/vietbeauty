@@ -44,6 +44,12 @@ function getAllDanhgiaBySanpham($ma_sp)
     return pdo_query($sql, $ma_sp);
 }
 
+function getSoluongDanhgiaBySanpham($ma_sp)
+{
+    $sql = "SELECT count(*) as soluongdg FROM danhgia WHERE ma_sp = ?";
+    return pdo_query($sql, $ma_sp)[0]['soluongdg'];
+}
+
 function getAllDanhgia()
 {
     $sql = "SELECT * FROM danhgia ";
