@@ -16,6 +16,7 @@ class productController
             $product = new productModel($ma_sp);
             $danhgiaData = productModel::getProductDanhgia($ma_sp);
             $hoidapData = productModel::getProductHoidap($ma_sp);
+            $soluongdanhgia = getSoluongDanhgiaBySanpham($ma_sp);
 
             extract($product->getData());
             include_once './views/pages/productDetail.php';

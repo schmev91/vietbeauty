@@ -27,12 +27,12 @@ $totalRatings = sizeof($danhgiaData);
                 </div>
                 <div class="divider my-3"></div>
                 <div class="rating-info">
+                    <!-- <i class="fas fa-star  text-orange "></i>
                     <i class="fas fa-star  text-orange "></i>
                     <i class="fas fa-star  text-orange "></i>
                     <i class="fas fa-star  text-orange "></i>
-                    <i class="fas fa-star  text-orange "></i>
-                    <i class="fas fa-star  text-orange "></i>
-                    <span class="text-body-tertiary">(19 đánh giá)</span>
+                    <i class="fas fa-star  text-orange "></i> -->
+                    <span class="text-body-tertiary">(<?= $soluongdanhgia   ?> đánh giá)</span>
                 </div>
                 <h2 class="product-price fs-2 mt-3 mb-5 pb-5  fw-bold text-secondary-emphasis"><?= $dongia ?> ₫</h2>
 
