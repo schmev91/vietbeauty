@@ -125,7 +125,7 @@
                     foreach ($dsgy as $sp) {
 
                     ?>
-                        <a href="index.php?controller=product&action=show&ma_sp=<?=$sp['ma_sp']?>" class="col-md-3 mt-3">
+                        <a href="index.php?controller=product&action=show&ma_sp=<?= $sp['ma_sp'] ?>" class="col-md-3 mt-3">
                             <div class="card" style="width:300px;height: 400px;">
                                 <img class="card-img-top" src="<?= $sp['anh'] ?>" alt="Card image">
                                 <div class="card-body">
@@ -142,9 +142,9 @@
         </section>
         <section class="xemthem">
             <div class="container mt-4">
-                <button type="button" class="btn btn-danger" style="height: 40px;width: 150px;margin-left: 560px;">Xem Thêm</button>
+                <a href="<?= u::link('shop', 'show') ?>" type="button" class="btn btn-danger" style="height: 40px;width: 150px;margin-left: 560px;">Xem Thêm</a>
             </div>
         </section>
     </main>
 
-    <?php initFooter()?>
+    <?php initFooter() ?>
