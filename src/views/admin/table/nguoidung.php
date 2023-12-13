@@ -4,14 +4,14 @@
         <td><?= $ma_nd ?></td>
         <td>
             <select disabled class="form-select p-0 bg-none border-0 text-white" name="isAdmin">
-                <option value="<?= $isAdmin == 0 ? 1 : 0 ?>" selected><?= $isAdmin == 0 ? 'false' : 'true' ?></option>
-                <option value="<?= $isAdmin == 0 ? 1 : 0 ?>"><?= $isAdmin == 0 ? 'false' : 'true' ?></option>
+                <option value="<?= $isAdmin ?>" selected><?= boolval($isAdmin) ? 'true' : 'false'  ?></option>
+                <option value="<?= $isAdmin == 0 ? 1 : 0 ?>"><?= !boolval($isAdmin) ? 'true' : 'false' ?></option>
             </select>
         </td>
         <td>
             <select disabled class="form-select p-0 bg-none border-0 text-white" name="isBanned">
-                <option value="<?= $isBanned == 0 ? 1 : 0 ?>" selected><?= $isBanned == 0 ? 'false' : 'true' ?></option>
-                <option value="<?= $isBanned == 0 ? 1 : 0 ?>"><?= $isBanned == 0 ? 'false' : 'true' ?></option>
+                <option value="<?= $isBanned  ?>" selected><?= boolval($isBanned)  ? 'true' : 'false' ?></option>
+                <option value="<?= $isBanned == 0 ? 1 : 0 ?>"><?= !boolval($isBanned) ? 'true' : 'false' ?></option>
             </select>
         </td>
         <td>
