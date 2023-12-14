@@ -74,13 +74,13 @@
                         </a>
                     </div>
 
-                    <!-- Button trigger modal -->
                     <?php
                     // code
 
                     if (isset($createWhat)) {
                     ?>
                         <!-- HTML -->
+                        <!-- Button trigger modal -->
                         <button type="button" class="add-btn btn btn-light btn-outline-secondary  fit-content py-2 mb-4 ms-auto rounded-end-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             <i class="fa-solid fa-plus text-secondary fw-bold"></i> <?= $createWhat ?>
                         </button>
