@@ -9,4 +9,3 @@ Topic: Cosmetics
 - MVC architecture
 - Bootstrap
 - Chartjs
-- HTML, CSS, Javascript, PHP
