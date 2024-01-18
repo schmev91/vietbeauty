@@ -13,10 +13,7 @@ foreach ($phpFiles as $phpFile) {
     include_once $phpFile;
 }
 
-
 $s = &$_SESSION;
-
-
 
 $DEFAULT_AVATAR = './views/asset/img/general/default_avatar.png';
 if (isset($_GET['controller']) && isset($_GET['action'])) {
