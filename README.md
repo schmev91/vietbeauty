@@ -1,6 +1,6 @@
 # vietbeauty
-Project name: Viet Beauty
-Topic: Cosmetics
+- Project name: Viet Beauty
+- Topic: Cosmetics
 
 ### breakdown
 - MVC architecture
